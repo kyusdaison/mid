@@ -2547,12 +2547,12 @@
                 <!-- Emergency Lock Overlay -->
                 <div class="sos-overlay" id="sos-overlay">
                     <div class="sos-locked-msg" id="sos-locked" style="display:none">
-                        <div class="lock-icon">🔒</div>
+                        <div class="lock-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
                         <div class="lock-title">WALLET LOCKED</div>
                         <div class="lock-sub">Emergency lock activated<br>Contact support to unlock</div>
                     </div>
                     <div id="sos-countdown">
-                        <div class="sos-icon">🚨</div>
+                        <div class="sos-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 9v4M12 17h.01"/><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg></div>
                         <div class="sos-title">EMERGENCY LOCK</div>
                         <div class="sos-text">Your wallet will be frozen in</div>
                         <div class="sos-timer" id="sos-timer">5</div>
@@ -2648,13 +2648,13 @@
 
                         <!-- Quick Actions (4x2 grid) -->
                         <div class="quick-chips">
-                            <div class="quick-chip" onclick="showSubPage('nft')"><span class="quick-chip-icon">🖼</span> NFTs</div>
-                            <div class="quick-chip" onclick="showSubPage('dapps')"><span class="quick-chip-icon">🌐</span> DApps</div>
-                            <div class="quick-chip" onclick="showSubPage('tx-history')"><span class="quick-chip-icon">📜</span> History</div>
-                            <div class="quick-chip" onclick="showSubPage('scanner')"><span class="quick-chip-icon">📸</span> Scan</div>
-                            <div class="quick-chip" onclick="showSubPage('ai')"><span class="quick-chip-icon">🤖</span> AI</div>
-                            <div class="quick-chip" onclick="showSubPage('quests')"><span class="quick-chip-icon">🎯</span> Rewards</div>
-                            <div class="quick-chip" onclick="showSubPage('yield')"><span class="quick-chip-icon">📈</span> Yield</div>
+                            <div class="quick-chip" onclick="showSubPage('nft')"><span class="quick-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span> NFTs</div>
+                            <div class="quick-chip" onclick="showSubPage('dapps')"><span class="quick-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 014 9 15 15 0 01-4 9 15 15 0 01-4-9 15 15 0 014-9z"/></svg></span> DApps</div>
+                            <div class="quick-chip" onclick="showSubPage('tx-history')"><span class="quick-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h3"/></svg></span> History</div>
+                            <div class="quick-chip" onclick="showSubPage('scanner')"><span class="quick-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></span> Scan</div>
+                            <div class="quick-chip" onclick="showSubPage('ai')"><span class="quick-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 2v6"/><circle cx="9" cy="14" r="1.5"/><circle cx="15" cy="14" r="1.5"/></svg></span> AI</div>
+                            <div class="quick-chip" onclick="showSubPage('quests')"><span class="quick-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span> Rewards</div>
+                            <div class="quick-chip" onclick="showSubPage('yield')"><span class="quick-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 20l5-5 4 4 9-12"/><path d="M17 7h4v4"/></svg></span> Yield</div>
                             <div class="quick-chip" onclick="showSubPage('miniapps')"><span class="quick-chip-icon">⋯</span> More</div>
                         </div>
 
@@ -3782,7 +3782,14 @@
                 
                     <!-- ══════ PAGE: NFT GALLERY ══════ -->
                     <div class="page" id="page-nft" style="display:none">
-                        <div class="sub-header">
+                                                <div class="back-link" onclick="showPage('wallet')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">NFT Gallery</div>
+                        <div class="page-subtitle">Your digital collectibles</div>
+
+<div class="sub-header">
                             <div class="back-btn" onclick="switchTab('wallet')">‹</div>
                             <div class="sub-title" data-i18n="nft_gallery">NFT Gallery</div>
                             <div class="sub-header-spacer"></div>
@@ -3795,7 +3802,7 @@
                         </div>
                         <div class="nft-grid" id="nft-grid">
                             <div class="nft-card" onclick="showNFTDetail(0)">
-                                <div class="nft-img" style="background:linear-gradient(135deg,#1e3a5f,#2d1b69)">🏝️</div>
+                                <div class="nft-img" style="background:linear-gradient(135deg,#1e3a5f,#2d1b69)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4c3 0 6 2 6 5s-3 5-6 5-6-2-6-5 3-5 6-5z"/><path d="M12 14v6"/><path d="M4 20c2-1 5-2 8-2s6 1 8 2"/></svg>️</div>
                                 <div class="nft-info">
                                     <div class="nft-name">Montserrat Genesis #001</div>
                                     <div class="nft-collection">MID Founders</div>
@@ -3811,7 +3818,7 @@
                                 </div>
                             </div>
                             <div class="nft-card" onclick="showNFTDetail(2)">
-                                <div class="nft-img" style="background:linear-gradient(135deg,#2d1b4e,#562b7c)">🎨</div>
+                                <div class="nft-img" style="background:linear-gradient(135deg,#2d1b4e,#562b7c)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="8" cy="9" r="1.5"/><circle cx="15" cy="8" r="1.5"/><circle cx="16" cy="13" r="1.5"/><circle cx="8" cy="14" r="1.5"/></svg></div>
                                 <div class="nft-info">
                                     <div class="nft-name">Volcanic Sunset #47</div>
                                     <div class="nft-collection">Island Art</div>
@@ -3819,7 +3826,7 @@
                                 </div>
                             </div>
                             <div class="nft-card" onclick="showNFTDetail(3)">
-                                <div class="nft-img" style="background:linear-gradient(135deg,#1a1a2e,#e94560)">🏛️</div>
+                                <div class="nft-img" style="background:linear-gradient(135deg,#1a1a2e,#e94560)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M4 10h16M12 3l9 7H3z"/><path d="M6 10v8M10 10v8M14 10v8M18 10v8"/></svg>️</div>
                                 <div class="nft-info">
                                     <div class="nft-name">Governance Token</div>
                                     <div class="nft-collection">MID DAO</div>
@@ -3827,7 +3834,7 @@
                                 </div>
                             </div>
                             <div class="nft-card" onclick="showNFTDetail(4)">
-                                <div class="nft-img" style="background:linear-gradient(135deg,#0a3d62,#38ada9)">🌋</div>
+                                <div class="nft-img" style="background:linear-gradient(135deg,#0a3d62,#38ada9)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l3 6h-2l3 6h-2l4 7H6l4-7H8l3-6H9z"/></svg></div>
                                 <div class="nft-info">
                                     <div class="nft-name">Soufrière Heritage</div>
                                     <div class="nft-collection">Island Collection</div>
@@ -3835,7 +3842,7 @@
                                 </div>
                             </div>
                             <div class="nft-card" onclick="showNFTDetail(5)">
-                                <div class="nft-img" style="background:linear-gradient(135deg,#2c3e50,#4ca1af)">🎖️</div>
+                                <div class="nft-img" style="background:linear-gradient(135deg,#2c3e50,#4ca1af)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="14" r="6"/><path d="M9 2l1.5 5M15 2l-1.5 5"/><path d="M9 12l2 2 4-4"/></svg></div>
                                 <div class="nft-info">
                                     <div class="nft-name">Pioneer Badge</div>
                                     <div class="nft-collection">MID Achievements</div>
@@ -3847,12 +3854,17 @@
 
                     <!-- ══════ PAGE: NFT DETAIL ══════ -->
                     <div class="page" id="page-nft-detail" style="display:none">
-                        <div class="sub-header" style="position:absolute;top:0;left:0;right:0;z-index:5;background:transparent;">
+                                                <div class="back-link" onclick="showPage('nft')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+
+<div class="sub-header" style="position:absolute;top:0;left:0;right:0;z-index:5;background:transparent;">
                             <div class="back-btn" onclick="showPage('nft')" style="background:rgba(0,0,0,0.5);backdrop-filter:blur(10px)">‹</div>
                             <div style="flex:1"></div>
                             <div class="back-btn" style="background:rgba(0,0,0,0.5);backdrop-filter:blur(10px)">⋯</div>
                         </div>
-                        <div class="nft-detail-img" id="nft-detail-img" style="background:linear-gradient(135deg,#1e3a5f,#2d1b69)">🏝️</div>
+                        <div class="nft-detail-img" id="nft-detail-img" style="background:linear-gradient(135deg,#1e3a5f,#2d1b69)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4c3 0 6 2 6 5s-3 5-6 5-6-2-6-5 3-5 6-5z"/><path d="M12 14v6"/><path d="M4 20c2-1 5-2 8-2s6 1 8 2"/></svg>️</div>
                         <div class="nft-detail-meta">
                             <div class="nft-detail-title" id="nft-detail-title">Montserrat Genesis #001</div>
                             <div class="nft-detail-collection" id="nft-detail-collection">✓ MID Founders</div>
@@ -3871,7 +3883,14 @@
 
                     <!-- ══════ PAGE: DAPP BROWSER ══════ -->
                     <div class="page" id="page-dapps" style="display:none">
-                        <div class="sub-header">
+                                                <div class="back-link" onclick="showPage('wallet')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">DApps</div>
+                        <div class="page-subtitle">Decentralized applications</div>
+
+<div class="sub-header">
                             <div class="back-btn" onclick="switchTab('wallet')">‹</div>
                             <div class="sub-title" data-i18n="dapp_browser">DApp Browser</div>
                             <div class="sub-header-spacer"></div>
@@ -3881,57 +3900,57 @@
                             <input type="text" placeholder="Search DApps or enter URL...">
                         </div>
                         <div class="dapp-banner" onclick="showToast('Connecting...','Opening Uniswap','info')">
-                            <div style="font-size:28px">🦄</div>
+                            <div style="font-size:28px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2 7h-4z"/><circle cx="12" cy="14" r="7"/><circle cx="10" cy="13" r="1"/></svg></div>
                             <div class="dapp-banner-text">
                                 <div class="dapp-banner-title">Featured: MID DEX</div>
                                 <div class="dapp-banner-sub">Swap tokens with zero gas on Montserrat chain</div>
                             </div>
                         </div>
                         <div class="dapp-category">
-                            <div class="dapp-category-title">🔥 Popular</div>
+                            <div class="dapp-category-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22c4-2 8-6 8-11a8 8 0 00-16 0c0 5 4 9 8 11z"/><path d="M12 22c-2-1-4-3-4-6a4 4 0 018 0c0 3-2 5-4 6z"/></svg> Popular</div>
                             <div class="dapp-grid">
                                 <div class="dapp-item" onclick="showToast('Connecting','Opening Uniswap','info')">
-                                    <div class="dapp-icon" style="background:linear-gradient(135deg,#FF007A,#FF007A)">🦄</div>
+                                    <div class="dapp-icon" style="background:linear-gradient(135deg,#FF007A,#FF007A)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2 7h-4z"/><circle cx="12" cy="14" r="7"/><circle cx="10" cy="13" r="1"/></svg></div>
                                     <div class="dapp-item-name">Uniswap</div>
                                     <div class="dapp-item-cat">DEX</div>
                                 </div>
                                 <div class="dapp-item" onclick="showToast('Connecting','Opening Aave','info')">
-                                    <div class="dapp-icon" style="background:linear-gradient(135deg,#B6509E,#2ebac6)">👻</div>
+                                    <div class="dapp-icon" style="background:linear-gradient(135deg,#B6509E,#2ebac6)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="10" r="7"/><path d="M8 8.5a1 1 0 012 0M14 8.5a1 1 0 012 0"/><path d="M5 17v4l2-2 2 2 3-2 3 2 2-2 2 2v-4"/></svg></div>
                                     <div class="dapp-item-name">Aave</div>
                                     <div class="dapp-item-cat">Lending</div>
                                 </div>
                                 <div class="dapp-item" onclick="showToast('Connecting','Opening OpenSea','info')">
-                                    <div class="dapp-icon" style="background:linear-gradient(135deg,#2081E2,#2081E2)">🌊</div>
+                                    <div class="dapp-icon" style="background:linear-gradient(135deg,#2081E2,#2081E2)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c1.5-2 3.5-2 5 0s3.5 2 5 0 3.5-2 5 0 3.5 2 5 0"/><path d="M2 17c1.5-2 3.5-2 5 0s3.5 2 5 0 3.5-2 5 0 3.5 2 5 0"/></svg></div>
                                     <div class="dapp-item-name">OpenSea</div>
                                     <div class="dapp-item-cat">NFT</div>
                                 </div>
                                 <div class="dapp-item" onclick="showToast('Connecting','Opening Lido','info')">
-                                    <div class="dapp-icon" style="background:linear-gradient(135deg,#00A3FF,#63b3ed)">🔷</div>
+                                    <div class="dapp-icon" style="background:linear-gradient(135deg,#00A3FF,#63b3ed)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3L6 12.5 12 16l6-3.5z"/><path d="M6 13.8L12 20l6-6.2"/></svg></div>
                                     <div class="dapp-item-name">Lido</div>
                                     <div class="dapp-item-cat">Staking</div>
                                 </div>
                                 <div class="dapp-item" onclick="showToast('Connecting','Opening 1inch','info')">
-                                    <div class="dapp-icon" style="background:linear-gradient(135deg,#1B314F,#D21438)">🔀</div>
+                                    <div class="dapp-icon" style="background:linear-gradient(135deg,#1B314F,#D21438)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg></div>
                                     <div class="dapp-item-name">1inch</div>
                                     <div class="dapp-item-cat">DEX Agg</div>
                                 </div>
                                 <div class="dapp-item" onclick="showToast('Connecting','Opening ENS','info')">
-                                    <div class="dapp-icon" style="background:linear-gradient(135deg,#5298FF,#5298FF)">📛</div>
+                                    <div class="dapp-icon" style="background:linear-gradient(135deg,#5298FF,#5298FF)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M8 10v4M12 10v4M16 10v4"/></svg></div>
                                     <div class="dapp-item-name">ENS</div>
                                     <div class="dapp-item-cat">Identity</div>
                                 </div>
                             </div>
                         </div>
                         <div class="dapp-category">
-                            <div class="dapp-category-title">🏝️ Montserrat Ecosystem</div>
+                            <div class="dapp-category-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4c3 0 6 2 6 5s-3 5-6 5-6-2-6-5 3-5 6-5z"/><path d="M12 14v6"/><path d="M4 20c2-1 5-2 8-2s6 1 8 2"/></svg>️ Montserrat Ecosystem</div>
                             <div class="dapp-grid">
                                 <div class="dapp-item" onclick="showToast('Connecting','Opening MID DEX','info')">
-                                    <div class="dapp-icon" style="background:linear-gradient(135deg,#4A8FE7,#34D399)">💱</div>
+                                    <div class="dapp-icon" style="background:linear-gradient(135deg,#4A8FE7,#34D399)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h14l-3-3M21 16H7l3 3"/><circle cx="17" cy="8" r="0"/><circle cx="7" cy="16" r="0"/></svg></div>
                                     <div class="dapp-item-name">MID DEX</div>
                                     <div class="dapp-item-cat">DEX</div>
                                 </div>
                                 <div class="dapp-item" onclick="showToast('Connecting','Opening MID Gov','info')">
-                                    <div class="dapp-icon" style="background:linear-gradient(135deg,#a78bfa,#6387FF)">🗳️</div>
+                                    <div class="dapp-icon" style="background:linear-gradient(135deg,#a78bfa,#6387FF)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M9 8V5a3 3 0 016 0v3"/><path d="M10 13h4"/></svg>️</div>
                                     <div class="dapp-item-name">MID Gov</div>
                                     <div class="dapp-item-cat">Governance</div>
                                 </div>
@@ -3946,7 +3965,14 @@
 
                     <!-- ══════ PAGE: TRANSACTION HISTORY ══════ -->
                     <div class="page" id="page-tx-history" style="display:none">
-                        <div class="sub-header">
+                                                <div class="back-link" onclick="showPage('wallet')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">Transaction History</div>
+                        <div class="page-subtitle">All activity</div>
+
+<div class="sub-header">
                             <div class="back-btn" onclick="switchTab('wallet')">‹</div>
                             <div class="sub-title" data-i18n="tx_history">Transactions</div>
                             <div class="sub-header-spacer"></div>
@@ -3977,7 +4003,7 @@
                                 <div class="tx-item-amount"><div class="tx-item-val negative">-500.00</div><div class="tx-item-usd">≈ $500.00</div></div>
                             </div>
                             <div class="tx-item" data-type="stake" onclick="showTxDetail('Staked MSD','0x6dc2...1f3e','Completed','yesterday')">
-                                <div class="tx-icon-wrap tx-icon-stake">⚡</div>
+                                <div class="tx-icon-wrap tx-icon-stake"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h8l-1 8 10-12h-8z"/></svg></div>
                                 <div class="tx-item-info"><div class="tx-item-title">Staked MSD</div><div class="tx-item-sub">12.4% APY · 16:20</div></div>
                                 <div class="tx-item-amount"><div class="tx-item-val negative">-2,000.00</div><div class="tx-item-usd">≈ $2,000.00</div></div>
                             </div>
@@ -4002,7 +4028,14 @@
 
                     <!-- ══════ PAGE: SETTINGS ══════ -->
                     <div class="page" id="page-settings" style="display:none">
-                        <div class="sub-header">
+                                                <div class="back-link" onclick="showPage('wallet')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">Settings</div>
+                        <div class="page-subtitle">Preferences & security</div>
+
+<div class="sub-header">
                             <div class="back-btn" onclick="switchTab('profile')">‹</div>
                             <div class="sub-title" data-i18n="settings">Settings</div>
                             <div class="sub-header-spacer"></div>
@@ -4010,22 +4043,22 @@
                         <div class="settings-section">
                             <div class="settings-section-title">Security</div>
                             <div class="settings-row" onclick="showSubPage('backup')">
-                                <div class="settings-icon" style="background:rgba(255,170,0,0.12)">🔑</div>
+                                <div class="settings-icon" style="background:rgba(255,170,0,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="15" cy="9" r="3"/><path d="M15 12l-7 7-3 0 0-3 7-7"/></svg></div>
                                 <div class="settings-row-text"><div class="settings-row-label">Backup Seed Phrase</div><div class="settings-row-sub">Protect your wallet</div></div>
                                 <span class="settings-arrow">›</span>
                             </div>
                             <div class="settings-row" onclick="showSubPage('mpc')">
-                                <div class="settings-icon" style="background:rgba(52,211,153,0.12)">🔐</div>
+                                <div class="settings-icon" style="background:rgba(52,211,153,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/><circle cx="12" cy="16" r="1"/></svg></div>
                                 <div class="settings-row-text"><div class="settings-row-label">MPC Recovery</div><div class="settings-row-sub">Seedless 2-of-3 key shards</div></div>
                                 <span class="settings-arrow">›</span>
                             </div>
                             <div class="settings-row" onclick="showToast('Biometric','Face ID enabled','success')">
-                                <div class="settings-icon" style="background:rgba(99,135,255,0.12)">🔒</div>
+                                <div class="settings-icon" style="background:rgba(99,135,255,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
                                 <div class="settings-row-text"><div class="settings-row-label">Biometric Lock</div><div class="settings-row-sub">Face ID / Fingerprint</div></div>
                                 <button class="settings-toggle on" onclick="event.stopPropagation();this.classList.toggle('on')"></button>
                             </div>
                             <div class="settings-row">
-                                <div class="settings-icon" style="background:rgba(239,68,68,0.12)">🛡️</div>
+                                <div class="settings-icon" style="background:rgba(239,68,68,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>️</div>
                                 <div class="settings-row-text"><div class="settings-row-label">2-Factor Auth</div><div class="settings-row-sub">Extra security layer</div></div>
                                 <button class="settings-toggle" onclick="event.stopPropagation();this.classList.toggle('on');showToast('2FA','Setting updated','info')"></button>
                             </div>
@@ -4038,22 +4071,22 @@
                         <div class="settings-section">
                             <div class="settings-section-title">Preferences</div>
                             <div class="settings-row">
-                                <div class="settings-icon" style="background:rgba(167,139,250,0.12)">🌙</div>
+                                <div class="settings-icon" style="background:rgba(167,139,250,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg></div>
                                 <div class="settings-row-text"><div class="settings-row-label">Dark Mode</div><div class="settings-row-sub">Currently active</div></div>
                                 <button class="settings-toggle on" onclick="event.stopPropagation();this.classList.toggle('on')"></button>
                             </div>
                             <div class="settings-row" onclick="showToast('Currency','USD, EUR, GBP, XCD available','info')">
-                                <div class="settings-icon" style="background:rgba(52,211,153,0.12)">💱</div>
+                                <div class="settings-icon" style="background:rgba(52,211,153,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h14l-3-3M21 16H7l3 3"/><circle cx="17" cy="8" r="0"/><circle cx="7" cy="16" r="0"/></svg></div>
                                 <div class="settings-row-text"><div class="settings-row-label">Currency</div><div class="settings-row-sub">USD ($)</div></div>
                                 <span class="settings-arrow">›</span>
                             </div>
                             <div class="settings-row" onclick="showSubPage('alerts')">
-                                <div class="settings-icon" style="background:rgba(251,191,36,0.12)">🔔</div>
+                                <div class="settings-icon" style="background:rgba(251,191,36,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></div>
                                 <div class="settings-row-text"><div class="settings-row-label">Price Alerts</div><div class="settings-row-sub">3 active alerts</div></div>
                                 <span class="settings-arrow">›</span>
                             </div>
                             <div class="settings-row" onclick="showToast('Language','EN, 中文, FR available','info')">
-                                <div class="settings-icon" style="background:rgba(99,135,255,0.12)">🌐</div>
+                                <div class="settings-icon" style="background:rgba(99,135,255,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 014 9 15 15 0 01-4 9 15 15 0 01-4-9 15 15 0 014-9z"/></svg></div>
                                 <div class="settings-row-text"><div class="settings-row-label">Language</div><div class="settings-row-sub" id="settings-lang-label">English</div></div>
                                 <span class="settings-arrow">›</span>
                             </div>
@@ -4061,12 +4094,12 @@
                         <div class="settings-section">
                             <div class="settings-section-title">Network</div>
                             <div class="settings-row" onclick="showToast('Network','Connected to Montserrat Mainnet','success')">
-                                <div class="settings-icon" style="background:rgba(52,211,153,0.12)">🔗</div>
+                                <div class="settings-icon" style="background:rgba(52,211,153,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
                                 <div class="settings-row-text"><div class="settings-row-label">Network</div><div class="settings-row-sub">Montserrat Mainnet</div></div>
                                 <span class="settings-arrow">›</span>
                             </div>
                             <div class="settings-row" onclick="showToast('Gas','Standard: 0.001 MSD per tx','info')">
-                                <div class="settings-icon" style="background:rgba(99,135,255,0.12)">⛽</div>
+                                <div class="settings-icon" style="background:rgba(99,135,255,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="12" height="16" rx="1"/><path d="M15 10h2a2 2 0 012 2v3a2 2 0 002 0V8l-3-3"/></svg></div>
                                 <div class="settings-row-text"><div class="settings-row-label">Gas Settings</div><div class="settings-row-sub">Standard</div></div>
                                 <span class="settings-arrow">›</span>
                             </div>
@@ -4084,13 +4117,20 @@
 
                     <!-- ══════ PAGE: BACKUP SEED PHRASE ══════ -->
                     <div class="page" id="page-backup" style="display:none">
-                        <div class="sub-header">
+                                                <div class="back-link" onclick="showPage('settings')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">Backup & Recovery</div>
+                        <div class="page-subtitle">Protect your wallet</div>
+
+<div class="sub-header">
                             <div class="back-btn" onclick="showPage('settings')">‹</div>
                             <div class="sub-title">Backup Phrase</div>
                             <div class="sub-header-spacer"></div>
                         </div>
                         <div class="page-content-center">
-                            <div class="page-icon">🔐</div>
+                            <div class="page-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/><circle cx="12" cy="16" r="1"/></svg></div>
                             <div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:4px">Your Recovery Phrase</div>
                             <div style="font-size:12px;color:var(--text-tertiary);margin-bottom:16px">Write these 12 words down and keep them safe. Never share with anyone.</div>
                         </div>
@@ -4117,7 +4157,14 @@
 
                     <!-- ══════ PAGE: SOCIAL FEED / MOMENTS ══════ -->
                     <div class="page" id="page-feed" style="display:none;position:relative">
-                        <div class="sub-header">
+                                                <div class="back-link" onclick="showPage('friends')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">Community Feed</div>
+                        <div class="page-subtitle">Latest updates</div>
+
+<div class="sub-header">
                             <div class="back-btn" onclick="switchTab('friends')">‹</div>
                             <div class="sub-title" data-i18n="social_feed">Moments</div>
                             <div class="sub-header-spacer"></div>
@@ -4128,13 +4175,13 @@
                                 <div class="feed-post-user"><div class="feed-post-name">Alex Chen</div><div class="feed-post-time">2 hours ago</div></div>
                             </div>
                             <div class="feed-achievement">
-                                <div class="feed-achievement-icon">🏆</div>
+                                <div class="feed-achievement-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9H4a2 2 0 01-2-2V5a2 2 0 012-2h2M18 9h2a2 2 0 002-2V5a2 2 0 00-2-2h-2"/><path d="M6 3h12v8a6 6 0 11-12 0z"/><path d="M9 21h6M12 17v4"/></svg></div>
                                 <div class="feed-achievement-text">Earned "Early Adopter" badge — among the first 100 MID residents!</div>
                             </div>
                             <div class="feed-actions">
                                 <div class="feed-action-btn" onclick="this.classList.toggle('liked');this.innerHTML=this.classList.contains('liked')?'❤️ 13':'🤍 12'">🤍 12</div>
-                                <div class="feed-action-btn">💬 3</div>
-                                <div class="feed-action-btn">🔗 Share</div>
+                                <div class="feed-action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> 3</div>
+                                <div class="feed-action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg> Share</div>
                             </div>
                         </div>
                         <div class="feed-post">
@@ -4142,15 +4189,15 @@
                                 <div class="feed-avatar" style="background:linear-gradient(135deg,#a78bfa,#7c3aed)">S</div>
                                 <div class="feed-post-user"><div class="feed-post-name">Sarah Kim</div><div class="feed-post-time">5 hours ago</div></div>
                             </div>
-                            <div class="feed-post-body">Just minted my first NFT on the Montserrat chain — the gas fees are incredibly low! 🏝️</div>
+                            <div class="feed-post-body">Just minted my first NFT on the Montserrat chain — the gas fees are incredibly low! <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4c3 0 6 2 6 5s-3 5-6 5-6-2-6-5 3-5 6-5z"/><path d="M12 14v6"/><path d="M4 20c2-1 5-2 8-2s6 1 8 2"/></svg>️</div>
                             <div class="feed-post-card">
-                                <div class="feed-post-card-title">🎨 Volcanic Sunset #47</div>
+                                <div class="feed-post-card-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="8" cy="9" r="1.5"/><circle cx="15" cy="8" r="1.5"/><circle cx="16" cy="13" r="1.5"/><circle cx="8" cy="14" r="1.5"/></svg> Volcanic Sunset #47</div>
                                 <div class="feed-post-card-sub">Minted for 0.8 MSD on Island Art</div>
                             </div>
                             <div class="feed-actions">
                                 <div class="feed-action-btn" onclick="this.classList.toggle('liked');this.innerHTML=this.classList.contains('liked')?'❤️ 25':'🤍 24'">🤍 24</div>
-                                <div class="feed-action-btn">💬 7</div>
-                                <div class="feed-action-btn">🔗 Share</div>
+                                <div class="feed-action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> 7</div>
+                                <div class="feed-action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg> Share</div>
                             </div>
                         </div>
                         <div class="feed-post">
@@ -4158,11 +4205,11 @@
                                 <div class="feed-avatar" style="background:linear-gradient(135deg,#34D399,#059669)">J</div>
                                 <div class="feed-post-user"><div class="feed-post-name">James Liu</div><div class="feed-post-time">Yesterday</div></div>
                             </div>
-                            <div class="feed-post-body">MSD staking rewards are amazing — already earned 18.5 MSD this month at 12.4% APY 📈</div>
+                            <div class="feed-post-body">MSD staking rewards are amazing — already earned 18.5 MSD this month at 12.4% APY <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 20l5-5 4 4 9-12"/><path d="M17 7h4v4"/></svg></div>
                             <div class="feed-actions">
                                 <div class="feed-action-btn" onclick="this.classList.toggle('liked');this.innerHTML=this.classList.contains('liked')?'❤️ 32':'🤍 31'">🤍 31</div>
-                                <div class="feed-action-btn">💬 11</div>
-                                <div class="feed-action-btn">🔗 Share</div>
+                                <div class="feed-action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> 11</div>
+                                <div class="feed-action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg> Share</div>
                             </div>
                         </div>
                         <div class="feed-post">
@@ -4170,15 +4217,15 @@
                                 <div class="feed-avatar" style="background:linear-gradient(135deg,#f59e0b,#d97706)">M</div>
                                 <div class="feed-post-user"><div class="feed-post-name">Mei Wang</div><div class="feed-post-time">2 days ago</div></div>
                             </div>
-                            <div class="feed-post-body">Successfully completed KYC verification with zero-knowledge proofs. Privacy-first identity is the future! 🔐</div>
+                            <div class="feed-post-body">Successfully completed KYC verification with zero-knowledge proofs. Privacy-first identity is the future! <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/><circle cx="12" cy="16" r="1"/></svg></div>
                             <div class="feed-achievement">
                                 <div class="feed-achievement-icon">✅</div>
                                 <div class="feed-achievement-text">Completed ZK Identity Verification — Level 3 Verified</div>
                             </div>
                             <div class="feed-actions">
                                 <div class="feed-action-btn" onclick="this.classList.toggle('liked');this.innerHTML=this.classList.contains('liked')?'❤️ 46':'🤍 45'">🤍 45</div>
-                                <div class="feed-action-btn">💬 8</div>
-                                <div class="feed-action-btn">🔗 Share</div>
+                                <div class="feed-action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> 8</div>
+                                <div class="feed-action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg> Share</div>
                             </div>
                         </div>
                         <button class="feed-new-post" onclick="showToast('New Post','Create a moment','info')">+</button>
@@ -4186,7 +4233,14 @@
 
                     <!-- ══════ PAGE: ADDRESS BOOK ══════ -->
                     <div class="page" id="page-addressbook" style="display:none">
-                        <div class="sub-header">
+                                                <div class="back-link" onclick="showPage('wallet')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">Address Book</div>
+                        <div class="page-subtitle">Saved contacts</div>
+
+<div class="sub-header">
                             <div class="back-btn" onclick="switchTab('profile')">‹</div>
                             <div class="sub-title" data-i18n="address_book">Address Book</div>
                             <div class="sub-header-spacer"></div>
@@ -4195,12 +4249,12 @@
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
                             <input type="text" placeholder="Search contacts...">
                         </div>
-                        <div class="addr-section-title">★ Favorites</div>
+                        <div class="addr-section-title"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Favorites</div>
                         <div class="addr-item" onclick="showToast('Send to Alex','Opening transfer','info')">
                             <div class="addr-avatar" style="background:linear-gradient(135deg,#FF6B6B,#ee5a24)">AC</div>
                             <div class="addr-info"><div class="addr-name">Alex Chen</div><div class="addr-address">0x7a3f...9e2c</div></div>
                             <div class="addr-actions">
-                                <div class="addr-action" onclick="event.stopPropagation();showToast('Copied','Address copied','success')">📋</div>
+                                <div class="addr-action" onclick="event.stopPropagation();showToast('Copied','Address copied','success')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 6h6M9 10h6M9 14h4"/></svg></div>
                                 <div class="addr-action" onclick="event.stopPropagation();triggerBiometric('transfer')">↑</div>
                             </div>
                         </div>
@@ -4208,7 +4262,7 @@
                             <div class="addr-avatar" style="background:linear-gradient(135deg,#a78bfa,#7c3aed)">SK</div>
                             <div class="addr-info"><div class="addr-name">Sarah Kim</div><div class="addr-address">0x92ef...4a8b</div></div>
                             <div class="addr-actions">
-                                <div class="addr-action" onclick="event.stopPropagation();showToast('Copied','Address copied','success')">📋</div>
+                                <div class="addr-action" onclick="event.stopPropagation();showToast('Copied','Address copied','success')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 6h6M9 10h6M9 14h4"/></svg></div>
                                 <div class="addr-action" onclick="event.stopPropagation();triggerBiometric('transfer')">↑</div>
                             </div>
                         </div>
@@ -4217,7 +4271,7 @@
                             <div class="addr-avatar" style="background:linear-gradient(135deg,#34D399,#059669)">JL</div>
                             <div class="addr-info"><div class="addr-name">James Liu</div><div class="addr-address">0x45bd...6e7c</div></div>
                             <div class="addr-actions">
-                                <div class="addr-action" onclick="event.stopPropagation();showToast('Copied','Address copied','success')">📋</div>
+                                <div class="addr-action" onclick="event.stopPropagation();showToast('Copied','Address copied','success')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 6h6M9 10h6M9 14h4"/></svg></div>
                                 <div class="addr-action" onclick="event.stopPropagation();triggerBiometric('transfer')">↑</div>
                             </div>
                         </div>
@@ -4225,7 +4279,7 @@
                             <div class="addr-avatar" style="background:linear-gradient(135deg,#f59e0b,#d97706)">MW</div>
                             <div class="addr-info"><div class="addr-name">Mei Wang</div><div class="addr-address">0x1ae5...8c9d</div></div>
                             <div class="addr-actions">
-                                <div class="addr-action" onclick="event.stopPropagation();showToast('Copied','Address copied','success')">📋</div>
+                                <div class="addr-action" onclick="event.stopPropagation();showToast('Copied','Address copied','success')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 6h6M9 10h6M9 14h4"/></svg></div>
                                 <div class="addr-action" onclick="event.stopPropagation();triggerBiometric('transfer')">↑</div>
                             </div>
                         </div>
@@ -4233,7 +4287,7 @@
                             <div class="addr-avatar" style="background:linear-gradient(135deg,#60a5fa,#3b82f6)">DM</div>
                             <div class="addr-info"><div class="addr-name">MID Treasury</div><div class="addr-address">0xMID...DAO1</div></div>
                             <div class="addr-actions">
-                                <div class="addr-action" onclick="event.stopPropagation();showToast('Copied','Address copied','success')">📋</div>
+                                <div class="addr-action" onclick="event.stopPropagation();showToast('Copied','Address copied','success')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 6h6M9 10h6M9 14h4"/></svg></div>
                                 <div class="addr-action" onclick="event.stopPropagation();triggerBiometric('transfer')">↑</div>
                             </div>
                         </div>
@@ -4242,7 +4296,14 @@
 
                     <!-- ══════ PAGE: QR SCANNER ══════ -->
                     <div class="page" id="page-scanner" style="display:none;background:#000">
-                        <div class="sub-header" style="background:transparent;position:absolute;top:0;left:0;right:0;z-index:5">
+                                                <div class="back-link" onclick="showPage('wallet')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">Scanner</div>
+                        <div class="page-subtitle">Scan QR codes</div>
+
+<div class="sub-header" style="background:transparent;position:absolute;top:0;left:0;right:0;z-index:5">
                             <div class="back-btn" onclick="switchTab('wallet')" style="background:rgba(0,0,0,0.5);backdrop-filter:blur(10px)">‹</div>
                             <div class="sub-title" style="color:#fff" data-i18n="qr_scanner">Scan QR</div>
                             <div class="sub-header-spacer"></div>
@@ -4260,15 +4321,15 @@
                         </div>
                         <div class="scanner-actions">
                             <div class="scanner-action-btn" onclick="simulateScan()">
-                                <div class="icon-circle">📷</div>
+                                <div class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
                                 <span>Gallery</span>
                             </div>
                             <div class="scanner-action-btn" onclick="simulateScan()">
-                                <div class="icon-circle">💡</div>
+                                <div class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18h6M12 2a7 7 0 00-4 12.65V17h8v-2.35A7 7 0 0012 2z"/></svg></div>
                                 <span>Flash</span>
                             </div>
                             <div class="scanner-action-btn" onclick="showPage('receive')">
-                                <div class="icon-circle">📱</div>
+                                <div class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M12 18h.01"/></svg></div>
                                 <span>My QR</span>
                             </div>
                         </div>
@@ -4284,7 +4345,14 @@
 
                     <!-- ══════ PAGE: PRICE ALERTS ══════ -->
                     <div class="page" id="page-alerts" style="display:none">
-                        <div class="sub-header">
+                                                <div class="back-link" onclick="showPage('wallet')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">Security Alerts</div>
+                        <div class="page-subtitle">Threat monitoring</div>
+
+<div class="sub-header">
                             <div class="back-btn" onclick="showPage('settings')">‹</div>
                             <div class="sub-title" data-i18n="price_alerts">Price Alerts</div>
                             <div class="sub-header-spacer"></div>
@@ -4325,17 +4393,17 @@
                         <div class="alert-history">
                             <div class="alert-history-title">Recent Alerts</div>
                             <div class="alert-history-item">
-                                <div class="alert-history-icon">🔔</div>
+                                <div class="alert-history-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></div>
                                 <div class="alert-history-text">MSD rose above $1.05</div>
                                 <div class="alert-history-time">2h ago</div>
                             </div>
                             <div class="alert-history-item">
-                                <div class="alert-history-icon">🔔</div>
+                                <div class="alert-history-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></div>
                                 <div class="alert-history-text">ETH dropped below $2,500</div>
                                 <div class="alert-history-time">Yesterday</div>
                             </div>
                             <div class="alert-history-item">
-                                <div class="alert-history-icon">🔔</div>
+                                <div class="alert-history-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></div>
                                 <div class="alert-history-text">MSD reached $1.00 milestone</div>
                                 <div class="alert-history-time">3 days ago</div>
                             </div>
@@ -4345,7 +4413,14 @@
 
                     <!-- ══════ PAGE: DIGITAL PASSPORT ══════ -->
                     <div class="page" id="page-passport" style="display:none">
-                        <div class="sub-header">
+                                                <div class="back-link" onclick="showPage('cards')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">Digital Passport</div>
+                        <div class="page-subtitle">Identity credentials</div>
+
+<div class="sub-header">
                             <div class="back-btn" onclick="switchTab('verify')">‹</div>
                             <div class="sub-title" data-i18n="digital_passport">Digital Passport</div>
                             <div class="sub-header-spacer"></div>
@@ -4353,12 +4428,12 @@
                         <div class="passport-book">
                             <div class="passport-cover">
                                 <div class="passport-country">MONTSERRAT · DIGITAL TERRITORY</div>
-                                <div class="passport-coat">🏝️</div>
+                                <div class="passport-coat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4c3 0 6 2 6 5s-3 5-6 5-6-2-6-5 3-5 6-5z"/><path d="M12 14v6"/><path d="M4 20c2-1 5-2 8-2s6 1 8 2"/></svg>️</div>
                                 <div class="passport-type">E-PASSPORT</div>
                                 <div class="passport-sub">DIGITAL RESIDENCY PROGRAMME</div>
                             </div>
                             <div class="passport-photo-row">
-                                <div class="passport-photo">👤</div>
+                                <div class="passport-photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg></div>
                                 <div class="passport-fields">
                                     <div class="passport-field"><div class="passport-label">Full Name</div><div class="passport-value">NUO WA</div></div>
                                     <div class="passport-field"><div class="passport-label">Nationality</div><div class="passport-value">MONTSERRAT (DIGITAL)</div></div>
@@ -4397,55 +4472,62 @@
 
                     <!-- ══════ PAGE: GOVERNMENT SERVICES ══════ -->
                     <div class="page" id="page-gov" style="display:none">
-                        <div class="sub-header">
+                                                <div class="back-link" onclick="showPage('wallet')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">Government Services</div>
+                        <div class="page-subtitle">Civic participation</div>
+
+<div class="sub-header">
                             <div class="back-btn" onclick="switchTab('profile')">‹</div>
                             <div class="sub-title" data-i18n="gov_services">Gov Services</div>
                             <div class="sub-header-spacer"></div>
                         </div>
                         <div class="gov-banner">
-                            <div style="font-size:28px;margin-bottom:4px">🏛️</div>
+                            <div style="font-size:28px;margin-bottom:4px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M4 10h16M12 3l9 7H3z"/><path d="M6 10v8M10 10v8M14 10v8M18 10v8"/></svg>️</div>
                             <div class="gov-banner-title">Montserrat Digital Government</div>
                             <div class="gov-banner-sub">Access all government services in one place</div>
                         </div>
                         <div class="gov-grid">
                             <div class="gov-card" onclick="showToast('Tax Portal','Opening tax filing...','info')">
-                                <div class="gov-card-icon">💰</div>
+                                <div class="gov-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><path d="M12 6v12M9 9h4.5a1.5 1.5 0 010 3H9m0 0h5a1.5 1.5 0 010 3H9"/></svg></div>
                                 <div class="gov-card-name">Tax Filing</div>
                                 <div class="gov-card-sub">Annual return</div>
                                 <div class="gov-card-badge pending">Due Apr 15</div>
                             </div>
                             <div class="gov-card" onclick="showToast('Permit','Business permit renewed','success')">
-                                <div class="gov-card-icon">📋</div>
+                                <div class="gov-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 6h6M9 10h6M9 14h4"/></svg></div>
                                 <div class="gov-card-name">Permits</div>
                                 <div class="gov-card-sub">Business license</div>
                                 <div class="gov-card-badge done">✓ Active</div>
                             </div>
                             <div class="gov-card" onclick="showToast('Voting','Opening ballot...','info')">
-                                <div class="gov-card-icon">🗳️</div>
+                                <div class="gov-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M9 8V5a3 3 0 016 0v3"/><path d="M10 13h4"/></svg>️</div>
                                 <div class="gov-card-name">Voting</div>
                                 <div class="gov-card-sub">DAO governance</div>
                                 <div class="gov-card-badge new">2 Active</div>
                             </div>
                             <div class="gov-card" onclick="showSubPage('passport')">
-                                <div class="gov-card-icon">🛂</div>
+                                <div class="gov-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M8 18h8"/></svg></div>
                                 <div class="gov-card-name">Passport</div>
                                 <div class="gov-card-sub">Digital ID</div>
                                 <div class="gov-card-badge done">✓ Valid</div>
                             </div>
                             <div class="gov-card" onclick="showToast('Healthcare','Opening records...','info')">
-                                <div class="gov-card-icon">🏥</div>
+                                <div class="gov-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg></div>
                                 <div class="gov-card-name">Healthcare</div>
                                 <div class="gov-card-sub">Medical records</div>
                                 <div class="gov-card-badge done">✓ Insured</div>
                             </div>
                             <div class="gov-card" onclick="showToast('Education','Opening portal...','info')">
-                                <div class="gov-card-icon">🎓</div>
+                                <div class="gov-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3L2 9l10 6 10-6z"/><path d="M20 9v7M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/></svg></div>
                                 <div class="gov-card-name">Education</div>
                                 <div class="gov-card-sub">Credentials</div>
                                 <div class="gov-card-badge new">New</div>
                             </div>
                         </div>
-                        <div class="gov-section-title">📢 Announcements</div>
+                        <div class="gov-section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg> Announcements</div>
                         <div class="gov-announce">
                             <div class="gov-announce-item">
                                 <div class="gov-announce-dot" style="background:var(--blue)"></div>
@@ -4467,7 +4549,14 @@
 
                     <!-- ══════ PAGE: CREDIT / REPUTATION ══════ -->
                     <div class="page" id="page-credit" style="display:none">
-                        <div class="sub-header">
+                                                <div class="back-link" onclick="showPage('wallet')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">Credit Score</div>
+                        <div class="page-subtitle">On-chain reputation</div>
+
+<div class="sub-header">
                             <div class="back-btn" onclick="switchTab('profile')">‹</div>
                             <div class="sub-title" data-i18n="credit_score">Reputation</div>
                             <div class="sub-header-spacer"></div>
@@ -4484,7 +4573,7 @@
                             </div>
                         </div>
                         <div class="credit-level">
-                            <div class="credit-level-badge">👑</div>
+                            <div class="credit-level-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 18l3-12 5 6 2-8 2 8 5-6 3 12z"/></svg></div>
                             <div class="credit-level-info">
                                 <div class="credit-level-name">Gold Citizen</div>
                                 <div class="credit-level-desc">720 XP to Platinum · 72% complete</div>
@@ -4492,31 +4581,31 @@
                             </div>
                         </div>
                         <div class="credit-badges">
-                            <div class="credit-badge"><div class="credit-badge-icon">🏆</div><div class="credit-badge-name">Pioneer</div></div>
+                            <div class="credit-badge"><div class="credit-badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9H4a2 2 0 01-2-2V5a2 2 0 012-2h2M18 9h2a2 2 0 002-2V5a2 2 0 00-2-2h-2"/><path d="M6 3h12v8a6 6 0 11-12 0z"/><path d="M9 21h6M12 17v4"/></svg></div><div class="credit-badge-name">Pioneer</div></div>
                             <div class="credit-badge"><div class="credit-badge-icon">✅</div><div class="credit-badge-name">Verified</div></div>
-                            <div class="credit-badge"><div class="credit-badge-icon">💎</div><div class="credit-badge-name">Staker</div></div>
-                            <div class="credit-badge"><div class="credit-badge-icon">🤝</div><div class="credit-badge-name">Helper</div></div>
-                            <div class="credit-badge"><div class="credit-badge-icon">🗳️</div><div class="credit-badge-name">Voter</div></div>
+                            <div class="credit-badge"><div class="credit-badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3h12l4 7-10 11L2 10z"/><path d="M2 10h20M12 21L8 10M12 21l4-11M8 3l-2 7M16 3l2 7"/></svg></div><div class="credit-badge-name">Staker</div></div>
+                            <div class="credit-badge"><div class="credit-badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:1em;height:1em;vertical-align:middle;display:inline"><path d="M7 11l3-3 4 1 4-4"/><path d="M3 17l4-4 3 3 7-7 4 4"/><path d="M14 4h4v4"/></svg></div><div class="credit-badge-name">Helper</div></div>
+                            <div class="credit-badge"><div class="credit-badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M9 8V5a3 3 0 016 0v3"/><path d="M10 13h4"/></svg>️</div><div class="credit-badge-name">Voter</div></div>
                         </div>
                         <div style="padding:4px 16px 8px;font-size:13px;font-weight:600;color:var(--text-primary)">Score Breakdown</div>
                         <div class="credit-factors">
                             <div class="credit-factor">
-                                <div class="credit-factor-icon">💳</div>
+                                <div class="credit-factor-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 10h20"/></svg></div>
                                 <div class="credit-factor-info"><div class="credit-factor-name">Transaction History</div><div class="credit-factor-bar"><div class="credit-factor-fill" style="width:88%;background:var(--blue)"></div></div></div>
                                 <div class="credit-factor-score" style="color:var(--blue)">88</div>
                             </div>
                             <div class="credit-factor">
-                                <div class="credit-factor-icon">🔐</div>
+                                <div class="credit-factor-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/><circle cx="12" cy="16" r="1"/></svg></div>
                                 <div class="credit-factor-info"><div class="credit-factor-name">Identity Verification</div><div class="credit-factor-bar"><div class="credit-factor-fill" style="width:95%;background:#34d399"></div></div></div>
                                 <div class="credit-factor-score" style="color:#34d399">95</div>
                             </div>
                             <div class="credit-factor">
-                                <div class="credit-factor-icon">⚡</div>
+                                <div class="credit-factor-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h8l-1 8 10-12h-8z"/></svg></div>
                                 <div class="credit-factor-info"><div class="credit-factor-name">Staking Activity</div><div class="credit-factor-bar"><div class="credit-factor-fill" style="width:72%;background:#a78bfa"></div></div></div>
                                 <div class="credit-factor-score" style="color:#a78bfa">72</div>
                             </div>
                             <div class="credit-factor">
-                                <div class="credit-factor-icon">🤝</div>
+                                <div class="credit-factor-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:1em;height:1em;vertical-align:middle;display:inline"><path d="M7 11l3-3 4 1 4-4"/><path d="M3 17l4-4 3 3 7-7 4 4"/><path d="M14 4h4v4"/></svg></div>
                                 <div class="credit-factor-info"><div class="credit-factor-name">Community Participation</div><div class="credit-factor-bar"><div class="credit-factor-fill" style="width:65%;background:#fbbf24"></div></div></div>
                                 <div class="credit-factor-score" style="color:#fbbf24">65</div>
                             </div>
@@ -4525,7 +4614,14 @@
 
                     <!-- ══════ PAGE: CROSS-BORDER REMITTANCE ══════ -->
                     <div class="page" id="page-remit" style="display:none">
-                        <div class="sub-header">
+                                                <div class="back-link" onclick="showPage('wallet')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">Remittance</div>
+                        <div class="page-subtitle">International transfers</div>
+
+<div class="sub-header">
                             <div class="back-btn" onclick="switchTab('wallet')">‹</div>
                             <div class="sub-title" data-i18n="remittance">Remittance</div>
                             <div class="sub-header-spacer"></div>
@@ -4553,22 +4649,22 @@
                         <div class="remit-compare">
                             <div class="remit-compare-title">Compare Providers</div>
                             <div class="remit-provider best">
-                                <div class="remit-provider-icon">⚡</div>
+                                <div class="remit-provider-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h8l-1 8 10-12h-8z"/></svg></div>
                                 <div class="remit-provider-info"><div class="remit-provider-name">MID Network</div><div class="remit-provider-fee">Fee: $1.50 · ~2 min</div></div>
                                 <div><div class="remit-provider-amount">$985.00</div><div class="remit-best-tag">Best</div></div>
                             </div>
                             <div class="remit-provider">
-                                <div class="remit-provider-icon">🏦</div>
+                                <div class="remit-provider-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M3 10h18M5 6l7-3 7 3"/><path d="M6 10v8M10 10v8M14 10v8M18 10v8"/></svg></div>
                                 <div class="remit-provider-info"><div class="remit-provider-name">SWIFT Transfer</div><div class="remit-provider-fee">Fee: $35.00 · 2-5 days</div></div>
                                 <div class="remit-provider-amount">$940.00</div>
                             </div>
                             <div class="remit-provider">
-                                <div class="remit-provider-icon">💸</div>
+                                <div class="remit-provider-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12h4l3-9 4 18 3-9h6"/></svg></div>
                                 <div class="remit-provider-info"><div class="remit-provider-name">Western Union</div><div class="remit-provider-fee">Fee: $12.00 · 1-2 days</div></div>
                                 <div class="remit-provider-amount">$965.50</div>
                             </div>
                             <div class="remit-provider">
-                                <div class="remit-provider-icon">📱</div>
+                                <div class="remit-provider-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M12 18h.01"/></svg></div>
                                 <div class="remit-provider-info"><div class="remit-provider-name">Wise</div><div class="remit-provider-fee">Fee: $7.50 · 1-2 hrs</div></div>
                                 <div class="remit-provider-amount">$975.00</div>
                             </div>
@@ -4580,17 +4676,24 @@
 
                     <!-- ══════ PAGE: ACHIEVEMENTS / QUESTS ══════ -->
                     <div class="page" id="page-achievements" style="display:none">
-                        <div class="sub-header">
+                                                <div class="back-link" onclick="showPage('wallet')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">Achievements</div>
+                        <div class="page-subtitle">Your milestones</div>
+
+<div class="sub-header">
                             <div class="back-btn" onclick="switchTab('profile')">‹</div>
                             <div class="sub-title" data-i18n="achievements">Achievements</div>
                             <div class="sub-header-spacer"></div>
                         </div>
                         <div class="quest-progress">
-                            <div class="quest-progress-title">🎯 Onboarding Progress</div>
+                            <div class="quest-progress-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> Onboarding Progress</div>
                             <div class="quest-progress-bar"><div class="quest-progress-fill" style="width:60%"></div></div>
                             <div class="quest-progress-sub"><span>3/5 tasks complete</span><span>+50 MSD reward</span></div>
                         </div>
-                        <div class="quest-section-title">📋 Active Quests</div>
+                        <div class="quest-section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 6h6M9 10h6M9 14h4"/></svg> Active Quests</div>
                         <div class="quest-item">
                             <div class="quest-icon" style="background:rgba(52,211,153,0.12)">✅</div>
                             <div class="quest-info"><div class="quest-name">Create Wallet</div><div class="quest-desc">Set up your MID wallet</div></div>
@@ -4602,43 +4705,50 @@
                             <div class="quest-status done">Done</div>
                         </div>
                         <div class="quest-item">
-                            <div class="quest-icon" style="background:rgba(251,191,36,0.12)">🎁</div>
+                            <div class="quest-icon" style="background:rgba(251,191,36,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="8" width="18" height="14" rx="1"/><path d="M12 8v14M3 12h18"/><path d="M12 8a4 4 0 00-4-4c-1.5 0-4 1-4 4M12 8a4 4 0 014-4c1.5 0 4 1 4 4"/></svg></div>
                             <div class="quest-info"><div class="quest-name">First Transaction</div><div class="quest-desc">Send or receive MSD</div></div>
                             <div class="quest-status claim" onclick="showSuccess('Claimed!','+10 MSD reward');this.textContent='Done';this.className='quest-status done'">Claim</div>
                         </div>
                         <div class="quest-item">
-                            <div class="quest-icon" style="background:rgba(99,135,255,0.12)">💎</div>
+                            <div class="quest-icon" style="background:rgba(99,135,255,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3h12l4 7-10 11L2 10z"/><path d="M2 10h20M12 21L8 10M12 21l4-11M8 3l-2 7M16 3l2 7"/></svg></div>
                             <div class="quest-info"><div class="quest-name">Stake MSD</div><div class="quest-desc">Stake at least 100 MSD</div></div>
                             <div class="quest-reward"><div class="quest-reward-val">+20 MSD</div><div class="quest-reward-type">Reward</div></div>
                         </div>
                         <div class="quest-item">
-                            <div class="quest-icon" style="background:rgba(167,139,250,0.12)">🗳️</div>
+                            <div class="quest-icon" style="background:rgba(167,139,250,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M9 8V5a3 3 0 016 0v3"/><path d="M10 13h4"/></svg>️</div>
                             <div class="quest-info"><div class="quest-name">First Vote</div><div class="quest-desc">Participate in governance</div></div>
                             <div class="quest-reward"><div class="quest-reward-val">+15 MSD</div><div class="quest-reward-type">Reward</div></div>
                         </div>
-                        <div class="quest-section-title">🏆 Achievements</div>
+                        <div class="quest-section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9H4a2 2 0 01-2-2V5a2 2 0 012-2h2M18 9h2a2 2 0 002-2V5a2 2 0 00-2-2h-2"/><path d="M6 3h12v8a6 6 0 11-12 0z"/><path d="M9 21h6M12 17v4"/></svg> Achievements</div>
                         <div class="achievement-grid">
-                            <div class="achievement-card"><div class="achievement-card-icon">🌟</div><div class="achievement-card-name">Pioneer</div><div class="achievement-card-desc">Early adopter</div></div>
-                            <div class="achievement-card"><div class="achievement-card-icon">🔐</div><div class="achievement-card-name">Verified</div><div class="achievement-card-desc">KYC Level 3</div></div>
-                            <div class="achievement-card"><div class="achievement-card-icon">💸</div><div class="achievement-card-name">Transactor</div><div class="achievement-card-desc">100+ transfers</div></div>
-                            <div class="achievement-card"><div class="achievement-card-icon">💎</div><div class="achievement-card-name">Diamond Hands</div><div class="achievement-card-desc">Staked 90+ days</div></div>
-                            <div class="achievement-card"><div class="achievement-card-icon">🤝</div><div class="achievement-card-name">Social</div><div class="achievement-card-desc">10+ friends</div></div>
-                            <div class="achievement-card locked"><div class="achievement-card-icon">🔒</div><div class="achievement-card-name">Whale</div><div class="achievement-card-desc">Hold 10K+ MSD</div></div>
-                            <div class="achievement-card locked"><div class="achievement-card-icon">🔒</div><div class="achievement-card-name">Governor</div><div class="achievement-card-desc">50+ votes</div></div>
-                            <div class="achievement-card locked"><div class="achievement-card-icon">🔒</div><div class="achievement-card-name">Globe Trotter</div><div class="achievement-card-desc">5+ visa stamps</div></div>
-                            <div class="achievement-card locked"><div class="achievement-card-icon">🔒</div><div class="achievement-card-name">Mentor</div><div class="achievement-card-desc">Refer 20 users</div></div>
+                            <div class="achievement-card"><div class="achievement-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div><div class="achievement-card-name">Pioneer</div><div class="achievement-card-desc">Early adopter</div></div>
+                            <div class="achievement-card"><div class="achievement-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/><circle cx="12" cy="16" r="1"/></svg></div><div class="achievement-card-name">Verified</div><div class="achievement-card-desc">KYC Level 3</div></div>
+                            <div class="achievement-card"><div class="achievement-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12h4l3-9 4 18 3-9h6"/></svg></div><div class="achievement-card-name">Transactor</div><div class="achievement-card-desc">100+ transfers</div></div>
+                            <div class="achievement-card"><div class="achievement-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3h12l4 7-10 11L2 10z"/><path d="M2 10h20M12 21L8 10M12 21l4-11M8 3l-2 7M16 3l2 7"/></svg></div><div class="achievement-card-name">Diamond Hands</div><div class="achievement-card-desc">Staked 90+ days</div></div>
+                            <div class="achievement-card"><div class="achievement-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:1em;height:1em;vertical-align:middle;display:inline"><path d="M7 11l3-3 4 1 4-4"/><path d="M3 17l4-4 3 3 7-7 4 4"/><path d="M14 4h4v4"/></svg></div><div class="achievement-card-name">Social</div><div class="achievement-card-desc">10+ friends</div></div>
+                            <div class="achievement-card locked"><div class="achievement-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div class="achievement-card-name">Whale</div><div class="achievement-card-desc">Hold 10K+ MSD</div></div>
+                            <div class="achievement-card locked"><div class="achievement-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div class="achievement-card-name">Governor</div><div class="achievement-card-desc">50+ votes</div></div>
+                            <div class="achievement-card locked"><div class="achievement-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div class="achievement-card-name">Globe Trotter</div><div class="achievement-card-desc">5+ visa stamps</div></div>
+                            <div class="achievement-card locked"><div class="achievement-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div class="achievement-card-name">Mentor</div><div class="achievement-card-desc">Refer 20 users</div></div>
                         </div>
                     </div>
 
                     <!-- ══════ PAGE: WALLETCONNECT ══════ -->
                     <div class="page" id="page-wc" style="display:none">
-                        <div class="sub-header">
+                                                <div class="back-link" onclick="showPage('settings')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">WalletConnect</div>
+                        <div class="page-subtitle">Connected dApps</div>
+
+<div class="sub-header">
                             <div class="back-btn" onclick="switchTab('wallet')">‹</div>
                             <div class="sub-title" data-i18n="walletconnect">WalletConnect</div>
                             <div class="sub-header-spacer"></div>
                         </div>
                         <div class="wc-status">
-                            <div class="wc-logo">🔗</div>
+                            <div class="wc-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
                             <div class="wc-title">WalletConnect</div>
                             <div class="wc-sub">Connect to decentralized apps securely</div>
                         </div>
@@ -4648,7 +4758,7 @@
                         </button>
                         <div class="wc-approval" id="wc-approval">
                             <div class="wc-approval-title">Connection Request</div>
-                            <div style="text-align:center;margin-bottom:12px"><span style="font-size:28px">🦄</span><div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-top:4px">Uniswap</div><div style="font-size:11px;color:var(--text-tertiary)">app.uniswap.org</div></div>
+                            <div style="text-align:center;margin-bottom:12px"><span style="font-size:28px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2 7h-4z"/><circle cx="12" cy="14" r="7"/><circle cx="10" cy="13" r="1"/></svg></span><div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-top:4px">Uniswap</div><div style="font-size:11px;color:var(--text-tertiary)">app.uniswap.org</div></div>
                             <div class="wc-approval-perms">
                                 <div class="wc-approval-perm">✅ View your balance</div>
                                 <div class="wc-approval-perm">✅ Request transaction approval</div>
@@ -4661,13 +4771,13 @@
                         </div>
                         <div class="wc-sessions-title">Active Sessions</div>
                         <div class="wc-session">
-                            <div class="wc-session-icon">🦄</div>
+                            <div class="wc-session-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2 7h-4z"/><circle cx="12" cy="14" r="7"/><circle cx="10" cy="13" r="1"/></svg></div>
                             <div class="wc-session-info"><div class="wc-session-name">Uniswap</div><div class="wc-session-url">app.uniswap.org</div></div>
                             <div class="wc-session-status"></div>
                             <div class="wc-disconnect" onclick="this.parentElement.style.display='none';showToast('Disconnected','Session ended','info')">End</div>
                         </div>
                         <div class="wc-session">
-                            <div class="wc-session-icon">👻</div>
+                            <div class="wc-session-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="10" r="7"/><path d="M8 8.5a1 1 0 012 0M14 8.5a1 1 0 012 0"/><path d="M5 17v4l2-2 2 2 3-2 3 2 2-2 2 2v-4"/></svg></div>
                             <div class="wc-session-info"><div class="wc-session-name">Aave</div><div class="wc-session-url">app.aave.com</div></div>
                             <div class="wc-session-status"></div>
                             <div class="wc-disconnect" onclick="this.parentElement.style.display='none';showToast('Disconnected','Session ended','info')">End</div>
@@ -4677,13 +4787,20 @@
 
                     <!-- ══════ PAGE: AI ASSISTANT ══════ -->
                     <div class="page" id="page-ai" style="display:none">
-                        <div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
+                                                <div class="back-link" onclick="showPage('wallet')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">MID AI</div>
+                        <div class="page-subtitle">Your digital assistant</div>
+
+<div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
                             <div class="back-btn" onclick="switchTab('wallet')">‹</div>
                             <div style="flex:1">
                                 <div style="font-size:15px;font-weight:700;color:var(--text-primary)">MID AI</div>
                                 <div style="font-size:10px;color:var(--text-tertiary)">Powered by on-chain intelligence</div>
                             </div>
-                            <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#7B61FF,#00D4AA);display:flex;align-items:center;justify-content:center;font-size:12px">🤖</div>
+                            <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#7B61FF,#00D4AA);display:flex;align-items:center;justify-content:center;font-size:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 2v6"/><circle cx="9" cy="14" r="1.5"/><circle cx="15" cy="14" r="1.5"/></svg></div>
                         </div>
                         <div class="ai-chat-container">
                             <div class="ai-messages" id="ai-messages">
@@ -4698,7 +4815,14 @@
 
                     <!-- ══════ PAGE: CRYPTO PAY CARD ══════ -->
                     <div class="page" id="page-paycard" style="display:none">
-                        <div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
+                                                <div class="back-link" onclick="showPage('wallet')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">Pay</div>
+                        <div class="page-subtitle">Card & payments</div>
+
+<div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
                             <div class="back-btn" onclick="switchTab('wallet')">‹</div>
                             <span style="font-size:15px;font-weight:700;color:var(--text-primary)">MID Pay</span>
                             <div style="margin-left:auto;padding:4px 10px;border-radius: 2px;background:rgba(52,211,153,0.12);color:#34D399;font-size:10px;font-weight:600">Active</div>
@@ -4713,29 +4837,36 @@
                         </div>
                         <div class="pay-action-grid">
                             <div class="pay-action" onclick="showToast('Apple Pay','Card added to Apple Wallet','success')"><div class="pay-action-icon"> Pay</div><div class="pay-action-label">Apple Pay</div><div class="pay-action-sub">Tap to pay</div></div>
-                            <div class="pay-action" onclick="showToast('Card Details','Card number copied','info')"><div class="pay-action-icon">💳</div><div class="pay-action-label">Card Details</div><div class="pay-action-sub">View & copy</div></div>
-                            <div class="pay-action" onclick="showToast('Freeze Card','Card temporarily frozen','warn')"><div class="pay-action-icon">❄️</div><div class="pay-action-label">Freeze Card</div><div class="pay-action-sub">Temp lock</div></div>
-                            <div class="pay-action" onclick="showToast('Spending Limit','$5,000/month limit set','info')"><div class="pay-action-icon">📊</div><div class="pay-action-label">Set Limits</div><div class="pay-action-sub">$5,000/mo</div></div>
+                            <div class="pay-action" onclick="showToast('Card Details','Card number copied','info')"><div class="pay-action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 10h20"/></svg></div><div class="pay-action-label">Card Details</div><div class="pay-action-sub">View & copy</div></div>
+                            <div class="pay-action" onclick="showToast('Freeze Card','Card temporarily frozen','warn')"><div class="pay-action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg>️</div><div class="pay-action-label">Freeze Card</div><div class="pay-action-sub">Temp lock</div></div>
+                            <div class="pay-action" onclick="showToast('Spending Limit','$5,000/month limit set','info')"><div class="pay-action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="12" width="4" height="8" rx="1"/><rect x="10" y="6" width="4" height="14" rx="1"/><rect x="17" y="9" width="4" height="11" rx="1"/></svg></div><div class="pay-action-label">Set Limits</div><div class="pay-action-sub">$5,000/mo</div></div>
                         </div>
                         <div style="padding:0 16px 6px;font-size:10px;color:var(--text-tertiary);display:flex;justify-content:space-between"><span>Monthly Spending</span><span>$1,750 / $5,000</span></div>
                         <div class="pay-limit-bar"><div class="pay-limit-fill"></div></div>
                         <div style="padding:16px 16px 8px;font-size:12px;font-weight:600;color:var(--text-primary)">Recent Purchases</div>
-                        <div class="pay-tx"><div class="pay-tx-icon">🛒</div><div class="pay-tx-info"><div class="pay-tx-name">Amazon.com</div><div class="pay-tx-time">Today, 2:30 PM</div></div><div class="pay-tx-amount" style="color:#EF4444">-$127.50</div></div>
-                        <div class="pay-tx"><div class="pay-tx-icon">☕</div><div class="pay-tx-info"><div class="pay-tx-name">Starbucks</div><div class="pay-tx-time">Yesterday, 9:15 AM</div></div><div class="pay-tx-amount" style="color:#EF4444">-$6.80</div></div>
-                        <div class="pay-tx"><div class="pay-tx-icon">✈️</div><div class="pay-tx-info"><div class="pay-tx-name">British Airways</div><div class="pay-tx-time">Mar 12, 11:00 AM</div></div><div class="pay-tx-amount" style="color:#EF4444">-$892.00</div></div>
-                        <div class="pay-tx"><div class="pay-tx-icon">🍕</div><div class="pay-tx-info"><div class="pay-tx-name">Deliveroo</div><div class="pay-tx-time">Mar 11, 7:45 PM</div></div><div class="pay-tx-amount" style="color:#EF4444">-$34.20</div></div>
+                        <div class="pay-tx"><div class="pay-tx-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></div><div class="pay-tx-info"><div class="pay-tx-name">Amazon.com</div><div class="pay-tx-time">Today, 2:30 PM</div></div><div class="pay-tx-amount" style="color:#EF4444">-$127.50</div></div>
+                        <div class="pay-tx"><div class="pay-tx-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 8h1a4 4 0 010 8h-1"/><path d="M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4z"/></svg></div><div class="pay-tx-info"><div class="pay-tx-name">Starbucks</div><div class="pay-tx-time">Yesterday, 9:15 AM</div></div><div class="pay-tx-amount" style="color:#EF4444">-$6.80</div></div>
+                        <div class="pay-tx"><div class="pay-tx-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12l19-7-7 19-3-8z"/></svg>️</div><div class="pay-tx-info"><div class="pay-tx-name">British Airways</div><div class="pay-tx-time">Mar 12, 11:00 AM</div></div><div class="pay-tx-amount" style="color:#EF4444">-$892.00</div></div>
+                        <div class="pay-tx"><div class="pay-tx-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 0110 10H2A10 10 0 0112 2z"/><circle cx="10" cy="8" r="1"/><circle cx="14" cy="9" r="1"/></svg></div><div class="pay-tx-info"><div class="pay-tx-name">Deliveroo</div><div class="pay-tx-time">Mar 11, 7:45 PM</div></div><div class="pay-tx-amount" style="color:#EF4444">-$34.20</div></div>
                     </div>
 
                     <!-- ══════ PAGE: VERIFIABLE CREDENTIALS ══════ -->
                     <div class="page" id="page-vc" style="display:none">
-                        <div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
+                                                <div class="back-link" onclick="showPage('cards')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">Verifiable Credentials</div>
+                        <div class="page-subtitle">Issued credentials</div>
+
+<div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
                             <div class="back-btn" onclick="switchTab('verify')">‹</div>
                             <span style="font-size:15px;font-weight:700;color:var(--text-primary)">Verifiable Credentials</span>
                         </div>
                         <div style="padding:0 16px 12px;font-size:11px;color:var(--text-tertiary)">eIDAS 2.0 compliant · Selective disclosure</div>
                         <div class="vc-card" onclick="showToast('Credential','Digital Residency credential verified','success')">
                             <div class="vc-card-header">
-                                <div class="vc-card-icon" style="background:rgba(74,143,231,0.15)">🏛</div>
+                                <div class="vc-card-icon" style="background:rgba(74,143,231,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M4 10h16M12 3l9 7H3z"/><path d="M6 10v8M10 10v8M14 10v8M18 10v8"/></svg></div>
                                 <div><div class="vc-card-title">Digital Residency</div><div class="vc-card-issuer">Gov. of Montserrat · Issued 2025</div></div>
                             </div>
                             <div class="vc-card-claims">
@@ -4747,7 +4878,7 @@
                         </div>
                         <div class="vc-card" onclick="showToast('Credential','Age verification ready to share','info')">
                             <div class="vc-card-header">
-                                <div class="vc-card-icon" style="background:rgba(52,211,153,0.15)">🔐</div>
+                                <div class="vc-card-icon" style="background:rgba(52,211,153,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/><circle cx="12" cy="16" r="1"/></svg></div>
                                 <div><div class="vc-card-title">Age Verification (18+)</div><div class="vc-card-issuer">ZK Proof · No data disclosed</div></div>
                             </div>
                             <div class="vc-card-claims">
@@ -4769,7 +4900,7 @@
                         </div>
                         <div class="vc-card" onclick="showToast('Credential','Health insurance active','success')">
                             <div class="vc-card-header">
-                                <div class="vc-card-icon" style="background:rgba(239,68,68,0.15)">🏥</div>
+                                <div class="vc-card-icon" style="background:rgba(239,68,68,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg></div>
                                 <div><div class="vc-card-title">Health Insurance</div><div class="vc-card-issuer">NHS · Active coverage</div></div>
                             </div>
                             <div class="vc-card-claims">
@@ -4785,7 +4916,14 @@
 
                     <!-- ══════ PAGE: E-SIGNATURE ══════ -->
                     <div class="page" id="page-esign" style="display:none">
-                        <div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
+                                                <div class="back-link" onclick="showPage('wallet')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">e-Sign</div>
+                        <div class="page-subtitle">Document signing</div>
+
+<div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
                             <div class="back-btn" onclick="switchTab('profile')">‹</div>
                             <span style="font-size:15px;font-weight:700;color:var(--text-primary)">E-Signature</span>
                             <div style="margin-left:auto;font-size:10px;color:var(--text-tertiary)">eIDAS QES</div>
@@ -4793,21 +4931,21 @@
                         <div style="padding:0 16px 12px;font-size:11px;color:var(--text-tertiary)">Sign documents legally from your phone</div>
                         <div class="esign-doc" onclick="showToast('Document','Lease agreement opened','info')">
                             <div class="esign-doc-header">
-                                <div class="esign-doc-icon">📄</div>
+                                <div class="esign-doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
                                 <div class="esign-doc-info"><div class="esign-doc-name">Residency Lease Agreement</div><div class="esign-doc-meta">From: Montserrat Housing · 3 pages · Mar 14</div></div>
                                 <span class="esign-status esign-status--pending">Pending</span>
                             </div>
                         </div>
                         <div class="esign-doc" onclick="showToast('Document','Bank form opened','info')">
                             <div class="esign-doc-header">
-                                <div class="esign-doc-icon">🏦</div>
+                                <div class="esign-doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M3 10h18M5 6l7-3 7 3"/><path d="M6 10v8M10 10v8M14 10v8M18 10v8"/></svg></div>
                                 <div class="esign-doc-info"><div class="esign-doc-name">Bank Account Opening</div><div class="esign-doc-meta">From: HSBC Montserrat · 2 pages · Mar 10</div></div>
                                 <span class="esign-status esign-status--pending">Pending</span>
                             </div>
                         </div>
                         <div class="esign-doc">
                             <div class="esign-doc-header">
-                                <div class="esign-doc-icon">📋</div>
+                                <div class="esign-doc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 6h6M9 10h6M9 14h4"/></svg></div>
                                 <div class="esign-doc-info"><div class="esign-doc-name">Tax Declaration 2025</div><div class="esign-doc-meta">From: MRA · 1 page · Mar 5</div></div>
                                 <span class="esign-status esign-status--signed">Signed ✓</span>
                             </div>
@@ -4825,7 +4963,14 @@
 
                     <!-- ══════ PAGE: DEFI YIELD ══════ -->
                     <div class="page" id="page-yield" style="display:none">
-                        <div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
+                                                <div class="back-link" onclick="showPage('wallet')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">Yield</div>
+                        <div class="page-subtitle">Earn on your assets</div>
+
+<div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
                             <div class="back-btn" onclick="switchTab('wallet')">‹</div>
                             <span style="font-size:15px;font-weight:700;color:var(--text-primary)">DeFi Yield</span>
                             <div style="margin-left:auto;font-size:10px;color:#34D399;font-weight:600">↑ 12.4% avg</div>
@@ -4843,7 +4988,7 @@
                         <div style="padding:0 16px 10px;font-size:12px;font-weight:600;color:var(--text-primary)">Active Positions</div>
                         <div class="yield-position">
                             <div class="yield-pos-header">
-                                <div class="yield-pos-icon">💎</div>
+                                <div class="yield-pos-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3h12l4 7-10 11L2 10z"/><path d="M2 10h20M12 21L8 10M12 21l4-11M8 3l-2 7M16 3l2 7"/></svg></div>
                                 <div style="flex:1"><div class="yield-pos-name">MSD Staking</div><div class="yield-pos-protocol">Montserrat Network</div></div>
                                 <div class="yield-pos-apy">8.5%</div>
                             </div>
@@ -4852,7 +4997,7 @@
                         </div>
                         <div class="yield-position">
                             <div class="yield-pos-header">
-                                <div class="yield-pos-icon">🦄</div>
+                                <div class="yield-pos-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2 7h-4z"/><circle cx="12" cy="14" r="7"/><circle cx="10" cy="13" r="1"/></svg></div>
                                 <div style="flex:1"><div class="yield-pos-name">MSD-ETH LP</div><div class="yield-pos-protocol">Uniswap V3</div></div>
                                 <div class="yield-pos-apy">18.2%</div>
                             </div>
@@ -4861,7 +5006,7 @@
                         </div>
                         <div class="yield-position">
                             <div class="yield-pos-header">
-                                <div class="yield-pos-icon">👻</div>
+                                <div class="yield-pos-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="10" r="7"/><path d="M8 8.5a1 1 0 012 0M14 8.5a1 1 0 012 0"/><path d="M5 17v4l2-2 2 2 3-2 3 2 2-2 2 2v-4"/></svg></div>
                                 <div style="flex:1"><div class="yield-pos-name">USDC Lending</div><div class="yield-pos-protocol">Aave V3</div></div>
                                 <div class="yield-pos-apy">5.8%</div>
                             </div>
@@ -4870,7 +5015,7 @@
                         </div>
                         <div class="yield-position">
                             <div class="yield-pos-header">
-                                <div class="yield-pos-icon">🔷</div>
+                                <div class="yield-pos-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3L6 12.5 12 16l6-3.5z"/><path d="M6 13.8L12 20l6-6.2"/></svg></div>
                                 <div style="flex:1"><div class="yield-pos-name">ETH Staking</div><div class="yield-pos-protocol">Lido</div></div>
                                 <div class="yield-pos-apy">3.9%</div>
                             </div>
@@ -4881,7 +5026,14 @@
 
                     <!-- ══════ PAGE: SELL / OFF-RAMP ══════ -->
                     <div class="page" id="page-sell" style="display:none">
-                        <div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
+                                                <div class="back-link" onclick="showPage('wallet')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">Sell</div>
+                        <div class="page-subtitle">Convert to fiat</div>
+
+<div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
                             <div class="back-btn" onclick="switchTab('wallet')">‹</div>
                             <span style="font-size:15px;font-weight:700;color:var(--text-primary)">Sell Crypto</span>
                         </div>
@@ -4897,18 +5049,18 @@
                         </div>
                         <div style="padding:12px 16px 8px;font-size:12px;font-weight:600;color:var(--text-primary)">Sell From</div>
                         <div class="sell-method" onclick="showToast('Asset','MSD selected','info')">
-                            <div class="sell-method-icon">💎</div>
+                            <div class="sell-method-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3h12l4 7-10 11L2 10z"/><path d="M2 10h20M12 21L8 10M12 21l4-11M8 3l-2 7M16 3l2 7"/></svg></div>
                             <div class="sell-method-info"><div class="sell-method-name">MSD — Montserrat Dollar</div><div class="sell-method-desc">Balance: 10,000.00 MSD</div></div>
                             <span class="profile-row-arrow">›</span>
                         </div>
                         <div style="padding:12px 16px 8px;font-size:12px;font-weight:600;color:var(--text-primary)">Withdraw To</div>
                         <div class="sell-method" onclick="showToast('Bank','HSBC account selected','info')">
-                            <div class="sell-method-icon">🏦</div>
+                            <div class="sell-method-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M3 10h18M5 6l7-3 7 3"/><path d="M6 10v8M10 10v8M14 10v8M18 10v8"/></svg></div>
                             <div class="sell-method-info"><div class="sell-method-name">HSBC Montserrat</div><div class="sell-method-desc">••••6789 · Instant transfer</div></div>
                             <span class="profile-row-arrow">›</span>
                         </div>
                         <div class="sell-method" onclick="showToast('Card','Visa card selected','info')">
-                            <div class="sell-method-icon">💳</div>
+                            <div class="sell-method-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 10h20"/></svg></div>
                             <div class="sell-method-info"><div class="sell-method-name">Visa ••••4817</div><div class="sell-method-desc">MID Pay Card · 1-2 business days</div></div>
                             <span class="profile-row-arrow">›</span>
                         </div>
@@ -4922,7 +5074,14 @@
 
                     <!-- ══════ PAGE: AI SCAM DETECTION ══════ -->
                     <div class="page" id="page-scam" style="display:none">
-                        <div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
+                                                <div class="back-link" onclick="showPage('wallet')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">Scam Protection</div>
+                        <div class="page-subtitle">Security analysis</div>
+
+<div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
                             <div class="back-btn" onclick="switchTab('wallet')">‹</div>
                             <span style="font-size:15px;font-weight:700;color:var(--text-primary)">Security Scan</span>
                             <div style="margin-left:auto;padding:4px 10px;border-radius: 2px;background:rgba(52,211,153,0.12);color:#34D399;font-size:10px;font-weight:600">Protected</div>
@@ -4949,33 +5108,40 @@
                         </div>
                         <div style="padding:16px;font-size:12px;font-weight:600;color:var(--text-primary)">Approval Manager</div>
                         <div style="padding:0 16px">
-                            <div class="scam-check scam-check--warn" style="margin-bottom:8px"><div class="scam-check-icon">🦄</div><div class="scam-check-text">Uniswap V3 Router<br><span style="font-size:9.5px;color:var(--text-tertiary)">MSD: Unlimited approval</span></div><button onclick="showToast('Revoked','Uniswap approval revoked','success')" style="padding:4px 10px;border-radius: 2px;border:1px solid rgba(239,68,68,0.3);background:rgba(239,68,68,0.1);color:#EF4444;font-size:10px;font-weight:600;cursor:pointer">Revoke</button></div>
-                            <div class="scam-check scam-check--pass" style="margin-bottom:8px"><div class="scam-check-icon">👻</div><div class="scam-check-text">Aave V3<br><span style="font-size:9.5px;color:var(--text-tertiary)">USDC: $5,000 limit</span></div><span style="font-size:10px;color:#34D399;font-weight:600">Safe</span></div>
+                            <div class="scam-check scam-check--warn" style="margin-bottom:8px"><div class="scam-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2 7h-4z"/><circle cx="12" cy="14" r="7"/><circle cx="10" cy="13" r="1"/></svg></div><div class="scam-check-text">Uniswap V3 Router<br><span style="font-size:9.5px;color:var(--text-tertiary)">MSD: Unlimited approval</span></div><button onclick="showToast('Revoked','Uniswap approval revoked','success')" style="padding:4px 10px;border-radius: 2px;border:1px solid rgba(239,68,68,0.3);background:rgba(239,68,68,0.1);color:#EF4444;font-size:10px;font-weight:600;cursor:pointer">Revoke</button></div>
+                            <div class="scam-check scam-check--pass" style="margin-bottom:8px"><div class="scam-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="10" r="7"/><path d="M8 8.5a1 1 0 012 0M14 8.5a1 1 0 012 0"/><path d="M5 17v4l2-2 2 2 3-2 3 2 2-2 2 2v-4"/></svg></div><div class="scam-check-text">Aave V3<br><span style="font-size:9.5px;color:var(--text-tertiary)">USDC: $5,000 limit</span></div><span style="font-size:10px;color:#34D399;font-weight:600">Safe</span></div>
                         </div>
                     </div>
 
                     <!-- ══════ PAGE: MPC RECOVERY ══════ -->
                     <div class="page" id="page-mpc" style="display:none">
-                        <div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
+                                                <div class="back-link" onclick="showPage('settings')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">MPC Recovery</div>
+                        <div class="page-subtitle">Multi-party security</div>
+
+<div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
                             <div class="back-btn" onclick="showSubPage('settings')">‹</div>
                             <span style="font-size:15px;font-weight:700;color:var(--text-primary)">MPC Recovery</span>
                             <div style="margin-left:auto;font-size:10px;color:#34D399;font-weight:600">● Active</div>
                         </div>
                         <div class="mpc-visual">
                             <div class="mpc-diagram">
-                                <div style="text-align:center"><div class="mpc-shard" style="background:rgba(74,143,231,0.15)">📱</div><div class="mpc-shard-label">Your Device</div></div>
+                                <div style="text-align:center"><div class="mpc-shard" style="background:rgba(74,143,231,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M12 18h.01"/></svg></div><div class="mpc-shard-label">Your Device</div></div>
                                 <div class="mpc-connect">⟷</div>
-                                <div style="text-align:center"><div class="mpc-shard" style="background:rgba(200,132,252,0.15)">☁️</div><div class="mpc-shard-label">MID Cloud</div></div>
+                                <div style="text-align:center"><div class="mpc-shard" style="background:rgba(200,132,252,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg>️</div><div class="mpc-shard-label">MID Cloud</div></div>
                                 <div class="mpc-connect">⟷</div>
-                                <div style="text-align:center"><div class="mpc-shard" style="background:rgba(52,211,153,0.15)">🔑</div><div class="mpc-shard-label">Recovery Key</div></div>
+                                <div style="text-align:center"><div class="mpc-shard" style="background:rgba(52,211,153,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="15" cy="9" r="3"/><path d="M15 12l-7 7-3 0 0-3 7-7"/></svg></div><div class="mpc-shard-label">Recovery Key</div></div>
                             </div>
                             <div style="font-size:11px;color:var(--text-tertiary);max-width:260px;margin:0 auto">Your private key is split into 3 shards. Any 2 of 3 are needed to sign transactions. No single party can access your funds.</div>
                         </div>
                         <div class="mpc-status">
                             <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:8px">Shard Status</div>
-                            <div class="mpc-status-row"><span class="mpc-status-label">📱 Device Shard</span><span class="mpc-status-value mpc-status-value--ok">✓ Secure</span></div>
-                            <div class="mpc-status-row"><span class="mpc-status-label">☁️ Cloud Shard</span><span class="mpc-status-value mpc-status-value--ok">✓ Encrypted</span></div>
-                            <div class="mpc-status-row"><span class="mpc-status-label">🔑 Recovery Shard</span><span class="mpc-status-value mpc-status-value--ok">✓ Backed up</span></div>
+                            <div class="mpc-status-row"><span class="mpc-status-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M12 18h.01"/></svg> Device Shard</span><span class="mpc-status-value mpc-status-value--ok">✓ Secure</span></div>
+                            <div class="mpc-status-row"><span class="mpc-status-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg>️ Cloud Shard</span><span class="mpc-status-value mpc-status-value--ok">✓ Encrypted</span></div>
+                            <div class="mpc-status-row"><span class="mpc-status-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="15" cy="9" r="3"/><path d="M15 12l-7 7-3 0 0-3 7-7"/></svg> Recovery Shard</span><span class="mpc-status-value mpc-status-value--ok">✓ Backed up</span></div>
                         </div>
                         <div class="mpc-status">
                             <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:8px">Recovery Options</div>
@@ -4983,20 +5149,27 @@
                             <div class="mpc-status-row"><span class="mpc-status-label">Recovery Key + Cloud</span><span class="mpc-status-value">Backup</span></div>
                             <div class="mpc-status-row"><span class="mpc-status-label">Social Recovery</span><span class="mpc-status-value" style="color:var(--text-tertiary)">Not set</span></div>
                         </div>
-                        <button class="mpc-btn" style="background:var(--surface-2);color:var(--text-primary)" onclick="showToast('Recovery Test','All 3 shards verified successfully','success')">🔍 Test Recovery</button>
-                        <button class="mpc-btn" style="background:var(--blue);color:#fff" onclick="showToast('Social Recovery','Invite 3 trusted contacts to help recover','info')">👥 Setup Social Recovery</button>
+                        <button class="mpc-btn" style="background:var(--surface-2);color:var(--text-primary)" onclick="showToast('Recovery Test','All 3 shards verified successfully','success')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg> Test Recovery</button>
+                        <button class="mpc-btn" style="background:var(--blue);color:#fff" onclick="showToast('Social Recovery','Invite 3 trusted contacts to help recover','info')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="7" r="3"/><path d="M17 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="17" cy="8" r="2.5"/><path d="M22 21v-1.5a3.5 3.5 0 00-3-3.46"/></svg> Setup Social Recovery</button>
                     </div>
 
 
                     <!-- ══════ PAGE: MINI APP STORE ══════ -->
                     <div class="page" id="page-miniapps" style="display:none">
-                        <div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
+                                                <div class="back-link" onclick="showPage('wallet')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">Mini Apps</div>
+                        <div class="page-subtitle">Explore services</div>
+
+<div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
                             <div class="back-btn" onclick="switchTab('wallet')">‹</div>
                             <span style="font-size:15px;font-weight:700;color:var(--text-primary)">Mini Apps</span>
                             <div style="margin-left:auto;width:28px;height:28px;border-radius:50%;background:var(--surface-2);display:flex;align-items:center;justify-content:center;cursor:pointer" onclick="showToast('Search','Search mini apps','info')"><svg viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="1.8" width="14" height="14"><circle cx="11" cy="11" r="6"/><path d="M16.5 16.5L20 20"/></svg></div>
                         </div>
                         <div class="miniapp-banner">
-                            <div class="miniapp-banner-icon">🚀</div>
+                            <div class="miniapp-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:1em;height:1em;vertical-align:middle;display:inline"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"/></svg></div>
                             <div class="miniapp-banner-text"><div class="miniapp-banner-title">Montserrat App Ecosystem</div><div class="miniapp-banner-sub">75+ mini apps · No download needed</div></div>
                         </div>
                         <div class="miniapp-cat-row">
@@ -5009,28 +5182,28 @@
                         </div>
                         <div style="padding:0 16px 8px;font-size:12px;font-weight:600;color:var(--text-primary)">Quick Launch</div>
                         <div class="miniapp-grid">
-                            <div class="miniapp-item" onclick="showToast('Deliveroo','Opening food delivery...','info')"><div class="miniapp-icon" style="background:rgba(0,204,168,0.15)">🍕<div class="miniapp-badge"></div></div><div class="miniapp-name">Deliveroo</div></div>
-                            <div class="miniapp-item" onclick="showToast('Uber','Opening ride service...','info')"><div class="miniapp-icon" style="background:rgba(0,0,0,0.2)">🚗</div><div class="miniapp-name">Uber</div></div>
-                            <div class="miniapp-item" onclick="showSubPage('bills')"><div class="miniapp-icon" style="background:rgba(74,143,231,0.15)">💡</div><div class="miniapp-name">Bill Pay</div></div>
-                            <div class="miniapp-item" onclick="showSubPage('subs')"><div class="miniapp-icon" style="background:rgba(239,68,68,0.15)">📺</div><div class="miniapp-name">Subs</div></div>
-                            <div class="miniapp-item" onclick="showToast('Amazon','Opening marketplace...','info')"><div class="miniapp-icon" style="background:rgba(255,153,0,0.15)">🛒</div><div class="miniapp-name">Amazon</div></div>
-                            <div class="miniapp-item" onclick="showToast('Booking','Opening travel...','info')"><div class="miniapp-icon" style="background:rgba(0,83,159,0.15)">🏨</div><div class="miniapp-name">Booking</div></div>
-                            <div class="miniapp-item" onclick="showSubPage('insurance')"><div class="miniapp-icon" style="background:rgba(52,211,153,0.15)">🛡</div><div class="miniapp-name">Insurance</div></div>
-                            <div class="miniapp-item" onclick="showSubPage('loans')"><div class="miniapp-icon" style="background:rgba(200,132,252,0.15)">💰</div><div class="miniapp-name">Loans</div></div>
+                            <div class="miniapp-item" onclick="showToast('Deliveroo','Opening food delivery...','info')"><div class="miniapp-icon" style="background:rgba(0,204,168,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 0110 10H2A10 10 0 0112 2z"/><circle cx="10" cy="8" r="1"/><circle cx="14" cy="9" r="1"/></svg><div class="miniapp-badge"></div></div><div class="miniapp-name">Deliveroo</div></div>
+                            <div class="miniapp-item" onclick="showToast('Uber','Opening ride service...','info')"><div class="miniapp-icon" style="background:rgba(0,0,0,0.2)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 17h14M5 17a2 2 0 01-2-2V9l3-5h12l3 5v6a2 2 0 01-2 2M5 17l-1 3M19 17l1 3"/><circle cx="7.5" cy="14" r="1.5"/><circle cx="16.5" cy="14" r="1.5"/></svg></div><div class="miniapp-name">Uber</div></div>
+                            <div class="miniapp-item" onclick="showSubPage('bills')"><div class="miniapp-icon" style="background:rgba(74,143,231,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18h6M12 2a7 7 0 00-4 12.65V17h8v-2.35A7 7 0 0012 2z"/></svg></div><div class="miniapp-name">Bill Pay</div></div>
+                            <div class="miniapp-item" onclick="showSubPage('subs')"><div class="miniapp-icon" style="background:rgba(239,68,68,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M17 2l-5 5-5-5"/></svg></div><div class="miniapp-name">Subs</div></div>
+                            <div class="miniapp-item" onclick="showToast('Amazon','Opening marketplace...','info')"><div class="miniapp-icon" style="background:rgba(255,153,0,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></div><div class="miniapp-name">Amazon</div></div>
+                            <div class="miniapp-item" onclick="showToast('Booking','Opening travel...','info')"><div class="miniapp-icon" style="background:rgba(0,83,159,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg></div><div class="miniapp-name">Booking</div></div>
+                            <div class="miniapp-item" onclick="showSubPage('insurance')"><div class="miniapp-icon" style="background:rgba(52,211,153,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="miniapp-name">Insurance</div></div>
+                            <div class="miniapp-item" onclick="showSubPage('loans')"><div class="miniapp-icon" style="background:rgba(200,132,252,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><path d="M12 6v12M9 9h4.5a1.5 1.5 0 010 3H9m0 0h5a1.5 1.5 0 010 3H9"/></svg></div><div class="miniapp-name">Loans</div></div>
                         </div>
                         <div style="padding:0 16px 8px;font-size:12px;font-weight:600;color:var(--text-primary)">Featured</div>
                         <div class="miniapp-featured" onclick="showToast('Spotify','Opening music...','info')">
-                            <div class="miniapp-feat-icon" style="background:rgba(30,215,96,0.15)">🎵</div>
+                            <div class="miniapp-feat-icon" style="background:rgba(30,215,96,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
                             <div class="miniapp-feat-info"><div class="miniapp-feat-name">Spotify</div><div class="miniapp-feat-desc">Stream music · Pay with MSD</div></div>
                             <div class="miniapp-feat-tag">New</div>
                         </div>
                         <div class="miniapp-featured" onclick="showToast('MID Marketplace','Opening NFT market...','info')">
-                            <div class="miniapp-feat-icon" style="background:rgba(123,97,255,0.15)">🎨</div>
+                            <div class="miniapp-feat-icon" style="background:rgba(123,97,255,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="8" cy="9" r="1.5"/><circle cx="15" cy="8" r="1.5"/><circle cx="16" cy="13" r="1.5"/><circle cx="8" cy="14" r="1.5"/></svg></div>
                             <div class="miniapp-feat-info"><div class="miniapp-feat-name">MID Marketplace</div><div class="miniapp-feat-desc">Buy & sell Montserrat NFTs</div></div>
                             <div class="miniapp-feat-tag">Popular</div>
                         </div>
                         <div class="miniapp-featured" onclick="showToast('MID Learn','Opening courses...','info')">
-                            <div class="miniapp-feat-icon" style="background:rgba(251,191,36,0.15)">📚</div>
+                            <div class="miniapp-feat-icon" style="background:rgba(251,191,36,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M4 4.5A2.5 2.5 0 016.5 2H20v20H6.5A2.5 2.5 0 014 19.5z"/></svg></div>
                             <div class="miniapp-feat-info"><div class="miniapp-feat-name">MID Learn</div><div class="miniapp-feat-desc">Earn crypto while learning</div></div>
                             <div class="miniapp-feat-tag">Rewards</div>
                         </div>
@@ -5038,7 +5211,14 @@
 
                     <!-- ══════ PAGE: SUBSCRIPTION MANAGER ══════ -->
                     <div class="page" id="page-subs" style="display:none">
-                        <div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
+                                                <div class="back-link" onclick="showPage('wallet')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">Subscriptions</div>
+                        <div class="page-subtitle">Manage recurring</div>
+
+<div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
                             <div class="back-btn" onclick="switchTab('wallet')">‹</div>
                             <span style="font-size:15px;font-weight:700;color:var(--text-primary)">Subscriptions</span>
                         </div>
@@ -5049,31 +5229,31 @@
                         </div>
                         <div style="padding:0 16px 8px;font-size:12px;font-weight:600;color:var(--text-primary)">Active Subscriptions</div>
                         <div class="sub-card">
-                            <div class="sub-card-icon" style="background:rgba(239,68,68,0.12)">📺</div>
+                            <div class="sub-card-icon" style="background:rgba(239,68,68,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M17 2l-5 5-5-5"/></svg></div>
                             <div class="sub-card-info"><div class="sub-card-name">Netflix</div><div class="sub-card-meta">Premium · Renews Mar 22</div></div>
                             <div style="text-align:right"><div class="sub-card-price">$15.99</div><div class="sub-card-cycle">/month</div></div>
                             <div class="sub-card-toggle" onclick="this.classList.toggle('off');haptic(10)"></div>
                         </div>
                         <div class="sub-card">
-                            <div class="sub-card-icon" style="background:rgba(30,215,96,0.12)">🎵</div>
+                            <div class="sub-card-icon" style="background:rgba(30,215,96,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
                             <div class="sub-card-info"><div class="sub-card-name">Spotify</div><div class="sub-card-meta">Family · Renews Mar 28</div></div>
                             <div style="text-align:right"><div class="sub-card-price">$16.99</div><div class="sub-card-cycle">/month</div></div>
                             <div class="sub-card-toggle" onclick="this.classList.toggle('off');haptic(10)"></div>
                         </div>
                         <div class="sub-card">
-                            <div class="sub-card-icon" style="background:rgba(74,143,231,0.12)">☁️</div>
+                            <div class="sub-card-icon" style="background:rgba(74,143,231,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg>️</div>
                             <div class="sub-card-info"><div class="sub-card-name">iCloud+</div><div class="sub-card-meta">200GB · Renews Apr 1</div></div>
                             <div style="text-align:right"><div class="sub-card-price">$2.99</div><div class="sub-card-cycle">/month</div></div>
                             <div class="sub-card-toggle" onclick="this.classList.toggle('off');haptic(10)"></div>
                         </div>
                         <div class="sub-card">
-                            <div class="sub-card-icon" style="background:rgba(100,100,100,0.12)">📰</div>
+                            <div class="sub-card-icon" style="background:rgba(100,100,100,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 7h8M8 11h5M8 15h8"/></svg></div>
                             <div class="sub-card-info"><div class="sub-card-name">NYT Digital</div><div class="sub-card-meta">All Access · Renews Apr 5</div></div>
                             <div style="text-align:right"><div class="sub-card-price">$4.00</div><div class="sub-card-cycle">/month</div></div>
                             <div class="sub-card-toggle" onclick="this.classList.toggle('off');haptic(10)"></div>
                         </div>
                         <div class="sub-card">
-                            <div class="sub-card-icon" style="background:rgba(123,97,255,0.12)">🏋️</div>
+                            <div class="sub-card-icon" style="background:rgba(123,97,255,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 5v14M18 5v14M6 12h12"/><rect x="3" y="8" width="3" height="8" rx="1"/><rect x="18" y="8" width="3" height="8" rx="1"/></svg>️</div>
                             <div class="sub-card-info"><div class="sub-card-name">Peloton</div><div class="sub-card-meta">Individual · Renews Apr 10</div></div>
                             <div style="text-align:right"><div class="sub-card-price">$7.97</div><div class="sub-card-cycle">/month</div></div>
                             <div class="sub-card-toggle" onclick="this.classList.toggle('off');haptic(10)"></div>
@@ -5082,36 +5262,43 @@
 
                     <!-- ══════ PAGE: BILL PAYMENTS ══════ -->
                     <div class="page" id="page-bills" style="display:none">
-                        <div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
+                                                <div class="back-link" onclick="showPage('wallet')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">Bill Pay</div>
+                        <div class="page-subtitle">Utilities & services</div>
+
+<div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
                             <div class="back-btn" onclick="switchTab('wallet')">‹</div>
                             <span style="font-size:15px;font-weight:700;color:var(--text-primary)">Bill Payments</span>
                         </div>
                         <div class="bill-cat-grid">
-                            <div class="bill-cat" onclick="showToast('Electricity','MONLEC bill loaded','info')"><div class="bill-cat-icon">⚡</div><div class="bill-cat-label">Electricity</div></div>
-                            <div class="bill-cat" onclick="showToast('Water','MUL bill loaded','info')"><div class="bill-cat-icon">💧</div><div class="bill-cat-label">Water</div></div>
-                            <div class="bill-cat" onclick="showToast('Internet','FLOW bill loaded','info')"><div class="bill-cat-icon">📡</div><div class="bill-cat-label">Internet</div></div>
-                            <div class="bill-cat" onclick="showToast('Phone','Digicel loaded','info')"><div class="bill-cat-icon">📱</div><div class="bill-cat-label">Phone</div></div>
-                            <div class="bill-cat" onclick="showToast('Tax','MRA portal loaded','info')"><div class="bill-cat-icon">🏛</div><div class="bill-cat-label">Tax</div></div>
-                            <div class="bill-cat" onclick="showToast('Rent','Housing loaded','info')"><div class="bill-cat-icon">🏠</div><div class="bill-cat-label">Rent</div></div>
+                            <div class="bill-cat" onclick="showToast('Electricity','MONLEC bill loaded','info')"><div class="bill-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h8l-1 8 10-12h-8z"/></svg></div><div class="bill-cat-label">Electricity</div></div>
+                            <div class="bill-cat" onclick="showToast('Water','MUL bill loaded','info')"><div class="bill-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2s-7 8-7 13a7 7 0 0014 0c0-5-7-13-7-13z"/></svg></div><div class="bill-cat-label">Water</div></div>
+                            <div class="bill-cat" onclick="showToast('Internet','FLOW bill loaded','info')"><div class="bill-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.9 19.1A15 15 0 0119.1 4.9"/><path d="M7.8 16.2a9 9 0 018.4-8.4"/><circle cx="12" cy="12" r="2"/></svg></div><div class="bill-cat-label">Internet</div></div>
+                            <div class="bill-cat" onclick="showToast('Phone','Digicel loaded','info')"><div class="bill-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M12 18h.01"/></svg></div><div class="bill-cat-label">Phone</div></div>
+                            <div class="bill-cat" onclick="showToast('Tax','MRA portal loaded','info')"><div class="bill-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M4 10h16M12 3l9 7H3z"/><path d="M6 10v8M10 10v8M14 10v8M18 10v8"/></svg></div><div class="bill-cat-label">Tax</div></div>
+                            <div class="bill-cat" onclick="showToast('Rent','Housing loaded','info')"><div class="bill-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12l9-9 9 9"/><path d="M5 10v10a1 1 0 001 1h12a1 1 0 001-1V10"/></svg></div><div class="bill-cat-label">Rent</div></div>
                         </div>
                         <div style="padding:0 16px 8px;font-size:12px;font-weight:600;color:var(--text-primary)">Upcoming Bills</div>
                         <div class="bill-recent" onclick="triggerBiometric('bill-elec')">
-                            <div class="bill-recent-icon">⚡</div>
+                            <div class="bill-recent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h8l-1 8 10-12h-8z"/></svg></div>
                             <div class="bill-recent-info"><div class="bill-recent-name">MONLEC Electricity</div><div class="bill-recent-meta">Account: 2847103 · Due Mar 20</div></div>
                             <div style="text-align:right"><div class="bill-recent-amount">$124.50</div><div class="bill-recent-status" style="background:rgba(251,191,36,0.15);color:#FBB024">Due</div></div>
                         </div>
                         <div class="bill-recent" onclick="triggerBiometric('bill-water')">
-                            <div class="bill-recent-icon">💧</div>
+                            <div class="bill-recent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2s-7 8-7 13a7 7 0 0014 0c0-5-7-13-7-13z"/></svg></div>
                             <div class="bill-recent-info"><div class="bill-recent-name">MUL Water</div><div class="bill-recent-meta">Account: 1039281 · Due Mar 25</div></div>
                             <div style="text-align:right"><div class="bill-recent-amount">$42.80</div><div class="bill-recent-status" style="background:rgba(251,191,36,0.15);color:#FBB024">Due</div></div>
                         </div>
                         <div class="bill-recent">
-                            <div class="bill-recent-icon">📡</div>
+                            <div class="bill-recent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.9 19.1A15 15 0 0119.1 4.9"/><path d="M7.8 16.2a9 9 0 018.4-8.4"/><circle cx="12" cy="12" r="2"/></svg></div>
                             <div class="bill-recent-info"><div class="bill-recent-name">FLOW Internet</div><div class="bill-recent-meta">Account: 8812743 · Paid Mar 5</div></div>
                             <div style="text-align:right"><div class="bill-recent-amount">$79.99</div><div class="bill-recent-status" style="background:rgba(52,211,153,0.12);color:#34D399">Paid</div></div>
                         </div>
                         <div class="bill-recent">
-                            <div class="bill-recent-icon">📱</div>
+                            <div class="bill-recent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M12 18h.01"/></svg></div>
                             <div class="bill-recent-info"><div class="bill-recent-name">Digicel Mobile</div><div class="bill-recent-meta">Number: +1664-555-0123 · Paid Mar 1</div></div>
                             <div style="text-align:right"><div class="bill-recent-amount">$35.00</div><div class="bill-recent-status" style="background:rgba(52,211,153,0.12);color:#34D399">Paid</div></div>
                         </div>
@@ -5120,7 +5307,14 @@
 
                     <!-- ══════ PAGE: SMART SAVINGS ══════ -->
                     <div class="page" id="page-savings" style="display:none">
-                        <div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
+                                                <div class="back-link" onclick="showPage('wallet')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">Savings</div>
+                        <div class="page-subtitle">Goals & auto-save</div>
+
+<div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
                             <div class="back-btn" onclick="switchTab('wallet')">‹</div>
                             <span style="font-size:15px;font-weight:700;color:var(--text-primary)">Smart Savings</span>
                             <div style="margin-left:auto;font-size:10px;color:#34D399;font-weight:600">+5.2% APY</div>
@@ -5133,7 +5327,7 @@
                         <div style="padding:0 16px 8px;font-size:12px;font-weight:600;color:var(--text-primary)">Savings Jars</div>
                         <div class="savings-jar">
                             <div class="savings-jar-header">
-                                <div class="savings-jar-icon" style="background:rgba(74,143,231,0.15)">✈️</div>
+                                <div class="savings-jar-icon" style="background:rgba(74,143,231,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12l19-7-7 19-3-8z"/></svg>️</div>
                                 <div style="flex:1"><div class="savings-jar-name">Holiday Fund</div><div class="savings-jar-target">Target: $5,000</div></div>
                                 <span style="font-size:13px;font-weight:700;color:var(--text-primary)">$2,150</span>
                             </div>
@@ -5142,7 +5336,7 @@
                         </div>
                         <div class="savings-jar">
                             <div class="savings-jar-header">
-                                <div class="savings-jar-icon" style="background:rgba(52,211,153,0.15)">🏠</div>
+                                <div class="savings-jar-icon" style="background:rgba(52,211,153,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12l9-9 9 9"/><path d="M5 10v10a1 1 0 001 1h12a1 1 0 001-1V10"/></svg></div>
                                 <div style="flex:1"><div class="savings-jar-name">Emergency Fund</div><div class="savings-jar-target">Target: $2,000</div></div>
                                 <span style="font-size:13px;font-weight:700;color:var(--text-primary)">$897</span>
                             </div>
@@ -5151,7 +5345,7 @@
                         </div>
                         <div class="savings-jar">
                             <div class="savings-jar-header">
-                                <div class="savings-jar-icon" style="background:rgba(251,191,36,0.15)">🎓</div>
+                                <div class="savings-jar-icon" style="background:rgba(251,191,36,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3L2 9l10 6 10-6z"/><path d="M20 9v7M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/></svg></div>
                                 <div style="flex:1"><div class="savings-jar-name">Education</div><div class="savings-jar-target">Target: $500</div></div>
                                 <span style="font-size:13px;font-weight:700;color:var(--text-primary)">$200</span>
                             </div>
@@ -5161,15 +5355,22 @@
                         <div style="padding:16px 16px 6px;font-size:12px;font-weight:600;color:var(--text-primary)">Auto-Save Rules</div>
                         <div class="savings-rules">
                             <div class="savings-rule active" onclick="showToast('Round-Up','Rounding up purchases to save spare change','success')"><div class="savings-rule-icon">🪙</div><div class="savings-rule-name">Round-Up</div></div>
-                            <div class="savings-rule" onclick="showToast('Weekly','Saving $50 every Monday','info')"><div class="savings-rule-icon">📅</div><div class="savings-rule-name">$50/week</div></div>
-                            <div class="savings-rule" onclick="showToast('Payday','Saving 10% of each deposit','info')"><div class="savings-rule-icon">💰</div><div class="savings-rule-name">10% Income</div></div>
+                            <div class="savings-rule" onclick="showToast('Weekly','Saving $50 every Monday','info')"><div class="savings-rule-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><div class="savings-rule-name">$50/week</div></div>
+                            <div class="savings-rule" onclick="showToast('Payday','Saving 10% of each deposit','info')"><div class="savings-rule-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><path d="M12 6v12M9 9h4.5a1.5 1.5 0 010 3H9m0 0h5a1.5 1.5 0 010 3H9"/></svg></div><div class="savings-rule-name">10% Income</div></div>
                         </div>
                         <button style="width:calc(100% - 32px);margin:12px 16px;padding:14px;border-radius: 2px;border:none;background:var(--blue);color:#fff;font-size:14px;font-weight:600;cursor:pointer" onclick="showToast('New Jar','Create a new savings jar','info')">+ Create New Jar</button>
                     </div>
 
                     <!-- ══════ PAGE: MICRO LOANS ══════ -->
                     <div class="page" id="page-loans" style="display:none">
-                        <div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
+                                                <div class="back-link" onclick="showPage('wallet')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">Loans</div>
+                        <div class="page-subtitle">Borrow against assets</div>
+
+<div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
                             <div class="back-btn" onclick="switchTab('wallet')">‹</div>
                             <span style="font-size:15px;font-weight:700;color:var(--text-primary)">Micro Loans</span>
                             <div style="margin-left:auto;padding:4px 10px;border-radius: 2px;background:rgba(52,211,153,0.12);color:#34D399;font-size:10px;font-weight:600" onclick="showSubPage('credit')">Score: 847</div>
@@ -5200,7 +5401,14 @@
 
                     <!-- ══════ PAGE: INSURANCE ══════ -->
                     <div class="page" id="page-insurance" style="display:none">
-                        <div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
+                                                <div class="back-link" onclick="showPage('wallet')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">Insurance</div>
+                        <div class="page-subtitle">Asset protection</div>
+
+<div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
                             <div class="back-btn" onclick="switchTab('wallet')">‹</div>
                             <span style="font-size:15px;font-weight:700;color:var(--text-primary)">Insurance</span>
                         </div>
@@ -5213,7 +5421,7 @@
                         <div style="padding:12px 16px 10px;font-size:12px;font-weight:600;color:var(--text-primary)">Available Plans</div>
                         <div class="ins-card" onclick="showToast('Travel Insurance','Plan details loaded','info')">
                             <div class="ins-card-header">
-                                <div class="ins-card-icon" style="background:rgba(74,143,231,0.15)">✈️</div>
+                                <div class="ins-card-icon" style="background:rgba(74,143,231,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12l19-7-7 19-3-8z"/></svg>️</div>
                                 <div><div class="ins-card-title">Travel Insurance</div><div class="ins-card-provider">MID Protect · Worldwide</div></div>
                             </div>
                             <div class="ins-card-row">
@@ -5223,7 +5431,7 @@
                         </div>
                         <div class="ins-card" onclick="showToast('Health Insurance','Plan details loaded','info')">
                             <div class="ins-card-header">
-                                <div class="ins-card-icon" style="background:rgba(239,68,68,0.15)">🏥</div>
+                                <div class="ins-card-icon" style="background:rgba(239,68,68,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg></div>
                                 <div><div class="ins-card-title">Health Insurance</div><div class="ins-card-provider">Sagicor · Caribbean region</div></div>
                             </div>
                             <div class="ins-card-row">
@@ -5233,7 +5441,7 @@
                         </div>
                         <div class="ins-card" onclick="showToast('DeFi Shield','Smart contract cover loaded','info')">
                             <div class="ins-card-header">
-                                <div class="ins-card-icon" style="background:rgba(123,97,255,0.15)">🔮</div>
+                                <div class="ins-card-icon" style="background:rgba(123,97,255,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 016.36 2.64M12 7v5l3 3"/></svg></div>
                                 <div><div class="ins-card-title">DeFi Smart Contract Cover</div><div class="ins-card-provider">Nexus Mutual · On-chain</div></div>
                             </div>
                             <div class="ins-card-row">
@@ -5245,10 +5453,17 @@
 
                     <!-- ══════ PAGE: DAILY REWARDS ══════ -->
                     <div class="page" id="page-quests" style="display:none">
-                        <div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
+                                                <div class="back-link" onclick="showPage('wallet')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">Quests</div>
+                        <div class="page-subtitle">Earn rewards</div>
+
+<div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
                             <div class="back-btn" onclick="switchTab('wallet')">‹</div>
                             <span style="font-size:15px;font-weight:700;color:var(--text-primary)">Rewards</span>
-                            <div style="margin-left:auto;padding:4px 10px;border-radius: 2px;background:rgba(251,191,36,0.12);color:#FBB024;font-size:10px;font-weight:600">🔥 7-day streak</div>
+                            <div style="margin-left:auto;padding:4px 10px;border-radius: 2px;background:rgba(251,191,36,0.12);color:#FBB024;font-size:10px;font-weight:600"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22c4-2 8-6 8-11a8 8 0 00-16 0c0 5 4 9 8 11z"/><path d="M12 22c-2-1-4-3-4-6a4 4 0 018 0c0 3-2 5-4 6z"/></svg> 7-day streak</div>
                         </div>
                         <div class="quest-streak">
                             <div class="quest-streak-days">
@@ -5260,7 +5475,7 @@
                                 <div class="quest-day checked">S</div>
                                 <div class="quest-day today" onclick="claimDaily(this)">S</div>
                             </div>
-                            <div class="quest-streak-label">7-Day Streak! 🔥</div>
+                            <div class="quest-streak-label">7-Day Streak! <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22c4-2 8-6 8-11a8 8 0 00-16 0c0 5 4 9 8 11z"/><path d="M12 22c-2-1-4-3-4-6a4 4 0 018 0c0 3-2 5-4 6z"/></svg></div>
                             <div class="quest-streak-sub">Check in today to earn 2x points</div>
                         </div>
                         <div class="quest-points">
@@ -5270,33 +5485,33 @@
                         </div>
                         <div style="padding:0 16px 8px;font-size:12px;font-weight:600;color:var(--text-primary)">Daily Quests</div>
                         <div class="quest-item">
-                            <div class="quest-item-icon" style="background:rgba(74,143,231,0.15)">💸</div>
+                            <div class="quest-item-icon" style="background:rgba(74,143,231,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12h4l3-9 4 18 3-9h6"/></svg></div>
                             <div class="quest-item-info"><div class="quest-item-name">Make a Transaction</div><div class="quest-item-desc">Send or receive any amount</div></div>
                             <div class="quest-item-reward quest-item-reward--done">✓ +50</div>
                         </div>
                         <div class="quest-item">
-                            <div class="quest-item-icon" style="background:rgba(52,211,153,0.15)">📈</div>
+                            <div class="quest-item-icon" style="background:rgba(52,211,153,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 20l5-5 4 4 9-12"/><path d="M17 7h4v4"/></svg></div>
                             <div class="quest-item-info"><div class="quest-item-name">Check DeFi Yield</div><div class="quest-item-desc">View your yield dashboard</div></div>
                             <div class="quest-item-reward quest-item-reward--pending" onclick="showSubPage('yield');showToast('Quest','Viewing yield dashboard...','success')">+25 pts</div>
                         </div>
                         <div class="quest-item">
-                            <div class="quest-item-icon" style="background:rgba(251,191,36,0.15)">👥</div>
+                            <div class="quest-item-icon" style="background:rgba(251,191,36,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="7" r="3"/><path d="M17 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="17" cy="8" r="2.5"/><path d="M22 21v-1.5a3.5 3.5 0 00-3-3.46"/></svg></div>
                             <div class="quest-item-info"><div class="quest-item-name">Invite a Friend</div><div class="quest-item-desc">Share your referral link</div></div>
                             <div class="quest-item-reward quest-item-reward--pending" onclick="showToast('Referral','Link copied! Share it to earn 200 pts','success')">+200 pts</div>
                         </div>
                         <div class="quest-item">
-                            <div class="quest-item-icon" style="background:rgba(200,132,252,0.15)">🗳</div>
+                            <div class="quest-item-icon" style="background:rgba(200,132,252,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M9 8V5a3 3 0 016 0v3"/><path d="M10 13h4"/></svg></div>
                             <div class="quest-item-info"><div class="quest-item-name">Vote on a Proposal</div><div class="quest-item-desc">Participate in DAO governance</div></div>
                             <div class="quest-item-reward quest-item-reward--pending" onclick="showSubPage('dao');showToast('Quest','Opening DAO...','info')">+100 pts</div>
                         </div>
                         <div style="padding:12px 16px 8px;font-size:12px;font-weight:600;color:var(--text-primary)">Redeem Points</div>
                         <div class="quest-item" onclick="showToast('Redeem','50% off next swap fee!','success')">
-                            <div class="quest-item-icon" style="background:rgba(239,68,68,0.15)">🎟</div>
+                            <div class="quest-item-icon" style="background:rgba(239,68,68,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10a2 2 0 010-4M22 10a2 2 0 000-4M2 14a2 2 0 000 4M22 14a2 2 0 010 4M9 6v12"/></svg></div>
                             <div class="quest-item-info"><div class="quest-item-name">50% Off Swap Fee</div><div class="quest-item-desc">500 points</div></div>
                             <div class="quest-item-reward quest-item-reward--pending">Redeem</div>
                         </div>
                         <div class="quest-item" onclick="showToast('Redeem','Exclusive NFT badge claimed!','success')">
-                            <div class="quest-item-icon" style="background:rgba(123,97,255,0.15)">🏅</div>
+                            <div class="quest-item-icon" style="background:rgba(123,97,255,0.15)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="14" r="6"/><path d="M8 2l2 6M16 2l-2 6"/><path d="M12 11v3M10.5 14.5l1.5-1 1.5 1"/></svg></div>
                             <div class="quest-item-info"><div class="quest-item-name">Exclusive NFT Badge</div><div class="quest-item-desc">1,000 points</div></div>
                             <div class="quest-item-reward quest-item-reward--pending">Redeem</div>
                         </div>
@@ -5304,7 +5519,14 @@
 
                     <!-- ══════ PAGE: DAO GOVERNANCE ══════ -->
                     <div class="page" id="page-dao" style="display:none">
-                        <div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
+                                                <div class="back-link" onclick="showPage('wallet')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span>Back</span>
+                        </div>
+                        <div class="page-title">Governance</div>
+                        <div class="page-subtitle">DAO proposals & voting</div>
+
+<div style="display:flex;align-items:center;padding:14px 16px;gap:10px">
                             <div class="back-btn" onclick="switchTab('wallet')">‹</div>
                             <span style="font-size:15px;font-weight:700;color:var(--text-primary)">DAO Governance</span>
                         </div>
@@ -5950,7 +6172,7 @@ const friendsData = {
         messages: [
             { type: 'date', text: 'Today' },
             { type: 'theirs', text: 'Hey! Are you coming to the Montserrat meetup?', time: '2:10 PM' },
-            { type: 'mine', text: 'Yes! Flying in next Tuesday 🛫', time: '2:12 PM' },
+            { type: 'mine', text: 'Yes! Flying in next Tuesday <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12l19-7-7 19-3-8z"/></svg>', time: '2:12 PM' },
             { type: 'theirs', text: 'Awesome! Can you cover the venue deposit? I\'ll pay you back', time: '2:14 PM' },
             { type: 'payment', dir: 'mine', amount: '500.00', note: 'Venue deposit', time: '2:15 PM' },
             { type: 'theirs', text: 'Got it! Thanks 🎉', time: '2:16 PM' },
@@ -6020,7 +6242,7 @@ function renderChat(msgs) {
             container.innerHTML += '<div class="chat-date">' + m.text + '</div>';
         } else if (m.type === 'payment') {
             const cls = m.dir === 'mine' ? 'chat-payment--mine' : 'chat-payment--theirs';
-            const label = m.dir === 'mine' ? '💸 Payment Sent' : '💰 Payment Received';
+            const label = m.dir === 'mine' ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12h4l3-9 4 18 3-9h6"/></svg> Payment Sent' : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><path d="M12 6v12M9 9h4.5a1.5 1.5 0 010 3H9m0 0h5a1.5 1.5 0 010 3H9"/></svg> Payment Received';
             container.innerHTML += '<div class="chat-payment ' + cls + '">' +
                 '<div class="chat-payment-inner">' +
                 '<div class="chat-payment-label">' + label + '</div>' +
@@ -6041,7 +6263,7 @@ function renderChat(msgs) {
                 '<div class="chat-msg-time" style="padding:2px 4px 0">' + m.time + '</div></div>';
         } else if (m.type === 'request') {
             const cls = m.dir === 'mine' ? 'chat-request--mine' : 'chat-request--theirs';
-            const label = m.dir === 'mine' ? '📩 Payment Requested' : '📩 Payment Request';
+            const label = m.dir === 'mine' ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg> Payment Requested' : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg> Payment Request';
             const btnHtml = m.dir === 'theirs' ? '<button class="chat-request-btn" onclick="payRequest(this)">Pay ' + m.amount + ' MSD</button>' : '<div class="chat-payment-status"><svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><path d="M12 2v10l4.5 4.5"/><circle cx="12" cy="12" r="10"/></svg> Waiting</div>';
             container.innerHTML += '<div class="chat-request ' + cls + '">' +
                 '<div class="chat-request-inner">' +
@@ -6071,7 +6293,7 @@ function sendChatMsg() {
     renderChat(f.messages);
     // Auto-reply after 1.5s
     setTimeout(() => {
-        const replies = ['Got it! 👍', 'Sure thing!', 'Sounds good 😊', 'Thanks!', 'Let me check...', 'On it! 🚀'];
+        const replies = ['Got it! 👍', 'Sure thing!', 'Sounds good 😊', 'Thanks!', 'Let me check...', 'On it! <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:1em;height:1em;vertical-align:middle;display:inline"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"/></svg>'];
         f.messages.push({ type: 'theirs', text: replies[Math.floor(Math.random() * replies.length)], time: timeStr });
         renderChat(f.messages);
     }, 1500);
@@ -6242,12 +6464,12 @@ setInterval(updateClock, 30000);
 
 // ===== NFT GALLERY =====
 var nftData = [
-    { emoji:'🏝️', bg:'linear-gradient(135deg,#1e3a5f,#2d1b69)', name:'Montserrat Genesis #001', collection:'MID Founders', price:'2.5 MSD', badge:'Rare', desc:'A founding member NFT from the Montserrat Digital Identity program. Grants access to exclusive governance features.', traits:[{l:'Rarity',v:'Rare'},{l:'Edition',v:'#001'},{l:'Type',v:'Genesis'}] },
+    { emoji:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4c3 0 6 2 6 5s-3 5-6 5-6-2-6-5 3-5 6-5z"/><path d="M12 14v6"/><path d="M4 20c2-1 5-2 8-2s6 1 8 2"/></svg>️', bg:'linear-gradient(135deg,#1e3a5f,#2d1b69)', name:'Montserrat Genesis #001', collection:'MID Founders', price:'2.5 MSD', badge:'Rare', desc:'A founding member NFT from the Montserrat Digital Identity program. Grants access to exclusive governance features.', traits:[{l:'Rarity',v:'Rare'},{l:'Edition',v:'#001'},{l:'Type',v:'Genesis'}] },
     { emoji:'🪪', bg:'linear-gradient(135deg,#0f3443,#34e89e)', name:'Digital Resident Pass', collection:'MID Identity', price:'Soulbound', badge:'SBT', desc:'Non-transferable soulbound token proving your Montserrat digital residency status.', traits:[{l:'Type',v:'SBT'},{l:'Level',v:'3'},{l:'Status',v:'Active'}] },
-    { emoji:'🎨', bg:'linear-gradient(135deg,#2d1b4e,#562b7c)', name:'Volcanic Sunset #47', collection:'Island Art', price:'0.8 MSD', badge:'Art', desc:'Digital art piece capturing the stunning volcanic sunsets of Montserrat island.', traits:[{l:'Rarity',v:'Uncommon'},{l:'Edition',v:'#47'},{l:'Medium',v:'Digital'}] },
-    { emoji:'🏛️', bg:'linear-gradient(135deg,#1a1a2e,#e94560)', name:'Governance Token', collection:'MID DAO', price:'1.2 MSD', badge:'Gov', desc:'Voting power in the MID DAO governance system. Participate in protocol decisions.', traits:[{l:'Power',v:'1x'},{l:'Type',v:'Governance'},{l:'Status',v:'Active'}] },
-    { emoji:'🌋', bg:'linear-gradient(135deg,#0a3d62,#38ada9)', name:'Soufrière Heritage', collection:'Island Collection', price:'1.5 MSD', badge:'Rare', desc:'Heritage NFT celebrating the Soufrière Hills volcano and Montserrat natural wonders.', traits:[{l:'Rarity',v:'Rare'},{l:'Series',v:'Heritage'},{l:'Mint',v:'#23'}] },
-    { emoji:'🎖️', bg:'linear-gradient(135deg,#2c3e50,#4ca1af)', name:'Pioneer Badge', collection:'MID Achievements', price:'Soulbound', badge:'SBT', desc:'Achievement badge awarded to early pioneers of the MID ecosystem.', traits:[{l:'Type',v:'SBT'},{l:'Tier',v:'Gold'},{l:'Year',v:'2026'}] }
+    { emoji:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="8" cy="9" r="1.5"/><circle cx="15" cy="8" r="1.5"/><circle cx="16" cy="13" r="1.5"/><circle cx="8" cy="14" r="1.5"/></svg>', bg:'linear-gradient(135deg,#2d1b4e,#562b7c)', name:'Volcanic Sunset #47', collection:'Island Art', price:'0.8 MSD', badge:'Art', desc:'Digital art piece capturing the stunning volcanic sunsets of Montserrat island.', traits:[{l:'Rarity',v:'Uncommon'},{l:'Edition',v:'#47'},{l:'Medium',v:'Digital'}] },
+    { emoji:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M4 10h16M12 3l9 7H3z"/><path d="M6 10v8M10 10v8M14 10v8M18 10v8"/></svg>️', bg:'linear-gradient(135deg,#1a1a2e,#e94560)', name:'Governance Token', collection:'MID DAO', price:'1.2 MSD', badge:'Gov', desc:'Voting power in the MID DAO governance system. Participate in protocol decisions.', traits:[{l:'Power',v:'1x'},{l:'Type',v:'Governance'},{l:'Status',v:'Active'}] },
+    { emoji:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l3 6h-2l3 6h-2l4 7H6l4-7H8l3-6H9z"/></svg>', bg:'linear-gradient(135deg,#0a3d62,#38ada9)', name:'Soufrière Heritage', collection:'Island Collection', price:'1.5 MSD', badge:'Rare', desc:'Heritage NFT celebrating the Soufrière Hills volcano and Montserrat natural wonders.', traits:[{l:'Rarity',v:'Rare'},{l:'Series',v:'Heritage'},{l:'Mint',v:'#23'}] },
+    { emoji:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="14" r="6"/><path d="M9 2l1.5 5M15 2l-1.5 5"/><path d="M9 12l2 2 4-4"/></svg>', bg:'linear-gradient(135deg,#2c3e50,#4ca1af)', name:'Pioneer Badge', collection:'MID Achievements', price:'Soulbound', badge:'SBT', desc:'Achievement badge awarded to early pioneers of the MID ecosystem.', traits:[{l:'Type',v:'SBT'},{l:'Tier',v:'Gold'},{l:'Year',v:'2026'}] }
 ];
 
 function showNFTDetail(idx) {

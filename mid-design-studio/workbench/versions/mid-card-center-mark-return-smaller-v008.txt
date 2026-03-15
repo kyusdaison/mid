@@ -1,0 +1,9 @@
+Version: v008
+Label: center-mark-return-smaller
+Created: 2026-03-15T12:31:09+11:00
+HTML Source: /Users/kyusdaison/Montserrat/mid-design-studio/source/mid-card-design-v009-center-mark-return-smaller.html
+Preview Source: /tmp/mid-card-center-mark-return-smaller-preview.png
+Archived HTML: /Users/kyusdaison/Montserrat/mid-design-studio/workbench/versions/mid-card-center-mark-return-smaller-v008.html
+Archived Preview: /Users/kyusdaison/Montserrat/mid-design-studio/workbench/versions/mid-card-center-mark-return-smaller-v008-preview.png
+Archived PDF: /Users/kyusdaison/Montserrat/mid-design-studio/exports/pdf/versions/mid-card-center-mark-return-smaller-v008.pdf
+Notes: Returned to the earlier richer MID emblem design and reduced the central mark slightly to improve balance while preserving its original circuitry, glow, and authority.

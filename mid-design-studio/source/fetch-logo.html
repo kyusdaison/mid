@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head><title>Logo Fetcher</title></head>
+<body>
+<pre id="status">Ready...</pre>
+<script>
+async function fetchAndStore() {
+    const status = document.getElementById('status');
+    try {
+        status.textContent = 'Fetching logo...';
+        const resp = await fetch('https://www.futurecitizen.io/branding/future-citizen-logo.png');
+        const blob = await resp.blob();
+        status.textContent = 'Converting to data URL...';
+
+        const reader = new FileReader();
+        reader.onloadend = function() {
+            // Store the full data URL in a hidden div
+            const div = document.createElement('div');
+            div.id = 'logoData';
+            div.style.display = 'none';
+            div.textContent = reader.result;
+            document.body.appendChild(div);
+            status.textContent = 'Done! Data URL length: ' + reader.result.length;
+        };
+        reader.readAsDataURL(blob);
+    } catch(e) {
+        status.textContent = 'Error: ' + e.message;
+    }
+}
+fetchAndStore();
+</script>
+</body>
+</html>

@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Montserrat — The Emerald Isle of the Caribbean</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap');
+
+        :root {
+            --emerald: #2D6A4F;
+            --emerald-light: #40916C;
+            --emerald-dark: #1B4332;
+            --sand: #F5F0E8;
+            --lava: #D4451A;
+            --ocean: #1B4965;
+            --ocean-light: #5FA8D3;
+            --ash: #6B7280;
+            --dark: #1A1A2E;
+            --white: #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background: var(--sand);
+            line-height: 1.7;
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(27, 67, 50, 0.92);
+            backdrop-filter: blur(12px);
+            padding: 0 2rem;
+            transition: all 0.3s ease;
+        }
+        nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.15); }
+        .nav-inner {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
+            height: 64px;
+        }
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            color: var(--white); font-size: 1.3rem; font-weight: 700;
+            text-decoration: none; letter-spacing: 0.5px;
+        }
+        .nav-logo span { color: #7ae4a8; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a {
+            color: rgba(255,255,255,0.85); text-decoration: none;
+            font-size: 0.88rem; font-weight: 500; letter-spacing: 0.3px;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: #7ae4a8; }
+        .hamburger {
+            display: none; flex-direction: column; gap: 5px;
+            cursor: pointer; background: none; border: none; padding: 4px;
+        }
+        .hamburger span {
+            width: 24px; height: 2px; background: var(--white);
+            transition: all 0.3s;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(160deg, var(--emerald-dark) 0%, var(--emerald) 40%, var(--ocean) 100%);
+            display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden; text-align: center;
+            padding: 2rem;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background:
+                radial-gradient(ellipse 600px 400px at 20% 80%, rgba(212,69,26,0.15), transparent),
+                radial-gradient(ellipse 800px 600px at 80% 20%, rgba(95,168,211,0.12), transparent);
+        }
+        .hero-content { position: relative; z-index: 2; max-width: 800px; }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+            color: #7ae4a8; font-size: 0.78rem; font-weight: 600;
+            padding: 0.4rem 1.2rem; border-radius: 50px;
+            letter-spacing: 2px; text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            color: var(--white); font-weight: 900;
+            line-height: 1.1; margin-bottom: 1.2rem;
+        }
+        .hero h1 em {
+            font-style: italic;
+            background: linear-gradient(135deg, #7ae4a8, #5FA8D3);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            color: rgba(255,255,255,0.8); font-size: 1.15rem;
+            max-width: 600px; margin: 0 auto 2.5rem;
+            font-weight: 300;
+        }
+        .hero-cta {
+            display: inline-flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+        }
+        .btn {
+            padding: 0.85rem 2rem; border-radius: 50px;
+            font-size: 0.9rem; font-weight: 600; text-decoration: none;
+            transition: all 0.3s; cursor: pointer; border: none;
+        }
+        .btn-primary {
+            background: var(--white); color: var(--emerald-dark);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+        .btn-outline {
+            background: transparent; color: var(--white);
+            border: 1.5px solid rgba(255,255,255,0.4);
+        }
+        .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+        .scroll-indicator {
+            position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        .scroll-indicator svg { width: 28px; height: 28px; stroke: rgba(255,255,255,0.5); fill: none; stroke-width: 2; }
+        @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+
+        /* ===== SECTIONS ===== */
+        section { padding: 6rem 2rem; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        .section-label {
+            font-size: 0.75rem; font-weight: 600; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--emerald-light);
+            margin-bottom: 0.8rem;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700; color: var(--dark);
+            margin-bottom: 1rem; line-height: 1.2;
+        }
+        .section-subtitle {
+            color: var(--ash); font-size: 1.05rem;
+            max-width: 650px; margin-bottom: 3rem;
+        }
+
+        /* ===== QUICK FACTS ===== */
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem; margin-top: 3rem;
+        }
+        .fact-card {
+            background: var(--white);
+            border-radius: 16px; padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .fact-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+        .fact-icon {
+            width: 56px; height: 56px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1rem; font-size: 1.6rem;
+        }
+        .fact-icon.green { background: #e8f5e9; }
+        .fact-icon.blue { background: #e3f2fd; }
+        .fact-icon.red { background: #fce4ec; }
+        .fact-icon.amber { background: #fff8e1; }
+        .fact-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem; font-weight: 700; color: var(--dark);
+        }
+        .fact-label { color: var(--ash); font-size: 0.85rem; margin-top: 0.3rem; }
+
+        /* ===== ABOUT ===== */
+        .about-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+            align-items: center;
+        }
+        .about-image {
+            border-radius: 20px; overflow: hidden;
+            background: linear-gradient(135deg, var(--emerald), var(--ocean));
+            aspect-ratio: 4/3; position: relative;
+        }
+        .about-image-inner {
+            width: 100%; height: 100%;
+            display: flex; align-items: center; justify-content: center;
+            color: rgba(255,255,255,0.3); font-size: 4rem;
+        }
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem; font-weight: 700;
+            margin: 1.5rem 0 0.8rem; color: var(--emerald-dark);
+        }
+        .about-text p { color: #4B5563; margin-bottom: 1rem; font-size: 0.95rem; }
+
+        /* ===== TIMELINE ===== */
+        .timeline-section { background: var(--emerald-dark); color: var(--white); }
+        .timeline-section .section-label { color: #7ae4a8; }
+        .timeline-section .section-title { color: var(--white); }
+        .timeline-section .section-subtitle { color: rgba(255,255,255,0.6); }
+        .timeline {
+            position: relative; padding-left: 3rem;
+            border-left: 2px solid rgba(255,255,255,0.15);
+        }
+        .timeline-item {
+            position: relative; margin-bottom: 3rem;
+            padding-left: 1.5rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute; left: -3.62rem; top: 6px;
+            width: 12px; height: 12px; border-radius: 50%;
+            background: #7ae4a8; border: 3px solid var(--emerald-dark);
+        }
+        .timeline-year {
+            font-size: 0.78rem; font-weight: 600;
+            color: #7ae4a8; letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+        }
+        .timeline-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem; font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+        .timeline-desc { color: rgba(255,255,255,0.65); font-size: 0.9rem; }
+
+        /* ===== ATTRACTIONS ===== */
+        .attractions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        .attraction-card {
+            background: var(--white); border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .attraction-card:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(0,0,0,0.1); }
+        .attraction-visual {
+            height: 200px; position: relative;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 3.5rem;
+        }
+        .attraction-visual.volcano { background: linear-gradient(135deg, #5c2d0e, #d4451a, #ff8a50); }
+        .attraction-visual.beach { background: linear-gradient(135deg, #0077b6, #00b4d8, #90e0ef); }
+        .attraction-visual.forest { background: linear-gradient(135deg, #1b4332, #2d6a4f, #52b788); }
+        .attraction-visual.culture { background: linear-gradient(135deg, #7b2d8e, #c77dff, #e0aaff); }
+        .attraction-visual.diving { background: linear-gradient(135deg, #023e8a, #0077b6, #48cae4); }
+        .attraction-visual.museum { background: linear-gradient(135deg, #774936, #b08968, #ddb892); }
+        .attraction-body { padding: 1.5rem; }
+        .attraction-tag {
+            display: inline-block; font-size: 0.7rem; font-weight: 600;
+            letter-spacing: 1px; text-transform: uppercase;
+            padding: 0.25rem 0.7rem; border-radius: 20px;
+            margin-bottom: 0.8rem;
+        }
+        .tag-nature { background: #e8f5e9; color: #2e7d32; }
+        .tag-adventure { background: #fff3e0; color: #e65100; }
+        .tag-culture { background: #f3e5f5; color: #7b1fa2; }
+        .tag-water { background: #e3f2fd; color: #1565c0; }
+        .attraction-body h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem; font-weight: 700;
+            margin-bottom: 0.5rem; color: var(--dark);
+        }
+        .attraction-body p { color: var(--ash); font-size: 0.9rem; }
+
+        /* ===== VISIT INFO ===== */
+        .visit-section { background: var(--white); }
+        .visit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .visit-card {
+            background: var(--sand); border-radius: 16px;
+            padding: 2rem;
+        }
+        .visit-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem; font-weight: 700;
+            margin-bottom: 0.8rem; color: var(--emerald-dark);
+            display: flex; align-items: center; gap: 0.6rem;
+        }
+        .visit-card p, .visit-card li {
+            color: #4B5563; font-size: 0.9rem; line-height: 1.8;
+        }
+        .visit-card ul { list-style: none; padding: 0; }
+        .visit-card li::before {
+            content: '→ '; color: var(--emerald-light); font-weight: 600;
+        }
+
+        /* ===== WILDLIFE ===== */
+        .wildlife-banner {
+            background: linear-gradient(135deg, var(--ocean), var(--emerald));
+            border-radius: 20px; padding: 3rem;
+            color: var(--white);
+            display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+            align-items: center;
+        }
+        .wildlife-banner h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem; font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .wildlife-banner p { color: rgba(255,255,255,0.8); font-size: 0.95rem; margin-bottom: 0.8rem; }
+        .wildlife-stats {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+        }
+        .wildlife-stat {
+            background: rgba(255,255,255,0.1);
+            border-radius: 14px; padding: 1.5rem;
+            text-align: center;
+        }
+        .wildlife-stat .num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem; font-weight: 700;
+        }
+        .wildlife-stat .label { font-size: 0.8rem; color: rgba(255,255,255,0.7); margin-top: 0.2rem; }
+
+        /* ===== DIGITAL RESIDENCY ===== */
+        .dr-section {
+            background: linear-gradient(160deg, #0f1b2d 0%, #1a2940 50%, #1B4332 100%);
+            color: var(--white); position: relative; overflow: hidden;
+        }
+        .dr-section::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse 700px 500px at 80% 30%, rgba(45,106,79,0.2), transparent);
+        }
+        .dr-section .container { position: relative; z-index: 2; }
+        .dr-section .section-label { color: #7ae4a8; }
+        .dr-section .section-title { color: var(--white); }
+        .dr-section .section-subtitle { color: rgba(255,255,255,0.65); }
+        .dr-hero-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+            align-items: start; margin-bottom: 3.5rem;
+        }
+        .dr-intro p { color: rgba(255,255,255,0.75); font-size: 0.95rem; margin-bottom: 1rem; }
+        .dr-intro h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem; font-weight: 700; color: #7ae4a8;
+            margin: 1.5rem 0 0.6rem;
+        }
+        .dr-stats-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem;
+        }
+        .dr-stat {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px; padding: 1.8rem 1.2rem; text-align: center;
+        }
+        .dr-stat .value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem; font-weight: 700; color: #7ae4a8;
+        }
+        .dr-stat .label {
+            font-size: 0.78rem; color: rgba(255,255,255,0.55);
+            margin-top: 0.3rem; line-height: 1.4;
+        }
+        .dr-pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .dr-pillar {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px; padding: 2rem;
+            transition: transform 0.3s, background 0.3s;
+        }
+        .dr-pillar:hover { transform: translateY(-3px); background: rgba(255,255,255,0.08); }
+        .dr-pillar-icon {
+            width: 48px; height: 48px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; margin-bottom: 1rem;
+            background: rgba(122,228,168,0.12);
+        }
+        .dr-pillar h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;
+        }
+        .dr-pillar p { color: rgba(255,255,255,0.6); font-size: 0.88rem; }
+        .dr-timeline-bar {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+            margin-top: 3rem; border-radius: 12px; overflow: hidden;
+        }
+        .dr-phase {
+            padding: 1.5rem 1.2rem; text-align: center;
+            border-right: 1px solid rgba(255,255,255,0.08);
+        }
+        .dr-phase:last-child { border-right: none; }
+        .dr-phase:nth-child(1) { background: rgba(122,228,168,0.08); }
+        .dr-phase:nth-child(2) { background: rgba(122,228,168,0.12); }
+        .dr-phase:nth-child(3) { background: rgba(122,228,168,0.16); }
+        .dr-phase:nth-child(4) { background: rgba(122,228,168,0.22); }
+        .dr-phase .phase-num {
+            font-size: 0.65rem; font-weight: 600; letter-spacing: 2px;
+            text-transform: uppercase; color: #7ae4a8; margin-bottom: 0.4rem;
+        }
+        .dr-phase h5 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.3rem; }
+        .dr-phase p { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
+
+        @media (max-width: 768px) {
+            .dr-hero-grid { grid-template-columns: 1fr; }
+            .dr-timeline-bar { grid-template-columns: 1fr 1fr; }
+        }
+
+        /* ===== MAP / CTA ===== */
+        .cta-section {
+            background: linear-gradient(160deg, var(--emerald-dark), var(--emerald), var(--ocean));
+            text-align: center; color: var(--white);
+        }
+        .cta-section .section-label { color: #7ae4a8; }
+        .cta-section .section-title { color: var(--white); }
+        .cta-section p { color: rgba(255,255,255,0.75); margin-bottom: 2rem; font-size: 1.05rem; }
+        .map-embed {
+            max-width: 900px; margin: 2.5rem auto 0;
+            border-radius: 16px; overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+            background: rgba(255,255,255,0.1);
+            aspect-ratio: 16/9;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .map-embed iframe { width: 100%; height: 100%; border: 0; }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--dark); color: rgba(255,255,255,0.6);
+            padding: 3rem 2rem;
+        }
+        .footer-inner {
+            max-width: 1100px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 1rem;
+        }
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            color: var(--white); font-size: 1.1rem; font-weight: 700;
+        }
+        .footer-logo span { color: #7ae4a8; }
+        footer p { font-size: 0.82rem; }
+        .footer-links { display: flex; gap: 1.5rem; }
+        .footer-links a {
+            color: rgba(255,255,255,0.5); text-decoration: none;
+            font-size: 0.82rem; transition: color 0.2s;
+        }
+        .footer-links a:hover { color: #7ae4a8; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            nav.open .nav-links {
+                display: flex; flex-direction: column;
+                position: absolute; top: 64px; left: 0; right: 0;
+                background: var(--emerald-dark); padding: 1.5rem 2rem;
+                gap: 1rem;
+            }
+            .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .wildlife-banner { grid-template-columns: 1fr; }
+            .attractions-grid { grid-template-columns: 1fr; }
+            .footer-inner { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav id="navbar">
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">Montserrat<span>.</span></a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#history">History</a></li>
+            <li><a href="#attractions">Attractions</a></li>
+            <li><a href="#wildlife">Wildlife</a></li>
+            <li><a href="#digital-residency">Digital Residency</a></li>
+            <li><a href="#visit">Plan Your Visit</a></li>
+        </ul>
+        <button class="hamburger" onclick="document.getElementById('navbar').classList.toggle('open')" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">British Overseas Territory</div>
+        <h1>The <em>Emerald Isle</em> of the Caribbean</h1>
+        <p>Where lush green mountains meet volcanic wonder — discover Montserrat, a Caribbean gem shaped by nature's most powerful forces.</p>
+        <div class="hero-cta">
+            <a href="#attractions" class="btn btn-primary">Explore the Island</a>
+            <a href="#history" class="btn btn-outline">Our Story</a>
+        </div>
+    </div>
+    <div class="scroll-indicator">
+        <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+</section>
+
+<!-- Quick Facts -->
+<section>
+    <div class="container">
+        <div class="section-label">At a Glance</div>
+        <div class="section-title">Quick Facts</div>
+        <div class="facts-grid">
+            <div class="fact-card">
+                <div class="fact-icon green">🏝️</div>
+                <div class="fact-value">104 km²</div>
+                <div class="fact-label">Island Area</div>
+            </div>
+            <div class="fact-card">
+                <div class="fact-icon blue">🌡️</div>
+                <div class="fact-value">26°C</div>
+                <div class="fact-label">Average Temperature</div>
+            </div>
+            <div class="fact-card">
+                <div class="fact-icon red">🌋</div>
+                <div class="fact-value">1,050m</div>
+                <div class="fact-label">Soufrière Hills Peak</div>
+            </div>
+            <div class="fact-card">
+                <div class="fact-icon amber">☘️</div>
+                <div class="fact-value">1632</div>
+                <div class="fact-label">Year of Irish Settlement</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About -->
+<section id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-image">
+                <div class="about-image-inner">🏔️</div>
+            </div>
+            <div class="about-text">
+                <div class="section-label">Discover</div>
+                <div class="section-title">An Island Like No Other</div>
+                <p>Montserrat lies in the Lesser Antilles chain, approximately 27 miles southwest of Antigua and 30 miles northwest of Guadeloupe. Known affectionately as the "Emerald Isle," the nickname reflects both its lush, mountainous landscape and its deep Irish heritage.</p>
+
+                <h3>Irish Roots, Caribbean Soul</h3>
+                <p>Colonized in 1632 by Irish Catholics from nearby Saint Kitts, Montserrat is the only place outside Ireland to declare St. Patrick's Day an official public holiday. The island's culture weaves together Irish, African, and Caribbean traditions into something utterly unique.</p>
+
+                <h3>Shaped by Fire</h3>
+                <p>The 1995 eruption of the Soufrière Hills volcano transformed the island forever. The southern two-thirds — including the capital Plymouth — became an exclusion zone. Today, Montserrat is a tale of two halves: the vibrant, green north and the ashen, haunting south.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- History Timeline -->
+<section class="timeline-section" id="history">
+    <div class="container">
+        <div class="section-label">Through the Ages</div>
+        <div class="section-title">A Rich & Dramatic History</div>
+        <div class="section-subtitle">From ancient settlements to volcanic rebirth, Montserrat's story is one of resilience.</div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">~3000 BCE</div>
+                <div class="timeline-title">First Inhabitants</div>
+                <div class="timeline-desc">The earliest known inhabitants — Amerindian peoples — arrived on the island, leaving behind traces of an ancient civilization.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1493</div>
+                <div class="timeline-title">Columbus Sights the Island</div>
+                <div class="timeline-desc">Christopher Columbus spotted the island during his second voyage and named it Santa María de Montserrate after the abbey in Spain.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1632</div>
+                <div class="timeline-title">Irish Catholic Settlement</div>
+                <div class="timeline-desc">Irish Catholics from nearby Saint Kitts established the first European settlement, beginning a unique cultural legacy that endures today.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1768</div>
+                <div class="timeline-title">St. Patrick's Day Uprising</div>
+                <div class="timeline-desc">An attempted slave revolt on March 17th is now commemorated alongside Irish heritage during St. Patrick's Week celebrations.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1995</div>
+                <div class="timeline-title">Soufrière Hills Erupts</div>
+                <div class="timeline-desc">After centuries of dormancy, the volcano roared back to life, beginning a series of eruptions that would reshape the island's geography and future.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1997</div>
+                <div class="timeline-title">The Great Evacuation</div>
+                <div class="timeline-desc">A devastating eruption killed 19 people and buried the capital Plymouth in ash. The southern two-thirds of the island became a permanent exclusion zone.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">Today</div>
+                <div class="timeline-title">Resilience & Renewal</div>
+                <div class="timeline-desc">Montserrat thrives in the north, with a new capital being built at Little Bay. The island markets itself as the "Pompeii of the Caribbean," drawing visitors to its unique story.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Attractions -->
+<section id="attractions">
+    <div class="container">
+        <div class="section-label">Explore</div>
+        <div class="section-title">Top Attractions</div>
+        <div class="section-subtitle">From volcanic landscapes to pristine beaches, Montserrat offers experiences found nowhere else on Earth.</div>
+
+        <div class="attractions-grid">
+            <div class="attraction-card">
+                <div class="attraction-visual volcano">🌋</div>
+                <div class="attraction-body">
+                    <span class="attraction-tag tag-adventure">Adventure</span>
+                    <h3>Soufrière Hills Volcano</h3>
+                    <p>Visit the still-active volcano and the buried capital of Plymouth — the "Pompeii of the Caribbean." Guided tours offer views of the smoking summit and the haunting exclusion zone.</p>
+                </div>
+            </div>
+            <div class="attraction-card">
+                <div class="attraction-visual beach">🏖️</div>
+                <div class="attraction-body">
+                    <span class="attraction-tag tag-nature">Nature</span>
+                    <h3>Rendezvous Bay Beach</h3>
+                    <p>The island's only white sand beach, accessible by boat or a strenuous coastal hike. Crystal-clear waters make it perfect for swimming, diving, and snorkeling.</p>
+                </div>
+            </div>
+            <div class="attraction-card">
+                <div class="attraction-visual forest">🌿</div>
+                <div class="attraction-body">
+                    <span class="attraction-tag tag-nature">Nature</span>
+                    <h3>Centre Hills Rainforest</h3>
+                    <p>A primeval tropical rainforest rising to over 700m, recognized as one of the Caribbean's most biodiverse birding areas. Home to Antillean crested hummingbirds and rare forest thrushes.</p>
+                </div>
+            </div>
+            <div class="attraction-card">
+                <div class="attraction-visual culture">☘️</div>
+                <div class="attraction-body">
+                    <span class="attraction-tag tag-culture">Culture</span>
+                    <h3>St. Patrick's Week Festival</h3>
+                    <p>The only place outside Ireland to celebrate St. Patrick's Day as a public holiday. A week of vibrant festivities blending Irish and Afro-Caribbean traditions.</p>
+                </div>
+            </div>
+            <div class="attraction-card">
+                <div class="attraction-visual diving">🤿</div>
+                <div class="attraction-body">
+                    <span class="attraction-tag tag-water">Water Sports</span>
+                    <h3>Diving & Snorkeling</h3>
+                    <p>Explore vibrant coral reefs, underwater caves, and volcanic rock formations. The island's relatively untouched marine environment offers an exceptional underwater experience.</p>
+                </div>
+            </div>
+            <div class="attraction-card">
+                <div class="attraction-visual museum">🏛️</div>
+                <div class="attraction-body">
+                    <span class="attraction-tag tag-culture">Culture</span>
+                    <h3>Montserrat National Museum</h3>
+                    <p>From ancient Amerindian artifacts to the dramatic volcanic eruptions, the museum tells the complete story of this remarkable island through photographs and exhibits.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Wildlife -->
+<section id="wildlife">
+    <div class="container">
+        <div class="section-label">Biodiversity</div>
+        <div class="section-title">Remarkable Wildlife</div>
+        <div class="section-subtitle">A small island with an extraordinary array of species.</div>
+
+        <div class="wildlife-banner">
+            <div>
+                <h3>Home to the "Mountain Chicken"</h3>
+                <p>Despite its name, the "mountain chicken" is actually a critically endangered giant ditch frog — one of the world's rarest amphibians. Montserrat is one of only two places on Earth where it survives.</p>
+                <p>The island also hosts a remarkable diversity of invertebrates, with over 1,200 documented species, and its Centre Hills rainforest is a globally important bird area.</p>
+            </div>
+            <div class="wildlife-stats">
+                <div class="wildlife-stat">
+                    <div class="num">1,241</div>
+                    <div class="label">Invertebrate Species</div>
+                </div>
+                <div class="wildlife-stat">
+                    <div class="num">718</div>
+                    <div class="label">Beetle Species</div>
+                </div>
+                <div class="wildlife-stat">
+                    <div class="num">34</div>
+                    <div class="label">Bird Species</div>
+                </div>
+                <div class="wildlife-stat">
+                    <div class="num">1</div>
+                    <div class="label">Giant Ditch Frog</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Digital Residency -->
+<section class="dr-section" id="digital-residency">
+    <div class="container">
+        <div class="section-label">Digital Future</div>
+        <div class="section-title">Digital Residency Programme</div>
+        <div class="section-subtitle">Montserrat is pioneering a premium digital residency ecosystem — anchored in legislation, powered by blockchain, and designed for global professionals.</div>
+
+        <div class="dr-hero-grid">
+            <div class="dr-intro">
+                <p>Under the proposed <strong>Digital Residency Bill 2025</strong>, Montserrat is building a high-assurance digital identity platform targeted at vetted global professionals, entrepreneurs, and digital founders.</p>
+                <p>Unlike low-friction, high-volume digital ID programmes elsewhere, Montserrat's approach prioritises quality over quantity — using premium pricing, multi-year commitments, and rigorous due diligence to build a credible, bank-usable credential backed by British Overseas Territory legal standards.</p>
+
+                <h3>Zero-Capex Model</h3>
+                <p>Partnered with the Future Citizen Bureau (FCB), the government bears no upfront financial risk. FCB funds all platform development, compliance operations, security, and global marketing through a revenue-sharing arrangement.</p>
+
+                <h3>Legislative Framework</h3>
+                <p>The Bill establishes a Digital Residency Office managed by a Director, with mandatory background checks through the Financial Intelligence Unit (FIU). All applicant data is encrypted and blockchain-authenticated, ensuring sovereign data control.</p>
+            </div>
+            <div class="dr-stats-grid">
+                <div class="dr-stat">
+                    <div class="value">$73M+</div>
+                    <div class="label">Projected Government Revenue<br>(10-Year)</div>
+                </div>
+                <div class="dr-stat">
+                    <div class="value">$298M+</div>
+                    <div class="label">Total Ecosystem<br>Gross Receipts</div>
+                </div>
+                <div class="dr-stat">
+                    <div class="value">$3,500</div>
+                    <div class="label">3-Year Entry Fee<br>(Premium Tier)</div>
+                </div>
+                <div class="dr-stat">
+                    <div class="value">30%</div>
+                    <div class="label">Conservative Annual<br>Growth Cap</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dr-pillars">
+            <div class="dr-pillar">
+                <div class="dr-pillar-icon">🔐</div>
+                <h4>High-Assurance Identity</h4>
+                <p>Bank-usable digital credentials backed by British legal frameworks, rigorous KYC/AML due diligence, and blockchain-verified data integrity.</p>
+            </div>
+            <div class="dr-pillar">
+                <div class="dr-pillar-icon">⛓️</div>
+                <h4>Blockchain Infrastructure</h4>
+                <p>Sovereign blockchain ledger for identity management, document authentication, and potential future stable-coin transactional infrastructure.</p>
+            </div>
+            <div class="dr-pillar">
+                <div class="dr-pillar-icon">💼</div>
+                <h4>Business Expansion</h4>
+                <p>Future pathways include International Business Company (IBC) registrations, digital wallets, and corporate services — all scaling revenue organically.</p>
+            </div>
+            <div class="dr-pillar">
+                <div class="dr-pillar-icon">🏛️</div>
+                <h4>Sovereign Control</h4>
+                <p>The Minister retains full authority over denials, revocations, and blacklisted jurisdictions — ensuring the programme remains aligned with national interests.</p>
+            </div>
+        </div>
+
+        <div class="dr-timeline-bar">
+            <div class="dr-phase">
+                <div class="phase-num">Phase 1</div>
+                <h5>Legislation</h5>
+                <p>Bill passage &amp; Office setup</p>
+            </div>
+            <div class="dr-phase">
+                <div class="phase-num">Phase 2</div>
+                <h5>Platform Launch</h5>
+                <p>Digital residency applications open</p>
+            </div>
+            <div class="dr-phase">
+                <div class="phase-num">Phase 3</div>
+                <h5>Ecosystem Growth</h5>
+                <p>IBC registrations &amp; digital wallets</p>
+            </div>
+            <div class="dr-phase">
+                <div class="phase-num">Phase 4</div>
+                <h5>Full Scale</h5>
+                <p>Stable-coin &amp; transactional infrastructure</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Plan Your Visit -->
+<section class="visit-section" id="visit">
+    <div class="container">
+        <div class="section-label">Travel</div>
+        <div class="section-title">Plan Your Visit</div>
+        <div class="section-subtitle">Everything you need to know before traveling to the Emerald Isle.</div>
+
+        <div class="visit-grid">
+            <div class="visit-card">
+                <h3>✈️ Getting There</h3>
+                <ul>
+                    <li>Fly via Antigua (V.C. Bird International Airport)</li>
+                    <li>Short connecting flight to John A. Osborne Airport</li>
+                    <li>Ferry service from Antigua available</li>
+                    <li>No direct flights from North America or Europe</li>
+                </ul>
+            </div>
+            <div class="visit-card">
+                <h3>🗓️ Best Time to Visit</h3>
+                <p>The dry season from <strong>December to April</strong> is ideal, with temperatures between 25–28°C. Hurricane season runs June through November, though Montserrat is relatively sheltered.</p>
+            </div>
+            <div class="visit-card">
+                <h3>💰 Currency & Language</h3>
+                <ul>
+                    <li>Official currency: East Caribbean Dollar (XCD)</li>
+                    <li>US dollars widely accepted</li>
+                    <li>Official language: English</li>
+                    <li>Local Creole also spoken</li>
+                </ul>
+            </div>
+            <div class="visit-card">
+                <h3>⚠️ Exclusion Zone</h3>
+                <p>The southern part of the island remains restricted due to volcanic activity. Guided tours are available subject to seismic conditions. Always follow local guidance and respect restricted areas.</p>
+            </div>
+            <div class="visit-card">
+                <h3>🏨 Where to Stay</h3>
+                <p>Accommodation ranges from cozy guesthouses and villas to eco-lodges. Most options are in the northern part of the island around Salem, Olveston, and Woodlands.</p>
+            </div>
+            <div class="visit-card">
+                <h3>🍽️ Local Flavours</h3>
+                <ul>
+                    <li>Goat water (national dish — hearty goat stew)</li>
+                    <li>Fresh seafood and Caribbean cuisine</li>
+                    <li>Rum punch and local spirits</li>
+                    <li>St. Patrick's celebrations feature traditional food</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Map & CTA -->
+<section class="cta-section">
+    <div class="container">
+        <div class="section-label">Location</div>
+        <div class="section-title">Find Us in the Caribbean</div>
+        <p>Montserrat sits in the Leeward Islands of the Lesser Antilles, between Antigua and Guadeloupe.</p>
+        <div class="map-embed">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121529.3901025!2d-62.24!3d16.74!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c0f55834bf1d765%3A0xf0a0d20db40dab56!2sMontserrat!5e0!3m2!1sen!2sus!4v1710000000000!5m2!1sen!2sus"
+                allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-inner">
+        <div>
+            <div class="footer-logo">Montserrat<span>.</span></div>
+            <p style="margin-top:0.4rem;">The Emerald Isle of the Caribbean</p>
+        </div>
+        <div class="footer-links">
+            <a href="#about">About</a>
+            <a href="#history">History</a>
+            <a href="#attractions">Attractions</a>
+            <a href="#visit">Visit</a>
+        </div>
+        <p>&copy; 2026 Montserrat Island Guide. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Smooth scroll for nav links & close mobile menu
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('navbar').classList.remove('open');
+        });
+    });
+
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fact-card, .attraction-card, .visit-card, .timeline-item, .dr-pillar, .dr-stat, .dr-phase').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+</script>
+
+</body>
+</html>

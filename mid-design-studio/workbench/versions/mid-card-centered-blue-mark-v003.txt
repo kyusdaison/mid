@@ -1,0 +1,9 @@
+Version: v003
+Label: centered-blue-mark
+Created: 2026-03-15T11:29:12+11:00
+HTML Source: /Users/kyusdaison/Montserrat/mid-design-studio/source/mid-card-design-v002-back-center-logo.html
+Preview Source: /Users/kyusdaison/Montserrat/mid-design-studio/workbench/versions/mid-card-back-center-logo-v002-preview.png
+Archived HTML: /Users/kyusdaison/Montserrat/mid-design-studio/workbench/versions/mid-card-centered-blue-mark-v003.html
+Archived Preview: /Users/kyusdaison/Montserrat/mid-design-studio/workbench/versions/mid-card-centered-blue-mark-v003-preview.png
+Archived PDF: /Users/kyusdaison/Montserrat/mid-design-studio/exports/pdf/versions/mid-card-centered-blue-mark-v003.pdf
+Notes: Moved the MID secure-element mark to the card back center, strengthened the blue circuitry, and increased chip/logo clarity.

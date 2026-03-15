@@ -1,0 +1,9 @@
+Version: v009
+Label: center-mark-simple-smaller
+Created: 2026-03-15T12:47:57+11:00
+HTML Source: /Users/kyusdaison/Montserrat/mid-design-studio/source/mid-card-design-v010-center-mark-v006-smaller.html
+Preview Source: /tmp/mid-card-center-mark-v006-smaller-preview.png
+Archived HTML: /Users/kyusdaison/Montserrat/mid-design-studio/workbench/versions/mid-card-center-mark-simple-smaller-v009.html
+Archived Preview: /Users/kyusdaison/Montserrat/mid-design-studio/workbench/versions/mid-card-center-mark-simple-smaller-v009-preview.png
+Archived PDF: /Users/kyusdaison/Montserrat/mid-design-studio/exports/pdf/versions/mid-card-center-mark-simple-smaller-v009.pdf
+Notes: Restored the simpler MID emblem branch and reduced the central mark slightly while preserving the restrained circuitry and original layout balance.

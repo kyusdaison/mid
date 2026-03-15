@@ -1,0 +1,814 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Montserrat Digital Identity Card</title>
+    <style>
+      :root {
+        --bg: #050608;
+        --panel: #2c2f39;
+        --panel-edge: rgba(127, 136, 168, 0.2);
+        --panel-top: rgba(255, 255, 255, 0.04);
+        --text-strong: rgba(255, 255, 255, 0.9);
+        --text-mid: rgba(255, 255, 255, 0.44);
+        --text-soft: rgba(255, 255, 255, 0.26);
+        --accent: #274d8c;
+        --accent-soft: rgba(44, 95, 177, 0.42);
+        --line: rgba(78, 109, 169, 0.25);
+        --emerald: #38d39f;
+      }
+
+      @page {
+        size: 16in 9in;
+        margin: 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        background: var(--bg);
+        color: var(--text-strong);
+        font-family: "Avenir Next", "SF Pro Display", "Inter", "Helvetica Neue", Arial, sans-serif;
+      }
+
+      body {
+        display: grid;
+        place-items: center;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .sheet {
+        position: relative;
+        width: 1600px;
+        height: 900px;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 50% 8%, rgba(255, 255, 255, 0.024), transparent 24%),
+          radial-gradient(circle at 26% 72%, rgba(39, 77, 140, 0.1), transparent 24%),
+          radial-gradient(circle at 78% 74%, rgba(39, 77, 140, 0.1), transparent 24%),
+          linear-gradient(180deg, #030406 0%, #050608 100%);
+      }
+
+      .header {
+        position: absolute;
+        top: 88px;
+        left: 0;
+        right: 0;
+        text-align: center;
+      }
+
+      .header h1 {
+        margin: 0;
+        font-size: 50px;
+        font-weight: 730;
+        letter-spacing: -0.055em;
+      }
+
+      .header p {
+        margin: 16px 0 0;
+        color: rgba(255, 255, 255, 0.15);
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+      }
+
+      .canvas {
+        position: absolute;
+        inset: 246px 32px 84px;
+        display: grid;
+        grid-template-columns: 1fr 136px 1fr;
+        align-items: center;
+      }
+
+      .stack {
+        position: relative;
+        display: grid;
+        justify-items: center;
+      }
+
+      .stack::before {
+        content: "";
+        position: absolute;
+        top: 114px;
+        width: 700px;
+        height: 420px;
+        border-radius: 60px;
+        background:
+          radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.02), transparent 56%),
+          radial-gradient(circle at 50% 50%, rgba(18, 27, 49, 0.34), transparent 70%);
+        filter: blur(18px);
+        opacity: 0.78;
+      }
+
+      .face-tag {
+        margin-bottom: 22px;
+        color: rgba(37, 73, 131, 0.82);
+        font-size: 21px;
+        font-weight: 800;
+        letter-spacing: 0.36em;
+      }
+
+      .id-card {
+        position: relative;
+        width: 648px;
+        height: 398px;
+        border-radius: 31px;
+        background:
+          linear-gradient(90deg, rgba(255, 255, 255, 0.035), transparent 24%, rgba(255, 255, 255, 0.045) 72%, rgba(255, 255, 255, 0.015) 100%),
+          linear-gradient(180deg, #23262f 0%, #30333d 100%);
+        border: 1px solid var(--panel-edge);
+        box-shadow:
+          0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+          0 28px 66px rgba(0, 0, 0, 0.52),
+          0 0 52px rgba(0, 0, 0, 0.38);
+        overflow: hidden;
+      }
+
+      .id-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 18% 92%, rgba(59, 95, 173, 0.15), transparent 24%),
+          radial-gradient(circle at 88% 84%, rgba(255, 255, 255, 0.03), transparent 24%),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.055) 100%);
+        pointer-events: none;
+      }
+
+      .id-card::after {
+        content: "";
+        position: absolute;
+        inset: 11px;
+        border-radius: 22px;
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        pointer-events: none;
+      }
+
+      .corners span {
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        border-color: rgba(196, 205, 234, 0.2);
+      }
+
+      .corners span:nth-child(1) {
+        top: 18px;
+        left: 18px;
+        border-top: 2px solid;
+        border-left: 2px solid;
+      }
+
+      .corners span:nth-child(2) {
+        top: 18px;
+        right: 18px;
+        border-top: 2px solid;
+        border-right: 2px solid;
+      }
+
+      .corners span:nth-child(3) {
+        bottom: 18px;
+        left: 18px;
+        border-bottom: 2px solid;
+        border-left: 2px solid;
+      }
+
+      .corners span:nth-child(4) {
+        bottom: 18px;
+        right: 18px;
+        border-bottom: 2px solid;
+        border-right: 2px solid;
+      }
+
+      .front-inner {
+        position: relative;
+        z-index: 1;
+        height: 100%;
+        padding: 44px 46px 34px;
+      }
+
+      .microline {
+        color: var(--text-soft);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+      }
+
+      .country {
+        margin-top: 8px;
+        font-size: 21px;
+        color: rgba(255, 255, 255, 0.5);
+        font-weight: 760;
+        letter-spacing: 0.01em;
+      }
+
+      .subline {
+        margin-top: 12px;
+        color: rgba(49, 94, 176, 0.78);
+        font-size: 13px;
+        font-weight: 750;
+        letter-spacing: 0.17em;
+        text-transform: uppercase;
+      }
+
+      .flag {
+        position: absolute;
+        top: 42px;
+        right: 46px;
+        width: 64px;
+        height: 42px;
+        border-radius: 6px;
+        overflow: hidden;
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+        background: #133174;
+      }
+
+      .flag .union {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(26deg, transparent 42%, #fff 42%, #fff 48%, #c21f2d 48%, #c21f2d 52%, #fff 52%, #fff 58%, transparent 58%),
+          linear-gradient(-26deg, transparent 42%, #fff 42%, #fff 48%, #c21f2d 48%, #c21f2d 52%, #fff 52%, #fff 58%, transparent 58%),
+          linear-gradient(0deg, transparent 38%, #fff 38%, #fff 62%, transparent 62%),
+          linear-gradient(90deg, transparent 40%, #fff 40%, #fff 60%, transparent 60%),
+          linear-gradient(0deg, transparent 44%, #c21f2d 44%, #c21f2d 56%, transparent 56%),
+          linear-gradient(90deg, transparent 46%, #c21f2d 46%, #c21f2d 54%, transparent 54%);
+        clip-path: inset(0 44% 44% 0);
+      }
+
+      .flag .shield {
+        position: absolute;
+        right: 7px;
+        top: 8px;
+        width: 18px;
+        height: 26px;
+        border-radius: 0 0 10px 10px;
+        background:
+          linear-gradient(180deg, #1f764b 0%, #1b6d44 62%, #f0b24d 62%, #f0b24d 100%);
+        border: 1px solid rgba(255, 255, 255, 0.55);
+      }
+
+      .front-grid {
+        margin-top: 22px;
+        display: grid;
+        grid-template-columns: 126px 1fr;
+        column-gap: 26px;
+      }
+
+      .portrait {
+        position: relative;
+        width: 108px;
+        height: 140px;
+        margin-top: 26px;
+        border-radius: 14px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.04);
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+      }
+
+      .portrait img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 58% 28%;
+        filter: grayscale(0.92) brightness(0.8) contrast(0.98);
+      }
+
+      .portrait::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent 32%),
+          radial-gradient(circle at 55% 20%, rgba(255, 255, 255, 0.08), transparent 28%),
+          linear-gradient(180deg, transparent 60%, rgba(7, 8, 12, 0.22));
+        pointer-events: none;
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4px 18px;
+        align-content: start;
+      }
+
+      .field {
+        min-height: 36px;
+      }
+
+      .field.wide {
+        grid-column: 1 / span 2;
+      }
+
+      .field .label {
+        color: var(--text-soft);
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+      }
+
+      .field .value {
+        margin-top: 5px;
+        color: rgba(255, 255, 255, 0.52);
+        font-size: 14px;
+        font-weight: 760;
+        letter-spacing: 0.03em;
+      }
+
+      .field .value.emphasis {
+        font-size: 15px;
+      }
+
+      .ghost-codes {
+        position: absolute;
+        right: 76px;
+        top: 178px;
+        color: rgba(255, 255, 255, 0.11);
+        font-size: 11px;
+        line-height: 1.35;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        text-align: right;
+      }
+
+      .serial {
+        position: absolute;
+        left: 46px;
+        bottom: 28px;
+        color: rgba(255, 255, 255, 0.38);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+      }
+
+      .verified {
+        position: absolute;
+        right: 36px;
+        bottom: 18px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 12px 8px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.34);
+        font-size: 8px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        box-shadow: none;
+      }
+
+      .verified .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--emerald);
+        box-shadow: 0 0 12px rgba(56, 211, 159, 0.8);
+      }
+
+      .front-seal {
+        position: absolute;
+        right: 34px;
+        bottom: 14px;
+        width: 54px;
+        height: 54px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        opacity: 0.22;
+      }
+
+      .front-seal::before,
+      .front-seal::after {
+        content: "";
+        position: absolute;
+        inset: 9px;
+        border-radius: 50%;
+        border: 1px solid rgba(43, 84, 154, 0.18);
+      }
+
+      .front-seal::after {
+        inset: 17px;
+        border-color: rgba(255, 255, 255, 0.06);
+      }
+
+      .front-seal span {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        color: rgba(75, 118, 188, 0.38);
+        font-size: 22px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+      }
+
+      .watermark {
+        position: absolute;
+        left: 34px;
+        bottom: 12px;
+        width: 96px;
+        height: 34px;
+        opacity: 0.28;
+      }
+
+      .watermark::before,
+      .watermark::after {
+        content: "";
+        position: absolute;
+        border: 1px solid var(--line);
+      }
+
+      .watermark::before {
+        inset: 0 auto auto 0;
+        width: 74px;
+        height: 26px;
+        border-top: none;
+        border-right: none;
+        transform: skewX(-40deg);
+      }
+
+      .watermark::after {
+        right: 0;
+        bottom: 0;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+      }
+
+      .back-inner {
+        position: relative;
+        z-index: 1;
+        height: 100%;
+        padding: 66px 34px 28px;
+      }
+
+      .back-topband {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 28px;
+        height: 66px;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.18));
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .back-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px 28px;
+      }
+
+      .chip-row {
+        display: grid;
+        grid-template-columns: 1fr 122px 106px;
+        align-items: center;
+        gap: 18px;
+        margin-top: 18px;
+      }
+
+      .mid-chip {
+        justify-self: center;
+        width: 92px;
+        height: 64px;
+        border-radius: 8px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        display: grid;
+        place-items: center;
+        color: rgba(255, 255, 255, 0.28);
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: 0.28em;
+        position: relative;
+      }
+
+      .mid-chip span {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 8px;
+        color: rgba(255, 255, 255, 0.12);
+        font-size: 7px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .mid-chip::before,
+      .mid-chip::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 14px;
+        border-top: 1px solid var(--line);
+      }
+
+      .mid-chip::before {
+        left: -10px;
+      }
+
+      .mid-chip::after {
+        right: -10px;
+      }
+
+      .secure-chip {
+        width: 88px;
+        height: 68px;
+        border-radius: 12px;
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(206, 210, 224, 0.74) 48%, rgba(255, 255, 255, 0.96)),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.08));
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18) inset;
+        position: relative;
+      }
+
+      .secure-chip::before,
+      .secure-chip::after {
+        content: "";
+        position: absolute;
+        inset: 8px;
+        border: 1px solid rgba(106, 114, 138, 0.22);
+      }
+
+      .secure-chip::after {
+        inset: 8px auto auto 8px;
+        width: 22px;
+        height: 22px;
+        border-right: none;
+        border-bottom: none;
+      }
+
+      .secure-chip i {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, transparent 27%, rgba(96, 104, 128, 0.18) 27%, rgba(96, 104, 128, 0.18) 28%, transparent 28%, transparent 55%, rgba(96, 104, 128, 0.18) 55%, rgba(96, 104, 128, 0.18) 56%, transparent 56%),
+          linear-gradient(180deg, transparent 33%, rgba(96, 104, 128, 0.16) 33%, rgba(96, 104, 128, 0.16) 34%, transparent 34%, transparent 68%, rgba(96, 104, 128, 0.16) 68%, rgba(96, 104, 128, 0.16) 69%, transparent 69%);
+        border-radius: 12px;
+      }
+
+      .signature {
+        margin-top: 46px;
+        position: relative;
+      }
+
+      .signature .line {
+        border-top: 1px solid rgba(56, 83, 132, 0.45);
+        width: 100%;
+      }
+
+      .signature .caption {
+        margin-top: 10px;
+        color: rgba(255, 255, 255, 0.18);
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .mrz {
+        position: absolute;
+        left: 34px;
+        bottom: 16px;
+        color: rgba(255, 255, 255, 0.16);
+        font-family: "SF Mono", "Menlo", monospace;
+        font-size: 10px;
+        line-height: 1.45;
+        letter-spacing: 0.08em;
+      }
+
+      .qr {
+        position: absolute;
+        left: 34px;
+        bottom: 96px;
+        width: 58px;
+        height: 58px;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 2px;
+        opacity: 0.3;
+        position: absolute;
+      }
+
+      .qr span {
+        background: rgba(255, 255, 255, 0.22);
+      }
+
+      .qr i {
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border: 2px solid rgba(255, 255, 255, 0.24);
+      }
+
+      .qr i::after {
+        content: "";
+        position: absolute;
+        inset: 3px;
+        background: rgba(255, 255, 255, 0.16);
+      }
+
+      .qr .f1 {
+        left: 0;
+        top: 0;
+      }
+
+      .qr .f2 {
+        right: 0;
+        top: 0;
+      }
+
+      .qr .f3 {
+        left: 0;
+        bottom: 0;
+      }
+
+      .seal {
+        position: absolute;
+        right: 34px;
+        bottom: 48px;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 0 0 12px rgba(255, 255, 255, 0.01) inset;
+        opacity: 0.16;
+      }
+
+      .flip {
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .flip .arrow {
+        color: rgba(255, 255, 255, 0.1);
+        font-size: 74px;
+        font-weight: 200;
+        line-height: 1;
+      }
+
+      .flip .label {
+        color: rgba(255, 255, 255, 0.08);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.24em;
+      }
+
+      .footer-note {
+        position: absolute;
+        bottom: 18px;
+        right: 34px;
+        color: rgba(255, 255, 255, 0.06);
+        font-size: 12px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="sheet">
+      <header class="header">
+        <h1>Montserrat Digital Identity Card</h1>
+        <p>Front: Government authority with Sovereign Seal — Back: Secure Element chip identity</p>
+      </header>
+
+      <section class="canvas">
+        <div class="stack">
+          <div class="face-tag">FRONT</div>
+          <article class="id-card">
+            <div class="corners">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <div class="front-inner">
+              <div class="microline">British Overseas Territory</div>
+              <div class="country">MONTSERRAT</div>
+              <div class="subline">Digital Residency Card / Carte de résidence numérique</div>
+              <div class="flag">
+                <div class="union"></div>
+                <div class="shield"></div>
+              </div>
+
+              <div class="front-grid">
+                <div class="portrait">
+                  <img src="./assets/portrait-c.png" alt="Holder portrait" />
+                </div>
+                <div class="info-grid">
+                  <div class="field wide">
+                    <div class="label">Surname / Nom</div>
+                    <div class="value">NUO</div>
+                  </div>
+                  <div class="field wide">
+                    <div class="label">Given names / Prenom</div>
+                    <div class="value">WANG</div>
+                  </div>
+                  <div class="field">
+                    <div class="label">Sex / Sexe</div>
+                    <div class="value emphasis">F</div>
+                  </div>
+                  <div class="field">
+                    <div class="label">Date of birth / Date de naissance</div>
+                    <div class="value emphasis">13.07.1990</div>
+                  </div>
+                  <div class="field">
+                    <div class="label">Place of birth / Lieu de naissance</div>
+                    <div class="value emphasis">GUANGDONG</div>
+                  </div>
+                  <div class="field">
+                    <div class="label">Expiry date / Date d'expiration</div>
+                    <div class="value emphasis">11.02.2030</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ghost-codes">A73 0521<br />C91D 4E8A<br />3F6B 7201<br />E504 9AC3</div>
+              <div class="serial">MONX86220001</div>
+              <div class="verified"><span class="dot"></span>BLOCKCHAIN VERIFIED</div>
+              <div class="watermark"></div>
+              <div class="front-seal"><span>M</span></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="flip">
+          <div class="arrow">→</div>
+          <div class="label">FLIP</div>
+        </div>
+
+        <div class="stack">
+          <div class="face-tag">BACK</div>
+          <article class="id-card">
+            <div class="corners">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <div class="back-topband"></div>
+            <div class="back-inner">
+              <div class="back-grid">
+                <div class="field">
+                  <div class="label">Date of issue / Date de délivrance</div>
+                  <div class="value emphasis">2025.01.01</div>
+                </div>
+                <div class="field">
+                  <div class="label">Issuing authority / Autorité de délivrance</div>
+                  <div class="value emphasis">MONTSERRAT</div>
+                </div>
+                <div class="field">
+                  <div class="label">Height / Taille</div>
+                  <div class="value emphasis">1.68 m</div>
+                </div>
+                <div class="field">
+                  <div class="label">Document no. / No. de document</div>
+                  <div class="value emphasis">MONX86220001</div>
+                </div>
+              </div>
+
+              <div class="chip-row">
+                <div></div>
+                <div class="mid-chip">MID<span>secure element</span></div>
+                <div class="secure-chip"><i></i></div>
+              </div>
+
+              <div class="signature">
+                <div class="line"></div>
+                <div class="caption">Signature of holder / Signature du titulaire</div>
+              </div>
+
+              <div class="qr">
+                <i class="finder f1"></i><i class="finder f2"></i><i class="finder f3"></i>
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+
+              <div class="mrz">
+                IDMRS8622000100NUO&lt;&lt;WANG&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;<br />
+                9007135F3002115GBR&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;<br />
+                MONX86220001&lt;NUO&lt;&lt;WANG&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+              </div>
+
+              <div class="seal"></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <div class="footer-note">Concept reconstruction for Figma + PDF export</div>
+    </main>
+    <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  </body>
+</html>

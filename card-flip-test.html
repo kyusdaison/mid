@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Card Flip Test v2</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background: #0a0c14;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: sans-serif;
+    color: white;
+}
+
+.scene {
+    perspective: 1200px;
+    width: 440px;
+    height: 280px;
+}
+
+.flipper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: do-flip 8s ease-in-out forwards;
+}
+
+@keyframes do-flip {
+    0%   { transform: rotateY(0deg); }
+    15%  { transform: rotateY(0deg); }
+    35%  { transform: rotateY(180deg); }
+    65%  { transform: rotateY(180deg); }
+    85%  { transform: rotateY(360deg); }
+    100% { transform: rotateY(360deg); }
+}
+
+/* === NO backface-visibility — use visibility toggle instead === */
+.face {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+/* FRONT: visible 0-25%, hidden 25-75%, visible 75-100% */
+.face--front {
+    background: linear-gradient(160deg, #1C1E24, #2C2F38, #1D2027);
+    border: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 4px;
+    animation: front-vis 8s ease-in-out forwards;
+}
+
+@keyframes front-vis {
+    0%    { visibility: visible; }
+    24.9% { visibility: visible; }
+    25%   { visibility: hidden; }
+    74.9% { visibility: hidden; }
+    75%   { visibility: visible; }
+    100%  { visibility: visible; }
+}
+
+/* BACK: hidden 0-25%, visible 25-75%, hidden 75-100% */
+.face--back {
+    transform: rotateY(180deg);
+    background: linear-gradient(160deg, #1a1520, #201828, #261e30);
+    border: 1px solid rgba(100,140,255,0.1);
+    animation: back-vis 8s ease-in-out forwards;
+}
+
+@keyframes back-vis {
+    0%    { visibility: hidden; }
+    24.9% { visibility: hidden; }
+    25%   { visibility: visible; }
+    74.9% { visibility: visible; }
+    75%   { visibility: hidden; }
+    100%  { visibility: hidden; }
+}
+
+/* === BACK FACE CONTENT === */
+.back-magstripe {
+    position: absolute;
+    top: 14px;
+    left: 0; right: 0;
+    height: 24px;
+    background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.65) 40%, rgba(0,0,0,0.5));
+}
+
+.back-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 28px;
+    font-weight: 700;
+    color: rgba(100,160,255,0.8);
+    letter-spacing: 6px;
+}
+
+.back-fields {
+    position: absolute;
+    top: 50px;
+    left: 22px;
+    right: 22px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px 14px;
+}
+.field-label { font-family: monospace; font-size: 5.5px; color: rgba(255,255,255,0.25); text-transform: uppercase; }
+.field-value { font-family: monospace; font-size: 9px; font-weight: 600; color: rgba(255,255,255,0.55); }
+
+.back-chip {
+    position: absolute;
+    right: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 36px;
+    background: linear-gradient(145deg, #C9A84C, #E8CC6A 20%, #D4B050 40%, #B8943C 60%, #D4B050 80%);
+    border-radius: 6px;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+
+.back-mrz {
+    position: absolute;
+    bottom: 8px;
+    left: 0; right: 0;
+    padding: 5px 20px 0;
+    font-family: monospace;
+    font-size: 5.5px;
+    letter-spacing: 0.12em;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.12);
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+h2 {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: rgba(255,255,255,0.4);
+    font-weight: 400;
+}
+</style>
+</head>
+<body>
+
+<h2>Card Flip v2 — visibility toggle (no backface-visibility)</h2>
+
+<div class="scene">
+    <div class="flipper">
+        <!-- FRONT -->
+        <div class="face face--front">
+            FRONT FACE
+        </div>
+        <!-- BACK -->
+        <div class="face face--back">
+            <div class="back-magstripe"></div>
+            <div class="back-label">BACK FACE</div>
+            <div class="back-fields">
+                <div><div class="field-label">Date of Issue</div><div class="field-value">2025.01.01</div></div>
+                <div><div class="field-label">Authority</div><div class="field-value">MONTSERRAT</div></div>
+                <div><div class="field-label">Doc No.</div><div class="field-value">MONX86220001</div></div>
+            </div>
+            <div class="back-chip"></div>
+            <div class="back-mrz">
+                <div>IDMSR8622000100NUO&lt;&lt;WANG&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</div>
+                <div>9007135F3002115GBR&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

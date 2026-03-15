@@ -1,0 +1,9 @@
+Version: v006
+Label: center-mark-minimal
+Created: 2026-03-15T11:54:33+11:00
+HTML Source: /Users/kyusdaison/Montserrat/mid-design-studio/source/mid-card-design-v006-center-mark-minimal.html
+Preview Source: /tmp/mid-card-center-mark-minimal-preview.png
+Archived HTML: /Users/kyusdaison/Montserrat/mid-design-studio/workbench/versions/mid-card-center-mark-minimal-v006.html
+Archived Preview: /Users/kyusdaison/Montserrat/mid-design-studio/workbench/versions/mid-card-center-mark-minimal-v006-preview.png
+Archived PDF: /Users/kyusdaison/Montserrat/mid-design-studio/exports/pdf/versions/mid-card-center-mark-minimal-v006.pdf
+Notes: Refined the center MID emblem into a smaller, simpler premium mark with fewer circuit traces, keeping the rest of the back design unchanged.

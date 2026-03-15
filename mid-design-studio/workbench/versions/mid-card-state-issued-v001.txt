@@ -1,0 +1,9 @@
+Version: v001
+Label: state-issued
+Created: 2026-03-15T10:32:07+11:00
+HTML Source: /Users/kyusdaison/Montserrat/mid-design-studio/workbench/reference-source.html
+Preview Source: /Users/kyusdaison/Montserrat/mid-design-studio/workbench/state-identity-preview.png
+Archived HTML: /Users/kyusdaison/Montserrat/mid-design-studio/workbench/versions/mid-card-state-issued-v001.html
+Archived Preview: /Users/kyusdaison/Montserrat/mid-design-studio/workbench/versions/mid-card-state-issued-v001-preview.png
+Archived PDF: /Users/kyusdaison/Montserrat/mid-design-studio/exports/pdf/versions/mid-card-state-issued-v001.pdf
+Notes: First archived version under the new no-overwrite workflow. Formalized hierarchy and more state-issued tone.

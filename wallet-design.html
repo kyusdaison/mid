@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MID Wallet — Design Preview</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40;wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #4A8FE7;
+            --blue-dim: rgba(74,143,231,0.12);
+            --green: #34D399;
+            --green-glow: rgba(52,211,153,0.35);
+            --surface-0: #000000;
+            --surface-1: #0D0D0F;
+            --surface-2: #141416;
+            --surface-3: #1A1A1E;
+            --surface-4: #222226;
+            --border-subtle: rgba(255,255,255,0.04);
+            --border-medium: rgba(255,255,255,0.07);
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255,255,255,0.55);
+            --text-tertiary: rgba(255,255,255,0.30);
+            --text-quaternary: rgba(255,255,255,0.18);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #08090e;
+            font-family: 'Inter', -apple-system, 'SF Pro Display', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ===== PHONE HARDWARE ===== */
+        .phone-mockup {
+            width: 330px;
+            height: 660px;
+            position: relative;
+            /* Subtle ambient glow behind phone */
+            filter: drop-shadow(0 0 80px rgba(74,143,231,0.04));
+        }
+
+        .phone-frame {
+            width: 100%;
+            height: 100%;
+            /* Natural titanium — warm grey, not pure dark */
+            background: linear-gradient(180deg,
+                #38383C 0%,
+                #2C2C30 1.5%,
+                #1C1C1E 4%,
+                #1C1C1E 96%,
+                #2C2C30 98.5%,
+                #38383C 100%
+            );
+            border-radius: 48px;
+            border: none;
+            box-shadow:
+                /* Deep shadow */
+                0 50px 120px rgba(0,0,0,0.9),
+                0 20px 50px rgba(0,0,0,0.6),
+                /* Titanium edge catch light */
+                inset 0 0 0 0.5px rgba(255,255,255,0.10),
+                inset 0 1px 0 rgba(255,255,255,0.14),
+                inset 0 -1px 0 rgba(255,255,255,0.05);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Power button — right */
+        .phone-frame::before {
+            content: '';
+            position: absolute;
+            top: 110px;
+            right: -1.5px;
+            width: 3px;
+            height: 56px;
+            background: linear-gradient(180deg,
+                rgba(255,255,255,0.04) 0%,
+                rgba(255,255,255,0.10) 30%,
+                rgba(255,255,255,0.12) 50%,
+                rgba(255,255,255,0.10) 70%,
+                rgba(255,255,255,0.04) 100%
+            );
+            border-radius: 0 2px 2px 0;
+            z-index: 10;
+        }
+        /* Volume button — left */
+        .phone-frame::after {
+            content: '';
+            position: absolute;
+            top: 90px;
+            left: -1.5px;
+            width: 3px;
+            height: 34px;
+            background: linear-gradient(180deg,
+                rgba(255,255,255,0.04) 0%,
+                rgba(255,255,255,0.08) 30%,
+                rgba(255,255,255,0.10) 50%,
+                rgba(255,255,255,0.08) 70%,
+                rgba(255,255,255,0.04) 100%
+            );
+            border-radius: 2px 0 0 2px;
+            z-index: 10;
+        }
+
+        /* Dynamic Island */
+        .phone-notch {
+            position: absolute;
+            top: 11px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 30px;
+            background: #000;
+            border-radius: 20px;
+            z-index: 5;
+            box-shadow: 0 0 0 0.5px rgba(255,255,255,0.06);
+        }
+        .phone-notch::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 18px;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%,
+                #1a1a2e 0%, #0c0c16 50%, #000 100%
+            );
+            box-shadow:
+                inset 0 0.5px 1px rgba(74,143,231,0.12),
+                0 0 1px rgba(255,255,255,0.06);
+        }
+
+        /* ===== SCREEN ===== */
+        .phone-screen {
+            position: absolute;
+            top: 4px; left: 4px; right: 4px; bottom: 4px;
+            border-radius: 44px;
+            background: var(--surface-0);
+            overflow: hidden;
+            overflow-y: auto;
+            padding: 54px 18px 20px;
+            /* Hide scrollbar */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .phone-screen::-webkit-scrollbar { display: none; }
+
+        /* ===== STATUS BAR ===== */
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+            padding: 0 4px;
+        }
+        .status-time {
+            font-family: -apple-system, 'SF Pro Display', 'Inter', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: 0.02em;
+        }
+        .status-icons { display: flex; gap: 5px; align-items: center; }
+
+        /* ===== APP HEADER ===== */
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+            padding: 0 2px;
+        }
+        .app-brand {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+        .app-icon {
+            width: 30px;
+            height: 30px;
+            background: transparent;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: visible;
+        }
+        .app-icon svg { width: 30px; height: 30px; }
+        .app-title {
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+        .header-actions { display: flex; align-items: center; gap: 6px; }
+        .header-btn {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--surface-3);
+            border: 1px solid var(--border-subtle);
+        }
+        .header-btn svg { width: 14px; height: 14px; }
+
+        /* ===== BALANCE HERO ===== */
+        .balance-hero {
+            text-align: center;
+            padding: 16px 0 18px;
+            position: relative;
+        }
+        .balance-label {
+            font-size: 0.6rem;
+            font-weight: 500;
+            color: var(--text-tertiary);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        .balance-amount {
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.04em;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+        .balance-amount .currency {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            margin-left: 3px;
+            vertical-align: super;
+            font-variant-numeric: tabular-nums;
+        }
+        .balance-change {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.62rem;
+            font-weight: 600;
+            color: var(--green);
+            background: rgba(52,211,153,0.08);
+            padding: 3px 10px;
+            border-radius: 100px;
+        }
+
+        /* ===== ACTION BUTTONS — iOS-style pill row ===== */
+        .action-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .action-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            padding: 10px 6px;
+            border-radius: 14px;
+            background: var(--surface-3);
+            border: 1px solid var(--border-medium);
+        }
+        .action-btn--primary {
+            background: linear-gradient(140deg, rgba(74,143,231,0.18) 0%, rgba(74,143,231,0.06) 100%);
+            border-color: rgba(74,143,231,0.15);
+        }
+        .action-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+        .action-btn span {
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+        .action-btn--primary span { color: var(--blue); }
+
+        /* ===== ID STATUS CARD ===== */
+        .id-card {
+            padding: 12px 14px;
+            background: linear-gradient(140deg, var(--surface-2) 0%, var(--surface-3) 100%);
+            border: 1px solid var(--border-medium);
+            border-radius: 16px;
+            margin-bottom: 18px;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Subtle blue shimmer on left edge */
+        .id-card::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--blue) 0%, rgba(74,143,231,0.2) 100%);
+            border-radius: 16px 0 0 16px;
+        }
+        /* Top row: avatar + name + status */
+        .id-top-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .id-avatar {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            background: var(--surface-4);
+            border: 1.5px solid rgba(74,143,231,0.25);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+            overflow: hidden;
+        }
+        .id-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .id-details { flex: 1; min-width: 0; }
+        .id-name {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .id-number {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.44rem;
+            font-weight: 500;
+            color: var(--text-tertiary);
+            letter-spacing: 0.1em;
+            margin-top: 1px;
+        }
+        .id-status {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 10px;
+            background: rgba(52,211,153,0.08);
+            border: 1px solid rgba(52,211,153,0.14);
+            border-radius: 100px;
+            flex-shrink: 0;
+        }
+        .id-status-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 6px var(--green-glow);
+            animation: pulse-dot 2.5s ease-in-out infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; box-shadow: 0 0 6px var(--green-glow); }
+            50% { opacity: 0.6; box-shadow: 0 0 10px var(--green-glow); }
+        }
+        .id-status-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.44rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--green);
+        }
+        /* (issuer badges removed — clean layout) */
+
+        /* ===== SECTION HEADER ===== */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2px;
+            margin-bottom: 8px;
+            margin-top: 4px;
+        }
+        .section-title {
+            font-size: 0.62rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            letter-spacing: -0.01em;
+        }
+        .section-action {
+            font-size: 0.5rem;
+            font-weight: 600;
+            color: var(--blue);
+            letter-spacing: 0.01em;
+        }
+
+        /* ===== ASSET LIST ===== */
+        .asset-group {
+            background: var(--surface-2);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        .asset-row {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            padding: 11px 14px;
+            position: relative;
+        }
+        .asset-row + .asset-row {
+            border-top: 1px solid var(--border-subtle);
+        }
+        .asset-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            position: relative;
+        }
+        /* Token-specific brand colors */
+        .asset-icon--msd {
+            background: linear-gradient(150deg, #0A1628 0%, #0F2240 40%, #132D55 100%);
+            box-shadow: 0 2px 8px rgba(74,143,231,0.15);
+            border: 1px solid rgba(74,143,231,0.20);
+        }
+        .asset-icon--btc {
+            background: linear-gradient(140deg, #F7931A 0%, #D67D0E 100%);
+            box-shadow: 0 2px 8px rgba(247,147,26,0.20);
+        }
+        .asset-icon--eth {
+            background: linear-gradient(140deg, #7B8FEE 0%, #5468D4 100%);
+            box-shadow: 0 2px 8px rgba(98,126,234,0.20);
+        }
+        .asset-icon--usdc {
+            background: linear-gradient(140deg, #2775CA 0%, #1A5DA8 100%);
+            box-shadow: 0 2px 8px rgba(39,117,202,0.15);
+        }
+        .asset-icon svg { width: 18px; height: 18px; }
+
+        .asset-info { flex: 1; min-width: 0; }
+        .asset-name {
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+        .asset-amount {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.48rem;
+            font-weight: 500;
+            color: var(--text-tertiary);
+            margin-top: 1px;
+        }
+        .asset-values { text-align: right; flex-shrink: 0; }
+        .asset-price {
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+        .asset-change {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.46rem;
+            font-weight: 600;
+            margin-top: 1px;
+        }
+        .asset-change--up { color: var(--green); }
+        .asset-change--stable { color: var(--text-tertiary); }
+        .asset-change--down { color: #EF4444; }
+
+        /* ===== BOTTOM HOME INDICATOR ===== */
+        .home-indicator {
+            width: 120px;
+            height: 4px;
+            background: rgba(255,255,255,0.18);
+            border-radius: 100px;
+            margin: 12px auto 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="phone-mockup">
+        <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+
+                <!-- iOS Status Bar -->
+                <div class="status-bar">
+                    <span class="status-time">9:41</span>
+                    <div class="status-icons">
+                        <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+                            <rect x="0" y="4" width="3" height="8" rx="0.8" fill="rgba(255,255,255,0.45)"/>
+                            <rect x="4.5" y="2.5" width="3" height="9.5" rx="0.8" fill="rgba(255,255,255,0.45)"/>
+                            <rect x="9" y="0" width="3" height="12" rx="0.8" fill="rgba(255,255,255,0.45)"/>
+                        </svg>
+                        <svg width="14" height="12" viewBox="0 0 14 12" fill="none">
+                            <path d="M0.5 9C2.5 5.5 5 3.5 7 3.5S11.5 5.5 13.5 9" stroke="rgba(255,255,255,0.45)" stroke-width="1.2" fill="none"/>
+                            <circle cx="7" cy="9.5" r="1.5" fill="rgba(255,255,255,0.45)"/>
+                        </svg>
+                        <svg width="22" height="12" viewBox="0 0 22 12" fill="none">
+                            <rect x="0.5" y="0.5" width="18" height="11" rx="2.5" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+                            <rect x="19" y="3.5" width="2.5" height="5" rx="1" fill="rgba(255,255,255,0.25)"/>
+                            <rect x="2" y="2" width="13" height="8" rx="1.5" fill="rgba(255,255,255,0.45)"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- App Header -->
+                <div class="app-header">
+                    <div class="app-brand">
+                        <div class="app-icon">
+                            <!-- MID Secure Element Chip mark -->
+                            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Bond wires — top -->
+                                <line x1="15" y1="10" x2="15" y2="6" stroke="#4A8FE7" stroke-width="0.5" opacity="0.5"/>
+                                <line x1="20" y1="10" x2="20" y2="5" stroke="#4A8FE7" stroke-width="0.5" opacity="0.6"/>
+                                <line x1="25" y1="10" x2="25" y2="6" stroke="#4A8FE7" stroke-width="0.5" opacity="0.5"/>
+                                <circle cx="15" cy="5.5" r="1" fill="#4A8FE7" opacity="0.7"/>
+                                <circle cx="20" cy="4.5" r="1.2" fill="#4A8FE7" opacity="0.85"/>
+                                <circle cx="25" cy="5.5" r="1" fill="#4A8FE7" opacity="0.7"/>
+                                <!-- Bond wires — bottom -->
+                                <line x1="15" y1="30" x2="15" y2="34" stroke="#4A8FE7" stroke-width="0.5" opacity="0.5"/>
+                                <line x1="20" y1="30" x2="20" y2="35" stroke="#4A8FE7" stroke-width="0.5" opacity="0.6"/>
+                                <line x1="25" y1="30" x2="25" y2="34" stroke="#4A8FE7" stroke-width="0.5" opacity="0.5"/>
+                                <circle cx="15" cy="34.5" r="1" fill="#4A8FE7" opacity="0.7"/>
+                                <circle cx="20" cy="35.5" r="1.2" fill="#4A8FE7" opacity="0.85"/>
+                                <circle cx="25" cy="34.5" r="1" fill="#4A8FE7" opacity="0.7"/>
+                                <!-- Bond wires — left -->
+                                <line x1="9" y1="20" x2="5" y2="20" stroke="#4A8FE7" stroke-width="0.5" opacity="0.55"/>
+                                <circle cx="4.5" cy="20" r="1" fill="#4A8FE7" opacity="0.75"/>
+                                <!-- Bond wires — right -->
+                                <line x1="31" y1="20" x2="35" y2="20" stroke="#4A8FE7" stroke-width="0.5" opacity="0.55"/>
+                                <circle cx="35.5" cy="20" r="1" fill="#4A8FE7" opacity="0.75"/>
+                                <!-- Chip body -->
+                                <rect x="9" y="10" rx="1.5" ry="1.5" width="22" height="20" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+                                <!-- Pin-1 chamfer -->
+                                <circle cx="11" cy="12" r="0.8" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.4"/>
+                                <!-- Die -->
+                                <rect x="12.5" y="13" rx="0.8" ry="0.8" width="15" height="14" fill="rgba(74,143,231,0.04)" stroke="rgba(74,143,231,0.12)" stroke-width="0.3"/>
+                                <!-- MID text -->
+                                <text x="20" y="21.5" text-anchor="middle" dominant-baseline="central"
+                                      fill="white" font-family="'DM Sans', sans-serif"
+                                      font-size="6.5" font-weight="800" letter-spacing="1.2">MID</text>
+                            </svg>
+                        </div>
+                        <span class="app-title">MID Wallet</span>
+                    </div>
+                    <div class="header-actions">
+                        <div class="header-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.8" stroke-linecap="round">
+                                <circle cx="11" cy="11" r="6"/><path d="M16.5 16.5L20 20"/>
+                            </svg>
+                        </div>
+                        <div class="header-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.8" stroke-linecap="round">
+                                <path d="M12 5v14M5 12h14"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Balance Hero -->
+                <div class="balance-hero">
+                    <div class="balance-label">Total Balance</div>
+                    <div class="balance-amount">$171,513<span class="currency">.56</span></div>
+                    <div class="balance-change">
+                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                            <path d="M5 2L8.5 7H1.5L5 2Z" fill="currentColor"/>
+                        </svg>
+                        +$4,283.12 (2.56%)
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-row">
+                    <div class="action-btn action-btn--primary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+                        <span>Buy</span>
+                    </div>
+                    <div class="action-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="2" stroke-linecap="round"><path d="M7 17L17 7M17 7H10M17 7v7"/></svg>
+                        <span>Send</span>
+                    </div>
+                    <div class="action-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="2" stroke-linecap="round"><path d="M17 7L7 17M7 17h7M7 17V10"/></svg>
+                        <span>Receive</span>
+                    </div>
+                    <div class="action-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="2" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                        <span>Swap</span>
+                    </div>
+                </div>
+
+                <!-- Digital ID Card -->
+                <div class="id-card">
+                    <div class="id-top-row">
+                        <div class="id-avatar">
+                            <img src="IDphoto.jpg" alt="Nuo Wang" />
+                        </div>
+                        <div class="id-details">
+                            <div class="id-name">Nuo Wang</div>
+                            <div class="id-number">MS-DR-2025-004817</div>
+                        </div>
+                        <div class="id-status">
+                            <div class="id-status-dot"></div>
+                            <span class="id-status-label">Active</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Montserrat Network -->
+                <div class="section-header">
+                    <span class="section-title">Montserrat Network</span>
+                    <span class="section-action">See all</span>
+                </div>
+                <div class="asset-group">
+                    <div class="asset-row">
+                        <div class="asset-icon asset-icon--msd">
+                            <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Hexagon outline -->
+                                <path d="M17 4L28 10.5v13L17 30 6 23.5v-13L17 4z" fill="none" stroke="#4A8FE7" stroke-width="0.8" opacity="0.4"/>
+                                <!-- Bold M$ monogram -->
+                                <text x="17" y="21.5" text-anchor="middle" fill="url(#msd-txt)" font-size="13" font-weight="800" font-family="DM Sans, Inter, sans-serif" letter-spacing="-0.5">M</text>
+                                <!-- $ accent — offset to the right, smaller -->
+                                <text x="23.5" y="16" text-anchor="middle" fill="#4A8FE7" font-size="7.5" font-weight="700" font-family="DM Sans, sans-serif" opacity="0.85">$</text>
+                                <!-- Top node -->
+                                <circle cx="17" cy="4" r="1.2" fill="#4A8FE7" opacity="0.55"/>
+                                <defs>
+                                    <linearGradient id="msd-txt" x1="11" y1="10" x2="23" y2="24" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0" stop-color="#FFFFFF"/>
+                                        <stop offset="1" stop-color="#7EB8F5"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="asset-info">
+                            <div class="asset-name">MSD</div>
+                            <div class="asset-amount">10,000.00 MSD</div>
+                        </div>
+                        <div class="asset-values">
+                            <div class="asset-price">$10,000.00</div>
+                            <div class="asset-change asset-change--stable">Stable</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Multi-chain Assets -->
+                <div class="section-header">
+                    <span class="section-title">Assets</span>
+                    <span class="section-action">Manage</span>
+                </div>
+                <div class="asset-group">
+                    <div class="asset-row">
+                        <div class="asset-icon asset-icon--btc">
+                            <svg viewBox="0 0 24 24" fill="white"><path d="M13 4.5V6c1.5.2 2.7.9 3 2.2h-1.7c-.2-.7-.8-.8-1.3-.8-.7 0-1.3.3-1.3.9s.4.8 1.5 1c1.7.4 2.8.9 2.8 2.3 0 1.3-1 2.2-3 2.4v1.5h-.8V14c-1.7-.3-2.8-1.1-3-2.4h1.7c.2.8.9 1 1.3 1 .8 0 1.3-.3 1.3-.9s-.3-.8-1.5-1c-1.5-.4-2.8-.8-2.8-2.3 0-1.2 1-2 2.5-2.2V4.5H13z"/></svg>
+                        </div>
+                        <div class="asset-info">
+                            <div class="asset-name">Bitcoin</div>
+                            <div class="asset-amount">5.873092 BTC</div>
+                        </div>
+                        <div class="asset-values">
+                            <div class="asset-price">$152,694.51</div>
+                            <div class="asset-change asset-change--up">+4.7%</div>
+                        </div>
+                    </div>
+                    <div class="asset-row">
+                        <div class="asset-icon asset-icon--eth">
+                            <svg viewBox="0 0 24 24" fill="white" opacity="0.95"><path d="M12 3L6 12.5 12 16l6-3.5L12 3zM6 13.8L12 20l6-6.2L12 17.3 6 13.8z"/></svg>
+                        </div>
+                        <div class="asset-info">
+                            <div class="asset-name">Ethereum</div>
+                            <div class="asset-amount">11.420021 ETH</div>
+                        </div>
+                        <div class="asset-values">
+                            <div class="asset-price">$18,819.05</div>
+                            <div class="asset-change asset-change--up">+5.2%</div>
+                        </div>
+                    </div>
+                    <div class="asset-row">
+                        <div class="asset-icon asset-icon--usdc">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="7.5" stroke="white" stroke-width="1.2" opacity="0.9"/>
+                                <text x="12" y="15.5" text-anchor="middle" fill="white" font-size="9.5" font-weight="700" font-family="DM Sans, sans-serif">$</text>
+                            </svg>
+                        </div>
+                        <div class="asset-info">
+                            <div class="asset-name">USDC</div>
+                            <div class="asset-amount">1,500.00 USDC</div>
+                        </div>
+                        <div class="asset-values">
+                            <div class="asset-price">$1,500.00</div>
+                            <div class="asset-change asset-change--stable">Stable</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Home Indicator -->
+                <div class="home-indicator"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECURE ELEMENT CHIP — APP ICON SHOWCASE ===== -->
+    <style>
+        .icon-showcase {
+            position: fixed;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            z-index: 100;
+        }
+        .showcase-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+        .showcase-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            font-weight: 600;
+            color: rgba(74,143,231,0.5);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .showcase-desc {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 12px;
+            color: rgba(255,255,255,0.35);
+            text-align: center;
+            max-width: 280px;
+            line-height: 1.5;
+        }
+        /* Hero icon — large preview */
+        .icon-hero {
+            width: 200px;
+            height: 200px;
+            border-radius: 44px;
+            overflow: hidden;
+            box-shadow:
+                0 8px 40px rgba(0,0,0,0.6),
+                0 0 60px rgba(74,143,231,0.06),
+                inset 0 0.5px 0 rgba(255,255,255,0.06);
+        }
+        .icon-hero svg { display: block; width: 200px; height: 200px; }
+
+        /* Size row */
+        .icon-sizes-row {
+            display: flex;
+            align-items: flex-end;
+            gap: 16px;
+        }
+        .icon-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+        .icon-wrap .sz { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: rgba(255,255,255,0.2); }
+        .icon-box {
+            border-radius: 22.37%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5), inset 0 0.5px 0 rgba(255,255,255,0.06);
+        }
+        .icon-box svg { display: block; }
+
+        /* Background variants row */
+        .bg-row {
+            display: flex;
+            gap: 16px;
+            align-items: flex-end;
+        }
+        .bg-variant {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+        .bg-variant .bg-label { font-family: 'IBM Plex Mono', monospace; font-size: 8px; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 1px; }
+    </style>
+
+    <div class="icon-showcase">
+
+        <!-- Hero preview -->
+        <div class="showcase-section">
+            <div class="showcase-label">F — Secure Element</div>
+            <div class="icon-hero">
+                <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Dark background -->
+                    <rect width="200" height="200" fill="url(#se-bg)"/>
+
+                    <!-- Ambient chip glow -->
+                    <circle cx="100" cy="92" r="50" fill="#4A8FE7" opacity="0.04"/>
+
+                    <!-- Bond wires — top row (5 pins) -->
+                    <line x1="62" y1="52" x2="62" y2="38" stroke="#4A8FE7" stroke-width="0.6" opacity="0.5"/>
+                    <line x1="78" y1="52" x2="78" y2="34" stroke="#4A8FE7" stroke-width="0.6" opacity="0.5"/>
+                    <line x1="100" y1="52" x2="100" y2="32" stroke="#4A8FE7" stroke-width="0.6" opacity="0.6"/>
+                    <line x1="122" y1="52" x2="122" y2="34" stroke="#4A8FE7" stroke-width="0.6" opacity="0.5"/>
+                    <line x1="138" y1="52" x2="138" y2="38" stroke="#4A8FE7" stroke-width="0.6" opacity="0.5"/>
+                    <!-- Top pin dots -->
+                    <circle cx="62" cy="36" r="2" fill="#4A8FE7" opacity="0.7"/>
+                    <circle cx="78" cy="32" r="2" fill="#4A8FE7" opacity="0.7"/>
+                    <circle cx="100" cy="30" r="2.5" fill="#4A8FE7" opacity="0.85"/>
+                    <circle cx="122" cy="32" r="2" fill="#4A8FE7" opacity="0.7"/>
+                    <circle cx="138" cy="36" r="2" fill="#4A8FE7" opacity="0.7"/>
+
+                    <!-- Bond wires — bottom row (5 pins) -->
+                    <line x1="62" y1="132" x2="62" y2="146" stroke="#4A8FE7" stroke-width="0.6" opacity="0.5"/>
+                    <line x1="78" y1="132" x2="78" y2="150" stroke="#4A8FE7" stroke-width="0.6" opacity="0.5"/>
+                    <line x1="100" y1="132" x2="100" y2="152" stroke="#4A8FE7" stroke-width="0.6" opacity="0.6"/>
+                    <line x1="122" y1="132" x2="122" y2="150" stroke="#4A8FE7" stroke-width="0.6" opacity="0.5"/>
+                    <line x1="138" y1="132" x2="138" y2="146" stroke="#4A8FE7" stroke-width="0.6" opacity="0.5"/>
+                    <!-- Bottom pin dots -->
+                    <circle cx="62" cy="148" r="2" fill="#4A8FE7" opacity="0.7"/>
+                    <circle cx="78" cy="152" r="2" fill="#4A8FE7" opacity="0.7"/>
+                    <circle cx="100" cy="154" r="2.5" fill="#4A8FE7" opacity="0.85"/>
+                    <circle cx="122" cy="152" r="2" fill="#4A8FE7" opacity="0.7"/>
+                    <circle cx="138" cy="148" r="2" fill="#4A8FE7" opacity="0.7"/>
+
+                    <!-- Bond wires — left (3 pins) -->
+                    <line x1="48" y1="72" x2="36" y2="72" stroke="#4A8FE7" stroke-width="0.6" opacity="0.5"/>
+                    <line x1="48" y1="92" x2="32" y2="92" stroke="#4A8FE7" stroke-width="0.6" opacity="0.6"/>
+                    <line x1="48" y1="112" x2="36" y2="112" stroke="#4A8FE7" stroke-width="0.6" opacity="0.5"/>
+                    <!-- Left pin dots -->
+                    <circle cx="34" cy="72" r="2" fill="#4A8FE7" opacity="0.7"/>
+                    <circle cx="30" cy="92" r="2.5" fill="#4A8FE7" opacity="0.85"/>
+                    <circle cx="34" cy="112" r="2" fill="#4A8FE7" opacity="0.7"/>
+
+                    <!-- Bond wires — right (3 pins) -->
+                    <line x1="152" y1="72" x2="164" y2="72" stroke="#4A8FE7" stroke-width="0.6" opacity="0.5"/>
+                    <line x1="152" y1="92" x2="168" y2="92" stroke="#4A8FE7" stroke-width="0.6" opacity="0.6"/>
+                    <line x1="152" y1="112" x2="164" y2="112" stroke="#4A8FE7" stroke-width="0.6" opacity="0.5"/>
+                    <!-- Right pin dots -->
+                    <circle cx="166" cy="72" r="2" fill="#4A8FE7" opacity="0.7"/>
+                    <circle cx="170" cy="92" r="2.5" fill="#4A8FE7" opacity="0.85"/>
+                    <circle cx="166" cy="112" r="2" fill="#4A8FE7" opacity="0.7"/>
+
+                    <!-- Chip body — outer package -->
+                    <rect x="48" y="52" rx="4" ry="4" width="104" height="80" fill="url(#se-chip-body)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+                    <!-- Pin-1 chamfer (top-left corner notch) -->
+                    <circle cx="54" cy="58" r="2" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.6"/>
+
+                    <!-- Die matrix — inner rectangle -->
+                    <rect x="62" y="62" rx="2" ry="2" width="76" height="60" fill="url(#se-die)" stroke="rgba(74,143,231,0.15)" stroke-width="0.5"/>
+
+                    <!-- MID text — bold centered -->
+                    <text x="100" y="100" text-anchor="middle" dominant-baseline="central"
+                          fill="url(#se-mid-txt)" font-family="'DM Sans', 'Inter', sans-serif"
+                          font-size="28" font-weight="800" letter-spacing="5">MID</text>
+
+                    <!-- SECURE ELEMENT sub-label -->
+                    <text x="100" y="116" text-anchor="middle"
+                          fill="#4A8FE7" font-family="'IBM Plex Mono', monospace"
+                          font-size="6.5" font-weight="500" letter-spacing="2.5" opacity="0.55">SECURE ELEMENT</text>
+
+                    <!-- MONTSERRAT DIGITAL IDENTITY — bottom -->
+                    <text x="100" y="168" text-anchor="middle"
+                          fill="rgba(255,255,255,0.12)" font-family="'IBM Plex Mono', monospace"
+                          font-size="5" font-weight="500" letter-spacing="2">MONTSERRAT DIGITAL IDENTITY</text>
+
+                    <defs>
+                        <linearGradient id="se-bg" x1="0" y1="0" x2="200" y2="200">
+                            <stop offset="0" stop-color="#08090E"/>
+                            <stop offset="0.5" stop-color="#0A0D16"/>
+                            <stop offset="1" stop-color="#070810"/>
+                        </linearGradient>
+                        <linearGradient id="se-chip-body" x1="48" y1="52" x2="152" y2="132">
+                            <stop offset="0" stop-color="rgba(255,255,255,0.03)"/>
+                            <stop offset="0.5" stop-color="rgba(74,143,231,0.04)"/>
+                            <stop offset="1" stop-color="rgba(255,255,255,0.02)"/>
+                        </linearGradient>
+                        <linearGradient id="se-die" x1="62" y1="62" x2="138" y2="122">
+                            <stop offset="0" stop-color="rgba(74,143,231,0.06)"/>
+                            <stop offset="1" stop-color="rgba(74,143,231,0.02)"/>
+                        </linearGradient>
+                        <linearGradient id="se-mid-txt" x1="75" y1="85" x2="125" y2="105">
+                            <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.9"/>
+                            <stop offset="0.5" stop-color="#FFFFFF"/>
+                            <stop offset="1" stop-color="rgba(255,255,255,0.85)"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <div class="showcase-desc">QFP-20 IC package with pin-1 chamfer, bond wires, die matrix, and 20-pin PCB traces. "SECURE ELEMENT" reinforces cryptographic authority.</div>
+        </div>
+
+        <!-- Size variants -->
+        <div class="showcase-section">
+            <div class="icon-sizes-row">
+                <!-- 64px -->
+                <div class="icon-wrap">
+                    <div class="icon-box" style="width:64px;height:64px;">
+                        <svg viewBox="0 0 200 200" width="64" height="64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="200" height="200" fill="#08090E"/>
+                            <!-- Simplified bond wires for small size -->
+                            <line x1="78" y1="52" x2="78" y2="38" stroke="#4A8FE7" stroke-width="1.2" opacity="0.5"/>
+                            <line x1="100" y1="52" x2="100" y2="36" stroke="#4A8FE7" stroke-width="1.2" opacity="0.6"/>
+                            <line x1="122" y1="52" x2="122" y2="38" stroke="#4A8FE7" stroke-width="1.2" opacity="0.5"/>
+                            <circle cx="78" cy="36" r="3" fill="#4A8FE7" opacity="0.7"/>
+                            <circle cx="100" cy="34" r="3.5" fill="#4A8FE7" opacity="0.85"/>
+                            <circle cx="122" cy="36" r="3" fill="#4A8FE7" opacity="0.7"/>
+                            <line x1="78" y1="132" x2="78" y2="146" stroke="#4A8FE7" stroke-width="1.2" opacity="0.5"/>
+                            <line x1="100" y1="132" x2="100" y2="148" stroke="#4A8FE7" stroke-width="1.2" opacity="0.6"/>
+                            <line x1="122" y1="132" x2="122" y2="146" stroke="#4A8FE7" stroke-width="1.2" opacity="0.5"/>
+                            <circle cx="78" cy="148" r="3" fill="#4A8FE7" opacity="0.7"/>
+                            <circle cx="100" cy="150" r="3.5" fill="#4A8FE7" opacity="0.85"/>
+                            <circle cx="122" cy="148" r="3" fill="#4A8FE7" opacity="0.7"/>
+                            <line x1="48" y1="92" x2="36" y2="92" stroke="#4A8FE7" stroke-width="1.2" opacity="0.6"/>
+                            <circle cx="34" cy="92" r="3" fill="#4A8FE7" opacity="0.7"/>
+                            <line x1="152" y1="92" x2="164" y2="92" stroke="#4A8FE7" stroke-width="1.2" opacity="0.6"/>
+                            <circle cx="166" cy="92" r="3" fill="#4A8FE7" opacity="0.7"/>
+                            <rect x="48" y="52" rx="5" ry="5" width="104" height="80" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.08)" stroke-width="1.2"/>
+                            <circle cx="55" cy="59" r="3" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+                            <rect x="62" y="62" rx="3" ry="3" width="76" height="60" fill="rgba(74,143,231,0.04)" stroke="rgba(74,143,231,0.12)" stroke-width="0.8"/>
+                            <text x="100" y="100" text-anchor="middle" dominant-baseline="central" fill="white" font-family="'DM Sans', sans-serif" font-size="30" font-weight="800" letter-spacing="5">MID</text>
+                        </svg>
+                    </div>
+                    <span class="sz">64px</span>
+                </div>
+                <!-- 40px -->
+                <div class="icon-wrap">
+                    <div class="icon-box" style="width:40px;height:40px;border-radius:10px;">
+                        <svg viewBox="0 0 200 200" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="200" height="200" fill="#08090E"/>
+                            <line x1="100" y1="52" x2="100" y2="34" stroke="#4A8FE7" stroke-width="2" opacity="0.6"/>
+                            <circle cx="100" cy="32" r="5" fill="#4A8FE7" opacity="0.85"/>
+                            <line x1="100" y1="132" x2="100" y2="150" stroke="#4A8FE7" stroke-width="2" opacity="0.6"/>
+                            <circle cx="100" cy="152" r="5" fill="#4A8FE7" opacity="0.85"/>
+                            <line x1="48" y1="92" x2="34" y2="92" stroke="#4A8FE7" stroke-width="2" opacity="0.6"/>
+                            <circle cx="32" cy="92" r="5" fill="#4A8FE7" opacity="0.85"/>
+                            <line x1="152" y1="92" x2="166" y2="92" stroke="#4A8FE7" stroke-width="2" opacity="0.6"/>
+                            <circle cx="168" cy="92" r="5" fill="#4A8FE7" opacity="0.85"/>
+                            <rect x="48" y="52" rx="6" ry="6" width="104" height="80" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+                            <text x="100" y="100" text-anchor="middle" dominant-baseline="central" fill="white" font-family="'DM Sans', sans-serif" font-size="34" font-weight="800" letter-spacing="4">MID</text>
+                        </svg>
+                    </div>
+                    <span class="sz">40px</span>
+                </div>
+                <!-- 24px -->
+                <div class="icon-wrap">
+                    <div class="icon-box" style="width:24px;height:24px;border-radius:6px;">
+                        <svg viewBox="0 0 200 200" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="200" height="200" fill="#08090E"/>
+                            <circle cx="100" cy="32" r="7" fill="#4A8FE7" opacity="0.8"/>
+                            <circle cx="100" cy="152" r="7" fill="#4A8FE7" opacity="0.8"/>
+                            <circle cx="30" cy="92" r="7" fill="#4A8FE7" opacity="0.8"/>
+                            <circle cx="170" cy="92" r="7" fill="#4A8FE7" opacity="0.8"/>
+                            <rect x="46" y="50" rx="8" ry="8" width="108" height="84" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.12)" stroke-width="3"/>
+                            <text x="100" y="100" text-anchor="middle" dominant-baseline="central" fill="white" font-family="'DM Sans', sans-serif" font-size="42" font-weight="800" letter-spacing="2">M</text>
+                        </svg>
+                    </div>
+                    <span class="sz">24px</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Background variants -->
+        <div class="showcase-section">
+            <div class="bg-row">
+                <!-- On black -->
+                <div class="bg-variant">
+                    <div class="icon-box" style="width:80px;height:80px;">
+                        <svg viewBox="0 0 200 200" width="80" height="80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="200" height="200" fill="#000000"/>
+                            <line x1="78" y1="52" x2="78" y2="38" stroke="#4A8FE7" stroke-width="1" opacity="0.5"/>
+                            <line x1="100" y1="52" x2="100" y2="36" stroke="#4A8FE7" stroke-width="1" opacity="0.6"/>
+                            <line x1="122" y1="52" x2="122" y2="38" stroke="#4A8FE7" stroke-width="1" opacity="0.5"/>
+                            <circle cx="78" cy="36" r="2.5" fill="#4A8FE7" opacity="0.7"/><circle cx="100" cy="34" r="3" fill="#4A8FE7" opacity="0.85"/><circle cx="122" cy="36" r="2.5" fill="#4A8FE7" opacity="0.7"/>
+                            <line x1="78" y1="132" x2="78" y2="146" stroke="#4A8FE7" stroke-width="1" opacity="0.5"/>
+                            <line x1="100" y1="132" x2="100" y2="148" stroke="#4A8FE7" stroke-width="1" opacity="0.6"/>
+                            <line x1="122" y1="132" x2="122" y2="146" stroke="#4A8FE7" stroke-width="1" opacity="0.5"/>
+                            <circle cx="78" cy="148" r="2.5" fill="#4A8FE7" opacity="0.7"/><circle cx="100" cy="150" r="3" fill="#4A8FE7" opacity="0.85"/><circle cx="122" cy="148" r="2.5" fill="#4A8FE7" opacity="0.7"/>
+                            <line x1="48" y1="92" x2="36" y2="92" stroke="#4A8FE7" stroke-width="1" opacity="0.5"/><circle cx="34" cy="92" r="2.5" fill="#4A8FE7" opacity="0.7"/>
+                            <line x1="152" y1="92" x2="164" y2="92" stroke="#4A8FE7" stroke-width="1" opacity="0.5"/><circle cx="166" cy="92" r="2.5" fill="#4A8FE7" opacity="0.7"/>
+                            <rect x="48" y="52" rx="4" ry="4" width="104" height="80" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                            <circle cx="54" cy="58" r="2.5" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.8"/>
+                            <rect x="62" y="62" rx="2" ry="2" width="76" height="60" fill="rgba(74,143,231,0.04)" stroke="rgba(74,143,231,0.12)" stroke-width="0.6"/>
+                            <text x="100" y="100" text-anchor="middle" dominant-baseline="central" fill="white" font-family="'DM Sans', sans-serif" font-size="28" font-weight="800" letter-spacing="5">MID</text>
+                            <text x="100" y="116" text-anchor="middle" fill="#4A8FE7" font-family="'IBM Plex Mono', monospace" font-size="6.5" font-weight="500" letter-spacing="2" opacity="0.5">SECURE ELEMENT</text>
+                        </svg>
+                    </div>
+                    <span class="bg-label">On Black</span>
+                </div>
+                <!-- On titanium -->
+                <div class="bg-variant">
+                    <div class="icon-box" style="width:80px;height:80px;">
+                        <svg viewBox="0 0 200 200" width="80" height="80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="200" height="200" fill="url(#se-ti-bg)"/>
+                            <line x1="78" y1="52" x2="78" y2="38" stroke="rgba(74,143,231,0.4)" stroke-width="1"/>
+                            <line x1="100" y1="52" x2="100" y2="36" stroke="rgba(74,143,231,0.5)" stroke-width="1"/>
+                            <line x1="122" y1="52" x2="122" y2="38" stroke="rgba(74,143,231,0.4)" stroke-width="1"/>
+                            <circle cx="78" cy="36" r="2.5" fill="#4A8FE7" opacity="0.5"/><circle cx="100" cy="34" r="3" fill="#4A8FE7" opacity="0.65"/><circle cx="122" cy="36" r="2.5" fill="#4A8FE7" opacity="0.5"/>
+                            <line x1="78" y1="132" x2="78" y2="146" stroke="rgba(74,143,231,0.4)" stroke-width="1"/>
+                            <line x1="100" y1="132" x2="100" y2="148" stroke="rgba(74,143,231,0.5)" stroke-width="1"/>
+                            <line x1="122" y1="132" x2="122" y2="146" stroke="rgba(74,143,231,0.4)" stroke-width="1"/>
+                            <circle cx="78" cy="148" r="2.5" fill="#4A8FE7" opacity="0.5"/><circle cx="100" cy="150" r="3" fill="#4A8FE7" opacity="0.65"/><circle cx="122" cy="148" r="2.5" fill="#4A8FE7" opacity="0.5"/>
+                            <line x1="48" y1="92" x2="36" y2="92" stroke="rgba(74,143,231,0.4)" stroke-width="1"/><circle cx="34" cy="92" r="2.5" fill="#4A8FE7" opacity="0.5"/>
+                            <line x1="152" y1="92" x2="164" y2="92" stroke="rgba(74,143,231,0.4)" stroke-width="1"/><circle cx="166" cy="92" r="2.5" fill="#4A8FE7" opacity="0.5"/>
+                            <rect x="48" y="52" rx="4" ry="4" width="104" height="80" fill="rgba(0,0,0,0.15)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                            <circle cx="54" cy="58" r="2.5" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+                            <rect x="62" y="62" rx="2" ry="2" width="76" height="60" fill="rgba(0,0,0,0.1)" stroke="rgba(74,143,231,0.1)" stroke-width="0.6"/>
+                            <text x="100" y="100" text-anchor="middle" dominant-baseline="central" fill="rgba(255,255,255,0.85)" font-family="'DM Sans', sans-serif" font-size="28" font-weight="800" letter-spacing="5">MID</text>
+                            <text x="100" y="116" text-anchor="middle" fill="#4A8FE7" font-family="'IBM Plex Mono', monospace" font-size="6.5" font-weight="500" letter-spacing="2" opacity="0.4">SECURE ELEMENT</text>
+                            <defs>
+                                <linearGradient id="se-ti-bg" x1="0" y1="0" x2="200" y2="200">
+                                    <stop offset="0" stop-color="#3A3A3E"/><stop offset="0.5" stop-color="#2E2E32"/><stop offset="1" stop-color="#3A3A3E"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <span class="bg-label">On Titanium</span>
+                </div>
+                <!-- On metal / light -->
+                <div class="bg-variant">
+                    <div class="icon-box" style="width:80px;height:80px;">
+                        <svg viewBox="0 0 200 200" width="80" height="80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="200" height="200" fill="url(#se-lt-bg)"/>
+                            <line x1="78" y1="52" x2="78" y2="38" stroke="rgba(74,143,231,0.35)" stroke-width="1"/>
+                            <line x1="100" y1="52" x2="100" y2="36" stroke="rgba(74,143,231,0.45)" stroke-width="1"/>
+                            <line x1="122" y1="52" x2="122" y2="38" stroke="rgba(74,143,231,0.35)" stroke-width="1"/>
+                            <circle cx="78" cy="36" r="2.5" fill="#3A7BD5" opacity="0.5"/><circle cx="100" cy="34" r="3" fill="#3A7BD5" opacity="0.65"/><circle cx="122" cy="36" r="2.5" fill="#3A7BD5" opacity="0.5"/>
+                            <line x1="78" y1="132" x2="78" y2="146" stroke="rgba(74,143,231,0.35)" stroke-width="1"/>
+                            <line x1="100" y1="132" x2="100" y2="148" stroke="rgba(74,143,231,0.45)" stroke-width="1"/>
+                            <line x1="122" y1="132" x2="122" y2="146" stroke="rgba(74,143,231,0.35)" stroke-width="1"/>
+                            <circle cx="78" cy="148" r="2.5" fill="#3A7BD5" opacity="0.5"/><circle cx="100" cy="150" r="3" fill="#3A7BD5" opacity="0.65"/><circle cx="122" cy="148" r="2.5" fill="#3A7BD5" opacity="0.5"/>
+                            <line x1="48" y1="92" x2="36" y2="92" stroke="rgba(74,143,231,0.35)" stroke-width="1"/><circle cx="34" cy="92" r="2.5" fill="#3A7BD5" opacity="0.5"/>
+                            <line x1="152" y1="92" x2="164" y2="92" stroke="rgba(74,143,231,0.35)" stroke-width="1"/><circle cx="166" cy="92" r="2.5" fill="#3A7BD5" opacity="0.5"/>
+                            <rect x="48" y="52" rx="4" ry="4" width="104" height="80" fill="rgba(0,0,0,0.06)" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+                            <circle cx="54" cy="58" r="2.5" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="0.8"/>
+                            <rect x="62" y="62" rx="2" ry="2" width="76" height="60" fill="rgba(0,0,0,0.04)" stroke="rgba(74,143,231,0.1)" stroke-width="0.6"/>
+                            <text x="100" y="100" text-anchor="middle" dominant-baseline="central" fill="rgba(0,0,0,0.75)" font-family="'DM Sans', sans-serif" font-size="28" font-weight="800" letter-spacing="5">MID</text>
+                            <text x="100" y="116" text-anchor="middle" fill="#3A7BD5" font-family="'IBM Plex Mono', monospace" font-size="6.5" font-weight="500" letter-spacing="2" opacity="0.45">SECURE ELEMENT</text>
+                            <defs>
+                                <linearGradient id="se-lt-bg" x1="0" y1="0" x2="200" y2="200">
+                                    <stop offset="0" stop-color="#C8C8CC"/><stop offset="0.5" stop-color="#B8B8BC"/><stop offset="1" stop-color="#C8C8CC"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <span class="bg-label">On Metal</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

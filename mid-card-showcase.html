@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MID Card Showcase — Montserrat Digital Identity</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        background: #050507;
+        color: #fff;
+        font-family: 'Inter', sans-serif;
+        padding: 50px 40px 80px;
+        min-height: 100vh;
+    }
+    h1 {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 1.7rem;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+    .subtitle {
+        font-size: 0.8rem;
+        color: rgba(255,255,255,0.28);
+        margin-bottom: 48px;
+    }
+
+    /* ═══ Section headers ═══ */
+    .section-header {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.55rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(74,143,231,0.35);
+        margin-bottom: 24px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    .section-gap { margin-top: 56px; }
+
+    /* ═══ Card grid ═══ */
+    .card-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+        margin-bottom: 36px;
+    }
+    .card-pair {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+    .card-label {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.42rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.18);
+    }
+
+    /* ═══ THE CARD ═══ */
+    .id-card {
+        width: 428px;
+        height: 270px;
+        border-radius: 20px;
+        position: relative;
+        overflow: hidden;
+        box-shadow:
+            0 25px 80px rgba(0,0,0,0.7),
+            0 8px 30px rgba(0,0,0,0.5),
+            inset 0 1px 0 rgba(255,255,255,0.08),
+            inset 0 -1px 0 rgba(0,0,0,0.4);
+    }
+    /* Brushed metal texture */
+    .id-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: repeating-linear-gradient(90deg, rgba(255,255,255,0.015) 0px, rgba(0,0,0,0.018) 1px, rgba(255,255,255,0.008) 2px, transparent 3px, transparent 5px);
+        background-size: 5px 100%;
+        border-radius: 20px;
+        mix-blend-mode: overlay;
+        pointer-events: none;
+        z-index: 5;
+    }
+    /* Metal sweep shine */
+    .id-card::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,0) 35%, rgba(255,255,255,0.04) 42%, rgba(255,255,255,0.10) 48%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.10) 52%, rgba(255,255,255,0.04) 58%, rgba(255,255,255,0) 65%, transparent 80%);
+        background-size: 300% 100%;
+        animation: metal-sweep 5s ease-in-out infinite;
+        border-radius: 20px;
+        pointer-events: none;
+        z-index: 6;
+    }
+    @keyframes metal-sweep {
+        0%, 100% { background-position: 200% center; }
+        50% { background-position: -100% center; }
+    }
+
+    /* ═══ Card surface variants ═══ */
+    .card-dark {
+        background: linear-gradient(160deg, #1C1E24 0%, #21242C 15%, #272A33 30%, #2C2F38 50%, #272A32 70%, #22252D 85%, #1D2027 100%);
+        border: 1px solid rgba(255,255,255,0.05);
+    }
+    .card-titanium {
+        background: linear-gradient(160deg, #2A2D35 0%, #32363F 15%, #3A3E48 30%, #3F4350 50%, #3A3E47 70%, #33373F 85%, #2B2E36 100%);
+        border: 1px solid rgba(255,255,255,0.07);
+    }
+    .card-obsidian {
+        background: linear-gradient(160deg, #0E0F13 0%, #121418 15%, #16181E 30%, #1A1C22 50%, #16181E 70%, #121418 85%, #0E0F13 100%);
+        border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    /* ═══ Card interior layout ═══ */
+    .card-inner {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    /* ═══ Magnetic stripe ═══ */
+    .mag-stripe {
+        position: absolute;
+        top: 26px;
+        left: 0;
+        right: 0;
+        height: 34px;
+        background: linear-gradient(180deg, #0a0a0a 0%, #151515 40%, #0c0c0c 100%);
+        opacity: 0.55;
+        z-index: 2;
+    }
+
+    /* ═══ Logo container ═══ */
+    .card-logo-area {
+        position: relative;
+        z-index: 4;
+        margin-bottom: 10px;
+    }
+
+    /* ═══ Card title ═══ */
+    .card-title {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.18);
+        text-align: center;
+        position: relative;
+        z-index: 4;
+    }
+    .card-title-bright {
+        color: rgba(255,255,255,0.24);
+    }
+
+    /* ═══ Card subtitle ═══ */
+    .card-sub {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.5rem;
+        font-weight: 500;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: rgba(74,143,231,0.3);
+        margin-top: 6px;
+        position: relative;
+        z-index: 4;
+    }
+
+    /* ═══ Signature area ═══ */
+    .sig-area {
+        position: absolute;
+        bottom: 20px;
+        right: 22px;
+        z-index: 4;
+    }
+    .sig-label {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.36rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.08);
+        margin-bottom: 4px;
+        text-align: right;
+    }
+    .sig-box {
+        width: 96px;
+        height: 20px;
+        background: rgba(255,255,255,0.025);
+        border: 1px solid rgba(255,255,255,0.04);
+        border-radius: 3px;
+    }
+
+    /* ═══ Card number ═══ */
+    .card-number {
+        position: absolute;
+        bottom: 22px;
+        left: 22px;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.4rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        color: rgba(255,255,255,0.08);
+        z-index: 4;
+    }
+
+    /* ═══ Corner brackets ═══ */
+    .corner {
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        z-index: 4;
+    }
+    .corner::before, .corner::after {
+        content: '';
+        position: absolute;
+        background: rgba(74,143,231,0.12);
+    }
+    .corner--tl { top: 14px; left: 14px; }
+    .corner--tl::before { top: 0; left: 0; width: 14px; height: 1px; }
+    .corner--tl::after { top: 0; left: 0; width: 1px; height: 14px; }
+    .corner--tr { top: 14px; right: 14px; }
+    .corner--tr::before { top: 0; right: 0; width: 14px; height: 1px; }
+    .corner--tr::after { top: 0; right: 0; width: 1px; height: 14px; }
+    .corner--bl { bottom: 14px; left: 14px; }
+    .corner--bl::before { bottom: 0; left: 0; width: 14px; height: 1px; }
+    .corner--bl::after { bottom: 0; left: 0; width: 1px; height: 14px; }
+    .corner--br { bottom: 14px; right: 14px; }
+    .corner--br::before { bottom: 0; right: 0; width: 14px; height: 1px; }
+    .corner--br::after { bottom: 0; right: 0; width: 1px; height: 14px; }
+
+    /* ═══ Holographic chip (for some variants) ═══ */
+    .holo-chip {
+        position: absolute;
+        top: 76px;
+        left: 22px;
+        width: 36px;
+        height: 28px;
+        border-radius: 5px;
+        border: 1px solid rgba(255,255,255,0.06);
+        background: linear-gradient(135deg, rgba(74,143,231,0.06), rgba(255,255,255,0.03), rgba(74,143,231,0.04));
+        z-index: 4;
+    }
+    .holo-chip-lines {
+        position: absolute;
+        inset: 4px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .holo-chip-line {
+        height: 1px;
+        background: rgba(255,255,255,0.04);
+    }
+
+    /* ═══ Hex data watermark ═══ */
+    .hex-data {
+        position: absolute;
+        top: 76px;
+        right: 18px;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.32rem;
+        line-height: 1.6;
+        color: rgba(255,255,255,0.04);
+        letter-spacing: 0.08em;
+        text-align: right;
+        z-index: 4;
+    }
+
+    /* ═══ Security pattern ═══ */
+    .sec-pattern {
+        position: absolute;
+        bottom: 44px;
+        left: 22px;
+        display: flex;
+        gap: 3px;
+        z-index: 4;
+    }
+    .sec-dot {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: rgba(74,143,231,0.08);
+    }
+    .sec-dot.active {
+        background: rgba(74,143,231,0.2);
+    }
+
+    /* ═══ Full-width card row for hero cards ═══ */
+    .card-full {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+    .id-card-large {
+        width: 480px;
+        height: 303px;
+    }
+</style>
+</head>
+<body>
+
+<h1>MID Card Design — Applied Showcase</h1>
+<p class="subtitle">Logo C (Sovereign Seal) and Logo F (Secure Element) applied to Montserrat Digital Identity card back</p>
+
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<!-- SECTION 1: LOGO C — SOVEREIGN SEAL ON CARD BACK                      -->
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<div class="section-header">Logo C — Sovereign Monogram Seal — Card Back Variations</div>
+
+<div class="card-row">
+    <!-- C1: Dark titanium + Logo C centered -->
+    <div class="card-pair">
+        <div class="id-card card-dark">
+            <div class="mag-stripe"></div>
+            <div class="corner corner--tl"></div>
+            <div class="corner corner--tr"></div>
+            <div class="corner corner--bl"></div>
+            <div class="corner corner--br"></div>
+            <div class="card-inner">
+                <div class="card-logo-area">
+                    <svg width="72" height="72" viewBox="0 0 220 220" fill="none">
+                        <circle cx="110" cy="110" r="94" stroke="rgba(255,255,255,0.14)" stroke-width="2.5" fill="none"/>
+                        <circle cx="110" cy="110" r="90" stroke="rgba(255,255,255,0.04)" stroke-width="0.5" fill="none"/>
+                        <circle cx="110" cy="110" r="78" stroke="rgba(74,143,231,0.08)" stroke-width="0.5" fill="none"/>
+                        <!-- Tick marks -->
+                        <line x1="110" y1="16" x2="110" y2="24" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+                        <line x1="204" y1="110" x2="196" y2="110" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+                        <line x1="110" y1="204" x2="110" y2="196" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+                        <line x1="16" y1="110" x2="24" y2="110" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+                        <!-- M -->
+                        <path d="M60 152V72L82 104L110 68L138 104L160 72V152" stroke="rgba(255,255,255,0.3)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+                        <!-- I -->
+                        <line x1="110" y1="50" x2="110" y2="170" stroke="rgba(74,143,231,0.45)" stroke-width="2.5"/>
+                        <line x1="103" y1="50" x2="117" y2="50" stroke="rgba(74,143,231,0.3)" stroke-width="1.5"/>
+                        <line x1="103" y1="170" x2="117" y2="170" stroke="rgba(74,143,231,0.3)" stroke-width="1.5"/>
+                        <!-- D arc -->
+                        <path d="M110 50C148 50 174 72 174 110C174 148 148 170 110 170" stroke="rgba(74,143,231,0.2)" stroke-width="2" fill="none"/>
+                        <!-- Base -->
+                        <line x1="56" y1="152" x2="164" y2="152" stroke="rgba(255,255,255,0.08)" stroke-width="1.2"/>
+                    </svg>
+                </div>
+                <div class="card-title">Future Citizen</div>
+                <div class="card-sub">Montserrat Digital Residency</div>
+            </div>
+            <div class="sig-area">
+                <div class="sig-label">Authorized Signature</div>
+                <div class="sig-box"></div>
+            </div>
+            <div class="card-number">MS-DR-2025-004817</div>
+            <div class="hex-data">A7F3 0B2E<br>C91D 4E8A<br>3F6B 72D1</div>
+        </div>
+        <span class="card-label">C1 — Dark Surface + Seal</span>
+    </div>
+
+    <!-- C2: Titanium + Logo C with holographic chip -->
+    <div class="card-pair">
+        <div class="id-card card-titanium">
+            <div class="mag-stripe"></div>
+            <div class="corner corner--tl"></div>
+            <div class="corner corner--tr"></div>
+            <div class="corner corner--bl"></div>
+            <div class="corner corner--br"></div>
+            <div class="holo-chip">
+                <div class="holo-chip-lines">
+                    <div class="holo-chip-line"></div>
+                    <div class="holo-chip-line"></div>
+                    <div class="holo-chip-line"></div>
+                    <div class="holo-chip-line"></div>
+                </div>
+            </div>
+            <div class="card-inner">
+                <div class="card-logo-area">
+                    <svg width="68" height="68" viewBox="0 0 220 220" fill="none">
+                        <circle cx="110" cy="110" r="94" stroke="rgba(255,255,255,0.12)" stroke-width="2.8" fill="none"/>
+                        <circle cx="110" cy="110" r="78" stroke="rgba(74,143,231,0.08)" stroke-width="0.5" fill="none"/>
+                        <line x1="110" y1="16" x2="110" y2="22" stroke="rgba(255,255,255,0.06)" stroke-width="0.7"/>
+                        <line x1="204" y1="110" x2="198" y2="110" stroke="rgba(255,255,255,0.06)" stroke-width="0.7"/>
+                        <line x1="110" y1="204" x2="110" y2="198" stroke="rgba(255,255,255,0.06)" stroke-width="0.7"/>
+                        <line x1="16" y1="110" x2="22" y2="110" stroke="rgba(255,255,255,0.06)" stroke-width="0.7"/>
+                        <path d="M60 152V72L82 104L110 68L138 104L160 72V152" stroke="rgba(255,255,255,0.26)" stroke-width="5" stroke-linecap="square" fill="none"/>
+                        <line x1="110" y1="50" x2="110" y2="170" stroke="rgba(74,143,231,0.4)" stroke-width="2.5"/>
+                        <line x1="103" y1="50" x2="117" y2="50" stroke="rgba(74,143,231,0.28)" stroke-width="1.5"/>
+                        <line x1="103" y1="170" x2="117" y2="170" stroke="rgba(74,143,231,0.28)" stroke-width="1.5"/>
+                        <path d="M110 50C148 50 174 72 174 110C174 148 148 170 110 170" stroke="rgba(74,143,231,0.18)" stroke-width="1.8" fill="none"/>
+                        <line x1="56" y1="152" x2="164" y2="152" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+                    </svg>
+                </div>
+                <div class="card-title">Future Citizen</div>
+                <div class="card-sub">Montserrat Digital Residency</div>
+            </div>
+            <div class="sig-area">
+                <div class="sig-label">Authorized Signature</div>
+                <div class="sig-box"></div>
+            </div>
+            <div class="card-number">MS-DR-2025-004817</div>
+            <div class="sec-pattern">
+                <div class="sec-dot active"></div><div class="sec-dot"></div><div class="sec-dot active"></div><div class="sec-dot"></div><div class="sec-dot active"></div><div class="sec-dot"></div><div class="sec-dot active"></div>
+            </div>
+        </div>
+        <span class="card-label">C2 — Titanium + Seal + Holo Chip</span>
+    </div>
+</div>
+
+<div class="card-row">
+    <!-- C3: Obsidian deep black + larger logo -->
+    <div class="card-pair">
+        <div class="id-card card-obsidian">
+            <div class="mag-stripe"></div>
+            <div class="corner corner--tl"></div>
+            <div class="corner corner--tr"></div>
+            <div class="corner corner--bl"></div>
+            <div class="corner corner--br"></div>
+            <div class="card-inner">
+                <div class="card-logo-area">
+                    <svg width="88" height="88" viewBox="0 0 220 220" fill="none">
+                        <circle cx="110" cy="110" r="94" stroke="rgba(255,255,255,0.1)" stroke-width="2" fill="none"/>
+                        <circle cx="110" cy="110" r="90" stroke="rgba(255,255,255,0.03)" stroke-width="0.5" fill="none"/>
+                        <circle cx="110" cy="110" r="78" stroke="rgba(74,143,231,0.06)" stroke-width="0.4" fill="none"/>
+                        <!-- 8 ticks -->
+                        <line x1="110" y1="16" x2="110" y2="22" stroke="rgba(255,255,255,0.06)" stroke-width="0.6"/>
+                        <line x1="176.5" y1="43.5" x2="172" y2="48" stroke="rgba(255,255,255,0.04)" stroke-width="0.6"/>
+                        <line x1="204" y1="110" x2="198" y2="110" stroke="rgba(255,255,255,0.06)" stroke-width="0.6"/>
+                        <line x1="176.5" y1="176.5" x2="172" y2="172" stroke="rgba(255,255,255,0.04)" stroke-width="0.6"/>
+                        <line x1="110" y1="204" x2="110" y2="198" stroke="rgba(255,255,255,0.06)" stroke-width="0.6"/>
+                        <line x1="43.5" y1="176.5" x2="48" y2="172" stroke="rgba(255,255,255,0.04)" stroke-width="0.6"/>
+                        <line x1="16" y1="110" x2="22" y2="110" stroke="rgba(255,255,255,0.06)" stroke-width="0.6"/>
+                        <line x1="43.5" y1="43.5" x2="48" y2="48" stroke="rgba(255,255,255,0.04)" stroke-width="0.6"/>
+                        <path d="M60 152V72L82 104L110 68L138 104L160 72V152" stroke="rgba(255,255,255,0.22)" stroke-width="4.5" stroke-linecap="square" fill="none"/>
+                        <line x1="110" y1="50" x2="110" y2="170" stroke="rgba(74,143,231,0.4)" stroke-width="2"/>
+                        <line x1="104" y1="50" x2="116" y2="50" stroke="rgba(74,143,231,0.25)" stroke-width="1.2"/>
+                        <line x1="104" y1="170" x2="116" y2="170" stroke="rgba(74,143,231,0.25)" stroke-width="1.2"/>
+                        <path d="M110 50C148 50 174 72 174 110C174 148 148 170 110 170" stroke="rgba(74,143,231,0.16)" stroke-width="1.5" fill="none"/>
+                        <line x1="56" y1="152" x2="164" y2="152" stroke="rgba(255,255,255,0.06)" stroke-width="0.8"/>
+                        <!-- Vertex dots -->
+                        <circle cx="60" cy="72" r="2" fill="rgba(74,143,231,0.2)"/>
+                        <circle cx="160" cy="72" r="2" fill="rgba(74,143,231,0.2)"/>
+                        <circle cx="110" cy="68" r="1.8" fill="rgba(255,255,255,0.15)"/>
+                    </svg>
+                </div>
+                <div class="card-title card-title-bright">Future Citizen</div>
+                <div class="card-sub">Montserrat Digital Residency</div>
+            </div>
+            <div class="sig-area">
+                <div class="sig-label">Authorized Signature</div>
+                <div class="sig-box"></div>
+            </div>
+            <div class="card-number">MS-DR-2025-004817</div>
+            <div class="hex-data">A7F3 0B2E<br>C91D 4E8A<br>3F6B 72D1<br>E504 9AC8</div>
+        </div>
+        <span class="card-label">C3 — Obsidian + Large Seal + Hex Data</span>
+    </div>
+
+    <!-- C4: Titanium with seal top-center, text below -->
+    <div class="card-pair">
+        <div class="id-card card-titanium" style="display:flex; flex-direction:column; align-items:center; justify-content:flex-start; padding-top: 70px;">
+            <div class="mag-stripe"></div>
+            <div class="corner corner--tl"></div>
+            <div class="corner corner--tr"></div>
+            <div class="corner corner--bl"></div>
+            <div class="corner corner--br"></div>
+            <!-- Small seal top-center below mag stripe -->
+            <div style="position:relative; z-index:4; margin-bottom:12px;">
+                <svg width="52" height="52" viewBox="0 0 220 220" fill="none">
+                    <circle cx="110" cy="110" r="94" stroke="rgba(255,255,255,0.13)" stroke-width="3.5" fill="none"/>
+                    <path d="M60 152V72L82 104L110 68L138 104L160 72V152" stroke="rgba(255,255,255,0.28)" stroke-width="6.5" stroke-linecap="square" fill="none"/>
+                    <line x1="110" y1="50" x2="110" y2="170" stroke="rgba(74,143,231,0.45)" stroke-width="3.5"/>
+                    <path d="M110 50C148 50 174 72 174 110C174 148 148 170 110 170" stroke="rgba(74,143,231,0.2)" stroke-width="2.5" fill="none"/>
+                    <line x1="56" y1="152" x2="164" y2="152" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+                </svg>
+            </div>
+            <div style="font-family:'DM Sans',sans-serif; font-size:1.35rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.17); position:relative; z-index:4;">Future Citizen</div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:0.48rem; font-weight:500; letter-spacing:0.28em; text-transform:uppercase; color:rgba(74,143,231,0.28); margin-top:5px; position:relative; z-index:4;">Montserrat Digital Residency</div>
+            <!-- Horizontal rule -->
+            <div style="width:120px; height:1px; background:rgba(74,143,231,0.08); margin-top:14px; position:relative; z-index:4;"></div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:0.36rem; letter-spacing:0.2em; color:rgba(255,255,255,0.06); margin-top:8px; position:relative; z-index:4;">GOVERNMENT OF MONTSERRAT</div>
+            <div class="sig-area">
+                <div class="sig-label">Authorized Signature</div>
+                <div class="sig-box"></div>
+            </div>
+            <div class="card-number">MS-DR-2025-004817</div>
+        </div>
+        <span class="card-label">C4 — Titanium + Compact Seal + Gov Text</span>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<!-- SECTION 2: LOGO F — SECURE ELEMENT CHIP ON CARD BACK                 -->
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<div class="section-header section-gap">Logo F — Secure Element Chip — Card Back Variations</div>
+
+<div class="card-row">
+    <!-- F1: Dark + Chip logo centered -->
+    <div class="card-pair">
+        <div class="id-card card-dark">
+            <div class="mag-stripe"></div>
+            <div class="corner corner--tl"></div>
+            <div class="corner corner--tr"></div>
+            <div class="corner corner--bl"></div>
+            <div class="corner corner--br"></div>
+            <div class="card-inner">
+                <div class="card-logo-area">
+                    <svg width="110" height="72" viewBox="0 0 220 160" fill="none">
+                        <!-- Chip body -->
+                        <path d="M40 14H180Q190 14 190 24V116Q190 126 180 126H40Q30 126 30 116V24Q30 14 40 14Z" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="rgba(74,143,231,0.015)"/>
+                        <path d="M44 18H176Q182 18 182 24V112Q182 118 176 118H44Q38 118 38 112V24Q38 18 44 18Z" stroke="rgba(255,255,255,0.03)" stroke-width="0.5" fill="none"/>
+                        <!-- Die area -->
+                        <rect x="60" y="36" width="100" height="68" rx="4" stroke="rgba(74,143,231,0.06)" stroke-width="0.5" fill="rgba(74,143,231,0.01)"/>
+                        <!-- Chamfer -->
+                        <path d="M30 30L42 14" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                        <!-- MID -->
+                        <text x="110" y="78" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="30" font-weight="700" letter-spacing="7" fill="rgba(255,255,255,0.28)">MID</text>
+                        <line x1="72" y1="86" x2="148" y2="86" stroke="rgba(74,143,231,0.1)" stroke-width="0.7"/>
+                        <text x="110" y="104" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="5.5" font-weight="500" letter-spacing="3.5" fill="rgba(255,255,255,0.08)">SECURE ELEMENT</text>
+                        <!-- Left pins -->
+                        <line x1="30" y1="48" x2="12" y2="48" stroke="rgba(74,143,231,0.28)" stroke-width="1.2"/>
+                        <line x1="30" y1="70" x2="8" y2="70" stroke="rgba(74,143,231,0.25)" stroke-width="1.2"/>
+                        <line x1="30" y1="92" x2="12" y2="92" stroke="rgba(74,143,231,0.28)" stroke-width="1.2"/>
+                        <!-- Right pins -->
+                        <line x1="190" y1="48" x2="208" y2="48" stroke="rgba(74,143,231,0.28)" stroke-width="1.2"/>
+                        <line x1="190" y1="70" x2="212" y2="70" stroke="rgba(74,143,231,0.25)" stroke-width="1.2"/>
+                        <line x1="190" y1="92" x2="208" y2="92" stroke="rgba(74,143,231,0.28)" stroke-width="1.2"/>
+                        <!-- Top pins -->
+                        <line x1="80" y1="14" x2="80" y2="0" stroke="rgba(74,143,231,0.25)" stroke-width="1.2"/>
+                        <line x1="110" y1="14" x2="110" y2="0" stroke="rgba(74,143,231,0.28)" stroke-width="1.2"/>
+                        <line x1="140" y1="14" x2="140" y2="0" stroke="rgba(74,143,231,0.25)" stroke-width="1.2"/>
+                        <!-- Nodes -->
+                        <circle cx="12" cy="48" r="2.2" fill="rgba(74,143,231,0.4)"/>
+                        <circle cx="8" cy="70" r="2.2" fill="rgba(74,143,231,0.35)"/>
+                        <circle cx="12" cy="92" r="2.2" fill="rgba(74,143,231,0.4)"/>
+                        <circle cx="208" cy="48" r="2.2" fill="rgba(74,143,231,0.4)"/>
+                        <circle cx="212" cy="70" r="2.2" fill="rgba(74,143,231,0.35)"/>
+                        <circle cx="208" cy="92" r="2.2" fill="rgba(74,143,231,0.4)"/>
+                        <circle cx="80" cy="0" r="2" fill="rgba(74,143,231,0.35)"/>
+                        <circle cx="110" cy="0" r="2.2" fill="rgba(74,143,231,0.4)"/>
+                        <circle cx="140" cy="0" r="2" fill="rgba(74,143,231,0.35)"/>
+                        <!-- White center dots -->
+                        <circle cx="12" cy="48" r="0.8" fill="rgba(255,255,255,0.45)"/>
+                        <circle cx="208" cy="48" r="0.8" fill="rgba(255,255,255,0.45)"/>
+                        <circle cx="110" cy="0" r="0.8" fill="rgba(255,255,255,0.45)"/>
+                    </svg>
+                </div>
+                <div class="card-title" style="margin-top:2px;">Future Citizen</div>
+                <div class="card-sub">Montserrat Digital Residency</div>
+            </div>
+            <div class="sig-area">
+                <div class="sig-label">Authorized Signature</div>
+                <div class="sig-box"></div>
+            </div>
+            <div class="card-number">MS-DR-2025-004817</div>
+        </div>
+        <span class="card-label">F1 — Dark + Chip Logo Centered</span>
+    </div>
+
+    <!-- F2: Titanium + Chip logo top, holo chip -->
+    <div class="card-pair">
+        <div class="id-card card-titanium" style="display:flex; flex-direction:column; align-items:center; padding-top:68px;">
+            <div class="mag-stripe"></div>
+            <div class="corner corner--tl"></div>
+            <div class="corner corner--tr"></div>
+            <div class="corner corner--bl"></div>
+            <div class="corner corner--br"></div>
+            <div class="holo-chip">
+                <div class="holo-chip-lines">
+                    <div class="holo-chip-line"></div>
+                    <div class="holo-chip-line"></div>
+                    <div class="holo-chip-line"></div>
+                    <div class="holo-chip-line"></div>
+                </div>
+            </div>
+            <!-- Chip logo small -->
+            <div style="position:relative; z-index:4; margin-bottom:10px;">
+                <svg width="80" height="42" viewBox="0 0 220 120" fill="none">
+                    <path d="M40 10H180Q188 10 188 20V90Q188 100 180 100H40Q32 100 32 90V20Q32 10 40 10Z" stroke="rgba(255,255,255,0.12)" stroke-width="2.5" fill="none"/>
+                    <text x="110" y="64" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="30" font-weight="700" letter-spacing="7" fill="rgba(255,255,255,0.24)">MID</text>
+                    <line x1="32" y1="40" x2="14" y2="40" stroke="rgba(74,143,231,0.3)" stroke-width="1.5"/>
+                    <line x1="32" y1="60" x2="10" y2="60" stroke="rgba(74,143,231,0.25)" stroke-width="1.5"/>
+                    <line x1="188" y1="40" x2="206" y2="40" stroke="rgba(74,143,231,0.3)" stroke-width="1.5"/>
+                    <line x1="188" y1="60" x2="210" y2="60" stroke="rgba(74,143,231,0.25)" stroke-width="1.5"/>
+                    <line x1="90" y1="10" x2="90" y2="0" stroke="rgba(74,143,231,0.25)" stroke-width="1.5"/>
+                    <line x1="130" y1="10" x2="130" y2="0" stroke="rgba(74,143,231,0.25)" stroke-width="1.5"/>
+                    <circle cx="14" cy="40" r="2.5" fill="rgba(74,143,231,0.4)"/>
+                    <circle cx="206" cy="40" r="2.5" fill="rgba(74,143,231,0.4)"/>
+                    <circle cx="90" cy="0" r="2.2" fill="rgba(74,143,231,0.35)"/>
+                    <circle cx="130" cy="0" r="2.2" fill="rgba(74,143,231,0.35)"/>
+                </svg>
+            </div>
+            <div style="font-family:'DM Sans',sans-serif; font-size:1.35rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.17); position:relative; z-index:4;">Future Citizen</div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:0.48rem; font-weight:500; letter-spacing:0.28em; text-transform:uppercase; color:rgba(74,143,231,0.28); margin-top:5px; position:relative; z-index:4;">Montserrat Digital Residency</div>
+            <div style="width:100px; height:1px; background:rgba(74,143,231,0.07); margin-top:14px; position:relative; z-index:4;"></div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:0.36rem; letter-spacing:0.18em; color:rgba(255,255,255,0.06); margin-top:8px; position:relative; z-index:4;">GOVERNMENT OF MONTSERRAT</div>
+            <div class="sig-area">
+                <div class="sig-label">Authorized Signature</div>
+                <div class="sig-box"></div>
+            </div>
+            <div class="card-number">MS-DR-2025-004817</div>
+        </div>
+        <span class="card-label">F2 — Titanium + Chip Top + Gov Text</span>
+    </div>
+</div>
+
+<div class="card-row">
+    <!-- F3: Obsidian + large chip logo + hex data -->
+    <div class="card-pair">
+        <div class="id-card card-obsidian">
+            <div class="mag-stripe"></div>
+            <div class="corner corner--tl"></div>
+            <div class="corner corner--tr"></div>
+            <div class="corner corner--bl"></div>
+            <div class="corner corner--br"></div>
+            <div class="card-inner">
+                <div class="card-logo-area">
+                    <svg width="130" height="84" viewBox="0 0 220 160" fill="none">
+                        <path d="M40 14H180Q190 14 190 24V116Q190 126 180 126H40Q30 126 30 116V24Q30 14 40 14Z" stroke="rgba(255,255,255,0.1)" stroke-width="1.8" fill="rgba(74,143,231,0.01)"/>
+                        <path d="M44 18H176Q182 18 182 24V112Q182 118 176 118H44Q38 118 38 112V24Q38 18 44 18Z" stroke="rgba(255,255,255,0.025)" stroke-width="0.5" fill="none"/>
+                        <rect x="60" y="36" width="100" height="68" rx="4" stroke="rgba(74,143,231,0.05)" stroke-width="0.4" fill="rgba(74,143,231,0.008)"/>
+                        <!-- Die grid -->
+                        <g stroke="rgba(74,143,231,0.02)" stroke-width="0.3">
+                            <line x1="80" y1="36" x2="80" y2="104"/>
+                            <line x1="100" y1="36" x2="100" y2="104"/>
+                            <line x1="120" y1="36" x2="120" y2="104"/>
+                            <line x1="140" y1="36" x2="140" y2="104"/>
+                            <line x1="60" y1="56" x2="160" y2="56"/>
+                            <line x1="60" y1="76" x2="160" y2="76"/>
+                        </g>
+                        <path d="M30 30L42 14" stroke="rgba(255,255,255,0.06)" stroke-width="0.8"/>
+                        <text x="110" y="78" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="30" font-weight="700" letter-spacing="7" fill="rgba(255,255,255,0.22)">MID</text>
+                        <line x1="72" y1="86" x2="148" y2="86" stroke="rgba(74,143,231,0.08)" stroke-width="0.6"/>
+                        <text x="110" y="104" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="5.5" font-weight="500" letter-spacing="3" fill="rgba(255,255,255,0.06)">SECURE ELEMENT</text>
+                        <!-- All 4 sides of pins -->
+                        <line x1="30" y1="48" x2="10" y2="48" stroke="rgba(74,143,231,0.22)" stroke-width="1.1"/>
+                        <line x1="30" y1="70" x2="6" y2="70" stroke="rgba(74,143,231,0.2)" stroke-width="1.1"/>
+                        <line x1="30" y1="92" x2="10" y2="92" stroke="rgba(74,143,231,0.22)" stroke-width="1.1"/>
+                        <line x1="190" y1="48" x2="210" y2="48" stroke="rgba(74,143,231,0.22)" stroke-width="1.1"/>
+                        <line x1="190" y1="70" x2="214" y2="70" stroke="rgba(74,143,231,0.2)" stroke-width="1.1"/>
+                        <line x1="190" y1="92" x2="210" y2="92" stroke="rgba(74,143,231,0.22)" stroke-width="1.1"/>
+                        <line x1="70" y1="14" x2="70" y2="0" stroke="rgba(74,143,231,0.2)" stroke-width="1.1"/>
+                        <line x1="110" y1="14" x2="110" y2="0" stroke="rgba(74,143,231,0.22)" stroke-width="1.1"/>
+                        <line x1="150" y1="14" x2="150" y2="0" stroke="rgba(74,143,231,0.2)" stroke-width="1.1"/>
+                        <line x1="70" y1="126" x2="70" y2="140" stroke="rgba(74,143,231,0.2)" stroke-width="1.1"/>
+                        <line x1="110" y1="126" x2="110" y2="140" stroke="rgba(74,143,231,0.22)" stroke-width="1.1"/>
+                        <line x1="150" y1="126" x2="150" y2="140" stroke="rgba(74,143,231,0.2)" stroke-width="1.1"/>
+                        <!-- Nodes -->
+                        <circle cx="10" cy="48" r="2" fill="rgba(74,143,231,0.35)"/>
+                        <circle cx="6" cy="70" r="2" fill="rgba(74,143,231,0.3)"/>
+                        <circle cx="10" cy="92" r="2" fill="rgba(74,143,231,0.35)"/>
+                        <circle cx="210" cy="48" r="2" fill="rgba(74,143,231,0.35)"/>
+                        <circle cx="214" cy="70" r="2" fill="rgba(74,143,231,0.3)"/>
+                        <circle cx="210" cy="92" r="2" fill="rgba(74,143,231,0.35)"/>
+                        <circle cx="110" cy="0" r="2" fill="rgba(74,143,231,0.35)"/>
+                        <circle cx="110" cy="140" r="2" fill="rgba(74,143,231,0.35)"/>
+                    </svg>
+                </div>
+                <div class="card-title card-title-bright" style="margin-top:0;">Future Citizen</div>
+                <div class="card-sub">Montserrat Digital Residency</div>
+            </div>
+            <div class="sig-area">
+                <div class="sig-label">Authorized Signature</div>
+                <div class="sig-box"></div>
+            </div>
+            <div class="card-number">MS-DR-2025-004817</div>
+            <div class="hex-data">A7F3 0B2E<br>C91D 4E8A<br>3F6B 72D1<br>E504 9AC8</div>
+        </div>
+        <span class="card-label">F3 — Obsidian + Full Chip + Die Grid</span>
+    </div>
+
+    <!-- F4: Dark minimal chip badge -->
+    <div class="card-pair">
+        <div class="id-card card-dark">
+            <div class="mag-stripe"></div>
+            <div class="corner corner--tl"></div>
+            <div class="corner corner--tr"></div>
+            <div class="corner corner--bl"></div>
+            <div class="corner corner--br"></div>
+            <div class="holo-chip">
+                <div class="holo-chip-lines">
+                    <div class="holo-chip-line"></div>
+                    <div class="holo-chip-line"></div>
+                    <div class="holo-chip-line"></div>
+                    <div class="holo-chip-line"></div>
+                </div>
+            </div>
+            <div class="card-inner">
+                <!-- Compact chip badge -->
+                <div class="card-logo-area">
+                    <svg width="56" height="36" viewBox="0 0 220 160" fill="none">
+                        <path d="M40 14H180Q190 14 190 24V116Q190 126 180 126H40Q30 126 30 116V24Q30 14 40 14Z" stroke="rgba(255,255,255,0.16)" stroke-width="4" fill="none"/>
+                        <text x="110" y="80" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="36" font-weight="700" letter-spacing="8" fill="rgba(255,255,255,0.28)">MID</text>
+                        <line x1="30" y1="50" x2="8" y2="50" stroke="rgba(74,143,231,0.35)" stroke-width="2.5"/>
+                        <line x1="30" y1="80" x2="8" y2="80" stroke="rgba(74,143,231,0.3)" stroke-width="2.5"/>
+                        <line x1="190" y1="50" x2="212" y2="50" stroke="rgba(74,143,231,0.35)" stroke-width="2.5"/>
+                        <line x1="190" y1="80" x2="212" y2="80" stroke="rgba(74,143,231,0.3)" stroke-width="2.5"/>
+                        <line x1="90" y1="14" x2="90" y2="0" stroke="rgba(74,143,231,0.3)" stroke-width="2.5"/>
+                        <line x1="130" y1="14" x2="130" y2="0" stroke="rgba(74,143,231,0.3)" stroke-width="2.5"/>
+                        <circle cx="8" cy="50" r="3.5" fill="rgba(74,143,231,0.45)"/>
+                        <circle cx="212" cy="50" r="3.5" fill="rgba(74,143,231,0.45)"/>
+                        <circle cx="90" cy="0" r="3" fill="rgba(74,143,231,0.4)"/>
+                        <circle cx="130" cy="0" r="3" fill="rgba(74,143,231,0.4)"/>
+                    </svg>
+                </div>
+                <div class="card-title" style="font-size:1.55rem;">Future Citizen</div>
+                <div class="card-sub">Montserrat Digital Residency</div>
+            </div>
+            <div class="sig-area">
+                <div class="sig-label">Authorized Signature</div>
+                <div class="sig-box"></div>
+            </div>
+            <div class="card-number">MS-DR-2025-004817</div>
+            <div class="sec-pattern">
+                <div class="sec-dot active"></div><div class="sec-dot"></div><div class="sec-dot active"></div><div class="sec-dot"></div><div class="sec-dot active"></div><div class="sec-dot"></div><div class="sec-dot active"></div>
+            </div>
+        </div>
+        <span class="card-label">F4 — Dark + Compact Badge + Holo Chip</span>
+    </div>
+</div>
+
+</body>
+</html>

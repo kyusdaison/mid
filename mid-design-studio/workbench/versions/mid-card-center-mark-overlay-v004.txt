@@ -1,0 +1,9 @@
+Version: v004
+Label: center-mark-overlay
+Created: 2026-03-15T11:34:09+11:00
+HTML Source: /Users/kyusdaison/Montserrat/mid-design-studio/source/mid-card-design-v004-center-mark-overlay.html
+Preview Source: /tmp/mid-card-center-mark-overlay-preview.png
+Archived HTML: /Users/kyusdaison/Montserrat/mid-design-studio/workbench/versions/mid-card-center-mark-overlay-v004.html
+Archived Preview: /Users/kyusdaison/Montserrat/mid-design-studio/workbench/versions/mid-card-center-mark-overlay-v004-preview.png
+Archived PDF: /Users/kyusdaison/Montserrat/mid-design-studio/exports/pdf/versions/mid-card-center-mark-overlay-v004.pdf
+Notes: Kept the existing back design intact and only added a new blue MID center mark overlay.

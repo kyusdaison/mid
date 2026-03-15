@@ -1,0 +1,9 @@
+Version: v005
+Label: center-mark-refined
+Created: 2026-03-15T11:43:42+11:00
+HTML Source: /Users/kyusdaison/Montserrat/mid-design-studio/source/mid-card-design-v005-center-mark-refined.html
+Preview Source: /tmp/mid-card-center-mark-refined-preview.png
+Archived HTML: /Users/kyusdaison/Montserrat/mid-design-studio/workbench/versions/mid-card-center-mark-refined-v005.html
+Archived Preview: /Users/kyusdaison/Montserrat/mid-design-studio/workbench/versions/mid-card-center-mark-refined-v005-preview.png
+Archived PDF: /Users/kyusdaison/Montserrat/mid-design-studio/exports/pdf/versions/mid-card-center-mark-refined-v005.pdf
+Notes: Reduced the center MID mark, lifted it clear of the signature area, and sharpened the blue/official-tech finish while keeping the rest of the back design unchanged.

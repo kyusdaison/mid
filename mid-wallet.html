@@ -2857,6 +2857,311 @@
             font-size: 0.40rem; color: var(--text-tertiary); margin-bottom: 4px;
         }
 
+
+        @keyframes ripple-anim {
+            to { transform: scale(2.5); opacity: 0; }
+        }
+
+
+        /* ── Balance glow effect ── */
+        .balance-amount {
+            text-shadow: 0 0 40px rgba(52, 211, 153, 0.15);
+        }
+        .balance-change.positive {
+            text-shadow: 0 0 20px rgba(52, 211, 153, 0.2);
+        }
+
+
+        /* ── Pull to refresh indicator ── */
+        .ptr-indicator {
+            text-align: center; padding: 12px 0 4px;
+            font-size: 0.34rem; color: var(--text-quaternary);
+            display: none;
+        }
+        .ptr-indicator svg { width: 18px; height: 18px; animation: ptr-spin 1s linear infinite; }
+        @keyframes ptr-spin { to { transform: rotate(360deg); } }
+
+
+        /* ── Asset row separators ── */
+        .asset-group .asset-row + .asset-row {
+            border-top: 1px solid var(--border-subtle);
+        }
+        .friends-group .friend-item + .friend-item {
+            border-top: 1px solid var(--border-subtle);
+        }
+
+
+        /* ── Primary action button highlight ── */
+        .action-btn-primary {
+            background: rgba(74, 143, 231, 0.15) !important;
+            border-color: rgba(74, 143, 231, 0.3) !important;
+        }
+        .action-btn-primary svg { stroke: var(--blue) !important; }
+        .action-btn-primary span { color: var(--blue) !important; }
+
+
+/* ══════════════════════════════════════════════════
+   WORLD-CLASS UPGRADES
+   ══════════════════════════════════════════════════ */
+
+/* ── 1. STAGGERED LIST ANIMATIONS ── */
+@keyframes stagger-in {
+    0% { opacity: 0; transform: translateY(12px) scale(0.97); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.page.active .asset-row,
+.page.active .settings-row,
+.page.active .quick-chip,
+.page.active .nft-card,
+.page.active .tx-item {
+    animation: stagger-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.page.active .asset-row:nth-child(1), .page.active .settings-row:nth-child(1), .page.active .quick-chip:nth-child(1) { animation-delay: 0.02s; }
+.page.active .asset-row:nth-child(2), .page.active .settings-row:nth-child(2), .page.active .quick-chip:nth-child(2) { animation-delay: 0.06s; }
+.page.active .asset-row:nth-child(3), .page.active .settings-row:nth-child(3), .page.active .quick-chip:nth-child(3) { animation-delay: 0.10s; }
+.page.active .asset-row:nth-child(4), .page.active .settings-row:nth-child(4), .page.active .quick-chip:nth-child(4) { animation-delay: 0.14s; }
+.page.active .asset-row:nth-child(5), .page.active .settings-row:nth-child(5), .page.active .quick-chip:nth-child(5) { animation-delay: 0.18s; }
+.page.active .asset-row:nth-child(6), .page.active .settings-row:nth-child(6), .page.active .quick-chip:nth-child(6) { animation-delay: 0.22s; }
+.page.active .asset-row:nth-child(7), .page.active .settings-row:nth-child(7), .page.active .quick-chip:nth-child(7) { animation-delay: 0.26s; }
+.page.active .asset-row:nth-child(8), .page.active .settings-row:nth-child(8), .page.active .quick-chip:nth-child(8) { animation-delay: 0.30s; }
+.page.active .nft-card:nth-child(1) { animation-delay: 0.04s; }
+.page.active .nft-card:nth-child(2) { animation-delay: 0.10s; }
+.page.active .nft-card:nth-child(3) { animation-delay: 0.16s; }
+.page.active .nft-card:nth-child(4) { animation-delay: 0.22s; }
+
+/* ── 2. SPARKLINE MINI-CHARTS ── */
+.asset-sparkline {
+    width: 48px; height: 20px; flex-shrink: 0; margin-left: auto; margin-right: 8px;
+}
+.asset-sparkline svg { width: 100%; height: 100%; }
+.sparkline-up { stroke: var(--green); }
+.sparkline-down { stroke: var(--red); }
+
+/* ── 3. ANIMATED BALANCE COUNTER ── */
+@keyframes balance-glow {
+    0%,100% { text-shadow: 0 0 20px rgba(74,143,231,0); }
+    50% { text-shadow: 0 0 30px rgba(74,143,231,0.15); }
+}
+.balance-amount { animation: balance-glow 4s ease-in-out infinite; }
+.balance-digit { display: inline-block; transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+
+/* ── 4. PRICE CHANGE FLASH ── */
+@keyframes price-flash-green {
+    0% { background: rgba(52,211,153,0.25); }
+    100% { background: transparent; }
+}
+@keyframes price-flash-red {
+    0% { background: rgba(239,68,68,0.25); }
+    100% { background: transparent; }
+}
+.price-up { animation: price-flash-green 1.5s ease-out; }
+.price-down { animation: price-flash-red 1.5s ease-out; }
+
+/* ── 5. GLASSMORPHIC CARDS ── */
+.glass-card {
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+/* ── 6. FLOATING ACTION BUTTON ── */
+.fab-container {
+    position: absolute; bottom: 76px; right: 16px; z-index: 45;
+    display: flex; flex-direction: column-reverse; align-items: center; gap: 8px;
+}
+.fab-main {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue), #6366f1);
+    border: none; color: white; font-size: 20px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(74,143,231,0.4), 0 0 40px rgba(74,143,231,0.15);
+    cursor: pointer; transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 46;
+}
+.fab-main:active { transform: scale(0.9) rotate(45deg); }
+.fab-main svg { width: 20px; height: 20px; transition: transform 0.3s ease; }
+.fab-container.open .fab-main svg { transform: rotate(45deg); }
+.fab-action {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--surface-3); border: 1px solid var(--border-medium);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; opacity: 0; transform: scale(0) translateY(10px);
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.fab-action svg { width: 14px; height: 14px; }
+.fab-container.open .fab-action { opacity: 1; transform: scale(1) translateY(0); }
+.fab-container.open .fab-action:nth-child(2) { transition-delay: 0.05s; }
+.fab-container.open .fab-action:nth-child(3) { transition-delay: 0.10s; }
+.fab-container.open .fab-action:nth-child(4) { transition-delay: 0.15s; }
+.fab-label {
+    position: absolute; right: 46px; top: 50%; transform: translateY(-50%);
+    background: var(--surface-3); color: var(--text-secondary);
+    padding: 3px 8px; border-radius: 6px; font-size: 0.55rem; font-weight: 600;
+    white-space: nowrap; opacity: 0; transition: opacity 0.2s ease;
+    pointer-events: none; border: 1px solid var(--border-subtle);
+}
+.fab-container.open .fab-label { opacity: 1; }
+
+/* ── 7. PARALLAX BALANCE HERO ── */
+.balance-hero {
+    position: relative; overflow: hidden;
+}
+.balance-hero::before {
+    content: ''; position: absolute; top: -30px; left: 50%; transform: translateX(-50%);
+    width: 200px; height: 200px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(74,143,231,0.06) 0%, transparent 70%);
+    pointer-events: none; z-index: 0;
+}
+.balance-hero > * { position: relative; z-index: 1; }
+
+/* ── 8. SMOOTH TAB INDICATOR ── */
+.tab-indicator {
+    position: absolute; top: 0; height: 2px;
+    background: linear-gradient(90deg, var(--blue), #818cf8);
+    border-radius: 0 0 2px 2px;
+    transition: left 0.35s cubic-bezier(0.22, 1, 0.36, 1), width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 0 8px rgba(74,143,231,0.4);
+}
+
+/* ── 9. PROGRESS RINGS ── */
+.progress-ring { transform: rotate(-90deg); }
+.progress-ring__bg { stroke: var(--surface-3); fill: none; }
+.progress-ring__fill {
+    fill: none; stroke-linecap: round;
+    transition: stroke-dashoffset 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── 10. PORTFOLIO MINI-CHART (animated line) ── */
+.portfolio-chart-container {
+    width: 100%; height: 60px; margin: 4px 0 8px; position: relative;
+    border-radius: 8px; overflow: hidden;
+}
+.portfolio-chart-container svg {
+    width: 100%; height: 100%;
+}
+@keyframes chart-draw {
+    0% { stroke-dashoffset: 500; }
+    100% { stroke-dashoffset: 0; }
+}
+.chart-line {
+    stroke-dasharray: 500; stroke-dashoffset: 500;
+    animation: chart-draw 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+}
+.chart-gradient { opacity: 0; animation: fade-up 1s ease 0.5s forwards; }
+
+/* ── 11. CARD TILT 3D EFFECT ── */
+.card-3d {
+    perspective: 800px; transform-style: preserve-3d;
+}
+.card-3d-inner {
+    transition: transform 0.15s ease-out;
+    transform-style: preserve-3d;
+}
+
+/* ── 12. NOTIFICATION BADGE BOUNCE ── */
+@keyframes badge-bounce {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+.notif-badge {
+    position: absolute; top: -3px; right: -3px;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--red); border: 1.5px solid var(--surface-0);
+    animation: badge-bounce 2s ease-in-out infinite;
+}
+
+/* ── 13. ENHANCED IDENTITY STRIP ── */
+.identity-strip {
+    position: relative; overflow: hidden;
+}
+.identity-strip::after {
+    content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+    animation: metal-sweep 6s ease-in-out infinite;
+}
+
+/* ── 14. INTERACTIVE BUTTON STATES ── */
+.action-btn { position: relative; overflow: hidden; }
+.action-btn::after {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(74,143,231,0.12), transparent 60%);
+    opacity: 0; transition: opacity 0.3s ease;
+}
+.action-btn:hover::after, .action-btn:active::after { opacity: 1; }
+
+/* ── 15. ANIMATED SECTION HEADERS ── */
+.section-label, .settings-section-title, .profile-section-label {
+    position: relative;
+}
+
+/* ── 16. SMOOTH SCROLL SNAP ── */
+.quick-chips { scroll-snap-type: x proximity; }
+.quick-chip { scroll-snap-align: start; }
+
+/* ── 17. ENHANCED ASSET ROW HOVER ── */
+.asset-row {
+    transition: background 0.2s ease, transform 0.2s ease;
+    border-radius: 10px; margin: 0 -6px; padding-left: 6px; padding-right: 6px;
+}
+.asset-row:active {
+    background: rgba(255,255,255,0.03);
+    transform: scale(0.985);
+}
+
+/* ── 18. STATUS PILL ANIMATION ── */
+@keyframes status-breathe {
+    0%,100% { box-shadow: 0 0 0 0 rgba(52,211,153,0.2); }
+    50% { box-shadow: 0 0 0 4px rgba(52,211,153,0); }
+}
+.id-status-dot { animation: status-breathe 2.5s ease-in-out infinite; }
+
+/* ── 19. TRANSACTION AMOUNT COLORS ── */
+.tx-amount-positive { color: var(--green); font-weight: 700; }
+.tx-amount-negative { color: var(--red); font-weight: 700; }
+
+/* ── 20. PAGE TRANSITION ENHANCEMENT ── */
+.page { will-change: transform, opacity; }
+.page.active {
+    animation: page-in 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── 21. FROSTED GLASS MODALS ── */
+.modal-overlay {
+    position: absolute; inset: 0; z-index: 100;
+    background: rgba(0,0,0,0.5); backdrop-filter: blur(8px);
+    display: none; align-items: flex-end; justify-content: center;
+    animation: fade-up 0.3s ease;
+}
+.modal-overlay.show { display: flex; }
+.modal-sheet {
+    width: 100%; max-height: 70%;
+    background: var(--surface-1); border-radius: 20px 20px 0 0;
+    padding: 12px 18px 24px; overflow-y: auto;
+    animation: sheet-up 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.modal-handle {
+    width: 36px; height: 4px; border-radius: 2px;
+    background: var(--text-quaternary); margin: 0 auto 12px;
+}
+
+/* ── 22. CONFETTI CELEBRATION ── */
+.confetti-container {
+    position: absolute; inset: 0; pointer-events: none; z-index: 200; overflow: hidden;
+}
+.confetti-piece {
+    position: absolute; width: 6px; height: 6px; border-radius: 1px;
+    animation: confetti-fall 2s ease-in forwards;
+}
+
+
+.action-btn--buy {
+    background: linear-gradient(140deg, rgba(52,211,153,0.12), rgba(52,211,153,0.04));
+    border-color: rgba(52,211,153,0.2);
+}
+.action-btn--buy span { color: var(--green); }
 </style>
 </head>
 <body>
@@ -2876,6 +3181,26 @@
             </svg>
         </div>
         <div class="launch-title">MID</div>
+<div class="portfolio-chart-container glass-card" style="padding:8px 12px; margin-bottom: 8px;">
+    <svg viewBox="0 0 280 50" preserveAspectRatio="none">
+        <defs>
+            <linearGradient id="chart-grad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="rgba(74,143,231,0.25)"/>
+                <stop offset="100%" stop-color="rgba(74,143,231,0)"/>
+            </linearGradient>
+        </defs>
+        <path class="chart-gradient" d="M0,40 L20,35 L40,38 L60,30 L80,32 L100,25 L120,28 L140,20 L160,22 L180,15 L200,18 L220,12 L240,14 L260,8 L280,10 L280,50 L0,50 Z" fill="url(#chart-grad)"/>
+        <path class="chart-line" d="M0,40 L20,35 L40,38 L60,30 L80,32 L100,25 L120,28 L140,20 L160,22 L180,15 L200,18 L220,12 L240,14 L260,8 L280,10" fill="none" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="280" cy="10" r="2.5" fill="var(--blue)" opacity="0.8">
+            <animate attributeName="r" values="2.5;4;2.5" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.8;0.4;0.8" dur="2s" repeatCount="indefinite"/>
+        </circle>
+    </svg>
+    <div style="display:flex; justify-content:space-between; font-size:0.5rem; color:var(--text-quaternary); margin-top:2px;">
+        <span>7D</span><span>30D</span><span>90D</span><span>1Y</span><span style="color:var(--blue);font-weight:600">ALL</span>
+    </div>
+</div>
+
         <div class="launch-sub">Montserrat Digital Identity</div>
         <div class="launch-bio">
             <div class="launch-bio-circle">
@@ -2941,6 +3266,9 @@
 
                     <!-- ══════ PAGE: WALLET ══════ -->
                     <div class="page active" id="page-wallet">
+                        <div class="ptr-indicator" id="ptr-indicator">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="var(--text-quaternary)" stroke-width="1.5"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+                        </div>
                         <div class="app-header">
                             <div class="app-brand">
                                 <div class="app-icon">
@@ -2960,14 +3288,18 @@
                                 <span class="app-title">MID Wallet</span>
                             </div>
                             <div class="header-actions">
-                                <div class="header-btn" onclick="showSubPage('notifications')"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.8"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg><span class="notif-badge">3</span></div>
+                                <div class="header-btn" onclick="showSubPage('notifications')"><span class="notif-badge"></span><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.8"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg><span class="notif-badge">3</span></div>
                                 <div class="header-btn"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M16.5 16.5L20 20"/></svg></div>
                             </div>
                         </div>
 
                         <!-- Balance -->
                         <div class="balance-hero balance-hero-v2">
-                            <div class="balance-greeting" data-i18n="greeting">Welcome back, Nuo</div>
+                            <div class="balance-greeting" data-i18n="greeting"><div style="display:flex;align-items:center;justify-content:center;gap:4px;margin-bottom:4px">
+                            <span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span>
+                            <span style="font-size:0.32rem;color:var(--text-tertiary)" data-i18n="network_montserrat">Montserrat Network</span>
+                        </div>
+                        Welcome back, Nuo</div>
                             <div class="balance-amount gradient-text">$171,513<span class="currency">.56</span></div>
                             <div class="balance-change">
                                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 2L8.5 7H1.5L5 2Z" fill="currentColor"/></svg>
@@ -2977,25 +3309,25 @@
 
                         <!-- Actions -->
                         <div class="action-row">
-                            <div class="action-btn action-btn--primary ripple-host" onclick="showSubPage('buy')" aria-label="Buy crypto">
+                            <div class="action-btn action-btn--buy action-btn--primary ripple-host" onclick="showSubPage('buy')" aria-label="Buy crypto">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-                                <span>Buy</span>
+                                <span data-i18n="action_buy">Buy</span>
                             </div>
                             <div class="action-btn ripple-host" onclick="triggerBiometric('transfer')">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="2" stroke-linecap="round"><path d="M7 17L17 7M17 7H10M17 7v7"/></svg>
-                                <span>Send</span>
+                                <span data-i18n="action_send">Send</span>
                             </div>
                             <div class="action-btn ripple-host" onclick="showSubPage('receive')" aria-label="Receive crypto">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="2" stroke-linecap="round"><path d="M17 7L7 17M7 17h7M7 17V10"/></svg>
-                                <span>Receive</span>
+                                <span data-i18n="action_receive">Receive</span>
                             </div>
                             <div class="action-btn ripple-host" onclick="showSubPage('sell')" aria-label="Sell crypto">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="5 12 12 19 19 12"/></svg>
-                                <span>Sell</span>
+                                <span data-i18n="action_sell">Sell</span>
                             </div>
                             <div class="action-btn ripple-host" onclick="showSubPage('swap')" aria-label="Swap crypto">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="2" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-                                <span>Swap</span>
+                                <span data-i18n="action_swap">Swap</span>
                             </div>
                         </div>
 
@@ -3006,8 +3338,10 @@
                             <div class="quick-chip" onclick="showSubPage('tx-history')" aria-label="Transaction history"><span class="quick-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h3"/></svg></span> History</div>
                             <div class="quick-chip" onclick="showSubPage('scanner')" aria-label="Scan QR"><span class="quick-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></span> Scan</div>
                             <div class="quick-chip" onclick="showSubPage('ai')" aria-label="AI Assistant"><span class="quick-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 2v6"/><circle cx="9" cy="14" r="1.5"/><circle cx="15" cy="14" r="1.5"/></svg></span> AI</div>
-                            <div class="quick-chip" onclick="showSubPage('quests')" aria-label="Rewards"><span class="quick-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span> Rewards</div>
-                            <div class="quick-chip" onclick="showSubPage('yield')" aria-label="Yield farming"><span class="quick-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 20l5-5 4 4 9-12"/><path d="M17 7h4v4"/></svg></span> Yield</div>
+                            <div class="quick-chip" onclick="showSubPage('bridge')" aria-label="Cross-chain bridge"><span class="quick-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 16V4m0 12l-3-3m3 3l3-3M17 8v12m0-12l3 3m-3-3l-3 3"/></svg></span> Bridge</div>
+                            <div class="quick-chip" onclick="showSubPage('predict')" aria-label="Prediction markets"><span class="quick-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 20l5-5 4 4 9-12"/><path d="M17 7h4v4"/></svg></span> Predict</div>
+                            <div class="quick-chip" onclick="showSubPage('analytics')" aria-label="Portfolio analytics"><span class="quick-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></span> Stats</div>
+                            <div class="quick-chip" onclick="showSubPage('paycode')" aria-label="Payment QR code"><span class="quick-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="3" height="3"/><path d="M21 14h-3v3"/><path d="M18 21h3v-3"/></svg></span> Pay</div>
                             <div class="quick-chip" onclick="showSubPage('miniapps')" aria-label="More features"><span class="quick-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5" cy="5" r="1.5"/><circle cx="12" cy="5" r="1.5"/><circle cx="19" cy="5" r="1.5"/><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/><circle cx="5" cy="19" r="1.5"/><circle cx="12" cy="19" r="1.5"/><circle cx="19" cy="19" r="1.5"/></svg></span> More</div>
 
                         </div>
@@ -3028,7 +3362,7 @@
                         <!-- MSD -->
                         <div class="section-gap"></div>
                         <div class="section-header">
-                            <span class="section-title">Montserrat Network</span>
+                            <span class="section-title" data-i18n="section_montserrat">Montserrat Network</span>
                             <span class="section-action">See all</span>
                         </div>
                         <div class="asset-group">
@@ -3042,7 +3376,7 @@
                                         <defs><linearGradient id="msd-txt" x1="11" y1="10" x2="23" y2="24" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFF"/><stop offset="1" stop-color="#7EB8F5"/></linearGradient></defs>
                                     </svg>
                                 </div>
-                                <div class="asset-info"><div class="asset-name">MSD</div><div class="asset-amount">10,000.00 MSD</div></div>
+                                <div class="asset-info"><div class="asset-name">MSD</div><div class="asset-amount">10,000.00 MSD</div><div class="asset-sparkline"><svg viewBox="0 0 48 20"><path d="M0,14 L6,12 L12,10 L18,8 L24,6 L30,9 L36,5 L42,3 L48,2" fill="none" class="sparkline-up" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
                                 <div class="asset-values"><div class="asset-price">$10,000.00</div><div class="asset-change asset-change--stable">Stable</div></div>
                             </div>
                             <div class="asset-row ripple-host" onclick="showPage('staking')" class="asset-row-border">
@@ -3057,23 +3391,23 @@
                         <!-- Assets -->
                         <div class="section-gap"></div>
                         <div class="section-header">
-                            <span class="section-title">Assets</span>
-                            <span class="section-action">Manage</span>
+                            <span class="section-title" data-i18n="section_assets">Assets</span>
+                            <span class="section-action" data-i18n="action_manage">Manage</span>
                         </div>
                         <div class="asset-group">
                             <div class="asset-row">
                                 <div class="asset-icon asset-icon--btc"><svg viewBox="0 0 24 24" fill="white"><path d="M13 4.5V6c1.5.2 2.7.9 3 2.2h-1.7c-.2-.7-.8-.8-1.3-.8-.7 0-1.3.3-1.3.9s.4.8 1.5 1c1.7.4 2.8.9 2.8 2.3 0 1.3-1 2.2-3 2.4v1.5h-.8V14c-1.7-.3-2.8-1.1-3-2.4h1.7c.2.8.9 1 1.3 1 .8 0 1.3-.3 1.3-.9s-.3-.8-1.5-1c-1.5-.4-2.8-.8-2.8-2.3 0-1.2 1-2 2.5-2.2V4.5H13z"/></svg></div>
-                                <div class="asset-info"><div class="asset-name">Bitcoin</div><div class="asset-amount">5.873092 BTC</div></div>
+                                <div class="asset-info"><div class="asset-name">Bitcoin</div><div class="asset-amount">5.873092 BTC</div><div class="asset-sparkline"><svg viewBox="0 0 48 20"><path d="M0,10 L6,8 L12,12 L18,6 L24,9 L30,4 L36,7 L42,3 L48,5" fill="none" class="sparkline-up" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
                                 <div class="asset-values"><div class="asset-price">$152,694.51</div><div class="asset-change asset-change--up">+4.7%</div></div>
                             </div>
                             <div class="asset-row">
                                 <div class="asset-icon asset-icon--eth"><svg viewBox="0 0 24 24" fill="white" opacity="0.95"><path d="M12 3L6 12.5 12 16l6-3.5L12 3zM6 13.8L12 20l6-6.2L12 17.3 6 13.8z"/></svg></div>
-                                <div class="asset-info"><div class="asset-name">Ethereum</div><div class="asset-amount">11.420021 ETH</div></div>
+                                <div class="asset-info"><div class="asset-name">Ethereum</div><div class="asset-amount">11.420021 ETH</div><div class="asset-sparkline"><svg viewBox="0 0 48 20"><path d="M0,6 L6,8 L12,4 L18,7 L24,3 L30,5 L36,2 L42,6 L48,4" fill="none" class="sparkline-up" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
                                 <div class="asset-values"><div class="asset-price">$18,819.05</div><div class="asset-change asset-change--up">+5.2%</div></div>
                             </div>
                             <div class="asset-row">
                                 <div class="asset-icon asset-icon--usdc"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="7.5" stroke="white" stroke-width="1.2" opacity="0.9"/><text x="12" y="15.5" text-anchor="middle" fill="white" font-size="9.5" font-weight="700" font-family="DM Sans,sans-serif">$</text></svg></div>
-                                <div class="asset-info"><div class="asset-name">USDC</div><div class="asset-amount">1,500.00 USDC</div></div>
+                                <div class="asset-info"><div class="asset-name">USDC</div><div class="asset-amount">1,500.00 USDC</div><div class="asset-sparkline"><svg viewBox="0 0 48 20"><path d="M0,10 L6,10 L12,9 L18,10 L24,10 L30,9 L36,10 L42,10 L48,9" fill="none" class="sparkline-up" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
                                 <div class="asset-values"><div class="asset-price">$1,500.00</div><div class="asset-change asset-change--stable">Stable</div></div>
                             </div>
                         </div>
@@ -3184,7 +3518,7 @@
                             <div class="info-row"><span class="info-label">Type</span><span class="info-value">Digital Residency</span></div>
                             <div class="info-row"><span class="info-label">Issued</span><span class="info-value">January 1, 2025</span></div>
                             <div class="info-row"><span class="info-label">Expires</span><span class="info-value">January 1, 2030</span></div>
-                            <div class="info-row"><span class="info-label">Security</span><span class="info-value">NFC + Biometric</span></div>
+                            <div class="info-row"><span class="info-label" data-i18n="settings_security">Security</span><span class="info-value">NFC + Biometric</span></div>
                         </div>
                     </div>
 
@@ -3298,11 +3632,39 @@
                             <div class="qr-timer" style="margin-top:6px;">Expires in <span id="qr-countdown">4:59</span></div>
                             <div class="qr-refresh" onclick="resetQRTimer()">Refresh code</div>
                         </div>
-                    </div>
+                    
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin:14px 0 10px">Proof of Personhood</div>
+                        <div class="glass-card" style="padding:18px;margin-bottom:12px;text-align:center;background:linear-gradient(135deg,rgba(99,102,241,0.1),rgba(139,92,246,0.08))">
+                            <div style="width:72px;height:72px;border-radius:50%;border:3px solid var(--purple);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;position:relative">
+                                <div style="width:32px;height:32px;border-radius:50%;background:radial-gradient(circle,var(--purple) 30%,transparent 70%);opacity:0.8"></div>
+                                <div style="position:absolute;width:100%;height:100%;border-radius:50%;border:2px dashed rgba(139,92,246,0.3);animation:spin 10s linear infinite"></div>
+                            </div>
+                            <div style="font-size:15px;font-weight:700;margin-bottom:4px">Human Verified ✓</div>
+                            <div style="font-size:11px;color:var(--text-tertiary);margin-bottom:12px">Biometric proof · Privacy-preserving · ZK-powered</div>
+                            <div style="display:flex;gap:8px;justify-content:center">
+                                <div style="padding:4px 10px;border-radius:8px;background:rgba(16,185,129,0.15);font-size:11px;color:var(--green)">✓ Liveness</div>
+                                <div style="padding:4px 10px;border-radius:8px;background:rgba(16,185,129,0.15);font-size:11px;color:var(--green)">✓ Uniqueness</div>
+                                <div style="padding:4px 10px;border-radius:8px;background:rgba(16,185,129,0.15);font-size:11px;color:var(--green)">✓ ZK Proof</div>
+                            </div>
+                        </div>
+
+                        <div onclick="haptic(10)" class="glass-card" style="padding:12px;margin-bottom:12px;cursor:pointer">
+                            <div style="display:flex;align-items:center;justify-content:space-between">
+                                <div style="display:flex;align-items:center;gap:10px">
+                                    <span style="font-size:20px">🔐</span>
+                                    <div>
+                                        <div style="font-size:13px;font-weight:600">Share Proof of Humanity</div>
+                                        <div style="font-size:10px;color:var(--text-tertiary)">Use for DApp access, airdrops, governance</div>
+                                    </div>
+                                </div>
+                                <svg width="16" height="16" fill="none" stroke="var(--text-tertiary)" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
+                            </div>
+                        </div>
+</div>
 
                     <!-- ══════ PAGE: PROFILE ══════ -->
                     <div class="page" id="page-profile">
-                        <div class="back-link" aria-label="Go back" onclick="switchTab('settings')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M15 18l-6-6 6-6"/></svg></div>
+                        <div class="back-link" aria-label="Go back" onclick="showSubPage('settings')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M15 18l-6-6 6-6"/></svg></div>
                         <div class="page-title">Profile</div>
                         <div class="profile-header">
                             <div class="profile-avatar user-photo-bg"><span class="profile-avatar-text" style="display:none">NW</span></div>
@@ -4118,6 +4480,8 @@ style="display:flex;gap:6px;margin-bottom:8px;">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
                                 <span data-i18n="fp_pay">Pay</span>
                             </div>
+                            <div onclick="showSubPage('carbon')" style="display:flex;align-items:center;gap:4px;padding:6px 12px;border-radius:20px;background:var(--surface-2);cursor:pointer;white-space:nowrap"><span style="font-size:11px">🌱</span><span style="font-size:11px">ESG</span></div>
+                            <div onclick="showSubPage('transit')" style="display:flex;align-items:center;gap:4px;padding:6px 12px;border-radius:20px;background:var(--surface-2);cursor:pointer;white-space:nowrap"><span style="font-size:11px">🚌</span><span style="font-size:11px">Transit</span></div>
                             <div class="fprofile-action">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="1.8"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
                                 <span data-i18n="fp_more">More</span>
@@ -4149,7 +4513,7 @@ style="display:flex;gap:6px;margin-bottom:8px;">
                     <div class="page" id="page-nft" style="display:none">
                                                 <div class="back-link" aria-label="Go back" onclick="showPage('wallet')">
                             <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-                            <span>Back</span>
+                            <span data-i18n="nav_back">Back</span>
                         </div>
                         <div class="page-title">NFT Gallery</div>
                         <div class="page-subtitle">Your digital collectibles</div>
@@ -4335,6 +4699,15 @@ style="display:flex;gap:6px;margin-bottom:8px;">
                             <span>Back</span>
                         </div>
                         <div class="page-title">Transaction History</div>
+                        <div style="margin:8px 0 12px;display:flex;align-items:center;gap:8px">
+                            <div style="flex:1;display:flex;align-items:center;gap:6px;background:var(--surface-1);border-radius:8px;padding:8px 10px">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="var(--text-quaternary)" stroke-width="1.5" style="width:14px;height:14px;flex-shrink:0"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                                <input type="text" placeholder="Search transactions..." data-i18n-placeholder="tx_search_placeholder" style="flex:1;border:none;background:none;color:var(--text-primary);font-size:0.40rem;outline:none">
+                            </div>
+                            <div style="padding:6px 10px;background:var(--surface-2);border-radius:8px;font-size:0.36rem;color:var(--text-secondary);cursor:pointer">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:14px;height:14px"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+                            </div>
+                        </div>
                         <div class="page-subtitle">All activity</div>
 
 <div class="sub-header">
@@ -4440,10 +4813,30 @@ style="display:flex;gap:6px;margin-bottom:8px;">
                         </div>
                         <div class="settings-section">
                             <div class="settings-section-title">Preferences</div>
+                            <div class="settings-row" onclick="showSubPage('passkey')">
+                                <div class="settings-icon" style="background:rgba(52,211,153,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.5" style="width:100%;height:100%"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 11-7.778 7.778 5.5 5.5 0 017.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></div>
+                                <div class="settings-row-text"><div class="settings-row-label">Passkey & Biometrics</div><div class="settings-row-sub">Face ID · 3 devices synced</div></div>
+                                <span class="settings-arrow">›</span>
+                            </div>
+
+                            <div class="settings-row" onclick="showSubPage('smartaccount')">
+                                <div class="settings-icon" style="background:rgba(139,92,246,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.5" style="width:100%;height:100%"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8M12 8v8"/></svg></div>
+                                <div class="settings-row-text"><div class="settings-row-label">Smart Account</div><div class="settings-row-sub">ERC-4337 · Gasless enabled</div></div>
+                                <span class="settings-arrow">›</span>
+                            </div>
+
                             <div class="settings-row">
                                 <div class="settings-icon" style="background:rgba(167,139,250,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg></div>
                                 <div class="settings-row-text"><div class="settings-row-label">Dark Mode</div><div class="settings-row-sub">Currently active</div></div>
                                 <button class="settings-toggle on" onclick="event.stopPropagation();this.classList.toggle('on')"></button>
+                            </div>
+                            <div class="settings-row" onclick="toggleLanguage()">
+                                <div class="settings-icon icon-bg-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 014 9 15 15 0 01-4 9 15 15 0 01-4-9 15 15 0 014-9z"/></svg></div>
+                                <div class="settings-row-text"><div class="settings-row-label" data-i18n="settings_language">Language</div><div class="settings-row-sub" id="settings-lang-label">English</div></div>
+                                <div style="display:flex;align-items:center;gap:6px">
+                                    <span id="lang-flag" style="font-size:0.50rem">🇬🇧</span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="var(--text-quaternary)" stroke-width="1.5" style="width:14px;height:14px"><polyline points="9 18 15 12 9 6"/></svg>
+                                </div>
                             </div>
                             <div class="settings-row" onclick="showToast('Currency','USD, EUR, GBP, XCD available','info')">
                                 <div class="settings-icon icon-bg-green-md"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h14l-3-3M21 16H7l3 3"/><circle cx="17" cy="8" r="0"/><circle cx="7" cy="16" r="0"/></svg></div>
@@ -4453,18 +4846,41 @@ style="display:flex;gap:6px;margin-bottom:8px;">
                             <div class="settings-row" onclick="showSubPage('alerts')">
                                 <div class="settings-icon" style="background:rgba(251,191,36,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></div>
                                 <div class="settings-row-text"><div class="settings-row-label">Price Alerts</div><div class="settings-row-sub">3 active alerts</div></div>
-                            <div class="settings-item" onclick="showSubPage('scam')">
+                                <span class="settings-arrow">›</span>
+                            </div>
+                            <div class="settings-row" onclick="showSubPage('scam')">
                                 <div class="settings-icon icon-bg-red"><svg viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="1.5" style="width:100%;height:100%"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4M12 16h.01"/></svg></div>
-                                <div class="settings-info"><div class="settings-name">Scam Protection</div><div class="settings-desc">Threat analysis</div></div>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="var(--text-quaternary)" stroke-width="1.5" class="icon-14"><polyline points="9 18 15 12 9 6"/></svg>
-                            </div>
+                                <div class="settings-row-text"><div class="settings-row-label">Scam Protection</div><div class="settings-row-sub">Threat analysis</div></div>
                                 <span class="settings-arrow">›</span>
                             </div>
-                            <div class="settings-row" onclick="showToast('Language','EN, 中文, FR available','info')">
-                                <div class="settings-icon icon-bg-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 014 9 15 15 0 01-4 9 15 15 0 01-4-9 15 15 0 014-9z"/></svg></div>
-                                <div class="settings-row-text"><div class="settings-row-label">Language</div><div class="settings-row-sub" id="settings-lang-label">English</div></div>
-                                <span class="settings-arrow">›</span>
+                            <div onclick="showSubPage('inheritance')" style="display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--border-subtle);cursor:pointer">
+                                <div style="display:flex;align-items:center;gap:12px">
+                                    <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--purple),var(--blue));display:flex;align-items:center;justify-content:center">
+                                        <svg width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>
+                                    </div>
+                                    <span style="font-size:14px" data-i18n="settings_inheritance">Digital Inheritance</span>
+                                </div>
+                                <svg width="16" height="16" fill="none" stroke="var(--text-tertiary)" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
                             </div>
+                            <div onclick="showSubPage('carbon')" style="display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--border-subtle);cursor:pointer">
+                                <div style="display:flex;align-items:center;gap:12px">
+                                    <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#10b981,#06b6d4);display:flex;align-items:center;justify-content:center">
+                                        <span style="font-size:14px">🌱</span>
+                                    </div>
+                                    <span style="font-size:14px" data-i18n="settings_carbon">Carbon & ESG</span>
+                                </div>
+                                <svg width="16" height="16" fill="none" stroke="var(--text-tertiary)" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
+                            </div>
+                            <div onclick="showSubPage('multisig')" style="display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--border-subtle);cursor:pointer">
+                                <div style="display:flex;align-items:center;gap:12px">
+                                    <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#6366f1,#8b5cf6);display:flex;align-items:center;justify-content:center">
+                                        <svg width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M12 5v14l-5-3-5 3V5a2 2 0 012-2h6a2 2 0 012 2z"/></svg>
+                                    </div>
+                                    <span style="font-size:14px" data-i18n="settings_multisig">Multi-Sig Wallet</span>
+                                </div>
+                                <svg width="16" height="16" fill="none" stroke="var(--text-tertiary)" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
+                            </div>
+
                         </div>
                         <div class="settings-section">
                             <div class="settings-section-title">Network</div>
@@ -4480,7 +4896,7 @@ style="display:flex;gap:6px;margin-bottom:8px;">
                             </div>
                         </div>
                         <div class="settings-section">
-                            <div class="settings-section-title">About</div>
+                            <div class="settings-section-title" data-i18n="settings_about">About</div>
                             <div class="settings-row" onclick="showToast('MID Wallet','v1.0.0 · Built on Montserrat Chain','info')">
                                 <div class="settings-icon icon-bg-purple">ℹ️</div>
                                 <div class="settings-row-text"><div class="settings-row-label">About MID Wallet</div><div class="settings-row-sub">Version 1.0.0</div></div>
@@ -4853,7 +5269,7 @@ style="display:flex;gap:6px;margin-bottom:8px;">
                             <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
                             <span>Back</span>
                         </div>
-                        <div class="page-title">Government Services</div>
+                        <div class="page-title" data-i18n="gov_services_title">Government Services</div>
                         <div class="page-subtitle">Civic participation</div>
 
 <div class="sub-header">
@@ -5195,7 +5611,133 @@ style="display:flex;gap:6px;margin-bottom:8px;">
                                 <button onclick="sendAIMsg()"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" width="16" height="16"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
                             </div>
                         </div>
-                    </div>
+                    
+                        <!-- AI Agent Automation -->
+                        <div class="section-label" style="margin-top:14px">AI Agent Actions</div>
+                        <div style="display:flex;gap:8px;margin-bottom:14px;overflow-x:auto;padding-bottom:4px">
+                            <div style="padding:6px 14px;border-radius:20px;background:var(--blue);font-size:12px;font-weight:600;color:#fff;white-space:nowrap;cursor:pointer" onclick="haptic(10)">🔥 Trending</div>
+                            <div style="padding:6px 14px;border-radius:20px;background:var(--surface-2);font-size:12px;font-weight:600;color:var(--text-secondary);white-space:nowrap;cursor:pointer" onclick="haptic(10)">👥 Friends</div>
+                            <div style="padding:6px 14px;border-radius:20px;background:var(--surface-2);font-size:12px;font-weight:600;color:var(--text-secondary);white-space:nowrap;cursor:pointer" onclick="haptic(10)">🐋 Whales</div>
+                            <div style="padding:6px 14px;border-radius:20px;background:var(--surface-2);font-size:12px;font-weight:600;color:var(--text-secondary);white-space:nowrap;cursor:pointer" onclick="haptic(10)">📊 Alpha</div>
+                        </div>
+
+                        <div class="glass-card" style="padding:16px;margin-bottom:12px;background:linear-gradient(135deg,rgba(139,92,246,0.12),rgba(99,102,241,0.08))">
+                            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+                                <div>
+                                    <div style="font-size:12px;color:var(--text-tertiary)">On-Chain Reputation</div>
+                                    <div style="font-size:28px;font-weight:800;color:var(--purple)">847</div>
+                                </div>
+                                <div style="width:56px;height:56px;border-radius:50%;border:3px solid var(--purple);display:flex;align-items:center;justify-content:center">
+                                    <span style="font-size:11px;font-weight:700;color:var(--purple)">Top 8%</span>
+                                </div>
+                            </div>
+                            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
+                                <div style="padding:3px 8px;border-radius:6px;background:rgba(16,185,129,0.15);font-size:10px;color:var(--green)">✓ DeFi Native</div>
+                                <div style="padding:3px 8px;border-radius:6px;background:rgba(59,130,246,0.15);font-size:10px;color:var(--blue)">✓ DAO Voter</div>
+                                <div style="padding:3px 8px;border-radius:6px;background:rgba(99,102,241,0.15);font-size:10px;color:var(--purple)">✓ Early Adopter</div>
+                                <div style="padding:3px 8px;border-radius:6px;background:rgba(245,158,11,0.15);font-size:10px;color:var(--amber)">✓ NFT Collector</div>
+                            </div>
+                            <div style="margin-bottom:8px">
+                                <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px"><span>Transaction History</span><span>95/100</span></div>
+                                <div style="height:4px;border-radius:2px;background:var(--surface-2)"><div style="height:4px;border-radius:2px;background:var(--green);width:95%"></div></div>
+                            </div>
+                            <div style="margin-bottom:8px">
+                                <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px"><span>Protocol Diversity</span><span>82/100</span></div>
+                                <div style="height:4px;border-radius:2px;background:var(--surface-2)"><div style="height:4px;border-radius:2px;background:var(--blue);width:82%"></div></div>
+                            </div>
+                            <div>
+                                <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px"><span>Governance Participation</span><span>71/100</span></div>
+                                <div style="height:4px;border-radius:2px;background:var(--surface-2)"><div style="height:4px;border-radius:2px;background:var(--purple);width:71%"></div></div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card" style="padding:12px;margin-bottom:12px">
+                            <div style="font-size:13px;font-weight:600;margin-bottom:8px">Reputation Badges</div>
+                            <div style="display:flex;gap:12px;overflow-x:auto;padding-bottom:4px">
+                                <div style="text-align:center;min-width:60px">
+                                    <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#fbbf24,#f59e0b);margin:0 auto 4px;display:flex;align-items:center;justify-content:center;font-size:20px">🏆</div>
+                                    <div style="font-size:9px;color:var(--text-tertiary)">OG User</div>
+                                </div>
+                                <div style="text-align:center;min-width:60px">
+                                    <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#818cf8,#6366f1);margin:0 auto 4px;display:flex;align-items:center;justify-content:center;font-size:20px">🗳️</div>
+                                    <div style="font-size:9px;color:var(--text-tertiary)">Voter</div>
+                                </div>
+                                <div style="text-align:center;min-width:60px">
+                                    <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#34d399,#10b981);margin:0 auto 4px;display:flex;align-items:center;justify-content:center;font-size:20px">🌱</div>
+                                    <div style="font-size:9px;color:var(--text-tertiary)">Staker</div>
+                                </div>
+                                <div style="text-align:center;min-width:60px">
+                                    <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#f472b6,#ec4899);margin:0 auto 4px;display:flex;align-items:center;justify-content:center;font-size:20px">🎨</div>
+                                    <div style="font-size:9px;color:var(--text-tertiary)">Creator</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card" style="padding:14px;margin-bottom:12px;border-left:3px solid var(--green)">
+                            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+                                <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#4facfe,#00f2fe);display:flex;align-items:center;justify-content:center;font-size:12px">🐋</div>
+                                <span style="font-size:12px;font-weight:600">whale.eth</span>
+                                <span style="font-size:10px;color:var(--text-tertiary)">2 min ago</span>
+                            </div>
+                            <div style="font-size:13px;margin-bottom:6px"><span style="color:var(--green);font-weight:600">Bought</span> 450 ETH ($1.35M)</div>
+                            <div style="font-size:10px;color:var(--text-tertiary)">Via Uniswap · Gas: $12.40</div>
+                        </div>
+
+                        <div class="glass-card" style="padding:14px;margin-bottom:12px;border-left:3px solid var(--blue)">
+                            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+                                <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#f093fb,#f5576c);display:flex;align-items:center;justify-content:center;font-size:12px">👩</div>
+                                <span style="font-size:12px;font-weight:600">Amara</span>
+                                <span style="font-size:10px;color:var(--text-tertiary)">15 min ago</span>
+                                <span style="font-size:9px;padding:2px 6px;border-radius:6px;background:rgba(59,130,246,0.15);color:var(--blue)">Friend</span>
+                            </div>
+                            <div style="font-size:13px;margin-bottom:6px"><span style="color:var(--blue);font-weight:600">Staked</span> 2,000 SOL on Marinade</div>
+                            <div style="font-size:10px;color:var(--text-tertiary)">Earning 7.2% APY</div>
+                        </div>
+
+                        <div class="glass-card" style="padding:14px;margin-bottom:12px;border-left:3px solid var(--purple)">
+                            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+                                <span style="font-size:12px">📊</span>
+                                <span style="font-size:12px;font-weight:600;color:var(--purple)">Trending Token</span>
+                            </div>
+                            <div style="font-size:14px;font-weight:700;margin-bottom:4px">$RENDER +34.5% (24h)</div>
+                            <div style="font-size:11px;color:var(--text-tertiary)">Vol: $890M · 12.4K holders gained</div>
+                        </div>
+
+                        <div class="glass-card" style="padding:12px;margin-bottom:10px">
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+                                <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,rgba(139,92,246,0.15),rgba(74,143,231,0.15));display:flex;align-items:center;justify-content:center">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.5" style="width:16px;height:16px"><path d="M12 2a4 4 0 014 4c0 1.95-2 3-2 8h-4c0-5-2-6.05-2-8a4 4 0 014-4z"/><path d="M10 18h4M10 22h4"/></svg>
+                                </div>
+                                <div>
+                                    <div style="font-size:0.5rem;font-weight:700;color:var(--text-primary)">MID Agent (MCP)</div>
+                                    <div style="font-size:0.38rem;color:var(--green)">Connected · Ready to execute</div>
+                                </div>
+                            </div>
+                            <div style="display:flex;gap:6px;flex-wrap:wrap">
+                                <button onclick="showToast('Agent','Auto-staking 500 MSD at 8.5% APY','success')" style="padding:6px 10px;border-radius:8px;background:var(--surface-2);border:1px solid var(--border-subtle);color:var(--text-secondary);font-size:0.4rem;font-weight:600;cursor:pointer">Auto-Stake</button>
+                                <button onclick="showToast('Agent','Rebalancing portfolio...','info')" style="padding:6px 10px;border-radius:8px;background:var(--surface-2);border:1px solid var(--border-subtle);color:var(--text-secondary);font-size:0.4rem;font-weight:600;cursor:pointer">Rebalance</button>
+                                <button onclick="showToast('Agent','DCA: Buy $100 BTC weekly','success')" style="padding:6px 10px;border-radius:8px;background:var(--surface-2);border:1px solid var(--border-subtle);color:var(--text-secondary);font-size:0.4rem;font-weight:600;cursor:pointer">DCA Setup</button>
+                                <button onclick="showToast('Agent','Yield optimizer scanning...','info')" style="padding:6px 10px;border-radius:8px;background:var(--surface-2);border:1px solid var(--border-subtle);color:var(--text-secondary);font-size:0.4rem;font-weight:600;cursor:pointer">Best Yield</button>
+                                <button onclick="showToast('Agent','Setting limit order: BTC @ $145K','success')" style="padding:6px 10px;border-radius:8px;background:var(--surface-2);border:1px solid var(--border-subtle);color:var(--text-secondary);font-size:0.4rem;font-weight:600;cursor:pointer">Limit Order</button>
+                                <button onclick="showToast('Agent','Tax report generating...','info')" style="padding:6px 10px;border-radius:8px;background:var(--surface-2);border:1px solid var(--border-subtle);color:var(--text-secondary);font-size:0.4rem;font-weight:600;cursor:pointer">Tax Report</button>
+                            </div>
+                        </div>
+
+                        <div class="section-label">Active Strategies</div>
+                        <div class="asset-group">
+                            <div class="asset-row">
+                                <div class="asset-icon" style="background:rgba(52,211,153,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.5" style="width:16px;height:16px"><path d="M23 6l-9.5 9.5-5-5L1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+                                <div class="asset-info"><div class="asset-name">Weekly DCA · BTC</div><div class="asset-sub">$100/week · Running since Feb 1</div></div>
+                                <span style="font-size:0.42rem;color:var(--green)">Active</span>
+                            </div>
+                            <div class="asset-row">
+                                <div class="asset-icon" style="background:rgba(74,143,231,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" style="width:16px;height:16px"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+                                <div class="asset-info"><div class="asset-name">Auto-Compound · MSD Staking</div><div class="asset-sub">Rewards reinvested daily</div></div>
+                                <span style="font-size:0.42rem;color:var(--green)">Active</span>
+                            </div>
+                        </div>
+
+</div>
 
                     <!-- ══════ PAGE: CRYPTO PAY CARD ══════ -->
                     <div class="page" id="page-paycard" style="display:none">
@@ -5231,6 +5773,34 @@ style="display:flex;gap:6px;margin-bottom:8px;">
                         <div class="pay-tx"><div class="pay-tx-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></div><div class="pay-tx-info"><div class="pay-tx-name">Amazon.com</div><div class="pay-tx-time">Today, 2:30 PM</div></div><div class="pay-tx-amount color-red">-$127.50</div></div>
                         <div class="pay-tx"><div class="pay-tx-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 8h1a4 4 0 010 8h-1"/><path d="M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4z"/></svg></div><div class="pay-tx-info"><div class="pay-tx-name">Starbucks</div><div class="pay-tx-time">Yesterday, 9:15 AM</div></div><div class="pay-tx-amount color-red">-$6.80</div></div>
                         <div class="pay-tx"><div class="pay-tx-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12l19-7-7 19-3-8z"/></svg>️</div><div class="pay-tx-info"><div class="pay-tx-name">British Airways</div><div class="pay-tx-time">Mar 12, 11:00 AM</div></div><div class="pay-tx-amount color-red">-$892.00</div></div>
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin:16px 0 10px">AI Strategy Builder</div>
+                        <div class="glass-card" style="padding:14px;margin-bottom:12px">
+                            <div style="font-size:13px;margin-bottom:10px;color:var(--text-tertiary)">Describe your strategy in natural language:</div>
+                            <div style="padding:12px;border-radius:10px;background:var(--surface-1);border:1px solid var(--border-subtle);font-size:13px;color:var(--text-secondary);margin-bottom:10px">"Buy ETH whenever it drops 5% in a day, max $200 per buy"</div>
+                            <div onclick="haptic(10)" style="padding:10px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--purple));text-align:center;cursor:pointer">
+                                <span style="font-size:13px;font-weight:700;color:#fff">🤖 Deploy Strategy</span>
+                            </div>
+                        </div>
+
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:10px">Agent Performance</div>
+                        <div class="glass-card" style="padding:14px;margin-bottom:20px">
+                            <div style="display:flex;justify-content:space-between;margin-bottom:10px">
+                                <div style="text-align:center;flex:1">
+                                    <div style="font-size:18px;font-weight:800;color:var(--green)">+$842</div>
+                                    <div style="font-size:10px;color:var(--text-tertiary)">Total P&L</div>
+                                </div>
+                                <div style="text-align:center;flex:1">
+                                    <div style="font-size:18px;font-weight:800">47</div>
+                                    <div style="font-size:10px;color:var(--text-tertiary)">Trades Made</div>
+                                </div>
+                                <div style="text-align:center;flex:1">
+                                    <div style="font-size:18px;font-weight:800;color:var(--green)">76%</div>
+                                    <div style="font-size:10px;color:var(--text-tertiary)">Win Rate</div>
+                                </div>
+                            </div>
+                            <div style="font-size:10px;color:var(--text-tertiary);text-align:center">AI has been managing your portfolio for 32 days</div>
+                        </div>
+
                         <div class="pay-tx"><div class="pay-tx-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 0110 10H2A10 10 0 0112 2z"/><circle cx="10" cy="8" r="1"/><circle cx="14" cy="9" r="1"/></svg></div><div class="pay-tx-info"><div class="pay-tx-name">Deliveroo</div><div class="pay-tx-time">Mar 11, 7:45 PM</div></div><div class="pay-tx-amount color-red">-$34.20</div></div>
                     </div>
 
@@ -5619,7 +6189,50 @@ style="display:flex;gap:6px;margin-bottom:8px;">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="var(--text-quaternary)" stroke-width="1.5" class="icon-14"><path d="M9 18l6-6-6-6"/></svg>
                             </div>
 </div>
-                    </div>
+                    
+                        <!-- App Store Search & Categories -->
+                        <div style="margin-bottom:12px">
+                            <div style="display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin-bottom:10px">
+                                <div style="padding:5px 12px;border-radius:20px;background:var(--blue);color:white;font-size:0.42rem;font-weight:700;white-space:nowrap;cursor:pointer">All</div>
+                                <div style="padding:5px 12px;border-radius:20px;background:var(--surface-2);color:var(--text-secondary);font-size:0.42rem;font-weight:600;white-space:nowrap;cursor:pointer;border:1px solid var(--border-subtle)">DeFi</div>
+                                <div style="padding:5px 12px;border-radius:20px;background:var(--surface-2);color:var(--text-secondary);font-size:0.42rem;font-weight:600;white-space:nowrap;cursor:pointer;border:1px solid var(--border-subtle)">Games</div>
+                                <div style="padding:5px 12px;border-radius:20px;background:var(--surface-2);color:var(--text-secondary);font-size:0.42rem;font-weight:600;white-space:nowrap;cursor:pointer;border:1px solid var(--border-subtle)">Social</div>
+                                <div style="padding:5px 12px;border-radius:20px;background:var(--surface-2);color:var(--text-secondary);font-size:0.42rem;font-weight:600;white-space:nowrap;cursor:pointer;border:1px solid var(--border-subtle)">Tools</div>
+                                <div style="padding:5px 12px;border-radius:20px;background:var(--surface-2);color:var(--text-secondary);font-size:0.42rem;font-weight:600;white-space:nowrap;cursor:pointer;border:1px solid var(--border-subtle)">Gov</div>
+                            </div>
+                        </div>
+
+                        <div class="section-label">Trending Apps</div>
+                        <div class="asset-group">
+                            <div class="asset-row" onclick="showToast('App','Launching MontSwap DEX...','info')">
+                                <div class="asset-icon" style="background:linear-gradient(135deg,#10b981,#059669)"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" style="width:16px;height:16px"><path d="M7 16V4m0 12l-3-3m3 3l3-3M17 8v12m0-12l3 3m-3-3l-3 3"/></svg></div>
+                                <div class="asset-info"><div class="asset-name">MontSwap DEX</div><div class="asset-sub">Decentralized exchange · 12K users</div></div>
+                                <span style="font-size:0.38rem;color:var(--green);background:rgba(52,211,153,0.1);padding:2px 6px;border-radius:4px;font-weight:600">Open</span>
+                            </div>
+                            <div class="asset-row" onclick="showToast('App','Launching Island Lotto...','info')">
+                                <div class="asset-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" style="width:16px;height:16px"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                                <div class="asset-info"><div class="asset-name">Island Lotto</div><div class="asset-sub">On-chain lottery · 5.2K users</div></div>
+                                <span style="font-size:0.38rem;color:var(--green);background:rgba(52,211,153,0.1);padding:2px 6px;border-radius:4px;font-weight:600">Open</span>
+                            </div>
+                            <div class="asset-row" onclick="showToast('App','Launching MID Vote...','info')">
+                                <div class="asset-icon" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9)"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" style="width:16px;height:16px"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                                <div class="asset-info"><div class="asset-name">MID Vote</div><div class="asset-sub">Community governance · 8.7K users</div></div>
+                                <span style="font-size:0.38rem;color:var(--green);background:rgba(52,211,153,0.1);padding:2px 6px;border-radius:4px;font-weight:600">Open</span>
+                            </div>
+                            <div class="asset-row" onclick="showToast('App','Launching Volcano NFTs...','info')">
+                                <div class="asset-icon" style="background:linear-gradient(135deg,#ef4444,#b91c1c)"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" style="width:16px;height:16px"><path d="M12 3l3 6h-2l3 6h-2l4 7H6l4-7H8l3-6H9z"/></svg></div>
+                                <div class="asset-info"><div class="asset-name">Volcano NFTs</div><div class="asset-sub">NFT marketplace · 3.1K users</div></div>
+                                <span style="font-size:0.38rem;color:var(--green);background:rgba(52,211,153,0.1);padding:2px 6px;border-radius:4px;font-weight:600">Open</span>
+                            </div>
+                        </div>
+
+                        <div style="text-align:center;margin-top:14px;padding:10px;border-radius:10px;background:rgba(74,143,231,0.06);border:1px solid rgba(74,143,231,0.1)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" style="width:16px;height:16px;vertical-align:middle;margin-right:4px"><path d="M12 5v14M5 12h14"/></svg>
+                            <span style="font-size:0.45rem;color:var(--blue);font-weight:600">Submit Your App</span>
+                            <div style="font-size:0.38rem;color:var(--text-quaternary);margin-top:2px">Build on MID · Open SDK available</div>
+                        </div>
+
+</div>
 
                     <!-- ══════ PAGE: SUBSCRIPTION MANAGER ══════ -->
                     <div class="page" id="page-subs" style="display:none">
@@ -5989,9 +6602,1029 @@ style="display:flex;gap:6px;margin-bottom:8px;">
                     </div>
 
 
-                </div><!-- /screen-content -->
 
-                <div class="tab-bar" role="tablist">
+                    <!-- ══════ PAGE: PASSKEY MANAGEMENT ══════ -->
+                    <div class="page" id="page-passkey" style="display:none">
+                        <div class="back-btn" onclick="showSubPage('settings')">‹</div>
+                        <div class="page-title">Passkey & Biometrics</div>
+                        <div class="page-subtitle">Passwordless authentication</div>
+
+                        <!-- Status Card -->
+                        <div class="glass-card" style="padding:14px;margin-bottom:12px;background:linear-gradient(135deg,rgba(16,185,129,0.1),rgba(6,182,212,0.08))">
+                            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+                                <div style="display:flex;align-items:center;gap:10px">
+                                    <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--green),#34d399);display:flex;align-items:center;justify-content:center">
+                                        <span style="font-size:18px">🪙</span>
+                                    </div>
+                                    <div>
+                                        <div style="font-size:14px;font-weight:700">Round-Up Savings</div>
+                                        <div style="font-size:11px;color:var(--text-tertiary)">Auto-save spare change from every tx</div>
+                                    </div>
+                                </div>
+                                <div style="width:44px;height:24px;border-radius:12px;background:var(--green);position:relative;cursor:pointer" onclick="haptic(10)">
+                                    <div style="width:20px;height:20px;border-radius:50%;background:#fff;position:absolute;top:2px;right:2px"></div>
+                                </div>
+                            </div>
+                            <div style="display:flex;gap:8px;margin-bottom:10px">
+                                <div style="flex:1;padding:6px;border-radius:8px;background:var(--surface-2);text-align:center;font-size:11px;cursor:pointer" onclick="haptic(10)">Round to $1</div>
+                                <div style="flex:1;padding:6px;border-radius:8px;background:var(--blue);color:#fff;text-align:center;font-size:11px;font-weight:600;cursor:pointer" onclick="haptic(10)">Round to $5</div>
+                                <div style="flex:1;padding:6px;border-radius:8px;background:var(--surface-2);text-align:center;font-size:11px;cursor:pointer" onclick="haptic(10)">Round to $10</div>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-tertiary)">
+                                <span>This month: $47.30 saved</span>
+                                <span>Total: $234.80</span>
+                            </div>
+                        </div>
+
+                        <div onclick="showSubPage('groupvault')" class="glass-card" style="padding:14px;margin-bottom:12px;cursor:pointer">
+                            <div style="display:flex;align-items:center;justify-content:space-between">
+                                <div style="display:flex;align-items:center;gap:10px">
+                                    <span style="font-size:22px">👥</span>
+                                    <div>
+                                        <div style="font-size:14px;font-weight:600">Group Vaults</div>
+                                        <div style="font-size:11px;color:var(--text-tertiary)">Save together with friends & family</div>
+                                    </div>
+                                </div>
+                                <svg width="16" height="16" fill="none" stroke="var(--text-tertiary)" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
+                            </div>
+                        </div>
+
+                        <div class="glass-card" style="padding:14px;margin-bottom:12px;background:linear-gradient(135deg,rgba(59,130,246,0.1),rgba(99,102,241,0.08));border:1px solid rgba(59,130,246,0.2)">
+                            <div style="display:flex;align-items:center;gap:10px">
+                                <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#003399,#0066cc);display:flex;align-items:center;justify-content:center">
+                                    <span style="font-size:10px;font-weight:800;color:#ffcc00">EU</span>
+                                </div>
+                                <div style="flex:1">
+                                    <div style="font-size:14px;font-weight:700">eIDAS 2.0 Compliant</div>
+                                    <div style="font-size:11px;color:var(--text-tertiary)">OpenID4VC · Data Sovereignty · Selective Disclosure</div>
+                                </div>
+                                <div style="width:24px;height:24px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center">
+                                    <svg width="14" height="14" fill="none" stroke="#fff" stroke-width="2"><path d="M3 7l3 3 5-5"/></svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card" style="padding:16px;margin-bottom:14px;text-align:center">
+                            <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,rgba(52,211,153,0.15),rgba(52,211,153,0.05));display:flex;align-items:center;justify-content:center;margin:0 auto 10px">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.5" style="width:28px;height:28px"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                            </div>
+                            <div style="font-size:0.7rem;font-weight:700;color:var(--text-primary)">Passkey Active</div>
+                            <div style="font-size:0.5rem;color:var(--green);margin-top:2px">Face ID · iCloud Keychain synced</div>
+                        </div>
+
+                        <div class="section-label">Registered Passkeys</div>
+                        <div class="asset-group">
+                            <div class="asset-row" style="cursor:pointer">
+                                <div class="asset-icon" style="background:linear-gradient(135deg,#1e3a5f,#2d4a7f)">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" style="width:18px;height:18px"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="18" r="1"/></svg>
+                                </div>
+                                <div class="asset-info"><div class="asset-name">iPhone 16 Pro</div><div class="asset-sub">Created Mar 2, 2026 · Face ID</div></div>
+                                <div style="display:flex;align-items:center;gap:4px"><span style="font-size:0.45rem;color:var(--green);background:rgba(52,211,153,0.1);padding:2px 6px;border-radius:4px">Primary</span></div>
+                            </div>
+                            <div class="asset-row" style="cursor:pointer">
+                                <div class="asset-icon" style="background:linear-gradient(135deg,#374151,#4b5563)">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" style="width:18px;height:18px"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M6 21h12"/><path d="M12 18v3"/></svg>
+                                </div>
+                                <div class="asset-info"><div class="asset-name">MacBook Pro</div><div class="asset-sub">Created Mar 5, 2026 · Touch ID</div></div>
+                                <div style="font-size:0.45rem;color:var(--text-quaternary)">Synced</div>
+                            </div>
+                            <div class="asset-row" style="cursor:pointer">
+                                <div class="asset-icon" style="background:linear-gradient(135deg,#7c3aed,#6d28d9)">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" style="width:18px;height:18px"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M9 18h6"/></svg>
+                                </div>
+                                <div class="asset-info"><div class="asset-name">iPad Air</div><div class="asset-sub">Created Mar 10, 2026 · Face ID</div></div>
+                                <div style="font-size:0.45rem;color:var(--text-quaternary)">Synced</div>
+                            </div>
+                        </div>
+
+                        <button class="action-btn-full" onclick="showToast('Passkey','New passkey registration started','info')" style="width:100%;padding:12px;border-radius:12px;background:linear-gradient(135deg,var(--blue),#6366f1);color:white;border:none;font-weight:700;font-size:0.55rem;margin-top:14px;cursor:pointer">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;vertical-align:middle;margin-right:4px"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            Register New Passkey
+                        </button>
+
+                        <div class="section-label" style="margin-top:16px">Recovery Options</div>
+                        <div class="asset-group">
+                            <div class="asset-row" onclick="showToast('Recovery','Social recovery configured with 3 guardians','success')">
+                                <div class="asset-icon" style="background:rgba(251,191,36,0.12)">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="1.5" style="width:18px;height:18px"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                                </div>
+                                <div class="asset-info"><div class="asset-name">Social Recovery</div><div class="asset-sub">3 of 5 guardians configured</div></div>
+                                <span class="settings-arrow">›</span>
+                            </div>
+                            <div class="asset-row" onclick="showSubPage('mpc')">
+                                <div class="asset-icon" style="background:rgba(139,92,246,0.12)">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.5" style="width:18px;height:18px"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 11-7.778 7.778 5.5 5.5 0 017.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+                                </div>
+                                <div class="asset-info"><div class="asset-name">MPC Key Shards</div><div class="asset-sub">3-of-3 threshold · All shards healthy</div></div>
+                                <span class="settings-arrow">›</span>
+                            </div>
+                        </div>
+
+                        <div style="text-align:center;margin-top:16px;padding:10px;border-radius:10px;background:rgba(74,143,231,0.06);border:1px solid rgba(74,143,231,0.1)">
+                            <div style="font-size:0.5rem;color:var(--text-secondary)">No seed phrase needed</div>
+                            <div style="font-size:0.42rem;color:var(--text-quaternary);margin-top:2px">Your wallet is secured by Passkeys + MPC. No single point of failure.</div>
+                        </div>
+                    </div>
+
+                    <!-- ══════ PAGE: CROSS-CHAIN BRIDGE ══════ -->
+                    <div class="page" id="page-bridge" style="display:none">
+                        <div class="back-btn" onclick="switchTab('wallet')">‹</div>
+                        <div class="page-title">Bridge</div>
+                        <div class="page-subtitle">Transfer assets across chains</div>
+
+                        <!-- From Chain -->
+                        <div class="section-label">From</div>
+                        <div class="glass-card" style="padding:14px;margin-bottom:10px">
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+                                <div style="display:flex;align-items:center;gap:8px;cursor:pointer" onclick="showToast('Chain','Select source chain','info')">
+                                    <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#627eea,#3b5998);display:flex;align-items:center;justify-content:center">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" style="width:14px;height:14px"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                                    </div>
+                                    <div><div style="font-size:0.55rem;font-weight:700;color:var(--text-primary)">Ethereum</div><div style="font-size:0.42rem;color:var(--text-tertiary)">Mainnet</div></div>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="var(--text-quaternary)" stroke-width="2" style="width:12px;height:12px"><polyline points="6 9 12 15 18 9"/></svg>
+                                </div>
+                                <div style="text-align:right"><div style="font-size:0.42rem;color:var(--text-tertiary)">Balance</div><div style="font-size:0.5rem;color:var(--text-secondary)">11.42 ETH</div></div>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:8px">
+                                <input type="text" value="2.5" style="flex:1;background:var(--surface-2);border:1px solid var(--border-subtle);border-radius:8px;padding:10px;color:var(--text-primary);font-size:0.65rem;font-weight:700;font-family:inherit" />
+                                <button onclick="this.previousElementSibling.value='11.42'" style="background:rgba(74,143,231,0.12);color:var(--blue);border:none;padding:6px 10px;border-radius:6px;font-size:0.45rem;font-weight:700;cursor:pointer">MAX</button>
+                            </div>
+                        </div>
+
+                        <!-- Swap Direction -->
+                        <div style="display:flex;justify-content:center;margin:-4px 0">
+                            <button onclick="showToast('Bridge','Chains swapped','info')" style="width:36px;height:36px;border-radius:50%;background:var(--surface-2);border:1px solid var(--border-medium);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" style="width:16px;height:16px"><path d="M7 16V4m0 12l-3-3m3 3l3-3M17 8v12m0-12l3 3m-3-3l-3 3"/></svg>
+                            </button>
+                        </div>
+
+                        <!-- To Chain -->
+                        <div class="section-label">To</div>
+                        <div class="glass-card" style="padding:14px;margin-bottom:14px">
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+                                <div style="display:flex;align-items:center;gap:8px;cursor:pointer" onclick="showToast('Chain','Select destination chain','info')">
+                                    <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#14f195,#9945ff);display:flex;align-items:center;justify-content:center">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="width:14px;height:14px"><circle cx="12" cy="12" r="9"/><path d="M8 12l2-6 4 12 2-6"/></svg>
+                                    </div>
+                                    <div><div style="font-size:0.55rem;font-weight:700;color:var(--text-primary)">Solana</div><div style="font-size:0.42rem;color:var(--text-tertiary)">Mainnet</div></div>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="var(--text-quaternary)" stroke-width="2" style="width:12px;height:12px"><polyline points="6 9 12 15 18 9"/></svg>
+                                </div>
+                                <div style="text-align:right"><div style="font-size:0.42rem;color:var(--text-tertiary)">You receive</div><div style="font-size:0.65rem;font-weight:700;color:var(--green)">≈ 2.497 ETH</div></div>
+                            </div>
+                        </div>
+
+                        <!-- Route Info -->
+                        <div class="glass-card" style="padding:12px;margin-bottom:14px">
+                            <div style="font-size:0.48rem;font-weight:700;color:var(--text-secondary);margin-bottom:8px">Route Details</div>
+                            <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:0.44rem;color:var(--text-tertiary)">Bridge</span><span style="font-size:0.44rem;color:var(--text-primary);font-weight:600">Wormhole v2</span></div>
+                            <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:0.44rem;color:var(--text-tertiary)">Fee</span><span style="font-size:0.44rem;color:var(--text-primary)">0.003 ETH (~$5.40)</span></div>
+                            <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:0.44rem;color:var(--text-tertiary)">Est. Time</span><span style="font-size:0.44rem;color:var(--text-primary)">~2 min</span></div>
+                            <div style="display:flex;justify-content:space-between"><span style="font-size:0.44rem;color:var(--text-tertiary)">Slippage</span><span style="font-size:0.44rem;color:var(--green)">0.1%</span></div>
+                        </div>
+
+                        <!-- Supported Chains -->
+                        <div class="section-label">Supported Chains</div>
+                        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+                            <div style="display:flex;align-items:center;gap:4px;padding:5px 10px;border-radius:20px;background:var(--surface-2);border:1px solid var(--border-subtle);font-size:0.42rem;color:var(--text-secondary)"><span style="width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,#627eea,#3b5998);display:inline-block"></span>Ethereum</div>
+                            <div style="display:flex;align-items:center;gap:4px;padding:5px 10px;border-radius:20px;background:var(--surface-2);border:1px solid var(--border-subtle);font-size:0.42rem;color:var(--text-secondary)"><span style="width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,#14f195,#9945ff);display:inline-block"></span>Solana</div>
+                            <div style="display:flex;align-items:center;gap:4px;padding:5px 10px;border-radius:20px;background:var(--surface-2);border:1px solid var(--border-subtle);font-size:0.42rem;color:var(--text-secondary)"><span style="width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,#8247e5,#6f3fd5);display:inline-block"></span>Polygon</div>
+                            <div style="display:flex;align-items:center;gap:4px;padding:5px 10px;border-radius:20px;background:var(--surface-2);border:1px solid var(--border-subtle);font-size:0.42rem;color:var(--text-secondary)"><span style="width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,#28a0f0,#1868b7);display:inline-block"></span>Arbitrum</div>
+                            <div style="display:flex;align-items:center;gap:4px;padding:5px 10px;border-radius:20px;background:var(--surface-2);border:1px solid var(--border-subtle);font-size:0.42rem;color:var(--text-secondary)"><span style="width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,#ff0420,#cc0318);display:inline-block"></span>Optimism</div>
+                            <div style="display:flex;align-items:center;gap:4px;padding:5px 10px;border-radius:20px;background:var(--surface-2);border:1px solid var(--border-subtle);font-size:0.42rem;color:var(--text-secondary)"><span style="width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,#0052ff,#0040cc);display:inline-block"></span>Base</div>
+                            <div style="display:flex;align-items:center;gap:4px;padding:5px 10px;border-radius:20px;background:var(--surface-2);border:1px solid var(--border-subtle);font-size:0.42rem;color:var(--text-secondary)"><span style="width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,#f3ba2f,#c49625);display:inline-block"></span>BNB</div>
+                            <div style="display:flex;align-items:center;gap:4px;padding:5px 10px;border-radius:20px;background:rgba(74,143,231,0.12);border:1px solid rgba(74,143,231,0.2);font-size:0.42rem;color:var(--blue);font-weight:600"><span style="width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,var(--blue),#6366f1);display:inline-block"></span>Montserrat</div>
+                        </div>
+
+                        <button onclick="triggerBiometric('bridge')" style="width:100%;padding:13px;border-radius:12px;background:linear-gradient(135deg,var(--blue),#6366f1);color:white;border:none;font-weight:700;font-size:0.55rem;cursor:pointer;box-shadow:0 4px 15px rgba(74,143,231,0.3)">
+                            Bridge 2.5 ETH → Solana
+                        </button>
+                    </div>
+
+                    <!-- ══════ PAGE: PREDICTION MARKETS ══════ -->
+                    <div class="page" id="page-predict" style="display:none">
+                        <div class="back-btn" onclick="switchTab('wallet')">‹</div>
+                        <div class="page-title">Predict</div>
+                        <div class="page-subtitle">Trade on real-world events</div>
+
+                        <!-- Hot Market Banner -->
+                        <div class="glass-card" style="padding:14px;margin-bottom:14px;background:linear-gradient(135deg,rgba(139,92,246,0.08),rgba(74,143,231,0.08));border-color:rgba(139,92,246,0.15)">
+                            <div style="display:flex;justify-content:space-between;align-items:flex-start">
+                                <div>
+                                    <div style="font-size:0.42rem;color:var(--purple);font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px">🔥 Trending</div>
+                                    <div style="font-size:0.58rem;font-weight:700;color:var(--text-primary);line-height:1.3">Will BTC hit $200K<br/>before July 2026?</div>
+                                </div>
+                                <div style="text-align:center">
+                                    <div style="font-size:1rem;font-weight:800;color:var(--green)">72%</div>
+                                    <div style="font-size:0.38rem;color:var(--text-tertiary)">YES odds</div>
+                                </div>
+                            </div>
+                            <div style="display:flex;gap:6px;margin-top:10px">
+                                <button onclick="showToast('Predict','Bought YES at 72¢','success');haptic(20)" style="flex:1;padding:8px;border-radius:8px;background:rgba(52,211,153,0.15);border:1px solid rgba(52,211,153,0.3);color:var(--green);font-weight:700;font-size:0.48rem;cursor:pointer">Buy YES · 72¢</button>
+                                <button onclick="showToast('Predict','Bought NO at 28¢','success');haptic(20)" style="flex:1;padding:8px;border-radius:8px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);color:var(--red);font-weight:700;font-size:0.48rem;cursor:pointer">Buy NO · 28¢</button>
+                            </div>
+                            <div style="font-size:0.38rem;color:var(--text-quaternary);margin-top:6px;text-align:center">$2.4M volume · Resolves Jul 1, 2026</div>
+                        </div>
+
+                        <!-- Categories -->
+                        <div style="display:flex;gap:6px;overflow-x:auto;margin-bottom:12px;scrollbar-width:none">
+                            <div style="padding:5px 12px;border-radius:20px;background:var(--blue);color:white;font-size:0.42rem;font-weight:700;white-space:nowrap;cursor:pointer">All</div>
+                            <div style="padding:5px 12px;border-radius:20px;background:var(--surface-2);color:var(--text-secondary);font-size:0.42rem;font-weight:600;white-space:nowrap;cursor:pointer;border:1px solid var(--border-subtle)">Crypto</div>
+                            <div style="padding:5px 12px;border-radius:20px;background:var(--surface-2);color:var(--text-secondary);font-size:0.42rem;font-weight:600;white-space:nowrap;cursor:pointer;border:1px solid var(--border-subtle)">Politics</div>
+                            <div style="padding:5px 12px;border-radius:20px;background:var(--surface-2);color:var(--text-secondary);font-size:0.42rem;font-weight:600;white-space:nowrap;cursor:pointer;border:1px solid var(--border-subtle)">Sports</div>
+                            <div style="padding:5px 12px;border-radius:20px;background:var(--surface-2);color:var(--text-secondary);font-size:0.42rem;font-weight:600;white-space:nowrap;cursor:pointer;border:1px solid var(--border-subtle)">AI</div>
+                            <div style="padding:5px 12px;border-radius:20px;background:var(--surface-2);color:var(--text-secondary);font-size:0.42rem;font-weight:600;white-space:nowrap;cursor:pointer;border:1px solid var(--border-subtle)">Climate</div>
+                        </div>
+
+                        <!-- Market Cards -->
+                        <div class="section-label">Popular Markets</div>
+                        <div class="asset-group">
+                            <div class="asset-row" onclick="showToast('Market','ETH/BTC flip market opened','info')">
+                                <div class="asset-icon" style="background:linear-gradient(135deg,#627eea,#3b5998)"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" style="width:16px;height:16px"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/></svg></div>
+                                <div class="asset-info"><div class="asset-name">ETH flips BTC by 2027?</div><div class="asset-sub">$890K vol · Resolves Dec 31</div></div>
+                                <div style="text-align:right"><div style="font-size:0.5rem;font-weight:700;color:var(--green)">18%</div><div style="font-size:0.38rem;color:var(--text-quaternary)">YES</div></div>
+                            </div>
+                            <div class="asset-row" onclick="showToast('Market','SOL ETF market opened','info')">
+                                <div class="asset-icon" style="background:linear-gradient(135deg,#14f195,#9945ff)"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" style="width:16px;height:16px"><circle cx="12" cy="12" r="9"/><path d="M8 12l2-6 4 12 2-6"/></svg></div>
+                                <div class="asset-info"><div class="asset-name">SOL ETF approved in 2026?</div><div class="asset-sub">$1.2M vol · Resolves Dec 31</div></div>
+                                <div style="text-align:right"><div style="font-size:0.5rem;font-weight:700;color:var(--green)">64%</div><div style="font-size:0.38rem;color:var(--text-quaternary)">YES</div></div>
+                            </div>
+                            <div class="asset-row" onclick="showToast('Market','AI market opened','info')">
+                                <div class="asset-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" style="width:16px;height:16px"><path d="M12 2a4 4 0 014 4c0 1.95-2 3-2 8h-4c0-5-2-6.05-2-8a4 4 0 014-4z"/><path d="M10 18h4"/><path d="M10 22h4"/></svg></div>
+                                <div class="asset-info"><div class="asset-name">AGI achieved by 2030?</div><div class="asset-sub">$3.5M vol · Long-term</div></div>
+                                <div style="text-align:right"><div style="font-size:0.5rem;font-weight:700;color:var(--red)">31%</div><div style="font-size:0.38rem;color:var(--text-quaternary)">YES</div></div>
+                            </div>
+                            <div class="asset-row" onclick="showToast('Market','Climate market opened','info')">
+                                <div class="asset-icon" style="background:linear-gradient(135deg,#10b981,#059669)"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" style="width:16px;height:16px"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 014 9 15 15 0 01-4 9 15 15 0 01-4-9 15 15 0 014-9z"/></svg></div>
+                                <div class="asset-info"><div class="asset-name">Global temp +1.5°C in 2026?</div><div class="asset-sub">$670K vol · Resolves Jan 2027</div></div>
+                                <div style="text-align:right"><div style="font-size:0.5rem;font-weight:700;color:var(--green)">83%</div><div style="font-size:0.38rem;color:var(--text-quaternary)">YES</div></div>
+                            </div>
+                        </div>
+
+                        <!-- My Positions -->
+                        <div class="section-label" style="margin-top:14px">My Positions</div>
+                        <div class="glass-card" style="padding:12px">
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+                                <div style="font-size:0.5rem;font-weight:700;color:var(--text-primary)">BTC > $200K by Jul 2026</div>
+                                <div style="font-size:0.42rem;color:var(--green);font-weight:700;background:rgba(52,211,153,0.1);padding:2px 6px;border-radius:4px">+38%</div>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;font-size:0.42rem;color:var(--text-tertiary)">
+                                <span>50 YES shares @ 52¢</span><span>Now 72¢ · PnL: +$10.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ══════ PAGE: PORTFOLIO ANALYTICS ══════ -->
+                    <div class="page" id="page-analytics" style="display:none">
+                        <div class="back-btn" onclick="switchTab('wallet')">‹</div>
+                        <div class="page-title">Analytics</div>
+                        <div class="page-subtitle">Portfolio performance insights</div>
+
+                        <!-- PnL Card -->
+                        <div class="glass-card" style="padding:16px;margin-bottom:14px;text-align:center">
+                            <div style="font-size:0.42rem;color:var(--text-tertiary);margin-bottom:4px">Total Profit / Loss</div>
+                            <div style="font-size:1.1rem;font-weight:800;color:var(--green)">+$12,483.27</div>
+                            <div style="font-size:0.48rem;color:var(--green);margin-top:2px">↑ 18.87% all time</div>
+
+                            <!-- Time Range -->
+                            <div style="display:flex;justify-content:center;gap:4px;margin-top:12px">
+                                <button style="padding:4px 10px;border-radius:6px;background:var(--surface-2);border:1px solid var(--border-subtle);color:var(--text-tertiary);font-size:0.4rem;cursor:pointer">24H</button>
+                                <button style="padding:4px 10px;border-radius:6px;background:var(--surface-2);border:1px solid var(--border-subtle);color:var(--text-tertiary);font-size:0.4rem;cursor:pointer">7D</button>
+                                <button style="padding:4px 10px;border-radius:6px;background:rgba(74,143,231,0.15);border:1px solid rgba(74,143,231,0.3);color:var(--blue);font-size:0.4rem;font-weight:700;cursor:pointer">30D</button>
+                                <button style="padding:4px 10px;border-radius:6px;background:var(--surface-2);border:1px solid var(--border-subtle);color:var(--text-tertiary);font-size:0.4rem;cursor:pointer">1Y</button>
+                                <button style="padding:4px 10px;border-radius:6px;background:var(--surface-2);border:1px solid var(--border-subtle);color:var(--text-tertiary);font-size:0.4rem;cursor:pointer">ALL</button>
+                            </div>
+                        </div>
+
+                        <!-- Performance Chart -->
+                        <div class="glass-card" style="padding:12px;margin-bottom:14px">
+                            <div style="font-size:0.48rem;font-weight:700;color:var(--text-secondary);margin-bottom:8px">Performance</div>
+                            <svg viewBox="0 0 280 80" style="width:100%;height:60px">
+                                <defs><linearGradient id="anal-grad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(52,211,153,0.2)"/><stop offset="100%" stop-color="rgba(52,211,153,0)"/></linearGradient></defs>
+                                <path d="M0,65 L20,60 L40,55 L60,50 L80,52 L100,45 L120,40 L140,42 L160,35 L180,30 L200,28 L220,20 L240,22 L260,15 L280,12 L280,80 L0,80 Z" fill="url(#anal-grad)"/>
+                                <path d="M0,65 L20,60 L40,55 L60,50 L80,52 L100,45 L120,40 L140,42 L160,35 L180,30 L200,28 L220,20 L240,22 L260,15 L280,12" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" class="chart-line"/>
+                            </svg>
+                        </div>
+
+                        <!-- Asset Allocation (Donut visual) -->
+                        <div class="section-label">Asset Allocation</div>
+                        <div class="glass-card" style="padding:14px;margin-bottom:14px">
+                            <div style="display:flex;align-items:center;gap:14px">
+                                <svg viewBox="0 0 100 100" style="width:80px;height:80px;flex-shrink:0">
+                                    <circle cx="50" cy="50" r="38" fill="none" stroke="var(--surface-3)" stroke-width="12"/>
+                                    <circle cx="50" cy="50" r="38" fill="none" stroke="#f7931a" stroke-width="12" stroke-dasharray="145 240" stroke-dashoffset="0" class="progress-ring__fill"/>
+                                    <circle cx="50" cy="50" r="38" fill="none" stroke="var(--green)" stroke-width="12" stroke-dasharray="50 240" stroke-dashoffset="-145" class="progress-ring__fill"/>
+                                    <circle cx="50" cy="50" r="38" fill="none" stroke="#627eea" stroke-width="12" stroke-dasharray="30 240" stroke-dashoffset="-195" class="progress-ring__fill"/>
+                                    <circle cx="50" cy="50" r="38" fill="none" stroke="var(--blue)" stroke-width="12" stroke-dasharray="15 240" stroke-dashoffset="-225" class="progress-ring__fill"/>
+                                </svg>
+                                <div style="flex:1">
+                                    <div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="font-size:0.44rem;color:var(--text-secondary)"><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:#f7931a;margin-right:4px;vertical-align:middle"></span>BTC</span><span style="font-size:0.44rem;font-weight:700;color:var(--text-primary)">60.5%</span></div>
+                                    <div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="font-size:0.44rem;color:var(--text-secondary)"><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--green);margin-right:4px;vertical-align:middle"></span>MSD</span><span style="font-size:0.44rem;font-weight:700;color:var(--text-primary)">20.9%</span></div>
+                                    <div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="font-size:0.44rem;color:var(--text-secondary)"><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:#627eea;margin-right:4px;vertical-align:middle"></span>ETH</span><span style="font-size:0.44rem;font-weight:700;color:var(--text-primary)">12.4%</span></div>
+                                    <div style="display:flex;justify-content:space-between"><span style="font-size:0.44rem;color:var(--text-secondary)"><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--blue);margin-right:4px;vertical-align:middle"></span>Others</span><span style="font-size:0.44rem;font-weight:700;color:var(--text-primary)">6.2%</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Top Performers -->
+                        <div class="section-label">Top Performers (30D)</div>
+                        <div class="asset-group">
+                            <div class="asset-row">
+                                <div style="font-size:0.5rem;font-weight:700;color:var(--text-quaternary);width:18px">1</div>
+                                <div class="asset-icon" style="background:linear-gradient(135deg,#14f195,#9945ff)"><span style="font-size:0.5rem">◎</span></div>
+                                <div class="asset-info"><div class="asset-name">SOL</div><div class="asset-sub">$185.30</div></div>
+                                <div style="text-align:right"><div style="font-size:0.5rem;font-weight:700;color:var(--green)">+24.8%</div></div>
+                            </div>
+                            <div class="asset-row">
+                                <div style="font-size:0.5rem;font-weight:700;color:var(--text-quaternary);width:18px">2</div>
+                                <div class="asset-icon" style="background:linear-gradient(135deg,#f7931a,#e08a00)"><span style="font-size:0.5rem">₿</span></div>
+                                <div class="asset-info"><div class="asset-name">BTC</div><div class="asset-sub">$152,694.51</div></div>
+                                <div style="text-align:right"><div style="font-size:0.5rem;font-weight:700;color:var(--green)">+12.3%</div></div>
+                            </div>
+                            <div class="asset-row">
+                                <div style="font-size:0.5rem;font-weight:700;color:var(--text-quaternary);width:18px">3</div>
+                                <div class="asset-icon" style="background:linear-gradient(135deg,var(--blue),#6366f1)"><span style="font-size:0.5rem;color:white;font-weight:700">M</span></div>
+                                <div class="asset-info"><div class="asset-name">MSD</div><div class="asset-sub">$1.00</div></div>
+                                <div style="text-align:right"><div style="font-size:0.5rem;font-weight:700;color:var(--green)">Stable</div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ══════ PAGE: PAYMENT QR CODE ══════ -->
+                    <div class="page" id="page-paycode" style="display:none">
+                        <div class="back-btn" onclick="switchTab('wallet')">‹</div>
+                        <div class="page-title">Payment Code</div>
+                        <div class="page-subtitle">Show to merchant to pay</div>
+
+                        <div style="text-align:center;padding:20px 0">
+                            <!-- QR Container -->
+                            <div style="display:inline-block;padding:16px;background:white;border-radius:16px;margin-bottom:14px;position:relative">
+                                <svg viewBox="0 0 200 200" style="width:160px;height:160px">
+                                    <!-- Simulated QR pattern -->
+                                    <rect x="10" y="10" width="40" height="40" rx="4" fill="#1a1a2e"/>
+                                    <rect x="15" y="15" width="30" height="30" rx="2" fill="white"/>
+                                    <rect x="20" y="20" width="20" height="20" rx="1" fill="#1a1a2e"/>
+                                    <rect x="150" y="10" width="40" height="40" rx="4" fill="#1a1a2e"/>
+                                    <rect x="155" y="15" width="30" height="30" rx="2" fill="white"/>
+                                    <rect x="160" y="20" width="20" height="20" rx="1" fill="#1a1a2e"/>
+                                    <rect x="10" y="150" width="40" height="40" rx="4" fill="#1a1a2e"/>
+                                    <rect x="15" y="155" width="30" height="30" rx="2" fill="white"/>
+                                    <rect x="20" y="160" width="20" height="20" rx="1" fill="#1a1a2e"/>
+                                    <!-- Center logo -->
+                                    <circle cx="100" cy="100" r="18" fill="#1a1a2e"/>
+                                    <text x="100" y="105" text-anchor="middle" fill="white" font-size="14" font-weight="800">M</text>
+                                    <!-- Pattern dots -->
+                                    <g fill="#1a1a2e">
+                                        <rect x="60" y="10" width="8" height="8" rx="1"/><rect x="75" y="10" width="8" height="8" rx="1"/><rect x="90" y="10" width="8" height="8" rx="1"/><rect x="105" y="10" width="8" height="8" rx="1"/><rect x="120" y="10" width="8" height="8" rx="1"/>
+                                        <rect x="60" y="25" width="8" height="8" rx="1"/><rect x="90" y="25" width="8" height="8" rx="1"/><rect x="120" y="25" width="8" height="8" rx="1"/>
+                                        <rect x="60" y="40" width="8" height="8" rx="1"/><rect x="75" y="40" width="8" height="8" rx="1"/><rect x="105" y="40" width="8" height="8" rx="1"/><rect x="135" y="40" width="8" height="8" rx="1"/>
+                                        <rect x="10" y="60" width="8" height="8" rx="1"/><rect x="25" y="60" width="8" height="8" rx="1"/><rect x="40" y="60" width="8" height="8" rx="1"/>
+                                        <rect x="10" y="75" width="8" height="8" rx="1"/><rect x="40" y="75" width="8" height="8" rx="1"/><rect x="60" y="75" width="8" height="8" rx="1"/>
+                                        <rect x="60" y="60" width="8" height="8" rx="1"/><rect x="75" y="60" width="8" height="8" rx="1"/>
+                                        <rect x="135" y="60" width="8" height="8" rx="1"/><rect x="150" y="60" width="8" height="8" rx="1"/><rect x="165" y="60" width="8" height="8" rx="1"/><rect x="180" y="60" width="8" height="8" rx="1"/>
+                                        <rect x="135" y="75" width="8" height="8" rx="1"/><rect x="165" y="75" width="8" height="8" rx="1"/>
+                                        <rect x="60" y="135" width="8" height="8" rx="1"/><rect x="75" y="135" width="8" height="8" rx="1"/><rect x="90" y="135" width="8" height="8" rx="1"/>
+                                        <rect x="135" y="135" width="8" height="8" rx="1"/><rect x="150" y="135" width="8" height="8" rx="1"/>
+                                        <rect x="60" y="150" width="8" height="8" rx="1"/><rect x="90" y="150" width="8" height="8" rx="1"/><rect x="120" y="150" width="8" height="8" rx="1"/><rect x="150" y="150" width="8" height="8" rx="1"/>
+                                        <rect x="60" y="165" width="8" height="8" rx="1"/><rect x="75" y="165" width="8" height="8" rx="1"/><rect x="105" y="165" width="8" height="8" rx="1"/><rect x="135" y="165" width="8" height="8" rx="1"/><rect x="165" y="165" width="8" height="8" rx="1"/>
+                                        <rect x="60" y="180" width="8" height="8" rx="1"/><rect x="90" y="180" width="8" height="8" rx="1"/><rect x="105" y="180" width="8" height="8" rx="1"/><rect x="120" y="180" width="8" height="8" rx="1"/><rect x="150" y="180" width="8" height="8" rx="1"/><rect x="180" y="180" width="8" height="8" rx="1"/>
+                                    </g>
+                                </svg>
+                                <!-- Animated border -->
+                                <div style="position:absolute;inset:-2px;border-radius:18px;border:2px solid transparent;background:linear-gradient(135deg,var(--blue),var(--green),var(--purple),var(--blue)) border-box;-webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:rotate-gradient 3s linear infinite"></div>
+                            </div>
+
+                            <div style="font-size:0.65rem;font-weight:700;color:var(--text-primary)">Nuo Wang</div>
+                            <div style="font-size:0.45rem;color:var(--text-tertiary);margin-top:2px">MID Pay · Montserrat Network</div>
+
+                            <!-- Amount Input -->
+                            <div style="margin-top:16px;padding:12px;background:var(--surface-1);border:1px solid var(--border-subtle);border-radius:12px">
+                                <div style="font-size:0.42rem;color:var(--text-tertiary);margin-bottom:4px">Set Amount (optional)</div>
+                                <div style="display:flex;align-items:center;justify-content:center;gap:4px">
+                                    <span style="font-size:1.2rem;font-weight:200;color:var(--text-quaternary)">$</span>
+                                    <input type="text" placeholder="0.00" style="background:transparent;border:none;color:var(--text-primary);font-size:1.2rem;font-weight:700;width:120px;text-align:center;font-family:inherit;outline:none" />
+                                </div>
+                            </div>
+
+                            <div style="display:flex;gap:8px;margin-top:14px">
+                                <button onclick="showToast('Saved','QR saved to photos','success')" style="flex:1;padding:10px;border-radius:10px;background:var(--surface-2);border:1px solid var(--border-subtle);color:var(--text-secondary);font-weight:600;font-size:0.48rem;cursor:pointer">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:14px;height:14px;vertical-align:middle;margin-right:3px"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                    Save
+                                </button>
+                                <button onclick="showToast('Shared','QR shared','success')" style="flex:1;padding:10px;border-radius:10px;background:linear-gradient(135deg,var(--blue),#6366f1);border:none;color:white;font-weight:700;font-size:0.48rem;cursor:pointer">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:14px;height:14px;vertical-align:middle;margin-right:3px"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                                    Share
+                                </button>
+                            </div>
+                        </div>
+                    
+                        <div onclick="showSubPage('transit')" class="glass-card" style="padding:14px;margin-bottom:16px;cursor:pointer;background:linear-gradient(135deg,rgba(59,130,246,0.1),rgba(6,182,212,0.08))">
+                            <div style="display:flex;align-items:center;justify-content:space-between">
+                                <div style="display:flex;align-items:center;gap:10px">
+                                    <span style="font-size:22px">🚌</span>
+                                    <div>
+                                        <div style="font-size:14px;font-weight:600">Transit Pass</div>
+                                        <div style="font-size:11px;color:var(--text-tertiary)">Ferry · Bus · Shuttle — tap to ride</div>
+                                    </div>
+                                </div>
+                                <svg width="16" height="16" fill="none" stroke="var(--text-tertiary)" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
+                            </div>
+                        </div>
+</div>
+
+                    <!-- ══════ PAGE: SMART ACCOUNT (Account Abstraction) ══════ -->
+                    <div class="page" id="page-smartaccount" style="display:none">
+                        <div style="display:flex;align-items:center;gap:12px;margin:18px 0 16px">
+                            <div onclick="showSubPage('settings')" style="width:32px;height:32px;border-radius:50%;background:var(--surface-2);display:flex;align-items:center;justify-content:center;cursor:pointer">
+                                <svg width="18" height="18" fill="none" stroke="var(--text-primary)" stroke-width="2"><path d="M15 9H3m0 0l5 5M3 9l5-5"/></svg>
+                            </div>
+                            <span style="font-size:17px;font-weight:700">Smart Account</span>
+                        </div>
+
+                        <div class="glass-card" style="padding:18px;margin-bottom:16px;background:linear-gradient(135deg,rgba(139,92,246,0.12),rgba(99,102,241,0.08))">
+                            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+                                <div>
+                                    <div style="font-size:12px;color:var(--text-tertiary)">Account Type</div>
+                                    <div style="font-size:20px;font-weight:800">ERC-4337</div>
+                                </div>
+                                <div style="padding:6px 12px;border-radius:10px;background:rgba(16,185,129,0.15);font-size:12px;font-weight:700;color:var(--green)">Active</div>
+                            </div>
+                            <div style="font-size:11px;color:var(--text-tertiary)">Account Abstraction · Gasless Transactions · Social Recovery</div>
+                        </div>
+
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:10px">Features</div>
+                        <div class="glass-card" style="padding:14px;margin-bottom:12px">
+                            <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border-subtle)">
+                                <div style="display:flex;align-items:center;gap:10px">
+                                    <span style="font-size:18px">⛽</span>
+                                    <div>
+                                        <div style="font-size:14px;font-weight:600">Gasless Transactions</div>
+                                        <div style="font-size:11px;color:var(--text-tertiary)">Paymaster sponsors your gas fees</div>
+                                    </div>
+                                </div>
+                                <div style="width:44px;height:24px;border-radius:12px;background:var(--green);position:relative;cursor:pointer">
+                                    <div style="width:20px;height:20px;border-radius:50%;background:#fff;position:absolute;top:2px;right:2px"></div>
+                                </div>
+                            </div>
+                            <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border-subtle)">
+                                <div style="display:flex;align-items:center;gap:10px">
+                                    <span style="font-size:18px">📦</span>
+                                    <div>
+                                        <div style="font-size:14px;font-weight:600">Batch Transactions</div>
+                                        <div style="font-size:11px;color:var(--text-tertiary)">Bundle multiple ops in one tx</div>
+                                    </div>
+                                </div>
+                                <div style="width:44px;height:24px;border-radius:12px;background:var(--green);position:relative;cursor:pointer">
+                                    <div style="width:20px;height:20px;border-radius:50%;background:#fff;position:absolute;top:2px;right:2px"></div>
+                                </div>
+                            </div>
+                            <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border-subtle)">
+                                <div style="display:flex;align-items:center;gap:10px">
+                                    <span style="font-size:18px">🔄</span>
+                                    <div>
+                                        <div style="font-size:14px;font-weight:600">Social Recovery</div>
+                                        <div style="font-size:11px;color:var(--text-tertiary)">3 guardians can recover your account</div>
+                                    </div>
+                                </div>
+                                <div style="font-size:12px;color:var(--green);font-weight:600">3 set</div>
+                            </div>
+                            <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0">
+                                <div style="display:flex;align-items:center;gap:10px">
+                                    <span style="font-size:18px">⏱️</span>
+                                    <div>
+                                        <div style="font-size:14px;font-weight:600">Session Keys</div>
+                                        <div style="font-size:11px;color:var(--text-tertiary)">Time-limited dApp approvals</div>
+                                    </div>
+                                </div>
+                                <div style="font-size:12px;color:var(--blue);font-weight:600">2 active</div>
+                            </div>
+                        </div>
+
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:10px">Spending Limits</div>
+                        <div class="glass-card" style="padding:14px;margin-bottom:12px">
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+                                <span style="font-size:13px">Daily Transfer Limit</span>
+                                <span style="font-size:13px;font-weight:700">$5,000</span>
+                            </div>
+                            <div style="height:6px;border-radius:3px;background:var(--surface-2)">
+                                <div style="height:6px;border-radius:3px;background:var(--blue);width:22%"></div>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text-tertiary);margin-top:4px">
+                                <span>$1,100 used today</span>
+                                <span>$3,900 remaining</span>
+                            </div>
+                        </div>
+
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:10px">Recovery Guardians</div>
+                        <div class="glass-card" style="padding:14px;margin-bottom:12px">
+                            <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border-subtle)">
+                                <div style="display:flex;align-items:center;gap:10px">
+                                    <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#4facfe,#00f2fe);display:flex;align-items:center;justify-content:center;font-size:14px">👤</div>
+                                    <div><span style="font-size:13px;font-weight:600">Elena</span><br><span style="font-size:10px;color:var(--text-tertiary)">elena.eth</span></div>
+                                </div>
+                                <div style="width:8px;height:8px;border-radius:50%;background:var(--green)"></div>
+                            </div>
+                            <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border-subtle)">
+                                <div style="display:flex;align-items:center;gap:10px">
+                                    <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#f093fb,#f5576c);display:flex;align-items:center;justify-content:center;font-size:14px">👨</div>
+                                    <div><span style="font-size:13px;font-weight:600">Marcus</span><br><span style="font-size:10px;color:var(--text-tertiary)">marcus.mid</span></div>
+                                </div>
+                                <div style="width:8px;height:8px;border-radius:50%;background:var(--green)"></div>
+                            </div>
+                            <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 0">
+                                <div style="display:flex;align-items:center;gap:10px">
+                                    <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#a8edea,#fed6e3);display:flex;align-items:center;justify-content:center;font-size:14px">🏦</div>
+                                    <div><span style="font-size:13px;font-weight:600">MID Vault</span><br><span style="font-size:10px;color:var(--text-tertiary)">Official recovery service</span></div>
+                                </div>
+                                <div style="width:8px;height:8px;border-radius:50%;background:var(--green)"></div>
+                            </div>
+                        </div>
+
+                        <div onclick="showSubPage('multisig')" class="glass-card" style="padding:14px;margin-bottom:12px;cursor:pointer">
+                            <div style="display:flex;align-items:center;justify-content:space-between">
+                                <div style="display:flex;align-items:center;gap:10px">
+                                    <span style="font-size:20px">🔐</span>
+                                    <div>
+                                        <div style="font-size:14px;font-weight:600">Multi-Sig Wallet</div>
+                                        <div style="font-size:11px;color:var(--text-tertiary)">Shared custody with co-signers</div>
+                                    </div>
+                                </div>
+                                <svg width="16" height="16" fill="none" stroke="var(--text-tertiary)" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
+                            </div>
+                        </div>
+
+                        <div style="text-align:center;padding:10px;border-radius:10px;background:rgba(74,143,231,0.06);border:1px solid rgba(74,143,231,0.1);margin-bottom:20px">
+                            <div style="font-size:12px;color:var(--text-secondary)">No seed phrase needed</div>
+                            <div style="font-size:10px;color:var(--text-tertiary);margin-top:2px">Secured by Passkeys + Account Abstraction</div>
+                        </div>
+                    </div>
+
+                    <div class="page" id="page-inheritance" style="display:none">
+                        <div style="display:flex;align-items:center;gap:12px;margin:18px 0 16px">
+                            <div onclick="showSubPage('settings')" style="width:32px;height:32px;border-radius:50%;background:var(--surface-2);display:flex;align-items:center;justify-content:center;cursor:pointer">
+                                <svg width="18" height="18" fill="none" stroke="var(--text-primary)" stroke-width="2"><path d="M15 9H3m0 0l5 5M3 9l5-5"/></svg>
+                            </div>
+                            <span style="font-size:17px;font-weight:700" data-i18n="inheritance_title">Digital Inheritance</span>
+                        </div>
+
+                        <div class="glass-card" style="padding:20px;margin-bottom:16px;text-align:center">
+                            <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--blue));margin:0 auto 12px;display:flex;align-items:center;justify-content:center">
+                                <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                            </div>
+                            <div style="font-size:15px;font-weight:700;margin-bottom:4px">Protect Your Legacy</div>
+                            <div style="font-size:12px;color:var(--text-tertiary)">Ensure your digital assets are safely transferred to your beneficiaries</div>
+                        </div>
+
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:10px">Beneficiaries</div>
+                        <div class="glass-card" style="padding:14px;margin-bottom:12px">
+                            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+                                <div style="display:flex;align-items:center;gap:10px">
+                                    <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#4facfe,#00f2fe);display:flex;align-items:center;justify-content:center;font-size:16px">👨</div>
+                                    <div>
+                                        <div style="font-size:14px;font-weight:600">James Wilson</div>
+                                        <div style="font-size:11px;color:var(--text-tertiary)">Brother · 60% of assets</div>
+                                    </div>
+                                </div>
+                                <div style="font-size:12px;color:var(--green);font-weight:600">Active</div>
+                            </div>
+                            <div style="display:flex;align-items:center;justify-content:space-between">
+                                <div style="display:flex;align-items:center;gap:10px">
+                                    <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#f093fb,#f5576c);display:flex;align-items:center;justify-content:center;font-size:16px">👩</div>
+                                    <div>
+                                        <div style="font-size:14px;font-weight:600">Sarah Chen</div>
+                                        <div style="font-size:11px;color:var(--text-tertiary)">Partner · 40% of assets</div>
+                                    </div>
+                                </div>
+                                <div style="font-size:12px;color:var(--green);font-weight:600">Active</div>
+                            </div>
+                        </div>
+
+                        <div onclick="haptic(10)" class="glass-card" style="padding:12px;margin-bottom:16px;text-align:center;cursor:pointer;border:1px dashed var(--border-medium)">
+                            <span style="font-size:13px;color:var(--blue)">+ Add Beneficiary</span>
+                        </div>
+
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:10px">Dead Man's Switch</div>
+                        <div class="glass-card" style="padding:14px;margin-bottom:12px">
+                            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+                                <div>
+                                    <div style="font-size:14px;font-weight:600">Auto-Transfer Timer</div>
+                                    <div style="font-size:11px;color:var(--text-tertiary)">If no check-in for 180 days, assets transfer automatically</div>
+                                </div>
+                                <div style="width:44px;height:24px;border-radius:12px;background:var(--green);position:relative;cursor:pointer">
+                                    <div style="width:20px;height:20px;border-radius:50%;background:#fff;position:absolute;top:2px;right:2px"></div>
+                                </div>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-tertiary)">
+                                <span>Last check-in: 2 days ago</span>
+                                <span style="color:var(--green)">178 days remaining</span>
+                            </div>
+                            <div style="height:4px;border-radius:2px;background:var(--surface-2);margin-top:8px">
+                                <div style="height:4px;border-radius:2px;background:var(--green);width:99%"></div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card" style="padding:14px;margin-bottom:12px">
+                            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+                                <div style="font-size:14px;font-weight:600">Multi-Sig Inheritance Vault</div>
+                                <div style="font-size:11px;padding:3px 8px;border-radius:8px;background:rgba(99,102,241,0.15);color:var(--purple)">2-of-3</div>
+                            </div>
+                            <div style="font-size:11px;color:var(--text-tertiary)">Requires 2 of 3 guardians to approve asset release</div>
+                        </div>
+
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:10px">Inheritance Assets</div>
+                        <div class="glass-card" style="padding:14px;margin-bottom:12px">
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+                                <span style="font-size:13px">ETH Balance</span>
+                                <span style="font-size:13px;font-weight:600">$12,450.00</span>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+                                <span style="font-size:13px">NFT Collection</span>
+                                <span style="font-size:13px;font-weight:600">14 items</span>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;align-items:center">
+                                <span style="font-size:13px">Digital Identity Docs</span>
+                                <span style="font-size:13px;font-weight:600">3 credentials</span>
+                            </div>
+                        </div>
+
+                        <div onclick="haptic(10)" style="padding:14px;border-radius:14px;background:linear-gradient(135deg,var(--purple),var(--blue));text-align:center;cursor:pointer;margin-bottom:20px">
+                            <span style="font-size:14px;font-weight:700;color:#fff">Check In Now</span>
+                        </div>
+                    </div>
+
+                    <div class="page" id="page-carbon" style="display:none">
+                        <div style="display:flex;align-items:center;gap:12px;margin:18px 0 16px">
+                            <div onclick="showSubPage('settings')" style="width:32px;height:32px;border-radius:50%;background:var(--surface-2);display:flex;align-items:center;justify-content:center;cursor:pointer">
+                                <svg width="18" height="18" fill="none" stroke="var(--text-primary)" stroke-width="2"><path d="M15 9H3m0 0l5 5M3 9l5-5"/></svg>
+                            </div>
+                            <span style="font-size:17px;font-weight:700" data-i18n="carbon_title">Carbon & ESG</span>
+                        </div>
+
+                        <div class="glass-card" style="padding:20px;margin-bottom:16px;background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(6,182,212,0.1))">
+                            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+                                <div>
+                                    <div style="font-size:12px;color:var(--text-tertiary)">Your Carbon Score</div>
+                                    <div style="font-size:28px;font-weight:800;color:var(--green)">A+</div>
+                                </div>
+                                <div style="width:64px;height:64px;border-radius:50%;border:4px solid var(--green);display:flex;align-items:center;justify-content:center">
+                                    <span style="font-size:11px;font-weight:700;color:var(--green)">92/100</span>
+                                </div>
+                            </div>
+                            <div style="font-size:11px;color:var(--text-tertiary)">You're in the top 5% of eco-conscious wallet users</div>
+                        </div>
+
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:10px">Monthly Impact</div>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
+                            <div class="glass-card" style="padding:14px;text-align:center">
+                                <div style="font-size:20px;margin-bottom:4px">🌱</div>
+                                <div style="font-size:18px;font-weight:800;color:var(--green)">0.42 kg</div>
+                                <div style="font-size:10px;color:var(--text-tertiary)">CO₂ This Month</div>
+                            </div>
+                            <div class="glass-card" style="padding:14px;text-align:center">
+                                <div style="font-size:20px;margin-bottom:4px">🌳</div>
+                                <div style="font-size:18px;font-weight:800;color:var(--green)">3 Trees</div>
+                                <div style="font-size:10px;color:var(--text-tertiary)">Offset Equivalent</div>
+                            </div>
+                            <div class="glass-card" style="padding:14px;text-align:center">
+                                <div style="font-size:20px;margin-bottom:4px">⚡</div>
+                                <div style="font-size:18px;font-weight:800;color:var(--blue)">PoS Only</div>
+                                <div style="font-size:10px;color:var(--text-tertiary)">Chain Preference</div>
+                            </div>
+                            <div class="glass-card" style="padding:14px;text-align:center">
+                                <div style="font-size:20px;margin-bottom:4px">💚</div>
+                                <div style="font-size:18px;font-weight:800;color:var(--green)">$4.20</div>
+                                <div style="font-size:10px;color:var(--text-tertiary)">Auto-Offset Spent</div>
+                            </div>
+                        </div>
+
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:10px">Auto Carbon Offset</div>
+                        <div class="glass-card" style="padding:14px;margin-bottom:12px">
+                            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+                                <div>
+                                    <div style="font-size:14px;font-weight:600">Offset Every Transaction</div>
+                                    <div style="font-size:11px;color:var(--text-tertiary)">Auto-buy carbon credits per tx</div>
+                                </div>
+                                <div style="width:44px;height:24px;border-radius:12px;background:var(--green);position:relative;cursor:pointer">
+                                    <div style="width:20px;height:20px;border-radius:50%;background:#fff;position:absolute;top:2px;right:2px"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:10px">Recent Transaction Footprints</div>
+                        <div class="glass-card" style="padding:14px;margin-bottom:12px">
+                            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border-subtle)">
+                                <div style="display:flex;align-items:center;gap:10px">
+                                    <div style="width:8px;height:8px;border-radius:50%;background:var(--green)"></div>
+                                    <span style="font-size:13px">Swap ETH → USDC</span>
+                                </div>
+                                <span style="font-size:12px;color:var(--green)">0.003 kg CO₂</span>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border-subtle)">
+                                <div style="display:flex;align-items:center;gap:10px">
+                                    <div style="width:8px;height:8px;border-radius:50%;background:var(--green)"></div>
+                                    <span style="font-size:13px">Stake SOL</span>
+                                </div>
+                                <span style="font-size:12px;color:var(--green)">0.001 kg CO₂</span>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0">
+                                <div style="display:flex;align-items:center;gap:10px">
+                                    <div style="width:8px;height:8px;border-radius:50%;background:var(--amber)"></div>
+                                    <span style="font-size:13px">Bridge to Polygon</span>
+                                </div>
+                                <span style="font-size:12px;color:var(--amber)">0.012 kg CO₂</span>
+                            </div>
+                        </div>
+
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:10px">ESG Portfolio Score</div>
+                        <div class="glass-card" style="padding:14px;margin-bottom:20px">
+                            <div style="margin-bottom:10px">
+                                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span>Environmental</span><span style="color:var(--green)">94/100</span></div>
+                                <div style="height:6px;border-radius:3px;background:var(--surface-2)"><div style="height:6px;border-radius:3px;background:var(--green);width:94%"></div></div>
+                            </div>
+                            <div style="margin-bottom:10px">
+                                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span>Social</span><span style="color:var(--blue)">87/100</span></div>
+                                <div style="height:6px;border-radius:3px;background:var(--surface-2)"><div style="height:6px;border-radius:3px;background:var(--blue);width:87%"></div></div>
+                            </div>
+                            <div>
+                                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span>Governance</span><span style="color:var(--purple)">91/100</span></div>
+                                <div style="height:6px;border-radius:3px;background:var(--surface-2)"><div style="height:6px;border-radius:3px;background:var(--purple);width:91%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="page" id="page-transit" style="display:none">
+                        <div style="display:flex;align-items:center;gap:12px;margin:18px 0 16px">
+                            <div onclick="showSubPage('paycode')" style="width:32px;height:32px;border-radius:50%;background:var(--surface-2);display:flex;align-items:center;justify-content:center;cursor:pointer">
+                                <svg width="18" height="18" fill="none" stroke="var(--text-primary)" stroke-width="2"><path d="M15 9H3m0 0l5 5M3 9l5-5"/></svg>
+                            </div>
+                            <span style="font-size:17px;font-weight:700" data-i18n="transit_title">Transit Pass</span>
+                        </div>
+
+                        <div class="glass-card" style="padding:24px;margin-bottom:16px;text-align:center;background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(99,102,241,0.1))">
+                            <div style="font-size:12px;color:var(--text-tertiary);margin-bottom:12px">Scan to ride</div>
+                            <div style="width:180px;height:180px;margin:0 auto 12px;background:#fff;border-radius:16px;display:flex;align-items:center;justify-content:center;position:relative">
+                                <div style="width:160px;height:160px;background:repeating-conic-gradient(#000 0% 25%, #fff 0% 50%) 0 0/20px 20px;border-radius:8px;opacity:0.8"></div>
+                                <div style="position:absolute;width:40px;height:40px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center">
+                                    <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M12 2C8 2 5 3 5 7v10c0 2.2 1.8 4 4 4h6c2.2 0 4-1.8 4-4V7c0-4-3-5-7-5zm0 18c-1.1 0-2-.9-2-2h4c0 1.1-.9 2-2 2zm5-4H7V7h10v9z"/></svg>
+                                </div>
+                            </div>
+                            <div style="font-size:15px;font-weight:700">Montserrat Transit</div>
+                            <div style="font-size:11px;color:var(--text-tertiary);margin-top:4px">Ferry · Bus · Shuttle</div>
+                        </div>
+
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:10px">Active Passes</div>
+                        <div class="glass-card" style="padding:14px;margin-bottom:12px">
+                            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+                                <div style="display:flex;align-items:center;gap:10px">
+                                    <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--blue),#06b6d4);display:flex;align-items:center;justify-content:center">
+                                        <span style="font-size:18px">⛴️</span>
+                                    </div>
+                                    <div>
+                                        <div style="font-size:14px;font-weight:600">Ferry Monthly Pass</div>
+                                        <div style="font-size:11px;color:var(--text-tertiary)">Little Bay ↔ Plymouth</div>
+                                    </div>
+                                </div>
+                                <div style="font-size:11px;padding:3px 8px;border-radius:8px;background:rgba(16,185,129,0.15);color:var(--green)">Active</div>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-tertiary)">
+                                <span>Expires: Apr 15, 2026</span>
+                                <span>18 rides this month</span>
+                            </div>
+                        </div>
+                        <div class="glass-card" style="padding:14px;margin-bottom:12px">
+                            <div style="display:flex;align-items:center;justify-content:space-between">
+                                <div style="display:flex;align-items:center;gap:10px">
+                                    <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--green),#34d399);display:flex;align-items:center;justify-content:center">
+                                        <span style="font-size:18px">🚌</span>
+                                    </div>
+                                    <div>
+                                        <div style="font-size:14px;font-weight:600">Island Bus Pass</div>
+                                        <div style="font-size:11px;color:var(--text-tertiary)">All routes · Unlimited</div>
+                                    </div>
+                                </div>
+                                <div style="font-size:11px;padding:3px 8px;border-radius:8px;background:rgba(16,185,129,0.15);color:var(--green)">Active</div>
+                            </div>
+                        </div>
+
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:10px">Recent Journeys</div>
+                        <div class="glass-card" style="padding:14px;margin-bottom:12px">
+                            <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border-subtle)">
+                                <div><span style="font-size:13px">⛴️ Ferry to Plymouth</span><br><span style="font-size:10px;color:var(--text-tertiary)">Today 8:30 AM</span></div>
+                                <span style="font-size:12px;font-weight:600">$2.50</span>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border-subtle)">
+                                <div><span style="font-size:13px">🚌 Bus Route 3</span><br><span style="font-size:10px;color:var(--text-tertiary)">Yesterday 5:15 PM</span></div>
+                                <span style="font-size:12px;font-weight:600">$1.00</span>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0">
+                                <div><span style="font-size:13px">⛴️ Ferry to Little Bay</span><br><span style="font-size:10px;color:var(--text-tertiary)">Yesterday 9:00 AM</span></div>
+                                <span style="font-size:12px;font-weight:600">$2.50</span>
+                            </div>
+                        </div>
+
+                        <div onclick="haptic(10)" style="padding:14px;border-radius:14px;background:linear-gradient(135deg,var(--blue),#06b6d4);text-align:center;cursor:pointer;margin-bottom:20px">
+                            <span style="font-size:14px;font-weight:700;color:#fff">Buy New Pass</span>
+                        </div>
+                    </div>
+
+                    <div class="page" id="page-groupvault" style="display:none">
+                        <div style="display:flex;align-items:center;gap:12px;margin:18px 0 16px">
+                            <div onclick="showSubPage('savings')" style="width:32px;height:32px;border-radius:50%;background:var(--surface-2);display:flex;align-items:center;justify-content:center;cursor:pointer">
+                                <svg width="18" height="18" fill="none" stroke="var(--text-primary)" stroke-width="2"><path d="M15 9H3m0 0l5 5M3 9l5-5"/></svg>
+                            </div>
+                            <span style="font-size:17px;font-weight:700" data-i18n="groupvault_title">Group Vault</span>
+                        </div>
+
+                        <div class="glass-card" style="padding:20px;margin-bottom:16px;background:linear-gradient(135deg,rgba(245,158,11,0.12),rgba(249,115,22,0.08))">
+                            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+                                <div>
+                                    <div style="font-size:12px;color:var(--text-tertiary)">Vacation Fund 🏖️</div>
+                                    <div style="font-size:24px;font-weight:800">$2,840</div>
+                                    <div style="font-size:11px;color:var(--text-tertiary)">of $5,000 goal</div>
+                                </div>
+                                <div style="width:60px;height:60px;border-radius:50%;border:4px solid var(--amber);display:flex;align-items:center;justify-content:center">
+                                    <span style="font-size:14px;font-weight:800;color:var(--amber)">56.8%</span>
+                                </div>
+                            </div>
+                            <div style="height:8px;border-radius:4px;background:var(--surface-2)">
+                                <div style="height:8px;border-radius:4px;background:linear-gradient(90deg,var(--amber),#f59e0b);width:56.8%"></div>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text-tertiary);margin-top:6px">
+                                <span>$2,160 remaining</span>
+                                <span>Target: Aug 2026</span>
+                            </div>
+                        </div>
+
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:10px">Members (4)</div>
+                        <div class="glass-card" style="padding:14px;margin-bottom:12px">
+                            <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border-subtle)">
+                                <div style="display:flex;align-items:center;gap:10px">
+                                    <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#4facfe,#00f2fe);display:flex;align-items:center;justify-content:center;font-size:14px">👤</div>
+                                    <div><span style="font-size:13px;font-weight:600">You</span><br><span style="font-size:10px;color:var(--text-tertiary)">Admin</span></div>
+                                </div>
+                                <span style="font-size:13px;font-weight:700;color:var(--green)">$1,200</span>
+                            </div>
+                            <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border-subtle)">
+                                <div style="display:flex;align-items:center;gap:10px">
+                                    <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#f093fb,#f5576c);display:flex;align-items:center;justify-content:center;font-size:14px">👩</div>
+                                    <div><span style="font-size:13px;font-weight:600">Amara</span><br><span style="font-size:10px;color:var(--text-tertiary)">Member</span></div>
+                                </div>
+                                <span style="font-size:13px;font-weight:700">$840</span>
+                            </div>
+                            <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border-subtle)">
+                                <div style="display:flex;align-items:center;gap:10px">
+                                    <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#a8edea,#fed6e3);display:flex;align-items:center;justify-content:center;font-size:14px">👨</div>
+                                    <div><span style="font-size:13px;font-weight:600">Marcus</span><br><span style="font-size:10px;color:var(--text-tertiary)">Member</span></div>
+                                </div>
+                                <span style="font-size:13px;font-weight:700">$500</span>
+                            </div>
+                            <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 0">
+                                <div style="display:flex;align-items:center;gap:10px">
+                                    <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#fbc2eb,#a6c1ee);display:flex;align-items:center;justify-content:center;font-size:14px">👩</div>
+                                    <div><span style="font-size:13px;font-weight:600">Jade</span><br><span style="font-size:10px;color:var(--text-tertiary)">Member</span></div>
+                                </div>
+                                <span style="font-size:13px;font-weight:700">$300</span>
+                            </div>
+                        </div>
+
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:10px">Your Vaults</div>
+                        <div onclick="haptic(10)" class="glass-card" style="padding:14px;margin-bottom:10px;cursor:pointer">
+                            <div style="display:flex;align-items:center;justify-content:space-between">
+                                <div style="display:flex;align-items:center;gap:10px">
+                                    <span style="font-size:22px">🎄</span>
+                                    <div>
+                                        <div style="font-size:14px;font-weight:600">Christmas Gift Pool</div>
+                                        <div style="font-size:11px;color:var(--text-tertiary)">6 members · $1,680 / $3,000</div>
+                                    </div>
+                                </div>
+                                <span style="font-size:12px;color:var(--amber);font-weight:600">56%</span>
+                            </div>
+                        </div>
+                        <div onclick="haptic(10)" class="glass-card" style="padding:14px;margin-bottom:12px;cursor:pointer">
+                            <div style="display:flex;align-items:center;justify-content:space-between">
+                                <div style="display:flex;align-items:center;gap:10px">
+                                    <span style="font-size:22px">🏠</span>
+                                    <div>
+                                        <div style="font-size:14px;font-weight:600">Community Fund</div>
+                                        <div style="font-size:11px;color:var(--text-tertiary)">12 members · $8,200 / $10,000</div>
+                                    </div>
+                                </div>
+                                <span style="font-size:12px;color:var(--green);font-weight:600">82%</span>
+                            </div>
+                        </div>
+
+                        <div onclick="haptic(10)" style="padding:14px;border-radius:14px;background:linear-gradient(135deg,var(--amber),#f59e0b);text-align:center;cursor:pointer;margin-bottom:20px">
+                            <span style="font-size:14px;font-weight:700;color:#fff">Create New Vault</span>
+                        </div>
+                    </div>
+
+                    <div class="page" id="page-multisig" style="display:none">
+                        <div style="display:flex;align-items:center;gap:12px;margin:18px 0 16px">
+                            <div onclick="showSubPage('smartaccount')" style="width:32px;height:32px;border-radius:50%;background:var(--surface-2);display:flex;align-items:center;justify-content:center;cursor:pointer">
+                                <svg width="18" height="18" fill="none" stroke="var(--text-primary)" stroke-width="2"><path d="M15 9H3m0 0l5 5M3 9l5-5"/></svg>
+                            </div>
+                            <span style="font-size:17px;font-weight:700" data-i18n="multisig_title">Multi-Sig Wallet</span>
+                        </div>
+
+                        <div class="glass-card" style="padding:18px;margin-bottom:16px;background:linear-gradient(135deg,rgba(99,102,241,0.12),rgba(139,92,246,0.08))">
+                            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+                                <div>
+                                    <div style="font-size:12px;color:var(--text-tertiary)">Family Vault</div>
+                                    <div style="font-size:22px;font-weight:800">$34,520.00</div>
+                                </div>
+                                <div style="font-size:11px;padding:4px 10px;border-radius:8px;background:rgba(99,102,241,0.2);color:var(--purple);font-weight:600">2-of-3</div>
+                            </div>
+                            <div style="font-size:11px;color:var(--text-tertiary)">Requires 2 of 3 signers to approve transactions</div>
+                        </div>
+
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:10px">Signers</div>
+                        <div class="glass-card" style="padding:14px;margin-bottom:12px">
+                            <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border-subtle)">
+                                <div style="display:flex;align-items:center;gap:10px">
+                                    <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--blue),#06b6d4);display:flex;align-items:center;justify-content:center;font-size:14px">👤</div>
+                                    <div><span style="font-size:13px;font-weight:600">You (Owner)</span><br><span style="font-size:10px;color:var(--text-tertiary)">0x7a3...f82d</span></div>
+                                </div>
+                                <div style="width:8px;height:8px;border-radius:50%;background:var(--green)"></div>
+                            </div>
+                            <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border-subtle)">
+                                <div style="display:flex;align-items:center;gap:10px">
+                                    <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#f093fb,#f5576c);display:flex;align-items:center;justify-content:center;font-size:14px">👩</div>
+                                    <div><span style="font-size:13px;font-weight:600">Elena (Co-signer)</span><br><span style="font-size:10px;color:var(--text-tertiary)">0x4b1...a93e</span></div>
+                                </div>
+                                <div style="width:8px;height:8px;border-radius:50%;background:var(--green)"></div>
+                            </div>
+                            <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 0">
+                                <div style="display:flex;align-items:center;gap:10px">
+                                    <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#a8edea,#fed6e3);display:flex;align-items:center;justify-content:center;font-size:14px">👨</div>
+                                    <div><span style="font-size:13px;font-weight:600">David (Guardian)</span><br><span style="font-size:10px;color:var(--text-tertiary)">0x9c2...b41f</span></div>
+                                </div>
+                                <div style="width:8px;height:8px;border-radius:50%;background:var(--green)"></div>
+                            </div>
+                        </div>
+
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:10px">Pending Approvals (2)</div>
+                        <div class="glass-card" style="padding:14px;margin-bottom:10px;border-left:3px solid var(--amber)">
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+                                <div style="font-size:14px;font-weight:600">Send 2.5 ETH</div>
+                                <div style="font-size:11px;padding:3px 8px;border-radius:8px;background:rgba(245,158,11,0.15);color:var(--amber)">1/2 signed</div>
+                            </div>
+                            <div style="font-size:11px;color:var(--text-tertiary);margin-bottom:10px">To: 0x8f3...c21a · Requested by Elena</div>
+                            <div style="display:flex;gap:8px">
+                                <div onclick="haptic(10)" style="flex:1;padding:8px;border-radius:10px;background:var(--green);text-align:center;cursor:pointer">
+                                    <span style="font-size:12px;font-weight:700;color:#fff">Approve</span>
+                                </div>
+                                <div onclick="haptic(10)" style="flex:1;padding:8px;border-radius:10px;background:var(--surface-2);text-align:center;cursor:pointer">
+                                    <span style="font-size:12px;font-weight:600;color:var(--red)">Reject</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="glass-card" style="padding:14px;margin-bottom:12px;border-left:3px solid var(--amber)">
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+                                <div style="font-size:14px;font-weight:600">Add Signer</div>
+                                <div style="font-size:11px;padding:3px 8px;border-radius:8px;background:rgba(245,158,11,0.15);color:var(--amber)">0/2 signed</div>
+                            </div>
+                            <div style="font-size:11px;color:var(--text-tertiary);margin-bottom:10px">New signer: 0x5d7...e39b · Requested by You</div>
+                            <div style="display:flex;gap:8px">
+                                <div style="flex:1;padding:8px;border-radius:10px;background:rgba(16,185,129,0.15);text-align:center">
+                                    <span style="font-size:12px;font-weight:600;color:var(--green)">Awaiting...</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:10px">Spending Limits</div>
+                        <div class="glass-card" style="padding:14px;margin-bottom:20px">
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+                                <span style="font-size:13px">Daily Limit (no approval needed)</span>
+                                <span style="font-size:13px;font-weight:700">$500</span>
+                            </div>
+                            <div style="height:4px;border-radius:2px;background:var(--surface-2)">
+                                <div style="height:4px;border-radius:2px;background:var(--blue);width:35%"></div>
+                            </div>
+                            <div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">$175 / $500 used today</div>
+                        </div>
+                    </div>
+
+</div><!-- /screen-content -->
+
+                <!-- Floating Action Button -->
+<div class="fab-container" id="fab">
+    <div class="fab-action" onclick="showSubPage('scanner'); toggleFab();" style="position:relative">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4h3M20 7V4h-3M4 17v3h3M20 17v3h-3"/><line x1="7" y1="12" x2="17" y2="12"/></svg>
+        <span class="fab-label">Scan</span>
+    </div>
+    <div class="fab-action" onclick="showSubPage('receive'); toggleFab();" style="position:relative">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        <span class="fab-label">Receive</span>
+    </div>
+    <div class="fab-action" onclick="showSubPage('transfer'); toggleFab();" style="position:relative">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+        <span class="fab-label">Send</span>
+    </div>
+    <button class="fab-main" onclick="toggleFab()" aria-label="Quick actions">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </button>
+</div>
+<div class="tab-bar" role="tablist">
+<div class="tab-indicator" id="tab-indicator" style="left:0;width:20%"></div>
                     <div class="tab-item active" data-tab="wallet" onclick="switchTab('wallet')">
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 10h20"/><rect x="15" y="13" width="4" height="3" rx="1"/></svg>
                         <span>Wallet</span>
@@ -6062,8 +7695,17 @@ style="display:flex;gap:6px;margin-bottom:8px;">
 <script>
 // ===== I18N =====
 const i18n = {
+    _currentLang: 'en',
     en: {
             greeting:'Welcome back, Nuo',mini_apps:'Mini Apps',subscriptions:'Subscriptions',bill_pay:'Bill Payments',smart_savings:'Smart Savings',micro_loans:'Micro Loans',insurance:'Insurance',rewards:'Rewards',dao_gov:'DAO Governance',ai_assistant:'MID AI',crypto_pay:'MID Pay',verifiable_creds:'Verifiable Credentials',esignature:'E-Signature',defi_yield:'DeFi Yield',sell_crypto:'Sell Crypto',scam_detect:'Security Scan',mpc_recovery:'MPC Recovery',digital_passport:'Digital Passport',visa_stamps:'Visa Stamps',gov_services:'Gov Services',credit_score:'Reputation',remittance:'Remittance',achievements:'Achievements',walletconnect:'WalletConnect',emergency_lock:'Emergency Lock',
+            inheritance_title: 'Digital Inheritance',
+            carbon_title: 'Carbon & ESG',
+            transit_title: 'Transit Pass',
+            groupvault_title: 'Group Vault',
+            multisig_title: 'Multi-Sig Wallet',
+            settings_inheritance: 'Digital Inheritance',
+            settings_carbon: 'Carbon & ESG',
+            settings_multisig: 'Multi-Sig Wallet',
             nft_gallery:'NFT Gallery',dapp_browser:'DApp Browser',tx_history:'Transactions',settings:'Settings',social_feed:'Moments',address_book:'Address Book',qr_scanner:'Scan QR',price_alerts:'Price Alerts',friends_moments:'Moments',view_all:'View All →',
         zk_title: 'Proof of Humanity', zk_sub: 'Zero-knowledge verified · No personal data shared', zk_verified: 'Verified Human',
         portfolio_value: 'Portfolio', back_verify: 'Verify', back_profile: 'Profile', back_wallet: 'Wallet',
@@ -6124,6 +7766,14 @@ const i18n = {
     },
     zh: {
             greeting:'欢迎回来，Nuo',digital_passport:'数字护照',visa_stamps:'签证印章',gov_services:'政务服务',credit_score:'信用声誉',remittance:'跨境汇款',achievements:'成就任务',walletconnect:'WalletConnect',emergency_lock:'紧急锁定',
+            inheritance_title: '数字遗产',
+            carbon_title: '碳排放与ESG',
+            transit_title: '交通通行证',
+            groupvault_title: '群组储蓄',
+            multisig_title: '多签钱包',
+            settings_inheritance: '数字遗产',
+            settings_carbon: '碳排放与ESG',
+            settings_multisig: '多签钱包',
             nft_gallery:'NFT 画廊',dapp_browser:'DApp 浏览器',tx_history:'交易记录',settings:'设置',social_feed:'朋友圈',address_book:'地址簿',qr_scanner:'扫一扫',price_alerts:'价格提醒',friends_moments:'朋友圈',view_all:'查看全部 →',
         zk_title: '人类证明', zk_sub: '零知识验证 · 无需分享个人数据', zk_verified: '已验证真人',
         portfolio_value: '投资组合', back_verify: '验证', back_profile: '个人资料', back_wallet: '钱包',
@@ -6184,6 +7834,14 @@ const i18n = {
     },
     fr: {
             greeting:'Bon retour, Nuo',digital_passport:'Passeport Numérique',visa_stamps:'Tampons Visa',gov_services:'Services Gov',credit_score:'Réputation',remittance:'Transfert',achievements:'Succès',walletconnect:'WalletConnect',emergency_lock:'Verrou Urgence',
+            inheritance_title: 'Héritage Numérique',
+            carbon_title: 'Carbone & ESG',
+            transit_title: 'Pass Transport',
+            groupvault_title: 'Coffre de Groupe',
+            multisig_title: 'Portefeuille Multi-Sig',
+            settings_inheritance: 'Héritage Numérique',
+            settings_carbon: 'Carbone & ESG',
+            settings_multisig: 'Portefeuille Multi-Sig',
             nft_gallery:'Galerie NFT',dapp_browser:'Navigateur DApp',tx_history:'Transactions',settings:'Paramètres',social_feed:'Moments',address_book:"Carnet d'adresses",qr_scanner:'Scanner QR',price_alerts:'Alertes Prix',friends_moments:'Moments',view_all:'Voir tout →',
         zk_title: "Preuve d'Humanité", zk_sub: 'Vérification zéro-connaissance · Aucune donnée partagée', zk_verified: 'Humain Vérifié',
         portfolio_value: 'Portefeuille', back_verify: 'Vérifier', back_profile: 'Profil', back_wallet: 'Portefeuille',
@@ -6785,7 +8443,8 @@ function switchTab(tab) {
     haptic(10);
     showPage(tab);
     document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
-    document.querySelector(`.tab-item[data-tab="${tab}"]`).classList.add('active');
+    var el = document.querySelector('.tab-item[data-tab="' + tab + '"]');
+    if (el) el.classList.add('active');
 }
 function setVerifyMode(mode) {
     document.getElementById('btn-nfc').classList.toggle('active', mode === 'nfc');
@@ -7087,6 +8746,321 @@ function claimDaily(el) {
     showToast('Check-in!', '+100 points earned (2x streak bonus)', 'success');
 }
 
+
+
+// ===== RIPPLE TOUCH EFFECT =====
+document.addEventListener('click', function(e) {
+    var host = e.target.closest('.ripple-host, .settings-item, .asset-row, .friend-item, .tx-row, .notif-item, .nft-card');
+    if (!host) return;
+    var rect = host.getBoundingClientRect();
+    var ripple = document.createElement('span');
+    var size = Math.max(rect.width, rect.height);
+    ripple.style.cssText = 'position:absolute;border-radius:50%;background:rgba(255,255,255,0.12);pointer-events:none;' +
+        'width:' + size + 'px;height:' + size + 'px;' +
+        'left:' + (e.clientX - rect.left - size/2) + 'px;' +
+        'top:' + (e.clientY - rect.top - size/2) + 'px;' +
+        'transform:scale(0);animation:ripple-anim 0.5s ease-out forwards;';
+    host.style.position = host.style.position || 'relative';
+    host.style.overflow = 'hidden';
+    host.appendChild(ripple);
+    setTimeout(function() { ripple.remove(); }, 600);
+});
+
+
+// ===== PULL TO REFRESH =====
+(function() {
+    var sc = document.querySelector('.screen-content');
+    var ptr = document.getElementById('ptr-indicator');
+    var startY = 0, pulling = false;
+    sc.addEventListener('touchstart', function(e) {
+        if (sc.scrollTop === 0) { startY = e.touches[0].clientY; pulling = true; }
+    });
+    sc.addEventListener('touchmove', function(e) {
+        if (!pulling) return;
+        var dy = e.touches[0].clientY - startY;
+        if (dy > 50 && sc.scrollTop === 0) {
+            ptr.style.display = 'block';
+        }
+    });
+    sc.addEventListener('touchend', function() {
+        if (ptr.style.display === 'block') {
+            setTimeout(function() {
+                ptr.style.display = 'none';
+                showToast('Updated', 'Portfolio refreshed', 'success');
+            }, 800);
+        }
+        pulling = false;
+    });
+})();
+
+
+// ===== BALANCE LOAD ANIMATION =====
+(function() {
+    var bal = document.querySelector('.balance-amount');
+    if (bal) {
+        bal.style.opacity = '0';
+        bal.style.transform = 'translateY(8px)';
+        bal.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        setTimeout(function() {
+            bal.style.opacity = '1';
+            bal.style.transform = 'translateY(0)';
+        }, 200);
+    }
+})();
+
+
+
+
+function setLanguage(lang) {
+    i18n._currentLang = lang;
+    var dict = i18n[lang];
+    if (!dict) return;
+
+    // Update all data-i18n elements
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (dict[key] !== undefined) {
+            el.textContent = dict[key];
+        }
+    });
+
+    // Update all data-i18n-placeholder elements
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-placeholder');
+        if (dict[key] !== undefined) {
+            el.placeholder = dict[key];
+        }
+    });
+
+    // Update language label & flag in settings
+    var langLabel = document.getElementById('settings-lang-label');
+    var langFlag = document.getElementById('lang-flag');
+    if (langLabel) langLabel.textContent = lang === 'zh' ? '中文' : 'English';
+    if (langFlag) langFlag.textContent = lang === 'zh' ? '🇨🇳' : '🇬🇧';
+
+    // Save preference
+    try { localStorage.setItem('mid-lang', lang); } catch(e) {}
+
+    showToast(
+        lang === 'zh' ? '语言已切换' : 'Language Changed',
+        lang === 'zh' ? '界面语言已设置为中文' : 'Interface language set to English',
+        'success'
+    );
+}
+
+function toggleLanguage() {
+    var newLang = i18n._currentLang === 'en' ? 'zh' : 'en';
+    setLanguage(newLang);
+}
+
+// Restore language preference on load
+(function() {
+    try {
+        var saved = localStorage.getItem('mid-lang');
+        if (saved && saved !== 'en') {
+            // Delay to ensure DOM is ready
+            setTimeout(function() { setLanguage(saved); }, 100);
+        }
+    } catch(e) {}
+})();
+
+
+// ===== FLOATING ACTION BUTTON =====
+function toggleFab() {
+    var fab = document.getElementById('fab');
+    fab.classList.toggle('open');
+    haptic(15);
+}
+// Close FAB when clicking outside
+document.addEventListener('click', function(e) {
+    var fab = document.getElementById('fab');
+    if (fab && fab.classList.contains('open') && !fab.contains(e.target)) {
+        fab.classList.remove('open');
+    }
+});
+
+// ===== SLIDING TAB INDICATOR =====
+var tabNames = ['wallet','friends','verify','cards','profile'];
+var origSwitchTab = switchTab;
+switchTab = function(tab) {
+    origSwitchTab(tab);
+    var idx = tabNames.indexOf(tab);
+    var indicator = document.getElementById('tab-indicator');
+    if (indicator && idx >= 0) {
+        indicator.style.left = (idx * 20) + '%';
+        indicator.style.width = '20%';
+    }
+    // Hide/show FAB only on wallet page
+    var fab = document.getElementById('fab');
+    if (fab) {
+        fab.style.display = (tab === 'wallet') ? 'flex' : 'none';
+        fab.classList.remove('open');
+    }
+};
+
+// ===== ANIMATED BALANCE COUNTER =====
+function animateCountUp(el, target, duration) {
+    duration = duration || 1200;
+    var start = 0;
+    var startTime = null;
+    var text = el.textContent;
+    // Extract the numeric part
+    var numMatch = text.match(/[\d,.]+/);
+    if (!numMatch) return;
+    target = parseFloat(numMatch[0].replace(/,/g, ''));
+    var prefix = text.substring(0, text.indexOf(numMatch[0]));
+    var suffix = text.substring(text.indexOf(numMatch[0]) + numMatch[0].length);
+
+    function easeOutExpo(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
+
+    function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        var progress = Math.min((timestamp - startTime) / duration, 1);
+        var current = easeOutExpo(progress) * target;
+        el.textContent = prefix + current.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+}
+
+// ===== LIVE PRICE SIMULATION =====
+var priceUpdateInterval;
+function startPriceSimulation() {
+    var tokens = document.querySelectorAll('#page-wallet .asset-row .asset-change');
+    priceUpdateInterval = setInterval(function() {
+        tokens.forEach(function(el) {
+            var current = parseFloat(el.textContent);
+            if (isNaN(current)) return;
+            var delta = (Math.random() - 0.48) * 0.3;
+            var newVal = current + delta;
+            var isUp = newVal >= 0;
+            el.textContent = (isUp ? '+' : '') + newVal.toFixed(1) + '%';
+            el.style.color = isUp ? 'var(--green)' : 'var(--red)';
+            // Flash effect on parent row
+            var row = el.closest('.asset-row');
+            if (row) {
+                row.classList.remove('price-up', 'price-down');
+                void row.offsetWidth; // reflow
+                row.classList.add(isUp ? 'price-up' : 'price-down');
+            }
+        });
+    }, 5000);
+}
+
+// ===== 3D TILT ON IDENTITY CARD =====
+function init3DTilt() {
+    var cards = document.querySelectorAll('.identity-strip, .card-3d');
+    cards.forEach(function(card) {
+        card.addEventListener('touchmove', function(e) {
+            var rect = card.getBoundingClientRect();
+            var x = (e.touches[0].clientX - rect.left) / rect.width;
+            var y = (e.touches[0].clientY - rect.top) / rect.height;
+            var rotateX = (0.5 - y) * 8;
+            var rotateY = (x - 0.5) * 8;
+            card.style.transform = 'perspective(800px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) scale(1.02)';
+        }, {passive: true});
+        card.addEventListener('touchend', function() {
+            card.style.transform = 'perspective(800px) rotateX(0) rotateY(0) scale(1)';
+        });
+    });
+}
+
+// ===== PARALLAX SCROLL ON BALANCE =====
+function initParallax() {
+    var content = document.querySelector('.screen-content');
+    var hero = document.querySelector('.balance-hero');
+    if (!content || !hero) return;
+    content.addEventListener('scroll', function() {
+        var scrollY = content.scrollTop;
+        if (scrollY < 200) {
+            var scale = 1 - scrollY * 0.0008;
+            var opacity = 1 - scrollY * 0.005;
+            hero.style.transform = 'scale(' + Math.max(scale, 0.85) + ')';
+            hero.style.opacity = Math.max(opacity, 0);
+        }
+    }, {passive: true});
+}
+
+// ===== INTERSECTION OBSERVER FOR LAZY ANIMATIONS =====
+function initLazyAnimations() {
+    if (!('IntersectionObserver' in window)) return;
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.asset-group, .settings-section, .portfolio-chart-container').forEach(function(el) {
+        observer.observe(el);
+    });
+}
+
+// ===== INITIALIZE ALL UPGRADES =====
+function initWorldClass() {
+    // Animate balance on load
+    var balEl = document.querySelector('.balance-amount');
+    if (balEl) {
+        setTimeout(function() { animateCountUp(balEl); }, 500);
+    }
+
+    startPriceSimulation();
+    init3DTilt();
+    initParallax();
+    initLazyAnimations();
+
+    // Set initial tab indicator
+    var indicator = document.getElementById('tab-indicator');
+    if (indicator) {
+        indicator.style.left = '0%';
+        indicator.style.width = '20%';
+    }
+}
+
+// Run after DOM ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initWorldClass);
+} else {
+    setTimeout(initWorldClass, 100);
+}
+
 </script>
 </body>
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin:12px 0 10px">Quick Launch</div>
+                        <div class="glass-card" style="padding:14px;margin-bottom:12px">
+                            <div onclick="showSubPage('scanner')" style="display:flex;align-items:center;gap:12px;cursor:pointer;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--border-subtle)">
+                                <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--blue),#06b6d4);display:flex;align-items:center;justify-content:center">
+                                    <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                                </div>
+                                <div style="flex:1">
+                                    <div style="font-size:14px;font-weight:600">Scan to Launch</div>
+                                    <div style="font-size:11px;color:var(--text-tertiary)">Point camera at any MiniApp QR code</div>
+                                </div>
+                                <svg width="16" height="16" fill="none" stroke="var(--text-tertiary)" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:12px;cursor:pointer" onclick="haptic(10)">
+                                <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--purple),#a855f7);display:flex;align-items:center;justify-content:center">
+                                    <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2v4m0 12v4M2 12h4m12 0h4"/><circle cx="12" cy="12" r="3"/></svg>
+                                </div>
+                                <div style="flex:1">
+                                    <div style="font-size:14px;font-weight:600">Developer Portal</div>
+                                    <div style="font-size:11px;color:var(--text-tertiary)">Build & publish MiniApps with SDK</div>
+                                </div>
+                                <svg width="16" height="16" fill="none" stroke="var(--text-tertiary)" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
+                            </div>
+                        </div>
+
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:10px">MiniApp SDK</div>
+                        <div class="glass-card" style="padding:14px;margin-bottom:12px">
+                            <div style="display:flex;gap:8px;flex-wrap:wrap">
+                                <div style="padding:4px 10px;border-radius:8px;background:rgba(59,130,246,0.1);font-size:11px;color:var(--blue)">Payment API</div>
+                                <div style="padding:4px 10px;border-radius:8px;background:rgba(16,185,129,0.1);font-size:11px;color:var(--green)">Identity API</div>
+                                <div style="padding:4px 10px;border-radius:8px;background:rgba(99,102,241,0.1);font-size:11px;color:var(--purple)">Push API</div>
+                                <div style="padding:4px 10px;border-radius:8px;background:rgba(245,158,11,0.1);font-size:11px;color:var(--amber)">Storage API</div>
+                            </div>
+                            <div style="font-size:10px;color:var(--text-tertiary);margin-top:8px">12 apps published · 3.4K monthly users</div>
+                        </div>
+
 </html>

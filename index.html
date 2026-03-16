@@ -1,10 +1,231 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta http-equiv="refresh" content="0; url=montserrat-digital-residency.html">
-<title>MID - Montserrat Digital Identity</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MID - Secure Access</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --accent: #00ff9d;
+            --text: #ffffff;
+            --text-muted: #888888;
+            --surface: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(0, 255, 157, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(255, 0, 128, 0.05) 0%, transparent 50%);
+        }
+
+        .login-container {
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .logo-area {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--accent);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-label {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .input-field {
+            width: 100%;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 1rem 1.25rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .input-field:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(0, 255, 157, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--accent);
+            color: #000;
+            border: none;
+            padding: 1.25rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 255, 157, 0.2);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .error-message {
+            color: #ff3366;
+            font-size: 0.85rem;
+            text-align: center;
+            margin-top: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .error-message.show {
+            opacity: 1;
+        }
+
+        /* Abstract geometric decorations */
+        .decoration {
+            position: absolute;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .d1 { width: 600px; height: 600px; top: -300px; left: -300px; }
+        .d2 { width: 800px; height: 800px; bottom: -400px; right: -400px; }
+    </style>
 </head>
 <body>
-<script>window.location.href = "montserrat-digital-residency.html";</script>
+    <div class="decoration d1"></div>
+    <div class="decoration d2"></div>
+    
+    <div class="login-container">
+        <div class="logo-area">
+            <div class="logo-text">MID ARCHIVE</div>
+            <div class="subtitle">Secure Environment</div>
+        </div>
+
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="input-group">
+                <label class="input-label">Access ID</label>
+                <input type="text" id="username" class="input-field" placeholder="Enter designated ID" autocomplete="off" required>
+            </div>
+            
+            <div class="input-group">
+                <label class="input-label">Passcode</label>
+                <input type="password" id="password" class="input-field" placeholder="••••••••••" required>
+            </div>
+
+            <button type="submit" class="submit-btn">Initialize Connection</button>
+            <div id="errorMsg" class="error-message">Invalid Access ID or Passcode</div>
+        </form>
+    </div>
+
+    <script>
+        function handleLogin(e) {
+            e.preventDefault();
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            const errorElement = document.getElementById('errorMsg');
+
+            // Hardcoded credentials for beta gatekeeping
+            const validUser = "admin";
+            const validPass = "MID2026";
+
+            if (user === validUser && pass === validPass) {
+                errorElement.classList.remove('show');
+                // Simulate processing delay for effect
+                document.querySelector('.submit-btn').innerHTML = "AUTHENTICATING...";
+                setTimeout(() => {
+                    window.location.href = "montserrat-digital-residency.html";
+                }, 800);
+            } else {
+                errorElement.classList.add('show');
+                // Shake effect on error
+                const container = document.querySelector('.login-container');
+                container.style.animation = 'none';
+                container.offsetHeight; /* trigger reflow */
+                container.style.animation = 'shake 0.4s ease';
+            }
+        }
+
+        // Add shake animation dynamically
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                20% { transform: translateX(-10px); }
+                40% { transform: translateX(10px); }
+                60% { transform: translateX(-10px); }
+                80% { transform: translateX(10px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>

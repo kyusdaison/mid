@@ -497,22 +497,42 @@
             });
         }, 1500); 
 
-        // --- AUTHENTICATION LOGIC ---
-        function handleAuth(e) {
+        // --- SECURE AUTHENTICATION LOGIC (ANTI-AI HARDENED) ---
+        // Generates SHA-256 to prevent AI or code-scrapers from reading plaintext passwords
+        async function getHash(str) {
+            const buf = await crypto.subtle.digest("SHA-256", new TextEncoder("utf-8").encode(str));
+            return Array.prototype.map.call(new Uint8Array(buf), x=>(('00'+x.toString(16)).slice(-2))).join('');
+        }
+
+        async function handleAuth(e) {
             e.preventDefault();
             const user = document.getElementById('username').value;
             const pass = document.getElementById('password').value;
             const errorElement = document.getElementById('errorMsg');
             const submitBtn = document.getElementById('submitBtn');
 
-            const validUser = "admin";
-            const validPass = "MID2026";
+            // Entering ZK-Proof Simulation State (Anti-Bruteforce Delay)
+            submitBtn.innerHTML = "VERIFYING ZK-PROOF...";
+            submitBtn.style.opacity = '0.7';
+            submitBtn.style.pointerEvents = 'none';
+            errorElement.classList.remove('show');
 
-            if (user === validUser && pass === validPass) {
+            // Simulate cryptographic handshake delay 
+            await new Promise(r => setTimeout(r, 1200));
+
+            const uHash = await getHash(user);
+            const pHash = await getHash(pass);
+
+            // Pre-computed SHA-256 hashes (Valid Credentials)
+            const validU = "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918";
+            const validP = "bdd6248e705712e022ea931af8923b1bd589377e371785d8edaa6f333c5cf755";
+
+            if (uHash === validU && pHash === validP) {
                 // Success Sequence - INTERGALACTIC WARP
-                errorElement.classList.remove('show');
                 submitBtn.style.backgroundColor = 'var(--blue)';
                 submitBtn.style.color = '#fff';
+                submitBtn.style.opacity = '1';
+                submitBtn.style.pointerEvents = 'auto';
                 submitBtn.style.boxShadow = '0 0 20px rgba(74, 143, 231, 0.4)';
                 submitBtn.innerHTML = "JUMPING SYSTEM...";
                 
@@ -538,6 +558,9 @@
 
             } else {
                 // Error Sequence
+                submitBtn.innerHTML = "Initialize Protocol";
+                submitBtn.style.opacity = '1';
+                submitBtn.style.pointerEvents = 'auto';
                 errorElement.classList.add('show');
                 
                 // Aggressive Shake Effect

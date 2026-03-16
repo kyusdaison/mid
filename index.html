@@ -8,7 +8,7 @@
     <style>
         :root {
             /* Strictly Official Montserrat Palette */
-            --black-deep: #050507; 
+            --black-deep: #020203; /* EVEN DEEPER SPACE BLACK */
             --black: #0A0C10;
             --black-elevated: #14161D;
             
@@ -23,7 +23,7 @@
             /* Surfaces */
             --border: rgba(255,255,255,0.08);
             --border-hover: rgba(74,143,231,0.4);
-            --glass: rgba(10, 12, 16, 0.7); 
+            --glass: rgba(5, 6, 8, 0.5); /* ultra clear glass for galaxy background */
         }
         
         * {
@@ -45,7 +45,7 @@
             perspective: 1000px;
         }
 
-        /* Starry Background Canvas - Calm & Deep */
+        /* Starry Background Canvas - Intergalactic Scale */
         #starCanvas {
             position: absolute;
             top: 0;
@@ -53,20 +53,51 @@
             width: 100%;
             height: 100%;
             z-index: 0;
-            opacity: 0.85;
+            opacity: 0.95;
             mix-blend-mode: screen;
         }
 
-        /* Center glowing aura */
-        .ambient-glow {
+        /* Milky Way / Nebula Base */
+        .milky-way {
             position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 50vw; height: 50vw;
-            max-width: 800px; max-height: 800px;
-            background: radial-gradient(circle, rgba(74, 143, 231, 0.08) 0%, transparent 60%);
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: 
+                radial-gradient(circle at 70% 30%, rgba(74, 143, 231, 0.08) 0%, transparent 60%),
+                radial-gradient(circle at 30% 70%, rgba(10, 20, 40, 0.3) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+            filter: blur(40px);
+        }
+
+        /* Distant Planet Aura */
+        .distant-planet {
+            position: absolute;
+            right: 15%;
+            top: 10%;
+            width: 20vw;
+            height: 20vw;
+            max-width: 400px;
+            max-height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(74, 143, 231, 0.15) 0%, rgba(0,0,0,0.8) 70%, transparent 100%);
+            box-shadow: 
+                -20px -20px 80px rgba(74, 143, 231, 0.05),
+                inset 10px 10px 40px rgba(255,255,255,0.05);
             z-index: 1;
             pointer-events: none;
+            opacity: 0.8;
+        }
+        
+        /* Adds an atmospheric ring or glow to the planet */
+        .distant-planet::after {
+            content: '';
+            position: absolute;
+            top: -5%; left: -5%; right: -5%; bottom: -5%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(74, 143, 231, 0.2) 0%, transparent 40%, transparent 100%);
+            filter: blur(15px);
+            z-index: -1;
+            opacity: 0.6;
         }
 
         /* Top Bar Gov Simulation */
@@ -122,15 +153,15 @@
         /* Refined, smaller, more delicate panel */
         .auth-panel {
             background: var(--glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 3rem 2.5rem; /* Tighter padding */
-            border-radius: 8px; /* Sharper, more delicate corners */
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            padding: 3rem 2.5rem; 
+            border-radius: 8px; 
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             width: 100%;
-            max-width: 380px; /* Smaller max width for compactness */
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 
+            max-width: 380px; 
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9), 
                         inset 0 1px 0 rgba(255, 255, 255, 0.05);
             position: relative;
             opacity: 0;
@@ -145,7 +176,7 @@
             position: absolute;
             top: -1px; left: -1px; right: -1px; bottom: -1px;
             border-radius: inherit;
-            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 40%, transparent 60%, rgba(74,143,231,0.1) 100%);
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 40%, transparent 60%, rgba(74,143,231,0.08) 100%);
             z-index: -1;
             pointer-events: none;
         }
@@ -208,8 +239,8 @@
 
         .input-field {
             width: 100%;
-            background: rgba(5, 7, 10, 0.6);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(2, 3, 5, 0.8);
+            border: 1px solid rgba(255,255,255,0.05);
             color: var(--text-bright);
             padding: 1rem 1.2rem;
             font-size: 0.9rem;
@@ -221,12 +252,12 @@
 
         .input-field:focus {
             border-color: var(--blue);
-            background: rgba(10, 12, 16, 0.8);
+            background: rgba(10, 12, 16, 0.9);
             box-shadow: 0 0 0 1px rgba(74,143,231,0.2);
         }
 
         .input-field::placeholder {
-            color: rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.1);
         }
 
         .auth-btn {
@@ -285,9 +316,10 @@
         </div>
     </div>
 
-    <!-- Background Tech Effects -->
+    <!-- Vast Intergalactic Background -->
+    <div class="milky-way"></div>
+    <div class="distant-planet"></div>
     <canvas id="starCanvas"></canvas>
-    <div class="ambient-glow"></div>
     
     <!-- Main Auth Panel -->
     <div class="login-wrapper" id="loginWrapper">
@@ -323,11 +355,11 @@
     </div>
 
     <script>
-        // --- CALM DEEP SPACE BACKGROUND ---
+        // --- VAST DEEP SPACE BACKGROUND ---
         const canvas = document.getElementById('starCanvas');
         const ctx = canvas.getContext('2d');
         let stars = [];
-        const numStars = 350; 
+        const numStars = 1500; // MASSIVE INCREASE for vast space feel
 
         function resize() {
             canvas.width = window.innerWidth;
@@ -341,18 +373,21 @@
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
                 this.z = Math.random() * canvas.width; 
-                this.radius = Math.random() * 1.0 + 0.2;
+                this.radius = Math.random() * 0.8 + 0.1;
                 
-                // Keep colors strictly Montserrat brand / white
-                if (Math.random() > 0.9) this.color = 'rgba(74, 143, 231, '; // Trust Blue
-                else this.color = 'rgba(255, 255, 255, '; // White
+                // Deep space coloring: mostly white/faint grey, occasional trust blue for galactic mist feel
+                const rand = Math.random();
+                if (rand > 0.95) this.color = 'rgba(74, 143, 231, '; 
+                else if (rand > 0.8) this.color = 'rgba(180, 210, 255, '; 
+                else this.color = 'rgba(255, 255, 255, '; 
                 
-                this.speedModifier = Math.random() * 0.2 + 0.05; // Very slow, calm movement
+                // Exceedingly slow, calm movement for mysterious pan-galactic distance
+                this.speedModifier = Math.random() * 0.08 + 0.01; 
             }
 
             update(warpSpeed = false) {
-                // Calm, constant movement forward, no mouse tracking
-                this.z -= warpSpeed ? 20 : this.speedModifier; 
+                // Calm, constant movement forward
+                this.z -= warpSpeed ? 25 : this.speedModifier; 
                 
                 if (this.z <= 0) {
                     this.z = canvas.width;
@@ -362,14 +397,15 @@
             }
 
             draw() {
-                const fov = 400; 
+                const fov = 500; // Flatter field of view to represent immense distance
                 const scale = fov / (fov + this.z);
                 
                 const x = (this.x - canvas.width / 2) * scale + canvas.width / 2;
                 const y = (this.y - canvas.height / 2) * scale + canvas.height / 2;
                 
                 const radius = this.radius * scale;
-                const opacity = Math.min(1, Math.max(0.1, 1 - (this.z / canvas.width)));
+                // Fade in as they get closer, creates immense depth
+                const opacity = Math.min(1, Math.max(0.05, 1 - (this.z / canvas.width)));
 
                 if (x > 0 && x < canvas.width && y > 0 && y < canvas.height) {
                     ctx.beginPath();
@@ -380,12 +416,14 @@
             }
         }
 
+        // Initialize the vast starfield
         for (let i = 0; i < numStars; i++) stars.push(new Star());
 
         let isWarping = false;
 
         function animateSpace() {
-            ctx.fillStyle = 'rgba(5, 5, 7, 0.6)'; // Very dark base
+            // Ultra-dark background allowing the CSS milky-way and planet gradients to show naturally
+            ctx.fillStyle = 'rgba(2, 2, 3, 0.5)'; 
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             stars.forEach(star => {
@@ -405,13 +443,13 @@
             wrapper.addEventListener('mousemove', (e) => {
                 if(isWarping) return;
                 
-                // Very subtle tilt mapping
-                const xAxis = (window.innerWidth / 2 - e.pageX) / 80; 
-                const yAxis = (window.innerHeight / 2 - e.pageY) / 80;
+                // Very subtle tilt mapping for delicate frame
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 100; 
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 100;
                 
                 panel.style.transform = `scale(1.01) rotateY(${xAxis}deg) rotateX(${yAxis * -1}deg)`;
                 panel.style.boxShadow = `
-                    ${xAxis}px ${yAxis + 20}px 50px rgba(0,0,0,0.7),
+                    ${xAxis}px ${yAxis + 20}px 60px rgba(0,0,0,0.8),
                     inset 0 1px 0 rgba(255, 255, 255, 0.05)
                 `;
             });
@@ -420,7 +458,7 @@
                 if(isWarping) return;
                 panel.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
                 panel.style.transform = `scale(1) rotateY(0deg) rotateX(0deg)`;
-                panel.style.boxShadow = `0 20px 50px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.05)`;
+                panel.style.boxShadow = `0 40px 100px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.05)`;
                 
                 setTimeout(() => {
                     panel.style.transition = 'transform 0.1s linear, box-shadow 0.1s linear';
@@ -440,14 +478,19 @@
             const validPass = "MID2026";
 
             if (user === validUser && pass === validPass) {
-                // Success Sequence - HYPERDRIVE
+                // Success Sequence - INTERGALACTIC WARP
                 errorElement.classList.remove('show');
                 submitBtn.style.backgroundColor = 'var(--blue)';
                 submitBtn.style.color = '#fff';
                 submitBtn.style.boxShadow = '0 0 20px rgba(74, 143, 231, 0.4)';
-                submitBtn.innerHTML = "VERIFYING...";
+                submitBtn.innerHTML = "JUMPING SYSTEM...";
                 
                 isWarping = true; 
+                
+                // Make the planet blur heavily during warp
+                document.querySelector('.distant-planet').style.transition = 'all 1s ease';
+                document.querySelector('.distant-planet').style.filter = 'blur(30px) brightness(2)';
+                document.querySelector('.distant-planet').style.transform = 'translateX(-100vw) scale(1.5)';
 
                 // Cyber warp out effect for panel
                 setTimeout(() => {

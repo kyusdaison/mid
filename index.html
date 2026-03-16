@@ -26,7 +26,7 @@
             /* Surfaces */
             --border: rgba(255,255,255,0.08);
             --border-hover: rgba(74,143,231,0.4);
-            --glass: rgba(10,12,16,0.7);
+            --glass: rgba(10,12,16,0.65); /* Slightly more transparent to see stars */
         }
         
         * {
@@ -45,43 +45,39 @@
             align-items: center;
             overflow: hidden;
             position: relative;
+            perspective: 1000px; /* Required for 3D card effect */
         }
 
-        /* High-Tech Grid Background */
-        .tech-grid {
+        /* Starry Background Canvas */
+        #starCanvas {
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: 
-                linear-gradient(var(--border) 1px, transparent 1px),
-                linear-gradient(90deg, var(--border) 1px, transparent 1px);
-            background-size: 50px 50px;
-            background-position: center center;
-            opacity: 0.15;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: 0;
-            transform: perspective(500px) rotateX(60deg) translateY(-100px) scale(2);
-            animation: gridMove 20s linear infinite;
+            opacity: 0.8;
         }
 
-        /* Center glowing orb */
+        /* Center glowing orb - enhanced */
         .ambient-glow {
             position: absolute;
             top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 800px; height: 800px;
-            background: radial-gradient(circle, var(--blue-glow) 0%, transparent 60%);
+            width: 60vw; height: 60vw;
+            max-width: 1000px; max-height: 1000px;
+            background: radial-gradient(circle, var(--blue-glow) 0%, transparent 70%);
             z-index: 1;
             pointer-events: none;
-        }
-
-        @keyframes gridMove {
-            0% { transform: perspective(500px) rotateX(60deg) translateY(0) scale(2.5); }
-            100% { transform: perspective(500px) rotateX(60deg) translateY(50px) scale(2.5); }
+            mix-blend-mode: screen;
         }
 
         /* Top Bar Gov Simulation */
         .gov-topbar {
             width: 100%;
-            background: var(--black);
+            background: rgba(10, 12, 16, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
             padding: 0.8rem 2rem;
             display: flex;
@@ -107,7 +103,7 @@
             width: 6px; height: 6px;
             background-color: var(--blue);
             border-radius: 50%;
-            box-shadow: 0 0 8px var(--blue);
+            box-shadow: 0 0 10px var(--blue), 0 0 20px var(--blue);
             animation: pulse 2s infinite;
         }
 
@@ -116,7 +112,7 @@
             50% { opacity: 0.5; transform: scale(0.8); }
         }
 
-        /* Main Login Panel */
+        /* Main Login Panel Wrapper for 3D */
         .login-wrapper {
             position: relative;
             z-index: 10;
@@ -126,6 +122,7 @@
             justify-content: center;
             width: 100%;
             padding: 2rem;
+            transform-style: preserve-3d;
         }
 
         .auth-panel {
@@ -133,34 +130,59 @@
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
             padding: 4rem 3.5rem;
-            border-radius: 1px; /* Sharp edges for authoritative tech */
+            border-radius: 12px; /* Slightly softer for premium feel */
             border: 1px solid var(--border);
             width: 100%;
-            max-width: 480px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 
-                        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            max-width: 440px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                        inset 0 -1px 0 rgba(255, 255, 255, 0.02);
             position: relative;
-            animation: panelEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             opacity: 0;
-            transform: translateY(20px);
+            /* Entrance animation */
+            transform: translateY(40px) scale(0.95);
+            animation: panelEntrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+            
+            /* 3D Transform defaults */
+            transition: transform 0.1s linear, box-shadow 0.1s linear;
+            transform-style: preserve-3d;
         }
 
-        /* High-tech corner cutouts */
+        /* Panel Glow Effect */
+        .auth-panel::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: inherit;
+            box-shadow: 0 0 40px var(--blue-glow);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .login-wrapper:hover .auth-panel::after {
+            opacity: 1;
+        }
+
+        /* High-tech top edge */
         .auth-panel::before {
             content: '';
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 2px;
-            background: linear-gradient(90deg, transparent, var(--blue), transparent);
+            top: 0; left: 10%;
+            width: 80%; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--blue-light), transparent);
+            opacity: 0.5;
         }
 
         @keyframes panelEntrance {
-            to { opacity: 1; transform: translateY(0); }
+            to { opacity: 1; transform: translateY(0) scale(1) rotateX(0) rotateY(0); }
         }
 
         .brand-header {
             text-align: center;
             margin-bottom: 3.5rem;
+            transform: translateZ(30px); /* 3D pop out */
         }
 
         .gold-line {
@@ -184,7 +206,11 @@
             font-size: 0.75rem;
             color: var(--blue);
             text-transform: uppercase;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.25em;
+        }
+
+        form {
+            transform: translateZ(20px); /* 3D pop out */
         }
 
         .input-group {
@@ -204,21 +230,21 @@
 
         .input-field {
             width: 100%;
-            background: var(--black-deep);
+            background: rgba(5, 5, 7, 0.7);
             border: 1px solid var(--border);
             color: var(--text-bright);
             padding: 1.2rem;
             font-size: 1rem;
             font-family: 'IBM Plex Mono', monospace;
-            border-radius: 2px;
+            border-radius: 4px;
             transition: all 0.3s ease;
             outline: none;
         }
 
         .input-field:focus {
             border-color: var(--blue);
-            background: var(--black-elevated);
-            box-shadow: 0 0 0 3px var(--blue-glow);
+            background: rgba(10, 12, 16, 0.9);
+            box-shadow: 0 0 0 1px var(--blue), 0 0 15px var(--blue-glow);
         }
 
         .input-field::placeholder {
@@ -239,20 +265,21 @@
             cursor: pointer;
             transition: all 0.3s ease;
             margin-top: 1.5rem;
-            border-radius: 2px;
+            border-radius: 4px;
             position: relative;
             overflow: hidden;
+            transform: translateZ(10px);
         }
 
         .auth-btn:hover {
             background: var(--blue);
             color: #fff;
-            box-shadow: 0 10px 20px var(--blue-glow);
-            transform: translateY(-1px);
+            box-shadow: 0 10px 30px rgba(74, 143, 231, 0.4);
+            transform: translateY(-2px) translateZ(10px);
         }
 
         .auth-btn:active {
-            transform: translateY(1px);
+            transform: translateY(1px) translateZ(10px);
         }
 
         .system-msg {
@@ -273,10 +300,12 @@
 
         .decoration-line {
             position: absolute;
-            bottom: -1px; left: 50%;
+            bottom: 0; left: 50%;
             transform: translateX(-50%);
-            width: 60%; height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            width: 30%; height: 2px;
+            background: var(--blue);
+            border-radius: 2px 2px 0 0;
+            box-shadow: 0 -2px 10px var(--blue-glow);
         }
     </style>
 </head>
@@ -294,12 +323,13 @@
     </div>
 
     <!-- Background Tech Effects -->
-    <div class="tech-grid"></div>
+    <canvas id="starCanvas"></canvas>
     <div class="ambient-glow"></div>
     
     <!-- Main Auth Panel -->
-    <div class="login-wrapper">
+    <div class="login-wrapper" id="loginWrapper">
         <div class="auth-panel" id="authPanel">
+            <!-- 3D Decoration line at bottom -->
             <div class="decoration-line"></div>
             
             <div class="brand-header">
@@ -332,13 +362,117 @@
     </div>
 
     <script>
+        // --- DYNAMIC STARRY BACKGROUND ---
+        const canvas = document.getElementById('starCanvas');
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+        const numStars = 250; // Density of stars
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Star {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                // Deeper stars are smaller and move slower. Closer stars are bigger and faster.
+                this.z = Math.random() * canvas.width; 
+                this.radius = Math.random() * 1.5 + 0.5;
+                this.baseOpacity = Math.random() * 0.5 + 0.1;
+            }
+
+            update() {
+                // Move stars slowly towards the camera (decreasing Z)
+                this.z -= 0.5; 
+                if (this.z <= 0) {
+                    this.z = canvas.width;
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                }
+            }
+
+            draw() {
+                let x, y, radius, opacity;
+                // Perspective projection math
+                const fov = 300; // Field of view equivalent
+                const scale = fov / (fov + this.z);
+                
+                x = (this.x - canvas.width / 2) * scale + canvas.width / 2;
+                y = (this.y - canvas.height / 2) * scale + canvas.height / 2;
+                radius = this.radius * scale;
+                opacity = this.baseOpacity * (1 - this.z / canvas.width); // Fade in as they get closer
+
+                // Optional: Make some stars faintly blue to match brand
+                const color = Math.random() > 0.8 ? `rgba(107, 163, 237, ${opacity})` : `rgba(255, 255, 255, ${opacity})`;
+
+                ctx.beginPath();
+                ctx.arc(x, y, radius, 0, Math.PI * 2);
+                ctx.fillStyle = color;
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < numStars; i++) {
+            stars.push(new Star());
+        }
+
+        function animateStars() {
+            // Slight trail effect by not clearing completely transparently
+            ctx.fillStyle = 'rgba(5, 5, 7, 0.4)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            stars.forEach(star => {
+                star.update();
+                star.draw();
+            });
+            requestAnimationFrame(animateStars);
+        }
+        animateStars();
+
+        // --- 3D PANEL TILT EFFECT ---
+        const wrapper = document.getElementById('loginWrapper');
+        const panel = document.getElementById('authPanel');
+
+        // Allow animations to finish before hooking up mousemove
+        setTimeout(() => {
+            wrapper.addEventListener('mousemove', (e) => {
+                // Get mouse position relative to the center of the viewport
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 40; 
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 40;
+                
+                // Apply 3D rotation and light dynamic shadow
+                panel.style.transform = `scale(1) rotateY(${xAxis}deg) rotateX(${yAxis * -1}deg)`;
+                panel.style.boxShadow = `
+                    ${xAxis * 2}px ${yAxis * 2 + 30}px 60px rgba(0,0,0,0.8),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1)
+                `;
+            });
+
+            // Reset when mouse leaves
+            wrapper.addEventListener('mouseleave', () => {
+                panel.style.transition = 'all 0.5s ease';
+                panel.style.transform = `scale(1) rotateY(0deg) rotateX(0deg)`;
+                panel.style.boxShadow = `0 30px 60px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1)`;
+                
+                // Remove transition to avoid lag on next hover
+                setTimeout(() => {
+                    panel.style.transition = 'transform 0.1s linear, box-shadow 0.1s linear';
+                }, 500);
+            });
+        }, 1500); // Wait for the entrance animation to finish
+
+
+        // --- AUTHENTICATION LOGIC ---
         function handleAuth(e) {
             e.preventDefault();
             const user = document.getElementById('username').value;
             const pass = document.getElementById('password').value;
             const errorElement = document.getElementById('errorMsg');
             const submitBtn = document.getElementById('submitBtn');
-            const panel = document.getElementById('authPanel');
 
             const validUser = "admin";
             const validPass = "MID2026";
@@ -348,17 +482,33 @@
                 errorElement.classList.remove('show');
                 submitBtn.style.backgroundColor = 'var(--blue)';
                 submitBtn.style.color = '#fff';
+                submitBtn.style.boxShadow = '0 0 30px var(--blue-glow)';
                 submitBtn.innerHTML = "VERIFYING...";
                 
-                // Subtle slide out
+                // Disable 3D tilt
+                wrapper.outerHTML = wrapper.outerHTML; 
+                const newPanel = document.getElementById('authPanel');
+
+                // Cyber warp out effect
                 setTimeout(() => {
-                    panel.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
-                    panel.style.opacity = '0';
-                    panel.style.transform = 'translateY(-20px) scale(0.98)';
+                    newPanel.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+                    newPanel.style.opacity = '0';
+                    newPanel.style.transform = 'translateY(-50px) scale(0.9) translateZ(-100px)';
+                    
+                    // Accelerate stars heavily for hyperdrive effect
+                    const originalUpdate = Star.prototype.update;
+                    Star.prototype.update = function() {
+                        this.z -= 15; // Warp speed
+                        if (this.z <= 0) {
+                            this.z = canvas.width;
+                            this.x = Math.random() * canvas.width;
+                            this.y = Math.random() * canvas.height;
+                        }
+                    };
                     
                     setTimeout(() => {
                         window.location.href = "montserrat-digital-residency.html";
-                    }, 600);
+                    }, 800);
                 }, 600);
 
             } else {
@@ -366,12 +516,14 @@
                 errorElement.classList.add('show');
                 
                 // Premium Shake Effect
+                panel.style.transition = 'none'; // Temporarily disable smooth tracking
                 panel.style.animation = 'none';
                 panel.offsetHeight; /* trigger reflow */
                 panel.style.animation = 'shake 0.4s cubic-bezier(.36,.07,.19,.97) both';
                 
                 setTimeout(() => {
                     document.getElementById('password').value = '';
+                    panel.style.transition = 'transform 0.1s linear, box-shadow 0.1s linear';
                 }, 400);
             }
         }
@@ -381,10 +533,10 @@
         style.textContent = `
             @keyframes shake {
                 0%, 100% { transform: translateX(0); }
-                20% { transform: translateX(-8px); }
-                40% { transform: translateX(8px); }
-                60% { transform: translateX(-4px); }
-                80% { transform: translateX(4px); }
+                20% { transform: translateX(-8px) rotateY(-2deg); }
+                40% { transform: translateX(8px) rotateY(2deg); }
+                60% { transform: translateX(-4px) rotateY(-1deg); }
+                80% { transform: translateX(4px) rotateY(1deg); }
             }
         `;
         document.head.appendChild(style);

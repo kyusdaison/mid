@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MID - Secure Access</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>MID - Secure National Access</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Cinzel:wght@600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0a0a0a;
-            --accent: #00ff9d;
-            --text: #ffffff;
-            --text-muted: #888888;
-            --surface: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.1);
+            --bg-dark: #050505;
+            --accent-primary: #00ffcc; /* Cyan/Green futuristic */
+            --accent-glow: rgba(0, 255, 204, 0.4);
+            --text-main: #ffffff;
+            --text-dimmed: #8a9ba8;
+            --panel-bg: rgba(10, 15, 20, 0.7);
+            --panel-border: rgba(0, 255, 204, 0.2);
         }
         
         * {
@@ -24,208 +25,418 @@
 
         body {
             background-color: var(--bg-dark);
-            color: var(--text);
+            color: var(--text-main);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            background-image: 
-                radial-gradient(circle at 50% 0%, rgba(0, 255, 157, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 100% 100%, rgba(255, 0, 128, 0.05) 0%, transparent 50%);
+            position: relative;
         }
 
-        .login-container {
-            background: var(--surface);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 3rem;
-            border-radius: 24px;
-            border: 1px solid var(--border);
+        /* Matrix Canvas Background */
+        #matrixCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 420px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            transform: translateY(20px);
+            height: 100%;
+            z-index: 1;
+            opacity: 0.35; /* Keep it subtle so it doesn't overpower */
+        }
+
+        /* Scanline Overlay for retro-futuristic CRT monitor effect */
+        .scanlines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(255,255,255,0),
+                rgba(255,255,255,0) 50%,
+                rgba(0,0,0,0.1) 50%,
+                rgba(0,0,0,0.1)
+            );
+            background-size: 100% 4px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* Main Login Panel */
+        .auth-panel {
+            position: relative;
+            z-index: 10;
+            background: var(--panel-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 3.5rem 3rem;
+            border-radius: 4px; /* Sharper corners for authoritative tech feel */
+            border: 1px solid var(--panel-border);
+            border-top: 2px solid var(--accent-primary);
+            width: 100%;
+            max-width: 460px;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), 
+                        inset 0 0 20px rgba(0, 255, 204, 0.05);
+            transform: translateY(30px);
             opacity: 0;
-            animation: fadeUp 0.6s ease forwards;
+            animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
         }
 
-        @keyframes fadeUp {
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+        /* Corner accents for the panel */
+        .auth-panel::before, .auth-panel::after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border: 1px solid var(--accent-primary);
+            transition: all 0.3s ease;
+        }
+        .auth-panel::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+        .auth-panel::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+        @keyframes slideUpFade {
+            to { transform: translateY(0); opacity: 1; }
         }
 
-        .logo-area {
+        .header-section {
             text-align: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
         }
 
-        .logo-text {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: -1px;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(to right, #fff, #888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* Authoritative Crest/Logo Area */
+        .crest-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem auto;
+            border: 1px solid var(--accent-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px var(--accent-glow);
+            position: relative;
+        }
+        
+        .crest-icon::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border: 1px dashed rgba(0, 255, 204, 0.3);
+            border-radius: 50%;
+            animation: spin 10s linear infinite;
         }
 
-        .subtitle {
-            color: var(--accent);
-            font-size: 0.85rem;
-            text-transform: uppercase;
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        .crest-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--accent-primary);
+        }
+
+        .system-title {
+            font-family: 'Cinzel', serif; /* Authoritative serif font for the title */
+            font-size: 1.8rem;
+            font-weight: 600;
             letter-spacing: 2px;
-            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
         }
+
+        .system-status {
+            color: var(--accent-primary);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--accent-primary);
+            border-radius: 50%;
+            animation: blink 1.5s infinite alternate;
+        }
+
+        @keyframes blink { 0% { opacity: 0.3; box-shadow: none; } 100% { opacity: 1; box-shadow: 0 0 8px var(--accent-primary); } }
 
         .input-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
+            position: relative;
         }
 
         .input-label {
-            display: block;
-            color: var(--text-muted);
-            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-dimmed);
+            font-size: 0.75rem;
             margin-bottom: 0.5rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
 
         .input-field {
             width: 100%;
-            background: rgba(0,0,0,0.3);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 1rem 1.25rem;
-            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--accent-primary);
+            padding: 1rem;
             font-size: 1rem;
+            font-family: monospace; /* Monospace for tech feel */
+            letter-spacing: 1px;
             transition: all 0.3s ease;
             outline: none;
         }
 
         .input-field:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 2px rgba(0, 255, 157, 0.1);
+            border-color: var(--accent-primary);
+            background: rgba(0, 255, 204, 0.03);
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.1) inset;
+        }
+        
+        .input-field::placeholder {
+            color: rgba(255, 255, 255, 0.2);
         }
 
-        .submit-btn {
+        .auth-btn {
             width: 100%;
-            background: var(--accent);
-            color: #000;
-            border: none;
-            padding: 1.25rem;
-            border-radius: 12px;
-            font-size: 1rem;
+            background: transparent;
+            color: var(--accent-primary);
+            border: 1px solid var(--accent-primary);
+            padding: 1.2rem;
+            font-size: 0.9rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             margin-top: 1rem;
             text-transform: uppercase;
+            letter-spacing: 3px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 204, 0.2), transparent);
+            transition: all 0.4s ease;
+        }
+
+        .auth-btn:hover {
+            background: rgba(0, 255, 204, 0.1);
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
+        }
+        
+        .auth-btn:hover::before {
+            left: 100%;
+        }
+
+        .auth-btn:active {
+            transform: scale(0.98);
+        }
+
+        .system-msg {
+            color: #ff3333;
+            font-size: 0.8rem;
+            text-align: center;
+            margin-top: 1.5rem;
+            font-family: monospace;
+            opacity: 0;
+            transition: opacity 0.3s;
+            text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 255, 157, 0.2);
-        }
-
-        .submit-btn:active {
-            transform: translateY(0);
-        }
-
-        .error-message {
-            color: #ff3366;
-            font-size: 0.85rem;
-            text-align: center;
-            margin-top: 1rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .error-message.show {
+        .system-msg.show {
             opacity: 1;
         }
 
-        /* Abstract geometric decorations */
-        .decoration {
+        .encryption-tag {
             position: absolute;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 50%;
-            pointer-events: none;
+            bottom: -30px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: rgba(255,255,255,0.2);
+            font-size: 0.65rem;
+            font-family: monospace;
+            letter-spacing: 1px;
         }
-
-        .d1 { width: 600px; height: 600px; top: -300px; left: -300px; }
-        .d2 { width: 800px; height: 800px; bottom: -400px; right: -400px; }
     </style>
 </head>
 <body>
-    <div class="decoration d1"></div>
-    <div class="decoration d2"></div>
+    <!-- Background Effects -->
+    <canvas id="matrixCanvas"></canvas>
+    <div class="scanlines"></div>
     
-    <div class="login-container">
-        <div class="logo-area">
-            <div class="logo-text">MID ARCHIVE</div>
-            <div class="subtitle">Secure Environment</div>
+    <!-- Main Auth Panel -->
+    <div class="auth-panel" id="authPanel">
+        <div class="header-section">
+            <div class="crest-icon">
+                <!-- SVG Shield/Crest icon -->
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+                </svg>
+            </div>
+            <h1 class="system-title">MID SECURE CORE</h1>
+            <div class="system-status">
+                <div class="status-dot"></div>
+                RESTRICTED CLEARANCE REQUIRED
+            </div>
         </div>
 
-        <form id="loginForm" onsubmit="handleLogin(event)">
+        <form id="loginForm" onsubmit="handleAuth(event)">
             <div class="input-group">
-                <label class="input-label">Access ID</label>
-                <input type="text" id="username" class="input-field" placeholder="Enter designated ID" autocomplete="off" required>
+                <div class="input-label">
+                    <span>Identity Hash</span>
+                    <span style="color: rgba(255,255,255,0.2)">[USR_REQ]</span>
+                </div>
+                <input type="text" id="username" class="input-field" placeholder="ID-XXXXXXXX" autocomplete="off" required>
             </div>
             
             <div class="input-group">
-                <label class="input-label">Passcode</label>
-                <input type="password" id="password" class="input-field" placeholder="••••••••••" required>
+                <div class="input-label">
+                    <span>Cryptographic Key</span>
+                    <span style="color: rgba(255,255,255,0.2)">[KEY_REQ]</span>
+                </div>
+                <input type="password" id="password" class="input-field" placeholder="••••••••••••" required>
             </div>
 
-            <button type="submit" class="submit-btn">Initialize Connection</button>
-            <div id="errorMsg" class="error-message">Invalid Access ID or Passcode</div>
+            <button type="submit" class="auth-btn" id="submitBtn">Initialize Protocol</button>
+            <div id="errorMsg" class="system-msg">ERR_403: ACCESS DENIED. UNAUTHORIZED ENTITY.</div>
         </form>
+        
+        <div class="encryption-tag">AES-256-GCM ENCRYPTED CONNECTION</div>
     </div>
 
     <script>
-        function handleLogin(e) {
+        // --- MATRIX RAIN EFFECT ---
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Resize canvas to full screen
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // Characters to use in the rain (Hex, Katakana, Binary)
+        const chars = '01 ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ 日ﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍ';
+        const charArray = chars.split('');
+        
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+
+        // Initialize drop positions (random starting heights)
+        for (let x = 0; x < columns; x++) {
+            drops[x] = Math.random() * -100; 
+        }
+
+        function drawMatrix() {
+            // Black background with extreme opacity to create trailing effect
+            ctx.fillStyle = 'rgba(5, 5, 5, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#00ffcc'; // Cyber cyan/green text
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                // Random character
+                const text = charArray[Math.floor(Math.random() * charArray.length)];
+                
+                // Draw the character
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                // Reset drop to top randomly if it goes off screen
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                
+                // Move drop down
+                drops[i]++;
+            }
+        }
+        
+        // Run animation
+        setInterval(drawMatrix, 33);
+
+        // --- AUTHENTICATION LOGIC ---
+        function handleAuth(e) {
             e.preventDefault();
             const user = document.getElementById('username').value;
             const pass = document.getElementById('password').value;
             const errorElement = document.getElementById('errorMsg');
+            const submitBtn = document.getElementById('submitBtn');
+            const panel = document.getElementById('authPanel');
 
-            // Hardcoded credentials for beta gatekeeping
             const validUser = "admin";
             const validPass = "MID2026";
 
             if (user === validUser && pass === validPass) {
+                // Success Sequence
                 errorElement.classList.remove('show');
-                // Simulate processing delay for effect
-                document.querySelector('.submit-btn').innerHTML = "AUTHENTICATING...";
+                submitBtn.style.backgroundColor = 'rgba(0, 255, 204, 0.2)';
+                submitBtn.style.color = '#fff';
+                submitBtn.innerHTML = "DECRYPTING... ACCESS GRANTED";
+                
+                // Glitch out the panel before redirecting
                 setTimeout(() => {
-                    window.location.href = "montserrat-digital-residency.html";
+                    panel.style.transform = 'scale(1.05)';
+                    panel.style.filter = 'blur(2px) hue-rotate(90deg)';
+                    panel.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        window.location.href = "montserrat-digital-residency.html";
+                    }, 400);
                 }, 800);
+
             } else {
+                // Error Sequence
                 errorElement.classList.add('show');
-                // Shake effect on error
-                const container = document.querySelector('.login-container');
-                container.style.animation = 'none';
-                container.offsetHeight; /* trigger reflow */
-                container.style.animation = 'shake 0.4s ease';
+                
+                // Authoritative Hacker Shake
+                panel.style.animation = 'none';
+                panel.offsetHeight; /* trigger reflow */
+                panel.style.animation = 'glitchShake 0.3s cubic-bezier(.36,.07,.19,.97) both';
+                
+                // Clear inputs on failure for security feel
+                setTimeout(() => {
+                    document.getElementById('password').value = '';
+                }, 300);
             }
         }
 
-        // Add shake animation dynamically
+        // Add Glitch Shake CSS
         const style = document.createElement('style');
         style.textContent = `
-            @keyframes shake {
-                0%, 100% { transform: translateX(0); }
-                20% { transform: translateX(-10px); }
-                40% { transform: translateX(10px); }
-                60% { transform: translateX(-10px); }
-                80% { transform: translateX(10px); }
+            @keyframes glitchShake {
+                0% { transform: translate(0) }
+                20% { transform: translate(-15px, 5px) }
+                40% { transform: translate(15px, -5px) }
+                60% { transform: translate(-10px, 2px) }
+                80% { transform: translate(10px, -2px) }
+                100% { transform: translate(0) }
             }
         `;
         document.head.appendChild(style);
+
+        // Focus text effect
+        document.getElementById('username').focus();
     </script>
 </body>
 </html>

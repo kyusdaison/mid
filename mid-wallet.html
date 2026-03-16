@@ -4482,6 +4482,8 @@ style="display:flex;gap:6px;margin-bottom:8px;">
                             </div>
                             <div onclick="showSubPage('carbon')" style="display:flex;align-items:center;gap:4px;padding:6px 12px;border-radius:20px;background:var(--surface-2);cursor:pointer;white-space:nowrap"><span style="font-size:11px">🌱</span><span style="font-size:11px">ESG</span></div>
                             <div onclick="showSubPage('transit')" style="display:flex;align-items:center;gap:4px;padding:6px 12px;border-radius:20px;background:var(--surface-2);cursor:pointer;white-space:nowrap"><span style="font-size:11px">🚌</span><span style="font-size:11px">Transit</span></div>
+                            <div onclick="showSubPage('fcdid')" style="display:flex;align-items:center;gap:4px;padding:6px 12px;border-radius:20px;background:rgba(212,175,55,0.12);border:1px solid rgba(212,175,55,0.2);cursor:pointer;white-space:nowrap"><span style="font-size:11px">🛡️</span><span style="font-size:11px;color:#d4af37">FCDID</span></div>
+                            <div onclick="showSubPage('explorer')" style="display:flex;align-items:center;gap:4px;padding:6px 12px;border-radius:20px;background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.15);cursor:pointer;white-space:nowrap"><span style="font-size:11px">⛓️</span><span style="font-size:11px;color:var(--purple)">FCB Chain</span></div>
                             <div class="fprofile-action">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="1.8"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
                                 <span data-i18n="fp_more">More</span>
@@ -4880,6 +4882,51 @@ style="display:flex;gap:6px;margin-bottom:8px;">
                                 </div>
                                 <svg width="16" height="16" fill="none" stroke="var(--text-tertiary)" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
                             </div>
+                            <div onclick="showSubPage('fcdid')" style="display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--border-subtle);cursor:pointer">
+                                <div style="display:flex;align-items:center;gap:12px">
+                                    <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#d4af37,#f5d77a);display:flex;align-items:center;justify-content:center">
+                                        <svg width="16" height="16" fill="none" stroke="#1a1a2e" stroke-width="2"><path d="M9 16.5s6-3 6-7.5V4.5l-6-2.25L3 4.5v4.5c0 4.5 6 7.5 6 7.5z"/></svg>
+                                    </div>
+                                    <span style="font-size:14px">FCDID Identity</span>
+                                </div>
+                                <svg width="16" height="16" fill="none" stroke="var(--text-tertiary)" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
+                            </div>
+                            <div onclick="showSubPage('eresidency')" style="display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--border-subtle);cursor:pointer">
+                                <div style="display:flex;align-items:center;gap:12px">
+                                    <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#10b981,#3b82f6);display:flex;align-items:center;justify-content:center">
+                                        <svg width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="10" height="7" rx="1"/><path d="M5 13h6"/></svg>
+                                    </div>
+                                    <span style="font-size:14px">e-Residency</span>
+                                </div>
+                                <svg width="16" height="16" fill="none" stroke="var(--text-tertiary)" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
+                            </div>
+                            <div onclick="showSubPage('explorer')" style="display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--border-subtle);cursor:pointer">
+                                <div style="display:flex;align-items:center;gap:12px">
+                                    <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#8b5cf6,#3b82f6);display:flex;align-items:center;justify-content:center">
+                                        <svg width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><circle cx="8" cy="8" r="5"/><path d="M11.5 11.5L14 14"/></svg>
+                                    </div>
+                                    <span style="font-size:14px">FCB Explorer</span>
+                                </div>
+                                <svg width="16" height="16" fill="none" stroke="var(--text-tertiary)" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
+                            </div>
+                            <div onclick="showSubPage('business')" style="display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--border-subtle);cursor:pointer">
+                                <div style="display:flex;align-items:center;gap:12px">
+                                    <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#3b82f6,#06b6d4);display:flex;align-items:center;justify-content:center">
+                                        <svg width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="4" width="12" height="8" rx="1"/><path d="M5 4V3a1 1 0 011-1h4a1 1 0 011 1v1"/></svg>
+                                    </div>
+                                    <span style="font-size:14px">Business Hub</span>
+                                </div>
+                                <svg width="16" height="16" fill="none" stroke="var(--text-tertiary)" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
+                            </div>
+                            <div onclick="showSubPage('compliance')" style="display:flex;align-items:center;justify-content:space-between;padding:13px 0;cursor:pointer">
+                                <div style="display:flex;align-items:center;gap:12px">
+                                    <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#10b981,#d4af37);display:flex;align-items:center;justify-content:center">
+                                        <svg width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M5 8l2.5 2.5L12 6"/><rect x="2" y="2" width="12" height="12" rx="2"/></svg>
+                                    </div>
+                                    <span style="font-size:14px">Compliance</span>
+                                </div>
+                                <svg width="16" height="16" fill="none" stroke="var(--text-tertiary)" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
+                            </div>
 
                         </div>
                         <div class="settings-section">
@@ -5270,7 +5317,7 @@ style="display:flex;gap:6px;margin-bottom:8px;">
                             <span>Back</span>
                         </div>
                         <div class="page-title" data-i18n="gov_services_title">Government Services</div>
-                        <div class="page-subtitle">Civic participation</div>
+                        <div class="page-subtitle">FCB Sovereign Digital Governance</div>
 
 <div class="sub-header">
                             <div class="back-btn" onclick="switchTab('profile')">‹</div>
@@ -5279,7 +5326,7 @@ style="display:flex;gap:6px;margin-bottom:8px;">
                         </div>
                         <div class="gov-banner">
                             <div style="width:28px;height:28px;display:flex;align-items:center;justify-content:center;margin-bottom:4px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M4 10h16M12 3l9 7H3z"/><path d="M6 10v8M10 10v8M14 10v8M18 10v8"/></svg>️</div>
-                            <div class="gov-banner-title">Montserrat Digital Government</div>
+                            <div class="gov-banner-title">Montserrat Digital Government — FCB Governance Layer</div>
                             <div class="gov-banner-sub">Access all government services in one place</div>
                         </div>
                         <div class="gov-grid">
@@ -5415,12 +5462,34 @@ style="display:flex;gap:6px;margin-bottom:8px;">
                             <span>Back</span>
                         </div>
                         <div class="page-title">Remittance</div>
-                        <div class="page-subtitle">International transfers</div>
+                        <div class="page-subtitle">FCB Chain Cross-Border Settlement</div>
 
 <div class="sub-header">
                             <div class="back-btn" onclick="switchTab('wallet')">‹</div>
                             <div class="sub-title" data-i18n="remittance">Remittance</div>
                             <div class="sub-header-spacer"></div>
+                        </div>
+                        <div style="margin:0 0 12px;padding:12px;border-radius:12px;background:linear-gradient(135deg,rgba(59,130,246,0.1),rgba(16,185,129,0.08));border:1px solid rgba(59,130,246,0.15)">
+                            <div style="font-size:10px;color:var(--blue);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:4px">FCB Chain Settlement</div>
+                            <div style="font-size:11px;color:var(--text-secondary)">Instant compliance-verified transfers via FCB Public Chain</div>
+                        </div>
+                        <div class="glass-card" style="padding:12px;margin-bottom:12px">
+                            <div style="font-size:11px;font-weight:600;color:var(--text-secondary);margin-bottom:8px">Corridor Map</div>
+                            <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px">
+                                <span style="font-size:14px">🇲🇸</span><span style="font-size:10px;color:var(--text-tertiary)">→</span><span style="font-size:14px">🇬🇧</span>
+                                <span style="flex:1;font-size:11px;font-weight:600">MS → UK</span>
+                                <span style="font-size:10px;color:var(--green)">0.1% · 2s</span>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px">
+                                <span style="font-size:14px">🇲🇸</span><span style="font-size:10px;color:var(--text-tertiary)">→</span><span style="font-size:14px">🇺🇸</span>
+                                <span style="flex:1;font-size:11px;font-weight:600">MS → US</span>
+                                <span style="font-size:10px;color:var(--green)">0.15% · 2s</span>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:6px">
+                                <span style="font-size:14px">🇲🇸</span><span style="font-size:10px;color:var(--text-tertiary)">→</span><span style="font-size:14px">🇻🇺</span>
+                                <span style="flex:1;font-size:11px;font-weight:600">MS → VU</span>
+                                <span style="font-size:10px;color:var(--green)">0.05% · 1s</span>
+                            </div>
                         </div>
                         <div class="remit-card">
                             <div class="remit-route">
@@ -5773,6 +5842,18 @@ style="display:flex;gap:6px;margin-bottom:8px;">
                         <div class="pay-tx"><div class="pay-tx-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></div><div class="pay-tx-info"><div class="pay-tx-name">Amazon.com</div><div class="pay-tx-time">Today, 2:30 PM</div></div><div class="pay-tx-amount color-red">-$127.50</div></div>
                         <div class="pay-tx"><div class="pay-tx-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 8h1a4 4 0 010 8h-1"/><path d="M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4z"/></svg></div><div class="pay-tx-info"><div class="pay-tx-name">Starbucks</div><div class="pay-tx-time">Yesterday, 9:15 AM</div></div><div class="pay-tx-amount color-red">-$6.80</div></div>
                         <div class="pay-tx"><div class="pay-tx-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12l19-7-7 19-3-8z"/></svg>️</div><div class="pay-tx-info"><div class="pay-tx-name">British Airways</div><div class="pay-tx-time">Mar 12, 11:00 AM</div></div><div class="pay-tx-amount color-red">-$892.00</div></div>
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin:16px 0 10px">FCB Compliance Assistant</div>
+                        <div class="glass-card" style="padding:14px;margin-bottom:14px">
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+                                <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,rgba(212,175,55,0.3),rgba(59,130,246,0.2));display:flex;align-items:center;justify-content:center"><svg width="18" height="18" fill="none" stroke="#d4af37" stroke-width="2"><path d="M9 16.5s6-3 6-7.5V4.5l-6-2.25L3 4.5v4.5c0 4.5 6 7.5 6 7.5z"/></svg></div>
+                                <div><div style="font-size:13px;font-weight:600">Regulatory AI</div><div style="font-size:10px;color:var(--text-tertiary)">Cross-border compliance checks powered by FCB</div></div>
+                            </div>
+                            <div style="display:flex;gap:6px;flex-wrap:wrap">
+                                <div style="padding:6px 10px;border-radius:8px;background:rgba(59,130,246,0.1);font-size:11px;color:var(--blue);cursor:pointer" onclick="haptic(10)">Check Transaction</div>
+                                <div style="padding:6px 10px;border-radius:8px;background:rgba(16,185,129,0.1);font-size:11px;color:var(--green);cursor:pointer" onclick="haptic(10)">Tax Advice</div>
+                                <div style="padding:6px 10px;border-radius:8px;background:rgba(139,92,246,0.1);font-size:11px;color:var(--purple);cursor:pointer" onclick="haptic(10)">Residency FAQ</div>
+                            </div>
+                        </div>
                         <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin:16px 0 10px">AI Strategy Builder</div>
                         <div class="glass-card" style="padding:14px;margin-bottom:12px">
                             <div style="font-size:13px;margin-bottom:10px;color:var(--text-tertiary)">Describe your strategy in natural language:</div>
@@ -6568,6 +6649,14 @@ style="display:flex;gap:6px;margin-bottom:8px;">
                             <div class="dao-stat"><div class="dao-stat-value">10,000</div><div class="dao-stat-label">Your MSD</div></div>
                             <div class="dao-stat"><div class="dao-stat-value">0.42%</div><div class="dao-stat-label">Voting Power</div></div>
                             <div class="dao-stat"><div class="dao-stat-value">12</div><div class="dao-stat-label">Votes Cast</div></div>
+                        </div>
+                        <div style="margin:0 0 12px;padding:12px;border-radius:12px;background:linear-gradient(135deg,rgba(212,175,55,0.12),rgba(139,92,246,0.08));border:1px solid rgba(212,175,55,0.2)">
+                            <div style="font-size:10px;color:rgba(212,175,55,0.8);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;margin-bottom:4px">FCB Governance</div>
+                            <div style="font-size:11px;color:var(--text-secondary)">Participate in jurisdictional governance as a verified FCB digital resident</div>
+                            <div style="display:flex;gap:6px;margin-top:8px">
+                                <span style="padding:4px 8px;border-radius:6px;background:rgba(212,175,55,0.15);font-size:10px;color:#d4af37">Voting Power: 847</span>
+                                <span style="padding:4px 8px;border-radius:6px;background:rgba(139,92,246,0.15);font-size:10px;color:var(--purple)">Gold Tier</span>
+                            </div>
                         </div>
                         <div class="dao-row-meta">Active Proposals</div>
                         <div class="dao-proposal">
@@ -7603,6 +7692,445 @@ style="display:flex;gap:6px;margin-bottom:8px;">
                         </div>
                     </div>
 
+
+                    <!-- ===== FCDID - FCB Digital Identity Center ===== -->
+                    <div class="page" id="page-fcdid" style="display:none">
+                        <div style="display:flex;align-items:center;padding:16px 4px 12px">
+                            <div onclick="showPage('profile')" style="cursor:pointer;padding:8px"><svg width="20" height="20" fill="none" stroke="var(--text-primary)" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></div>
+                            <h2 style="flex:1;text-align:center;font-size:17px;font-weight:700;margin:0" data-i18n="fcdid_title">FCDID Identity</h2>
+                            <div style="width:36px"></div>
+                        </div>
+
+                        <!-- Holographic Identity Card -->
+                        <div style="margin:0 4px 16px;padding:20px;border-radius:20px;background:linear-gradient(135deg,rgba(212,175,55,0.15),rgba(59,130,246,0.1),rgba(139,92,246,0.15));border:1px solid rgba(212,175,55,0.3);position:relative;overflow:hidden">
+                            <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(45deg,transparent 30%,rgba(255,255,255,0.05) 50%,transparent 70%);pointer-events:none"></div>
+                            <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:16px">
+                                <div>
+                                    <div style="font-size:10px;color:rgba(212,175,55,0.8);text-transform:uppercase;letter-spacing:2px;font-weight:600">Future Citizen Bureau</div>
+                                    <div style="font-size:9px;color:var(--text-tertiary);margin-top:2px">FCDID Credential · Sovereign Grade</div>
+                                </div>
+                                <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#d4af37,#f5d77a);display:flex;align-items:center;justify-content:center">
+                                    <svg width="18" height="18" fill="none" stroke="#1a1a2e" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" transform="scale(0.75) translate(4,4)"/></svg>
+                                </div>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px">
+                                <div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,var(--blue),var(--purple));display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:#fff">KD</div>
+                                <div>
+                                    <div style="font-size:18px;font-weight:700">Kyus Daison</div>
+                                    <div style="font-size:12px;color:var(--text-secondary)">FCDID-MS-2026-00847</div>
+                                    <div style="font-size:10px;color:var(--green);margin-top:2px">● Verified · Biometric Anchored</div>
+                                </div>
+                            </div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+                                <div style="padding:8px;border-radius:10px;background:rgba(255,255,255,0.04)">
+                                    <div style="font-size:9px;color:var(--text-quaternary);text-transform:uppercase">Jurisdiction</div>
+                                    <div style="font-size:12px;font-weight:600;margin-top:2px">Montserrat</div>
+                                </div>
+                                <div style="padding:8px;border-radius:10px;background:rgba(255,255,255,0.04)">
+                                    <div style="font-size:9px;color:var(--text-quaternary);text-transform:uppercase">Valid Until</div>
+                                    <div style="font-size:12px;font-weight:600;margin-top:2px">Mar 2028</div>
+                                </div>
+                                <div style="padding:8px;border-radius:10px;background:rgba(255,255,255,0.04)">
+                                    <div style="font-size:9px;color:var(--text-quaternary);text-transform:uppercase">Trust Level</div>
+                                    <div style="font-size:12px;font-weight:600;margin-top:2px;color:var(--green)">Level 3 (Max)</div>
+                                </div>
+                                <div style="padding:8px;border-radius:10px;background:rgba(255,255,255,0.04)">
+                                    <div style="font-size:9px;color:var(--text-quaternary);text-transform:uppercase">Chain Anchor</div>
+                                    <div style="font-size:12px;font-weight:600;margin-top:2px">FCB Chain</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Verification Status -->
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin:0 4px 10px">Verification Status</div>
+                        <div class="glass-card" style="padding:14px;margin:0 4px 16px">
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+                                <span style="font-size:13px">Biometric Anchoring</span>
+                                <span style="font-size:11px;padding:3px 10px;border-radius:8px;background:rgba(16,185,129,0.15);color:var(--green)">Verified</span>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+                                <span style="font-size:13px">Cryptographic Binding</span>
+                                <span style="font-size:11px;padding:3px 10px;border-radius:8px;background:rgba(16,185,129,0.15);color:var(--green)">Active</span>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+                                <span style="font-size:13px">Government Registry</span>
+                                <span style="font-size:11px;padding:3px 10px;border-radius:8px;background:rgba(16,185,129,0.15);color:var(--green)">Linked</span>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;align-items:center">
+                                <span style="font-size:13px">Compliance Node</span>
+                                <span style="font-size:11px;padding:3px 10px;border-radius:8px;background:rgba(16,185,129,0.15);color:var(--green)">Online</span>
+                            </div>
+                        </div>
+
+                        <!-- ZK Selective Disclosure -->
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin:0 4px 10px">Selective Disclosure (ZK)</div>
+                        <div class="glass-card" style="padding:14px;margin:0 4px 16px">
+                            <div style="font-size:11px;color:var(--text-tertiary);margin-bottom:12px">Control what you share using zero-knowledge proofs</div>
+                            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border-subtle)">
+                                <span style="font-size:13px">Full Name</span>
+                                <div style="width:40px;height:22px;border-radius:11px;background:var(--green);position:relative;cursor:pointer"><div style="width:18px;height:18px;border-radius:50%;background:#fff;position:absolute;top:2px;right:2px"></div></div>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border-subtle)">
+                                <span style="font-size:13px">Age (Over 18)</span>
+                                <div style="width:40px;height:22px;border-radius:11px;background:var(--green);position:relative;cursor:pointer"><div style="width:18px;height:18px;border-radius:50%;background:#fff;position:absolute;top:2px;right:2px"></div></div>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border-subtle)">
+                                <span style="font-size:13px">Nationality</span>
+                                <div style="width:40px;height:22px;border-radius:11px;background:var(--surface-2);position:relative;cursor:pointer"><div style="width:18px;height:18px;border-radius:50%;background:#fff;position:absolute;top:2px;left:2px"></div></div>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0">
+                                <span style="font-size:13px">Residential Address</span>
+                                <div style="width:40px;height:22px;border-radius:11px;background:var(--surface-2);position:relative;cursor:pointer"><div style="width:18px;height:18px;border-radius:50%;background:#fff;position:absolute;top:2px;left:2px"></div></div>
+                            </div>
+                        </div>
+
+                        <!-- Credential History -->
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin:0 4px 10px">Verification History</div>
+                        <div class="glass-card" style="padding:14px;margin:0 4px 16px">
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+                                <div style="width:8px;height:8px;border-radius:50%;background:var(--green)"></div>
+                                <div style="flex:1"><div style="font-size:12px;font-weight:600">Airport Immigration Check</div><div style="font-size:10px;color:var(--text-tertiary)">ZK proof shared · 2 hrs ago</div></div>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+                                <div style="width:8px;height:8px;border-radius:50%;background:var(--blue)"></div>
+                                <div style="flex:1"><div style="font-size:12px;font-weight:600">DeFi KYC Verification</div><div style="font-size:10px;color:var(--text-tertiary)">Age proof only · Yesterday</div></div>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:10px">
+                                <div style="width:8px;height:8px;border-radius:50%;background:var(--purple)"></div>
+                                <div style="flex:1"><div style="font-size:12px;font-weight:600">Business Registration</div><div style="font-size:10px;color:var(--text-tertiary)">Full identity · 3 days ago</div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ===== E-RESIDENCY APPLICATION PORTAL ===== -->
+                    <div class="page" id="page-eresidency" style="display:none">
+                        <div style="display:flex;align-items:center;padding:16px 4px 12px">
+                            <div onclick="showPage('profile')" style="cursor:pointer;padding:8px"><svg width="20" height="20" fill="none" stroke="var(--text-primary)" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></div>
+                            <h2 style="flex:1;text-align:center;font-size:17px;font-weight:700;margin:0" data-i18n="eresidency_title">e-Residency</h2>
+                            <div style="width:36px"></div>
+                        </div>
+
+                        <!-- Active Residency Card -->
+                        <div style="margin:0 4px 16px;padding:18px;border-radius:18px;background:linear-gradient(135deg,rgba(16,185,129,0.12),rgba(59,130,246,0.08));border:1px solid rgba(16,185,129,0.25)">
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+                                <div style="font-size:10px;color:var(--green);text-transform:uppercase;letter-spacing:1.5px;font-weight:600">Active Residency</div>
+                                <div style="font-size:11px;padding:3px 10px;border-radius:8px;background:rgba(16,185,129,0.15);color:var(--green)">Valid</div>
+                            </div>
+                            <div style="font-size:16px;font-weight:700;margin-bottom:4px">Montserrat Digital Residency</div>
+                            <div style="font-size:12px;color:var(--text-secondary);margin-bottom:12px">Permit #MS-DR-2026-00847 · Issued via Smart Contract</div>
+                            <div style="display:flex;gap:8px">
+                                <div style="flex:1;padding:8px;border-radius:10px;background:rgba(255,255,255,0.04);text-align:center">
+                                    <div style="font-size:9px;color:var(--text-quaternary);text-transform:uppercase">Issued</div>
+                                    <div style="font-size:12px;font-weight:600;margin-top:2px">Jan 2026</div>
+                                </div>
+                                <div style="flex:1;padding:8px;border-radius:10px;background:rgba(255,255,255,0.04);text-align:center">
+                                    <div style="font-size:9px;color:var(--text-quaternary);text-transform:uppercase">Expires</div>
+                                    <div style="font-size:12px;font-weight:600;margin-top:2px">Jan 2028</div>
+                                </div>
+                                <div style="flex:1;padding:8px;border-radius:10px;background:rgba(255,255,255,0.04);text-align:center">
+                                    <div style="font-size:9px;color:var(--text-quaternary);text-transform:uppercase">Annual Fee</div>
+                                    <div style="font-size:12px;font-weight:600;margin-top:2px">$150</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4-Stage Progress -->
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin:0 4px 10px">Application Progress</div>
+                        <div class="glass-card" style="padding:14px;margin:0 4px 16px">
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+                                <div style="width:28px;height:28px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5"><path d="M4 7.5l2.5 2.5 4-4"/></svg></div>
+                                <div style="flex:1"><div style="font-size:13px;font-weight:600">Identity Verification</div><div style="font-size:10px;color:var(--green)">Complete · FCDID Anchored</div></div>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+                                <div style="width:28px;height:28px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5"><path d="M4 7.5l2.5 2.5 4-4"/></svg></div>
+                                <div style="flex:1"><div style="font-size:13px;font-weight:600">Residency Issuance</div><div style="font-size:10px;color:var(--green)">Smart contract permit issued on FCB Chain</div></div>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+                                <div style="width:28px;height:28px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5"><path d="M4 7.5l2.5 2.5 4-4"/></svg></div>
+                                <div style="flex:1"><div style="font-size:13px;font-weight:600">Ecosystem Integration</div><div style="font-size:10px;color:var(--green)">Wallet, banking & services active</div></div>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:10px">
+                                <div style="width:28px;height:28px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff">4</div>
+                                <div style="flex:1"><div style="font-size:13px;font-weight:600">Global Operation</div><div style="font-size:10px;color:var(--blue)">In progress · Cross-border active</div></div>
+                            </div>
+                        </div>
+
+                        <!-- Available Jurisdictions -->
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin:0 4px 10px">Available Jurisdictions</div>
+                        <div class="glass-card" style="padding:14px;margin:0 4px 12px">
+                            <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border-subtle);cursor:pointer" onclick="haptic(10)">
+                                <div style="font-size:22px">🇲🇸</div>
+                                <div style="flex:1"><div style="font-size:14px;font-weight:600">Montserrat</div><div style="font-size:10px;color:var(--green)">Active · Your current residency</div></div>
+                                <svg width="16" height="16" fill="none" stroke="var(--green)" stroke-width="2"><path d="M4 8.5l2.5 2.5 4-4"/></svg>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border-subtle);cursor:pointer" onclick="haptic(10)">
+                                <div style="font-size:22px">🇻🇺</div>
+                                <div style="flex:1"><div style="font-size:14px;font-weight:600">Vanuatu</div><div style="font-size:10px;color:var(--text-tertiary)">Apply · From $200/yr</div></div>
+                                <svg width="16" height="16" fill="none" stroke="var(--text-tertiary)" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border-subtle);cursor:pointer" onclick="haptic(10)">
+                                <div style="font-size:22px">🇦🇬</div>
+                                <div style="flex:1"><div style="font-size:14px;font-weight:600">Antigua & Barbuda</div><div style="font-size:10px;color:var(--text-tertiary)">Coming Soon</div></div>
+                                <svg width="16" height="16" fill="none" stroke="var(--text-tertiary)" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:12px;padding:10px 0;cursor:pointer" onclick="haptic(10)">
+                                <div style="font-size:22px">🇹🇴</div>
+                                <div style="flex:1"><div style="font-size:14px;font-weight:600">Tonga</div><div style="font-size:10px;color:var(--text-tertiary)">Coming Soon</div></div>
+                                <svg width="16" height="16" fill="none" stroke="var(--text-tertiary)" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
+                            </div>
+                        </div>
+
+                        <!-- Benefits -->
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin:0 4px 10px">Your Residency Benefits</div>
+                        <div class="glass-card" style="padding:14px;margin:0 4px 16px">
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+                                <div style="font-size:16px">🏦</div>
+                                <div style="font-size:12px">Digital banking & payment accounts</div>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+                                <div style="font-size:16px">🏢</div>
+                                <div style="font-size:12px">Company registration & incorporation</div>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+                                <div style="font-size:16px">📄</div>
+                                <div style="font-size:12px">Digital signatures with legal validity</div>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:10px">
+                                <div style="font-size:16px">🌐</div>
+                                <div style="font-size:12px">Cross-border service access</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ===== FCB CHAIN EXPLORER ===== -->
+                    <div class="page" id="page-explorer" style="display:none">
+                        <div style="display:flex;align-items:center;padding:16px 4px 12px">
+                            <div onclick="showPage('wallet')" style="cursor:pointer;padding:8px"><svg width="20" height="20" fill="none" stroke="var(--text-primary)" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></div>
+                            <h2 style="flex:1;text-align:center;font-size:17px;font-weight:700;margin:0" data-i18n="explorer_title">FCB Explorer</h2>
+                            <div style="width:36px"></div>
+                        </div>
+
+                        <!-- Chain Stats -->
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 4px 16px">
+                            <div class="glass-card" style="padding:14px;text-align:center">
+                                <div style="font-size:22px;font-weight:800;color:var(--blue)">12,847</div>
+                                <div style="font-size:10px;color:var(--text-tertiary);margin-top:2px">Digital Residents</div>
+                            </div>
+                            <div class="glass-card" style="padding:14px;text-align:center">
+                                <div style="font-size:22px;font-weight:800;color:var(--green)">$4.2M</div>
+                                <div style="font-size:10px;color:var(--text-tertiary);margin-top:2px">Total Value Locked</div>
+                            </div>
+                            <div class="glass-card" style="padding:14px;text-align:center">
+                                <div style="font-size:22px;font-weight:800;color:var(--purple)">847K</div>
+                                <div style="font-size:10px;color:var(--text-tertiary);margin-top:2px">Transactions</div>
+                            </div>
+                            <div class="glass-card" style="padding:14px;text-align:center">
+                                <div style="font-size:22px;font-weight:800;color:var(--amber)">5</div>
+                                <div style="font-size:10px;color:var(--text-tertiary);margin-top:2px">Jurisdictions</div>
+                            </div>
+                        </div>
+
+                        <!-- Network Health -->
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin:0 4px 10px">Network Health</div>
+                        <div class="glass-card" style="padding:14px;margin:0 4px 16px">
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+                                <span style="font-size:13px">Block Height</span>
+                                <span style="font-size:13px;font-weight:700;font-family:monospace">#3,847,291</span>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+                                <span style="font-size:13px">Block Time</span>
+                                <span style="font-size:13px;font-weight:600;color:var(--green)">2.1s</span>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+                                <span style="font-size:13px">Compliance Nodes</span>
+                                <span style="font-size:13px;font-weight:600;color:var(--green)">24 / 24 Online</span>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+                                <span style="font-size:13px">Avg Gas Fee</span>
+                                <span style="font-size:13px;font-weight:600">$0.001</span>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;align-items:center">
+                                <span style="font-size:13px">Finality</span>
+                                <span style="font-size:13px;font-weight:600;color:var(--green)">Instant</span>
+                            </div>
+                        </div>
+
+                        <!-- Recent Blocks -->
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin:0 4px 10px">Recent Blocks</div>
+                        <div class="glass-card" style="padding:14px;margin:0 4px 16px">
+                            <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border-subtle)">
+                                <div style="width:32px;height:32px;border-radius:8px;background:rgba(59,130,246,0.1);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--blue)">#3.8M</div>
+                                <div style="flex:1"><div style="font-size:12px;font-weight:600">14 transactions</div><div style="font-size:10px;color:var(--text-tertiary)">Validator: MS-Node-01 · 3s ago</div></div>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border-subtle)">
+                                <div style="width:32px;height:32px;border-radius:8px;background:rgba(139,92,246,0.1);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--purple)">#3.8M</div>
+                                <div style="flex:1"><div style="font-size:12px;font-weight:600">8 transactions</div><div style="font-size:10px;color:var(--text-tertiary)">Validator: VU-Node-03 · 5s ago</div></div>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:10px;padding:8px 0">
+                                <div style="width:32px;height:32px;border-radius:8px;background:rgba(16,185,129,0.1);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--green)">#3.8M</div>
+                                <div style="flex:1"><div style="font-size:12px;font-weight:600">21 transactions</div><div style="font-size:10px;color:var(--text-tertiary)">Validator: MS-Node-02 · 7s ago</div></div>
+                            </div>
+                        </div>
+
+                        <!-- FCDID Verification Log -->
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin:0 4px 10px">FCDID Verifications</div>
+                        <div class="glass-card" style="padding:14px;margin:0 4px 16px">
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+                                <div style="width:8px;height:8px;border-radius:50%;background:var(--green)"></div>
+                                <div style="flex:1;font-size:12px">New e-Residency issued · <span style="color:var(--text-tertiary)">Block #3,847,288</span></div>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+                                <div style="width:8px;height:8px;border-radius:50%;background:var(--blue)"></div>
+                                <div style="flex:1;font-size:12px">KYC verification · <span style="color:var(--text-tertiary)">Block #3,847,285</span></div>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:10px">
+                                <div style="width:8px;height:8px;border-radius:50%;background:var(--purple)"></div>
+                                <div style="flex:1;font-size:12px">Business registration · <span style="color:var(--text-tertiary)">Block #3,847,280</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ===== BUSINESS SERVICES CENTER ===== -->
+                    <div class="page" id="page-business" style="display:none">
+                        <div style="display:flex;align-items:center;padding:16px 4px 12px">
+                            <div onclick="showPage('profile')" style="cursor:pointer;padding:8px"><svg width="20" height="20" fill="none" stroke="var(--text-primary)" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></div>
+                            <h2 style="flex:1;text-align:center;font-size:17px;font-weight:700;margin:0" data-i18n="business_title">Business Hub</h2>
+                            <div style="width:36px"></div>
+                        </div>
+
+                        <!-- Active Business -->
+                        <div style="margin:0 4px 16px;padding:18px;border-radius:18px;background:linear-gradient(135deg,rgba(59,130,246,0.12),rgba(139,92,246,0.08));border:1px solid rgba(59,130,246,0.2)">
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+                                <div style="font-size:10px;color:var(--blue);text-transform:uppercase;letter-spacing:1.5px;font-weight:600">Registered Company</div>
+                                <div style="font-size:11px;padding:3px 10px;border-radius:8px;background:rgba(16,185,129,0.15);color:var(--green)">Active</div>
+                            </div>
+                            <div style="font-size:16px;font-weight:700;margin-bottom:4px">FCB Digital Ltd.</div>
+                            <div style="font-size:12px;color:var(--text-secondary)">Registration #MS-BIZ-2026-0042 · Montserrat</div>
+                        </div>
+
+                        <!-- Business Services -->
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin:0 4px 10px">Services</div>
+                        <div class="glass-card" style="padding:14px;margin:0 4px 16px">
+                            <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border-subtle);cursor:pointer" onclick="haptic(10)">
+                                <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--blue),#06b6d4);display:flex;align-items:center;justify-content:center"><svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="14" height="14" rx="2"/><path d="M3 8h14"/></svg></div>
+                                <div style="flex:1"><div style="font-size:14px;font-weight:600">Company Registration</div><div style="font-size:11px;color:var(--text-tertiary)">Incorporate a new company</div></div>
+                                <svg width="16" height="16" fill="none" stroke="var(--text-tertiary)" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border-subtle);cursor:pointer" onclick="haptic(10)">
+                                <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--green),#34d399);display:flex;align-items:center;justify-content:center"><svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2"><path d="M4 4h12v16H4z"/><path d="M8 2v4m4-4v4"/></svg></div>
+                                <div style="flex:1"><div style="font-size:14px;font-weight:600">Business Licenses</div><div style="font-size:11px;color:var(--text-tertiary)">Apply for trade permits</div></div>
+                                <svg width="16" height="16" fill="none" stroke="var(--text-tertiary)" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border-subtle);cursor:pointer" onclick="haptic(10)">
+                                <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--purple),#a855f7);display:flex;align-items:center;justify-content:center"><svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+                                <div style="flex:1"><div style="font-size:14px;font-weight:600">Tax Framework</div><div style="font-size:11px;color:var(--text-tertiary)">View tax obligations & filings</div></div>
+                                <svg width="16" height="16" fill="none" stroke="var(--text-tertiary)" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:12px;padding:10px 0;cursor:pointer" onclick="haptic(10)">
+                                <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--amber),#fbbf24);display:flex;align-items:center;justify-content:center"><svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16l6-3 6 3V4a2 2 0 00-2-2z"/></svg></div>
+                                <div style="flex:1"><div style="font-size:14px;font-weight:600">Cross-Border Trade</div><div style="font-size:11px;color:var(--text-tertiary)">FCB Chain compliant corridors</div></div>
+                                <svg width="16" height="16" fill="none" stroke="var(--text-tertiary)" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
+                            </div>
+                        </div>
+
+                        <!-- Compliance Status -->
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin:0 4px 10px">Compliance Status</div>
+                        <div class="glass-card" style="padding:14px;margin:0 4px 16px">
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+                                <span style="font-size:13px">Annual Return</span>
+                                <span style="font-size:11px;padding:3px 10px;border-radius:8px;background:rgba(16,185,129,0.15);color:var(--green)">Filed</span>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+                                <span style="font-size:13px">AML Compliance</span>
+                                <span style="font-size:11px;padding:3px 10px;border-radius:8px;background:rgba(16,185,129,0.15);color:var(--green)">Passed</span>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;align-items:center">
+                                <span style="font-size:13px">Audit Trail</span>
+                                <span style="font-size:11px;padding:3px 10px;border-radius:8px;background:rgba(16,185,129,0.15);color:var(--green)">On-Chain</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ===== COMPLIANCE DASHBOARD ===== -->
+                    <div class="page" id="page-compliance" style="display:none">
+                        <div style="display:flex;align-items:center;padding:16px 4px 12px">
+                            <div onclick="showPage('profile')" style="cursor:pointer;padding:8px"><svg width="20" height="20" fill="none" stroke="var(--text-primary)" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></div>
+                            <h2 style="flex:1;text-align:center;font-size:17px;font-weight:700;margin:0" data-i18n="compliance_title">Compliance</h2>
+                            <div style="width:36px"></div>
+                        </div>
+
+                        <!-- Compliance Score -->
+                        <div style="margin:0 4px 16px;padding:20px;border-radius:18px;background:linear-gradient(135deg,rgba(16,185,129,0.12),rgba(59,130,246,0.08));text-align:center">
+                            <div style="font-size:42px;font-weight:800;color:var(--green)">98</div>
+                            <div style="font-size:11px;color:var(--text-tertiary)">Compliance Score · Excellent</div>
+                            <div style="height:6px;border-radius:3px;background:var(--surface-2);margin-top:12px">
+                                <div style="height:6px;border-radius:3px;background:linear-gradient(90deg,var(--green),#34d399);width:98%"></div>
+                            </div>
+                        </div>
+
+                        <!-- KYC/AML Status -->
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin:0 4px 10px">KYC / AML Status</div>
+                        <div class="glass-card" style="padding:14px;margin:0 4px 16px">
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+                                <span style="font-size:13px">KYC Level</span>
+                                <span style="font-size:13px;font-weight:600;color:var(--green)">Tier 3 (Full)</span>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+                                <span style="font-size:13px">AML Screening</span>
+                                <span style="font-size:11px;padding:3px 10px;border-radius:8px;background:rgba(16,185,129,0.15);color:var(--green)">Clear</span>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+                                <span style="font-size:13px">PEP Check</span>
+                                <span style="font-size:11px;padding:3px 10px;border-radius:8px;background:rgba(16,185,129,0.15);color:var(--green)">Clear</span>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+                                <span style="font-size:13px">Sanctions Check</span>
+                                <span style="font-size:11px;padding:3px 10px;border-radius:8px;background:rgba(16,185,129,0.15);color:var(--green)">Clear</span>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;align-items:center">
+                                <span style="font-size:13px">Last Review</span>
+                                <span style="font-size:13px;font-weight:600">Mar 10, 2026</span>
+                            </div>
+                        </div>
+
+                        <!-- Compliance Nodes -->
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin:0 4px 10px">Compliance Nodes</div>
+                        <div class="glass-card" style="padding:14px;margin:0 4px 16px">
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+                                <div style="width:10px;height:10px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green)"></div>
+                                <div style="flex:1"><div style="font-size:12px;font-weight:600">MS-Compliance-01</div><div style="font-size:10px;color:var(--text-tertiary)">Montserrat · Latency: 12ms</div></div>
+                                <span style="font-size:10px;color:var(--green)">Online</span>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+                                <div style="width:10px;height:10px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green)"></div>
+                                <div style="flex:1"><div style="font-size:12px;font-weight:600">VU-Compliance-01</div><div style="font-size:10px;color:var(--text-tertiary)">Vanuatu · Latency: 28ms</div></div>
+                                <span style="font-size:10px;color:var(--green)">Online</span>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:10px">
+                                <div style="width:10px;height:10px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green)"></div>
+                                <div style="flex:1"><div style="font-size:12px;font-weight:600">AG-Compliance-01</div><div style="font-size:10px;color:var(--text-tertiary)">Antigua · Latency: 34ms</div></div>
+                                <span style="font-size:10px;color:var(--green)">Online</span>
+                            </div>
+                        </div>
+
+                        <!-- Transaction Risk Monitor -->
+                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin:0 4px 10px">Transaction Risk Monitor</div>
+                        <div class="glass-card" style="padding:14px;margin:0 4px 16px">
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+                                <span style="font-size:13px">Flagged Transactions</span>
+                                <span style="font-size:13px;font-weight:700;color:var(--green)">0</span>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+                                <span style="font-size:13px">Risk Score (30d avg)</span>
+                                <span style="font-size:13px;font-weight:600;color:var(--green)">Low (2/100)</span>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;align-items:center">
+                                <span style="font-size:13px">Auto-Compliance Checks</span>
+                                <span style="font-size:13px;font-weight:600;color:var(--green)">247 passed</span>
+                            </div>
+                        </div>
+                    </div>
+
 </div><!-- /screen-content -->
 
                 <!-- Floating Action Button -->
@@ -7747,7 +8275,12 @@ const i18n = {
         swap_rate: '1 MSD = 0.0006067 ETH · Fee: 0.1%', swap_price_impact: 'Price Impact', swap_min_recv: 'Min. Received',
         swap_route: 'Route', swap_btn: 'Swap MSD → ETH',
         txd_time: 'Time', txd_party: 'Party', txd_detail: 'Detail', txd_txid: 'Transaction ID', txd_network: 'Network',
-        tab_friends: 'Friends', friends_title: 'Friends', friends_sub: '4 friends · 2 online',
+        tab_friends: 'Friends',
+            fcdid_title: 'FCDID Identity',
+            eresidency_title: 'e-Residency',
+            explorer_title: 'FCB Explorer',
+            business_title: 'Business Hub',
+            compliance_title: 'Compliance', friends_title: 'Friends', friends_sub: '4 friends · 2 online',
         friends_online: 'Online — 2', friends_offline: 'Offline — 2',
         friend_alex_msg: 'Hey, got your MSD! Thanks 🎉', friend_sarah_msg: 'Can you send me some MSD?',
         friend_james_msg: 'See you in Montserrat next week!', friend_mei_msg: 'Payment received ✅',
@@ -7815,7 +8348,12 @@ const i18n = {
         swap_rate: '1 MSD = 0.0006067 ETH · 手续费: 0.1%', swap_price_impact: '价格影响', swap_min_recv: '最低收到',
         swap_route: '路线', swap_btn: '兑换 MSD → ETH',
         txd_time: '时间', txd_party: '对方', txd_detail: '详情', txd_txid: '交易ID', txd_network: '网络',
-        tab_friends: '好友', friends_title: '好友', friends_sub: '4 位好友 · 2 人在线',
+        tab_friends: '好友',
+            fcdid_title: 'FCDID 数字身份',
+            eresidency_title: '数字居民',
+            explorer_title: 'FCB 浏览器',
+            business_title: '企业服务',
+            compliance_title: '合规中心', friends_title: '好友', friends_sub: '4 位好友 · 2 人在线',
         friends_online: '在线 — 2', friends_offline: '离线 — 2',
         friend_alex_msg: '收到你的 MSD 了！谢谢 🎉', friend_sarah_msg: '能发一些 MSD 给我吗？',
         friend_james_msg: '下周蒙特塞拉特见！', friend_mei_msg: '已收到付款 ✅',
@@ -7883,7 +8421,12 @@ const i18n = {
         swap_rate: '1 MSD = 0,0006067 ETH · Frais: 0,1%', swap_price_impact: 'Impact Prix', swap_min_recv: 'Min. Reçu',
         swap_route: 'Route', swap_btn: 'Échanger MSD → ETH',
         txd_time: 'Heure', txd_party: 'Partie', txd_detail: 'Détail', txd_txid: 'ID Transaction', txd_network: 'Réseau',
-        tab_friends: 'Amis', friends_title: 'Amis', friends_sub: '4 amis · 2 en ligne',
+        tab_friends: 'Amis',
+            fcdid_title: 'Identité FCDID',
+            eresidency_title: 'e-Résidence',
+            explorer_title: 'Explorateur FCB',
+            business_title: 'Centre Affaires',
+            compliance_title: 'Conformité', friends_title: 'Amis', friends_sub: '4 amis · 2 en ligne',
         friends_online: 'En ligne — 2', friends_offline: 'Hors ligne — 2',
         friend_alex_msg: 'Reçu tes MSD ! Merci 🎉', friend_sarah_msg: 'Tu peux m\'envoyer des MSD ?',
         friend_james_msg: 'À la semaine prochaine à Montserrat !', friend_mei_msg: 'Paiement reçu ✅',
@@ -9028,39 +9571,4 @@ if (document.readyState === 'loading') {
 
 </script>
 </body>
-                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin:12px 0 10px">Quick Launch</div>
-                        <div class="glass-card" style="padding:14px;margin-bottom:12px">
-                            <div onclick="showSubPage('scanner')" style="display:flex;align-items:center;gap:12px;cursor:pointer;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--border-subtle)">
-                                <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--blue),#06b6d4);display:flex;align-items:center;justify-content:center">
-                                    <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-                                </div>
-                                <div style="flex:1">
-                                    <div style="font-size:14px;font-weight:600">Scan to Launch</div>
-                                    <div style="font-size:11px;color:var(--text-tertiary)">Point camera at any MiniApp QR code</div>
-                                </div>
-                                <svg width="16" height="16" fill="none" stroke="var(--text-tertiary)" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
-                            </div>
-                            <div style="display:flex;align-items:center;gap:12px;cursor:pointer" onclick="haptic(10)">
-                                <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--purple),#a855f7);display:flex;align-items:center;justify-content:center">
-                                    <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2v4m0 12v4M2 12h4m12 0h4"/><circle cx="12" cy="12" r="3"/></svg>
-                                </div>
-                                <div style="flex:1">
-                                    <div style="font-size:14px;font-weight:600">Developer Portal</div>
-                                    <div style="font-size:11px;color:var(--text-tertiary)">Build & publish MiniApps with SDK</div>
-                                </div>
-                                <svg width="16" height="16" fill="none" stroke="var(--text-tertiary)" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
-                            </div>
-                        </div>
-
-                        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:10px">MiniApp SDK</div>
-                        <div class="glass-card" style="padding:14px;margin-bottom:12px">
-                            <div style="display:flex;gap:8px;flex-wrap:wrap">
-                                <div style="padding:4px 10px;border-radius:8px;background:rgba(59,130,246,0.1);font-size:11px;color:var(--blue)">Payment API</div>
-                                <div style="padding:4px 10px;border-radius:8px;background:rgba(16,185,129,0.1);font-size:11px;color:var(--green)">Identity API</div>
-                                <div style="padding:4px 10px;border-radius:8px;background:rgba(99,102,241,0.1);font-size:11px;color:var(--purple)">Push API</div>
-                                <div style="padding:4px 10px;border-radius:8px;background:rgba(245,158,11,0.1);font-size:11px;color:var(--amber)">Storage API</div>
-                            </div>
-                            <div style="font-size:10px;color:var(--text-tertiary);margin-top:8px">12 apps published · 3.4K monthly users</div>
-                        </div>
-
 </html>

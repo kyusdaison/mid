@@ -3,379 +3,335 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MID - Secure National Access</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Cinzel:wght@600&display=swap" rel="stylesheet">
+    <title>MID - Secure Authentication Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #050505;
-            --accent-primary: #00ffcc; /* Cyan/Green futuristic */
-            --accent-glow: rgba(0, 255, 204, 0.4);
-            --text-main: #ffffff;
-            --text-dimmed: #8a9ba8;
-            --panel-bg: rgba(10, 15, 20, 0.7);
-            --panel-border: rgba(0, 255, 204, 0.2);
+            /* Premium dark palette from main site */
+            --black-deep: #050507;
+            --black: #0A0C10;
+            --black-elevated: #14161D;
+            
+            /* Blue accent — trust, reliability, innovation */
+            --blue: #4A8FE7;
+            --blue-light: #6BA3ED;
+            --blue-glow: rgba(74,143,231,0.15);
+            --blue-strong: rgba(74,143,231,0.3);
+
+            /* Text hierarchy */
+            --text-bright: #F4F5F7;
+            --text-primary: #D4D8E0;
+            --text-dim: #6B7280;
+
+            /* Surfaces */
+            --border: rgba(255,255,255,0.08);
+            --border-hover: rgba(74,143,231,0.4);
+            --glass: rgba(10,12,16,0.7);
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Space Grotesk', sans-serif;
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
+            background-color: var(--black-deep);
+            color: var(--text-primary);
+            font-family: 'Inter', -apple-system, sans-serif;
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
             overflow: hidden;
             position: relative;
         }
 
-        /* Matrix Canvas Background */
-        #matrixCanvas {
+        /* High-Tech Grid Background */
+        .tech-grid {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            opacity: 0.35; /* Keep it subtle so it doesn't overpower */
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: center center;
+            opacity: 0.15;
+            z-index: 0;
+            transform: perspective(500px) rotateX(60deg) translateY(-100px) scale(2);
+            animation: gridMove 20s linear infinite;
         }
 
-        /* Scanline Overlay for retro-futuristic CRT monitor effect */
-        .scanlines {
+        /* Center glowing orb */
+        .ambient-glow {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                to bottom,
-                rgba(255,255,255,0),
-                rgba(255,255,255,0) 50%,
-                rgba(0,0,0,0.1) 50%,
-                rgba(0,0,0,0.1)
-            );
-            background-size: 100% 4px;
-            z-index: 2;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px; height: 800px;
+            background: radial-gradient(circle, var(--blue-glow) 0%, transparent 60%);
+            z-index: 1;
             pointer-events: none;
         }
 
-        /* Main Login Panel */
-        .auth-panel {
-            position: relative;
-            z-index: 10;
-            background: var(--panel-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            padding: 3.5rem 3rem;
-            border-radius: 4px; /* Sharper corners for authoritative tech feel */
-            border: 1px solid var(--panel-border);
-            border-top: 2px solid var(--accent-primary);
+        @keyframes gridMove {
+            0% { transform: perspective(500px) rotateX(60deg) translateY(0) scale(2.5); }
+            100% { transform: perspective(500px) rotateX(60deg) translateY(50px) scale(2.5); }
+        }
+
+        /* Top Bar Gov Simulation */
+        .gov-topbar {
             width: 100%;
-            max-width: 460px;
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), 
-                        inset 0 0 20px rgba(0, 255, 204, 0.05);
-            transform: translateY(30px);
-            opacity: 0;
-            animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
-        }
-
-        /* Corner accents for the panel */
-        .auth-panel::before, .auth-panel::after {
-            content: '';
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            border: 1px solid var(--accent-primary);
-            transition: all 0.3s ease;
-        }
-        .auth-panel::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
-        .auth-panel::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
-
-        @keyframes slideUpFade {
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .header-section {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        /* Authoritative Crest/Logo Area */
-        .crest-icon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 1.5rem auto;
-            border: 1px solid var(--accent-primary);
-            border-radius: 50%;
+            background: var(--black);
+            border-bottom: 1px solid var(--border);
+            padding: 0.8rem 2rem;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 15px var(--accent-glow);
-            position: relative;
-        }
-        
-        .crest-icon::after {
-            content: '';
+            z-index: 20;
             position: absolute;
-            width: 80px;
-            height: 80px;
-            border: 1px dashed rgba(0, 255, 204, 0.3);
-            border-radius: 50%;
-            animation: spin 10s linear infinite;
+            top: 0;
         }
 
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-
-        .crest-icon svg {
-            width: 30px;
-            height: 30px;
-            fill: var(--accent-primary);
-        }
-
-        .system-title {
-            font-family: 'Cinzel', serif; /* Authoritative serif font for the title */
-            font-size: 1.8rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-            color: #fff;
-            text-shadow: 0 0 10px rgba(255,255,255,0.3);
-        }
-
-        .system-status {
-            color: var(--accent-primary);
-            font-size: 0.75rem;
+        .topbar-text {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            font-weight: 500;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .status-dot {
-            width: 6px;
-            height: 6px;
-            background-color: var(--accent-primary);
+            width: 6px; height: 6px;
+            background-color: var(--blue);
             border-radius: 50%;
-            animation: blink 1.5s infinite alternate;
+            box-shadow: 0 0 8px var(--blue);
+            animation: pulse 2s infinite;
         }
 
-        @keyframes blink { 0% { opacity: 0.3; box-shadow: none; } 100% { opacity: 1; box-shadow: 0 0 8px var(--accent-primary); } }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        /* Main Login Panel */
+        .login-wrapper {
+            position: relative;
+            z-index: 10;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 2rem;
+        }
+
+        .auth-panel {
+            background: var(--glass);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            padding: 4rem 3.5rem;
+            border-radius: 1px; /* Sharp edges for authoritative tech */
+            border: 1px solid var(--border);
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 
+                        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            position: relative;
+            animation: panelEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* High-tech corner cutouts */
+        .auth-panel::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--blue), transparent);
+        }
+
+        @keyframes panelEntrance {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .brand-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .gold-line {
+            width: 40px;
+            height: 2px;
+            background: var(--blue);
+            margin: 0 auto 1.5rem auto;
+            box-shadow: 0 0 10px var(--blue-glow);
+        }
+
+        .system-title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            color: var(--text-bright);
+            margin-bottom: 0.5rem;
+        }
+
+        .system-subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--blue);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
 
         .input-group {
-            margin-bottom: 1.8rem;
-            position: relative;
+            margin-bottom: 2rem;
         }
 
         .input-label {
+            font-family: 'IBM Plex Mono', monospace;
             display: flex;
             justify-content: space-between;
-            color: var(--text-dimmed);
-            font-size: 0.75rem;
-            margin-bottom: 0.5rem;
+            color: var(--text-dim);
+            font-size: 0.7rem;
+            margin-bottom: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 0.1em;
         }
 
         .input-field {
             width: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--accent-primary);
-            padding: 1rem;
+            background: var(--black-deep);
+            border: 1px solid var(--border);
+            color: var(--text-bright);
+            padding: 1.2rem;
             font-size: 1rem;
-            font-family: monospace; /* Monospace for tech feel */
-            letter-spacing: 1px;
+            font-family: 'IBM Plex Mono', monospace;
+            border-radius: 2px;
             transition: all 0.3s ease;
             outline: none;
         }
 
         .input-field:focus {
-            border-color: var(--accent-primary);
-            background: rgba(0, 255, 204, 0.03);
-            box-shadow: 0 0 15px rgba(0, 255, 204, 0.1) inset;
+            border-color: var(--blue);
+            background: var(--black-elevated);
+            box-shadow: 0 0 0 3px var(--blue-glow);
         }
-        
+
         .input-field::placeholder {
-            color: rgba(255, 255, 255, 0.2);
+            color: #333945;
         }
 
         .auth-btn {
             width: 100%;
-            background: transparent;
-            color: var(--accent-primary);
-            border: 1px solid var(--accent-primary);
-            padding: 1.2rem;
-            font-size: 0.9rem;
+            background: var(--text-bright);
+            color: var(--black-deep);
+            border: none;
+            padding: 1.25rem;
+            font-size: 0.85rem;
             font-weight: 600;
+            font-family: 'IBM Plex Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
+            margin-top: 1.5rem;
+            border-radius: 2px;
             position: relative;
             overflow: hidden;
         }
 
-        .auth-btn::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 204, 0.2), transparent);
-            transition: all 0.4s ease;
-        }
-
         .auth-btn:hover {
-            background: rgba(0, 255, 204, 0.1);
-            box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
-        }
-        
-        .auth-btn:hover::before {
-            left: 100%;
+            background: var(--blue);
+            color: #fff;
+            box-shadow: 0 10px 20px var(--blue-glow);
+            transform: translateY(-1px);
         }
 
         .auth-btn:active {
-            transform: scale(0.98);
+            transform: translateY(1px);
         }
 
         .system-msg {
-            color: #ff3333;
-            font-size: 0.8rem;
+            color: #ff4757;
+            font-size: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace;
             text-align: center;
             margin-top: 1.5rem;
-            font-family: monospace;
             opacity: 0;
             transition: opacity 0.3s;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.05em;
         }
 
         .system-msg.show {
             opacity: 1;
         }
 
-        .encryption-tag {
+        .decoration-line {
             position: absolute;
-            bottom: -30px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            color: rgba(255,255,255,0.2);
-            font-size: 0.65rem;
-            font-family: monospace;
-            letter-spacing: 1px;
+            bottom: -1px; left: 50%;
+            transform: translateX(-50%);
+            width: 60%; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
         }
     </style>
 </head>
 <body>
-    <!-- Background Effects -->
-    <canvas id="matrixCanvas"></canvas>
-    <div class="scanlines"></div>
+    
+    <!-- Top Bar -->
+    <div class="gov-topbar">
+        <div class="topbar-text">
+            <div class="status-dot"></div>
+            Montserrat Sovereign Network
+        </div>
+        <div class="topbar-text" style="color: var(--blue)">
+            ENCRYPTED CONNECTION
+        </div>
+    </div>
+
+    <!-- Background Tech Effects -->
+    <div class="tech-grid"></div>
+    <div class="ambient-glow"></div>
     
     <!-- Main Auth Panel -->
-    <div class="auth-panel" id="authPanel">
-        <div class="header-section">
-            <div class="crest-icon">
-                <!-- SVG Shield/Crest icon -->
-                <svg viewBox="0 0 24 24">
-                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
-                </svg>
-            </div>
-            <h1 class="system-title">MID SECURE CORE</h1>
-            <div class="system-status">
-                <div class="status-dot"></div>
-                RESTRICTED CLEARANCE REQUIRED
-            </div>
-        </div>
-
-        <form id="loginForm" onsubmit="handleAuth(event)">
-            <div class="input-group">
-                <div class="input-label">
-                    <span>Identity Hash</span>
-                    <span style="color: rgba(255,255,255,0.2)">[USR_REQ]</span>
-                </div>
-                <input type="text" id="username" class="input-field" placeholder="ID-XXXXXXXX" autocomplete="off" required>
-            </div>
+    <div class="login-wrapper">
+        <div class="auth-panel" id="authPanel">
+            <div class="decoration-line"></div>
             
-            <div class="input-group">
-                <div class="input-label">
-                    <span>Cryptographic Key</span>
-                    <span style="color: rgba(255,255,255,0.2)">[KEY_REQ]</span>
-                </div>
-                <input type="password" id="password" class="input-field" placeholder="••••••••••••" required>
+            <div class="brand-header">
+                <div class="gold-line"></div>
+                <h1 class="system-title">Identity Verification</h1>
+                <div class="system-subtitle">Restricted Access Array</div>
             </div>
 
-            <button type="submit" class="auth-btn" id="submitBtn">Initialize Protocol</button>
-            <div id="errorMsg" class="system-msg">ERR_403: ACCESS DENIED. UNAUTHORIZED ENTITY.</div>
-        </form>
-        
-        <div class="encryption-tag">AES-256-GCM ENCRYPTED CONNECTION</div>
+            <form id="loginForm" onsubmit="handleAuth(event)">
+                <div class="input-group">
+                    <div class="input-label">
+                        <span>Credentials</span>
+                        <span>[REQ]</span>
+                    </div>
+                    <input type="text" id="username" class="input-field" placeholder="Admin ID" autocomplete="off" required>
+                </div>
+                
+                <div class="input-group">
+                    <div class="input-label">
+                        <span>Passcode</span>
+                        <span>[REQ]</span>
+                    </div>
+                    <input type="password" id="password" class="input-field" placeholder="••••••••" required>
+                </div>
+
+                <button type="submit" class="auth-btn" id="submitBtn">Authenticate</button>
+                <div id="errorMsg" class="system-msg">Authentication Failed. Invalid Credentials.</div>
+            </form>
+        </div>
     </div>
 
     <script>
-        // --- MATRIX RAIN EFFECT ---
-        const canvas = document.getElementById('matrixCanvas');
-        const ctx = canvas.getContext('2d');
-
-        // Resize canvas to full screen
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        // Characters to use in the rain (Hex, Katakana, Binary)
-        const chars = '01 ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ 日ﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍ';
-        const charArray = chars.split('');
-        
-        const fontSize = 14;
-        const columns = canvas.width / fontSize;
-        const drops = [];
-
-        // Initialize drop positions (random starting heights)
-        for (let x = 0; x < columns; x++) {
-            drops[x] = Math.random() * -100; 
-        }
-
-        function drawMatrix() {
-            // Black background with extreme opacity to create trailing effect
-            ctx.fillStyle = 'rgba(5, 5, 5, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            ctx.fillStyle = '#00ffcc'; // Cyber cyan/green text
-            ctx.font = fontSize + 'px monospace';
-
-            for (let i = 0; i < drops.length; i++) {
-                // Random character
-                const text = charArray[Math.floor(Math.random() * charArray.length)];
-                
-                // Draw the character
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-                // Reset drop to top randomly if it goes off screen
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                
-                // Move drop down
-                drops[i]++;
-            }
-        }
-        
-        // Run animation
-        setInterval(drawMatrix, 33);
-
-        // --- AUTHENTICATION LOGIC ---
         function handleAuth(e) {
             e.preventDefault();
             const user = document.getElementById('username').value;
@@ -390,52 +346,50 @@
             if (user === validUser && pass === validPass) {
                 // Success Sequence
                 errorElement.classList.remove('show');
-                submitBtn.style.backgroundColor = 'rgba(0, 255, 204, 0.2)';
+                submitBtn.style.backgroundColor = 'var(--blue)';
                 submitBtn.style.color = '#fff';
-                submitBtn.innerHTML = "DECRYPTING... ACCESS GRANTED";
+                submitBtn.innerHTML = "VERIFYING...";
                 
-                // Glitch out the panel before redirecting
+                // Subtle slide out
                 setTimeout(() => {
-                    panel.style.transform = 'scale(1.05)';
-                    panel.style.filter = 'blur(2px) hue-rotate(90deg)';
+                    panel.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
                     panel.style.opacity = '0';
+                    panel.style.transform = 'translateY(-20px) scale(0.98)';
                     
                     setTimeout(() => {
                         window.location.href = "montserrat-digital-residency.html";
-                    }, 400);
-                }, 800);
+                    }, 600);
+                }, 600);
 
             } else {
                 // Error Sequence
                 errorElement.classList.add('show');
                 
-                // Authoritative Hacker Shake
+                // Premium Shake Effect
                 panel.style.animation = 'none';
                 panel.offsetHeight; /* trigger reflow */
-                panel.style.animation = 'glitchShake 0.3s cubic-bezier(.36,.07,.19,.97) both';
+                panel.style.animation = 'shake 0.4s cubic-bezier(.36,.07,.19,.97) both';
                 
-                // Clear inputs on failure for security feel
                 setTimeout(() => {
                     document.getElementById('password').value = '';
-                }, 300);
+                }, 400);
             }
         }
 
-        // Add Glitch Shake CSS
+        // Add Shake CSS
         const style = document.createElement('style');
         style.textContent = `
-            @keyframes glitchShake {
-                0% { transform: translate(0) }
-                20% { transform: translate(-15px, 5px) }
-                40% { transform: translate(15px, -5px) }
-                60% { transform: translate(-10px, 2px) }
-                80% { transform: translate(10px, -2px) }
-                100% { transform: translate(0) }
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                20% { transform: translateX(-8px); }
+                40% { transform: translateX(8px); }
+                60% { transform: translateX(-4px); }
+                80% { transform: translateX(4px); }
             }
         `;
         document.head.appendChild(style);
 
-        // Focus text effect
+        // Immediate focus
         document.getElementById('username').focus();
     </script>
 </body>

@@ -1,0 +1,2125 @@
+
+======================================================================
+🚀 MID WALLET - CREWAI V3 特工团队启动
+======================================================================
+配置：14 Agent + 分层流程 + 人类反馈
+战略层：GPT-5.4 × 5 Agent
+工程层：Gemini 3.1 Pro × 6 Agent
+管理层：GPT-5.4 × 1 Agent（项目经理）
+任务：verify_screen
+======================================================================
+
+╭───────────────────────── 🚀 Crew Execution Started ──────────────────────────╮
+│                                                                              │
+│  Crew Execution Started                                                      │
+│  Name: crew                                                                  │
+│  ID: fde97808-f02d-42f7-a245-d15ddb23bf92                                    │
+│                                                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭────────────────────────────── 📋 Task Started ───────────────────────────────╮
+│                                                                              │
+│  Task Started                                                                │
+│  Name: 阅读 ../MID-Wallet-V1-Design-Requirements.md，定义 VerifyScreen       │
+│  升级的精确需求：                                                            │
+│  - 扫描有效 fcid:// 二维码后应显示什么                                       │
+│  - 必须显示哪些凭证字段                                                      │
+│  - 失败状态应该是什么样子                                                    │
+│  - 合规要求（选择性披露）                                                    │
+│                                                                              │
+│  输出：给工程团队的清晰规格说明书（1页）。                                   │
+│  ID: 7c3f4b32-7ff9-4d2b-a6ff-6a088fbf65ca                                    │
+│                                                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭──────────────────────────── 🧠 Memory Retrieval ─────────────────────────────╮
+│                                                                              │
+│  Memory Retrieval Started                                                    │
+│  Status: Retrieving...                                                       │
+│                                                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭──────────────────────────── 🧠 Memory Retrieved ─────────────────────────────╮
+│                                                                              │
+│  Memory Retrieval Completed                                                  │
+│  Time: 1406.52ms                                                             │
+│  Content:                                                                    │
+│  Relevant memories:                                                          │
+│  - (score=0.85) The goal of the VerifyScreen upgrade is to restructure the   │
+│  current single file for QR scanning, parsing, validation, credential        │
+│  display, selective disclosure, and failure handling into a modular system   │
+│  that does not include business logic, ensuring a clearer separation of      │
+│  responsibilities.                                                           │
+│    categories: system upgrade, upgrades, technology, verification,           │
+│  credential verification, selective disclosure, user experience, UI Design   │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['modular system', 'QR scanning', 'parsing', 'validation',        │
+│  'credential display', 'failure handling']                                   │
+│  - (score=0.85) The VerifyScreen upgrade requires users to scan a valid      │
+│  'fcid://' QR code to enter a preview state for credential verification      │
+│  without sending any identity data immediately.                              │
+│    categories: credential verification, system upgrade, verification, QR     │
+│  codes                                                                       │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['credential verification', 'QR codes', 'system upgrade']         │
+│  - (score=0.83) VerifyScreen is defined as a credential verification page    │
+│  that prioritizes identity, trust, understandability, and supports           │
+│  selective disclosure.                                                       │
+│    categories: credential verification, identity, trust, understandability,  │
+│  selective disclosure                                                        │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['credential verification', 'identity', 'trust', 'user            │
+│  experience']                                                                │
+│  - (score=0.83) VerifyScreen design has been conditionally approved based    │
+│  on its compliance with selective disclosure principles following the        │
+│  compliance review. The compliance review of the VerifyScreen credential     │
+│  display design concluded with conditional approval.                         │
+│    categories: design principles, UI Design, selective disclosure, data      │
+│  privacy, user experience, verification                                      │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['VerifyScreen', 'design approval', 'selective disclosure         │
+│  principles', 'compliance']                                                  │
+│  - (score=0.83) The VerifyScreen design requires the user to confirm before  │
+│  any identity data is shared, indicating which fields will be shared with a  │
+│  specific message.                                                           │
+│    categories: user experience, design principles, data privacy, privacy,    │
+│  identity, selective disclosure                                              │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['identity data', 'user confirmation', 'data sharing']            │
+│                                                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭────────────────────────────── 🤖 Agent Started ──────────────────────────────╮
+│                                                                              │
+│  Agent: 项目经理                                                             │
+│                                                                              │
+│  Task: 阅读 ../MID-Wallet-V1-Design-Requirements.md，定义 VerifyScreen       │
+│  升级的精确需求：                                                            │
+│  - 扫描有效 fcid:// 二维码后应显示什么                                       │
+│  - 必须显示哪些凭证字段                                                      │
+│  - 失败状态应该是什么样子                                                    │
+│  - 合规要求（选择性披露）                                                    │
+│                                                                              │
+│  输出：给工程团队的清晰规格说明书（1页）。                                   │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─────────────────────── 🔧 Tool Execution Started (#1) ───────────────────────╮
+│                                                                              │
+│  Tool: read_a_files_content                                                  │
+│  Args: {'file_path': '../MID-Wallet-V1-Design-Requirements.md',              │
+│  'start_line': 1, 'line_count': 400}                                         │
+│                                                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─────────────────────── 🔧 Tool Execution Started (#1) ───────────────────────╮
+│                                                                              │
+│  Tool: search_memory                                                         │
+│  Args: {'queries': ['VerifyScreen 升级 需求 凭证 展示 选择性披露 合规        │
+│  失败状态', 'VerifyScreen credential display selective disclosure            │
+│  compliance failure state', 'fcid:// QR VerifyScreen preview no immediate    │
+│  data sharing requi...                                                       │
+│                                                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─────────────────────── 🔧 Tool Execution Started (#1) ───────────────────────╮
+│                                                                              │
+│  Tool: delegate_work_to_coworker                                             │
+│  Args: {'task': '审阅 VerifyScreen                                           │
+│  升级相关的产品与合规需求，提炼用户在扫描有效 fcid://                        │
+│  二维码后应看到的内容、必须展示的凭证字段、失败状态设计要点，以及选择性披露  │
+│  合规要求，并给出适合工程团队执行的规格要点。', 'context':                   │
+│  '当前任务是为工程团队输出一页的清晰规格说明书，主题是 VerifyScreen          │
+│  升级。已知背景：VerifyScreen 是凭证验证页，强...                            │
+│                                                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭────────────────────── ✅ Tool Execution Completed (#1) ──────────────────────╮
+│                                                                              │
+│  Tool Completed                                                              │
+│  Tool: read_a_files_content                                                  │
+│  Output: # MID Wallet V1 设计需求文档                                        │
+│                                                                              │
+│  ## 文档状态                                                                 │
+│  - 版本：V1.0 Draft                                                          │
+│  - 日期：2026-03-17                                                          │
+│  - 用途：用于统一 MID Wallet 第一版的产品定位、设计边界、页面结构与验收标准  │
+│                                                                              │
+│  ## 来源依据                                                                 │
+│  本文件基于当前项目中的以下材料整理而成：                                    │
+│  - `mid-wallet.html`                                                         │
+│  - `mid-wallet-app/`                                                         │
+│  - `montserrat-digital-residency.html`                                       │
+│  - `MID-Wallet-Upgrade-Roadmap.md`                                           │
+│                                                                              │
+│  本文件是设计需求文档，不是技术实现文档。                                    │
+│                                                                              │
+│  ## 1. 产品定义                                                              │
+│  MID Wallet V1 不是一个普通的加密钱包，也不是一个超级应用入口。              │
+│                                                                              │
+│  它的正确定位应当是：                                                        │
+│                                                                              │
+│  `一个服务于 Montserrat Digital Residency 的主权身份优先钱包。`              │
+│                                                                              │
+│  也就是说，钱包的第一职责不是交易，不是理财，不是功能堆叠，而是：            │
+│                                                                              │
+│  1. 持有身份                                                                 │
+│  2. 解锁身份                                                                 │
+│  3. 展示身份                                                                 │
+│  4. 使用身份                                                                 │
+│  5. 在身份之上承载基础资产能力                                               │
+│                                                                              │
+│  ## 2. V1 核心目标                                                           │
+│  第一版必须清楚证明以下四件事：                                              │
+│                                                                              │
+│  1. 用户拥有一个可信的政府支持数字身份。                                     │
+│  2. 这个身份可以在钱包中被安全解锁。                                         │
+│  3. 这个身份可以被出示、验证或调用。                                         │
+│  4. 钱包可以承载基础资产信息，但不会掩盖“身份优先”的产品定位。               │
+│                                                                              │
+│  ## 3. V1 设计总原则                                                         │
+│  所有 V1 设计决策都应遵循以下原则：                                          │
+│                                                                              │
+│  1. 身份优先，资产第二。                                                     │
+│  2. 信任优先，炫技第二。                                                     │
+│  3. 证据优先，口号第二。                                                     │
+│  4. 少而稳，强于多而散。                                                     │
+│  5. 政府级可信感，优先于 crypto 圈层感。                                     │
+│                                                                              │
+│  ## 4. 核心用户                                                              │
+│  V1 主要服务三类认知场景：                                                   │
+│                                                                              │
+│  1. 数字居民本人：需要在钱包中查看和使用自己的数字身份。                     │
+│  2. 验证对象或机构：需要看到一个可信、清晰、可操作的验证流程。               │
+│  3. 外部观察者或合作方：需要快速判断这个产品是否真实、严肃、可落地。         │
+│                                                                              │
+│  ## 5. V1 核心体验主线                                                       │
+│  第一版的钱包体验应围绕以下主线展开：                                        │
+│                                                                              │
+│  1. 用户打开钱包。                                                           │
+│  2. 用户先看到身份处于受保护状态。                                           │
+│  3. 用户通过生物识别或设备验证解锁身份。                                     │
+│  4. 用户首先看到数字身份卡。                                                 │
+│  5. 用户随后看到钱包总览与基础资产。                                         │
+│  6. 用户进入验证流程，出示或验证某项凭证。                                   │
+│                                                                              │
+│  如果某个页面或功能无法服务这条主线，就不应进入 V1 核心设计。                │
+│                                                                              │
+│  ## 6. V1 范围定义                                                           │
+│                                                                              │
+│  ### V1 必须包含                                                             │
+│  1. 锁定态入口页                                                             │
+│  2. 身份解锁流程                                                             │
+│  3. 数字身份卡                                                               │
+│  4. 钱包首页                                                                 │
+│  5. 核心操作区                                                               │
+│  6. 基础资产列表                                                             │
+│  7. 验证中心                                                                 │
+│  8. 基础历史记录页                                                           │
+│                                                                              │
+│  ### V1 明确不做                                                             │
+│  1. 社交流                                                                   │
+│  2. AI 代理                                                                  │
+│  3. 复杂 DeFi                                                                │
+│  4. 群体储蓄                                                                 │
+│  5. 继承规划                                                                 │
+│  6. 碳足迹                                                                   │
+│  7. 迷你应用生态                                                             │
+│  8. 超级应用式入口墙                                                         │
+│  9. 过重的金融分析面板                                                       │
+│                                                                              │
+│  这些内容可以保留在路线图中，但不能影响第一版设计判断。                      │
+│                                                                              │
+│  ## 7. 信息架构要求                                                          │
+│                                                                              │
+│  ### 钱包首页推荐结构                                                        │
+│  首页层级建议固定为：                                                        │
+│                                                                              │
+│  1. 身份锁定或解锁状态                                                       │
+│  2. 数字身份卡                                                               │
+│  3. 钱包总览卡                                                               │
+│  4. 核心操作按钮                                                             │
+│  5. 资产列表                                                                 │
+│  6. 最近活动预览（可选）                                                     │
+│                                                                              │
+│  首页不能变成功能超市，不能把注意力从身份核心上移走。                        │
+│                                                                              │
+│  ### 推荐一级导航                                                            │
+│  V1 一级导航建议围绕以下四个主面展开：                                       │
+│                                                                              │
+│  1. Home                                                                     │
+│  2. Verify                                                                   │
+│  3. History                                                                  │
+│  4. Settings                                                                 │
+│                                                                              │
+│  如果再加太多主入口，V1 的主线会被打散。                                     │
+│                                                                              │
+│  ## 8. 模块设计要求                                                          │
+│                                                                              │
+│  ### 8.1 锁定态入口页                                                        │
+│  这是用户进入钱包后的第一印象。                                              │
+│                                                                              │
+│  设计要求：                                                                  │
+│  - 必须传达“身份受到保护”，而不是“应用加载失败”。                            │
+│  - 必须明确说明进入钱包前需要身份验证。                                      │
+│  - 页面只能有一个主要动作，不应分散选择。                                    │
+│  - 气质要稳重、克制、有控制感。                                              │
+│                                                                              │
+│  用户看到这一页时，应该产生的判断是：                                        │
+│                                                                              │
+│  `这个钱包在保护我的身份访问权。`                                            │
+│                                                                              │
+│  而不是：                                                                    │
+│                                                                              │
+│  `这个应用还没准备好。`                                                      │
+│                                                                              │
+│  ### 8.2 身份解锁流程                                                        │
+│  身份解锁不是普通登录动作，而是产品的核心仪式。                              │
+│                                                                              │
+│  设计要求：                                                                  │
+│  - 优先支持生物识别。                                                        │
+│  - 必须有清晰的“验证中”状态。                                                │
+│  - 成功后应自然过渡到身份卡页面。                                            │
+│  - 失败状态必须清晰、克制、不惊慌。                                          │
+│  - 整个流程应更像“身份证明被激活”，而不是“进入 App”。                        │
+│                                                                              │
+│  ### 8.3 数字身份卡                                                          │
+│  这是 V1 最重要的视觉对象。                                                  │
+│                                                                              │
+│  卡片必须明确承载以下信息：                                                  │
+│  - 签发主体                                                                  │
+│  - 身份类型                                                                  │
+│  - 持有人                                                                    │
+│  - 身份编号或 Residency 编号                                                 │
+│  - 有效期                                                                    │
+│  - 当前验证或注册状态                                                        │
+│                                                                              │
+│  卡片设计要求：                                                              │
+│  - 必须像主权凭证，不能像会员卡或普通银行卡。                                │
+│  - 信息清晰度高于装饰效果。                                                  │
+│  - 动效只能是辅助，不能喧宾夺主。                                            │
+│  - 即使截成静态图，也必须具备可信度。                                        │
+│  - 字体、层级、留白要体现证件系统感，而不是营销感。                          │
+│                                                                              │
+│  建议：                                                                      │
+│  V1 卡面采用更克制、更机构化的方向作为唯一母版，不继续分裂多套审美路线。     │
+│                                                                              │
+│  ### 8.4 钱包总览卡                                                          │
+│  钱包总览卡是辅助身份卡的，不应反客为主。                                    │
+│                                                                              │
+│  设计要求：                                                                  │
+│  - 清晰展示总资产或核心余额。                                                │
+│  - 视觉重要性低于身份卡。                                                    │
+│  - 风格上必须属于同一套“可信系统”，不能变成消费金融广告牌。                  │
+│  - 不要做成强烈的信用卡隐喻，除非有明确产品目的。                            │
+│                                                                              │
+│  钱包总览的作用是支持“身份钱包”概念，不是把产品重新定义为交易钱包。          │
+│                                                                              │
+│  ### 8.5 核心操作区                                                          │
+│  V1 只保留最必要的三项动作：                                                 │
+│                                                                              │
+│  1. Receive                                                                  │
+│  2. Send                                                                     │
+│  3. Verify / Scan                                                            │
+│                                                                              │
+│  设计要求：                                                                  │
+│  - 名称必须直接、易懂。                                                      │
+│  - 图标必须简洁、制度化。                                                    │
+│  - 点击反馈必须明确。                                                        │
+│  - 不能在这一层塞入探索性功能和未来功能。                                    │
+│                                                                              │
+│  ### 8.6 资产列表                                                            │
+│  资产列表的目标是证明钱包具备基础承载能力，而不是做交易终端。                │
+│                                                                              │
+│  设计要求：                                                                  │
+│  - 仅展示有限数量的核心资产。                                                │
+│  - 优先保证清晰、稳定、低噪音。                                              │
+│  - 数值格式、涨跌、币种标识必须统一。                                        │
+│  - 不需要堆叠过多行情信息。                                                  │
+│                                                                              │
+│  资产列表要回答的问题是：                                                    │
+│                                                                              │
+│  `我持有什么？`                                                              │
+│                                                                              │
+│  而不是：                                                                    │
+│                                                                              │
+│  `我现在该怎么高频交易？`                                                    │
+│                                                                              │
+│  ### 8.7 验证中心                                                            │
+│  验证中心是 V1 最重要的产品证明页面之一。                                    │
+│                                                                              │
+│  设计要求：                                                                  │
+│  - 必须显示可用凭证。                                                        │
+│  - 至少支持一种主验证方式和一种备用方式。                                    │
+│  - 选择性披露必须作为核心能力出现。                                          │
+│  - 验证过程必须让非技术用户也能理解。                                        │
+│  - 页面应体现“可实际使用”，而不是“概念展示”。                                │
+│                                                                              │
+│  这是 MID Wallet 从“好看原型”走向“真实身份产品”的关键页面。                  │
+│                                                                              │
+│  ### 8.8 历史记录页                                                          │
+│  历史记录在 V1 中可以基础化处理，但不能缺少状态清晰度。                      │
+│                                                                              │
+│  设计要求：                                                                  │
+│  - 展示近期记录或动作日志。                                                  │
+│  - 尽可能区分身份相关事件与资产相关事件。                                    │
+│  - 强调状态：confirmed、pending、locked、failed、expired。                   │
+│                                                                              │
+│  它的作用是增强可追溯性与可信度，而不是增强交易分析能力。                    │
+│                                                                              │
+│  ## 9. 视觉语言要求                                                          │
+│                                                                              │
+│  ### 整体气质                                                                │
+│  钱包整体应当让人感受到：                                                    │
+│  - 主权感                                                                    │
+│  - 控制感                                                                    │
+│  - 精密感                                                                    │
+│  - 隐私感                                                                    │
+│  - 现代感                                                                    │
+│                                                                              │
+│  不应让人感受到：                                                            │
+│  - 投机感                                                                    │
+│  - 噪音感                                                                    │
+│  - 过度游戏化                                                                │
+│  - 为未来感而未来感                                                          │
+│                                                                              │
+│  ### 颜色                                                                    │
+│  - 延续深色中性底和克制的冷蓝强调色。                                        │
+│  - 绿色只用于 verified、active 等积极状态。                                  │
+│  - 强调色要有系统意义，不能只是装饰。                                        │
+│                                                                              │
+│  ### 字体                                                                    │
+│  - 要兼具机构严肃性和数字系统精度。                                          │
+│  - 标签和字段信息应带有正式、结构化气质。                                    │
+│  - 大标题和展示型字体应节制使用。                                            │
+│  - 证件字段始终比营销语更重要。                                              │
+│                                                                              │
+│  ### 布局                                                                    │
+│  - 层级必须非常强。                                                          │
+│  - 留白要服务可信感与阅读速度。                                              │
+│  - 卡片布局应支持用户在数秒内完成识别。                                      │
+│                                                                              │
+│  ## 10. 动效要求                                                             │
+│  动效必须服务理解，不能沦为表演。                                            │
+│                                                                              │
+│  设计要求：                                                                  │
+│  - 过渡短、稳、低噪音                                                        │
+│  - 每个动作都有明确的起止状态                                                │
+│  - 在安全动作上提供适度仪式感                                                │
+│  - 不允许常驻动态削弱阅读信心                                                │
+│                                                                              │
+│  动效适合用于：                                                              │
+│  - 解锁成功                                                                  │
+│  - 验证处理中                                                                │
+│  - 页面切换                                                                  │
+│  - 轻量环境氛围                                                              │
+│                                                                              │
+│  动效不应用来掩盖信息结构不清或内容不足。                                    │
+│                                                                              │
+│  ## 11. 文案要求                                                             │
+│  V1 文案必须遵循以下规则：                                                   │
+│                                                                              │
+│  1. 简短                                                                     │
+│  2. 稳重                                                                     │
+│  3. 官方                                                                     │
+│  4. 围绕状态与动作                                                           │
+│  5. 少形容，多事实                                                           │
+│                                                                              │
+│  推荐使用的语言类型：                                                        │
+│  - Verified                                                                  │
+│  - Active                                                                    │
+│  - Issued                                                                    │
+│  - Expires                                                                   │
+│  - Credential                                                                │
+│  - Registry                                                                  │
+│  - Proof                                                                     │
+│  - Secure                                                                    │
+│                                                                              │
+│  尽量少在产品界面里使用以下表达：                                            │
+│  - Revolutionary                                                             │
+│  - Premium                                                                   │
+│  - Borderless                                                                │
+│  - Next-generation                                                           │
+│  - Futuristic                                                                │
+│                                                                              │
+│  这些词可以用于外部宣传，但不应主导产品 UI。                                 │
+│                                                                              │
+│  ## 12. 必须覆盖的状态                                                       │
+│  V1 设计必须完整覆盖以下状态：                                               │
+│                                                                              │
+│  1. 身份未注册                                                               │
+│  2. 身份已注册但未解锁                                                       │
+│  3. 验证中                                                                   │
+│  4. 验证成功                                                                 │
+│  5. 验证失败                                                                 │
+│  6. 无资产                                                                   │
+│  7. 有资产                                                                   │
+│  8. 网络不稳定或离线                                                         │
+│  9. 凭证过期                                                                 │
+│  10. 凭证有效                                                                │
+│  11. 交易待处理                                                              │
+│  12. 交易受限或锁定                                                          │
+│                                                                              │
+│  如果这些状态没有被系统化设计，第一版再精美也会显得不完整。                  │
+│                                                                              │
+│  ## 13. V1 设计边界                                                          │
+│  为了保护第一版清晰度，必须避免以下偏差：                                    │
+│                                                                              │
+│  1. 把首页做成交易所                                                         │
+│  2. 把钱包总览做得比身份卡更强势                                             │
+│  3. 把动画错当成产品成熟度                                                   │
+│  4. 在主闭环未成立前增加过多概念页面                                         │
+│  5. 用路线图野心干扰第一版首次体验                                           │
+│                                                                              │
+│  ## 14. V1 验收标准                                                          │
+│  如果一个首次接触项目的人能在 3 分钟内理解以下四件事，说明 V1                │
+│  设计方向是对的：                                                            │
+│                                                                              │
+│  1. 这是一个政府支持的身份钱包。                                             │
+│  2. 身份是产品中的第一对象，不是余额。                                       │
+│  3. 钱包可以安全地解锁并验证该身份。                                         │
+│  4. 钱包具备基础资产能力，但不会盖过身份叙事。                               │
+│                                                                              │
+│  ## 15. 最终设计方向结论                                                     │
+│  MID Wallet V1 的设计方向应当被统一为：                                      │
+│                                                                              │
+│  `一个克制的、主权化的、身份优先的钱包产品。`                                │
+│                                                                              │
+│  它必须同时满足两件事：                                                      │
+│                                                                              │
+│  1. 放在政府数字身份语境里看，足够可信。                                     │
+│  2. 放在现代数字产品语境里看，足够好用。                                     │
+│                                                                              │
+│  如果某个设计决策让钱包更像投机型交易产品、科幻概念界面、或超级应用外壳，那  │
+│  么它就不适合 V1。                                                           │
+│                                                                              │
+│                                                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭──────────────────────────── 🧠 Memory Retrieval ─────────────────────────────╮
+│                                                                              │
+│  Memory Retrieval Started                                                    │
+│  Status: Retrieving...                                                       │
+│                                                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭──────────────────────────── 🧠 Memory Retrieved ─────────────────────────────╮
+│                                                                              │
+│  Memory Retrieval Completed                                                  │
+│  Time: 1483.90ms                                                             │
+│  Content:                                                                    │
+│  Relevant memories:                                                          │
+│  - (score=0.86) The VerifyScreen upgrade requires users to scan a valid      │
+│  'fcid://' QR code to enter a preview state for credential verification      │
+│  without sending any identity data immediately.                              │
+│    categories: credential verification, system upgrade, verification, QR     │
+│  codes                                                                       │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['credential verification', 'QR codes', 'system upgrade']         │
+│  - (score=0.86) The goal of the VerifyScreen upgrade is to restructure the   │
+│  current single file for QR scanning, parsing, validation, credential        │
+│  display, selective disclosure, and failure handling into a modular system   │
+│  that does not include business logic, ensuring a clearer separation of      │
+│  responsibilities.                                                           │
+│    categories: system upgrade, upgrades, technology, verification,           │
+│  credential verification, selective disclosure, user experience, UI Design   │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['modular system', 'QR scanning', 'parsing', 'validation',        │
+│  'credential display', 'failure handling']                                   │
+│  - (score=0.85) VerifyScreen is defined as a credential verification page    │
+│  that prioritizes identity, trust, understandability, and supports           │
+│  selective disclosure.                                                       │
+│    categories: credential verification, identity, trust, understandability,  │
+│  selective disclosure                                                        │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['credential verification', 'identity', 'trust', 'user            │
+│  experience']                                                                │
+│  - (score=0.85) VerifyScreen design has been conditionally approved based    │
+│  on its compliance with selective disclosure principles following the        │
+│  compliance review. The compliance review of the VerifyScreen credential     │
+│  display design concluded with conditional approval.                         │
+│    categories: design principles, UI Design, selective disclosure, data      │
+│  privacy, user experience, verification                                      │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['VerifyScreen', 'design approval', 'selective disclosure         │
+│  principles', 'compliance']                                                  │
+│  - (score=0.84) The VerifyScreen design requires the user to confirm before  │
+│  any identity data is shared, indicating which fields will be shared with a  │
+│  specific message.                                                           │
+│    categories: user experience, design principles, data privacy, privacy,    │
+│  identity, selective disclosure                                              │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['identity data', 'user confirmation', 'data sharing']            │
+│                                                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭────────────────────────────── 🤖 Agent Started ──────────────────────────────╮
+│                                                                              │
+│  Agent: 首席产品官 (CPO)                                                     │
+│                                                                              │
+│  Task: 审阅 VerifyScreen 升级相关的产品与合规需求，提炼用户在扫描有效        │
+│  fcid://                                                                     │
+│  二维码后应看到的内容、必须展示的凭证字段、失败状态设计要点，以及选择性披露  │
+│  合规要求，并给出适合工程团队执行的规格要点。                                │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭────────────────────── ✅ Tool Execution Completed (#1) ──────────────────────╮
+│                                                                              │
+│  Tool Completed                                                              │
+│  Tool: search_memory                                                         │
+│  Output: Found memories:                                                     │
+│  - (score=0.85) VerifyScreen is defined as a credential verification page    │
+│  that prioritizes identity, trust, understandability, and supports           │
+│  selective disclosure.                                                       │
+│    categories: credential verification, identity, trust, understandability,  │
+│  selective disclosure                                                        │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['credential verification', 'identity', 'trust', 'user            │
+│  experience']                                                                │
+│  - (score=0.84) The goal of the VerifyScreen upgrade is to restructure the   │
+│  current single file for QR scanning, parsing, validation, credential        │
+│  display, selective disclosure, and failure handling into a modular system   │
+│  that does not include business logic, ensuring a clearer separation of      │
+│  responsibilities.                                                           │
+│    categories: system upgrade, upgrades, technology, verification,           │
+│  credential verification, selective disclosure, user experience, UI Design   │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['modular system', 'QR scanning', 'parsing', 'validation',        │
+│  'credential display', 'failure handling']                                   │
+│  - (score=0.84) VerifyScreen design has been conditionally approved based    │
+│  on its compliance with selective disclosure principles following the        │
+│  compliance review. The compliance review of the VerifyScreen credential     │
+│  display design concluded with conditional approval.                         │
+│    categories: design principles, UI Design, selective disclosure, data      │
+│  privacy, user experience, verification                                      │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['VerifyScreen', 'design approval', 'selective disclosure         │
+│  principles', 'compliance']                                                  │
+│  - (score=0.84) The VerifyScreen upgrade requires users to scan a valid      │
+│  'fcid://' QR code to enter a preview state for credential verification      │
+│  without sending any identity data immediately.                              │
+│    categories: credential verification, system upgrade, verification, QR     │
+│  codes                                                                       │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['credential verification', 'QR codes', 'system upgrade']         │
+│  - (score=0.84) 必须明确请求方身份与验证目的展示。                           │
+│    categories: verification, identity, credentials, error messages           │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['identity verification', 'credentials', 'user requests']         │
+│  - (score=0.83) 用户必须先看到凭证预览和需共享字段，才能点击同意分享数据。   │
+│    categories: privacy, data protection, selective disclosure, user          │
+│  experience, credentials                                                     │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['data sharing', 'user consent', 'credential preview']            │
+│  - (score=0.83) The VerifyScreen design requires the user to confirm before  │
+│  any identity data is shared, indicating which fields will be shared with a  │
+│  specific message.                                                           │
+│    categories: user experience, design principles, data privacy, privacy,    │
+│  identity, selective disclosure                                              │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['identity data', 'user confirmation', 'data sharing']            │
+│  - (score=0.83) The VerifyScreen must provide clear, restrained, and         │
+│  recoverable error states without panic-inducing language.                   │
+│    categories: user experience, error messages, design principles            │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['error states', 'user experience', 'design principles']          │
+│  - (score=0.83) VerifyScreen's responsibilities will be split to avoid the   │
+│  accumulation of business logic within a single screen and to ensure that    │
+│  it operates more efficiently following the refactor.                        │
+│    categories: verification, user experience, design principles, UI Design   │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['business logic', 'screen responsibilities']                     │
+│  - (score=0.83)                                                              │
+│  当前规格未要求展示请求方身份和请求目的，这可能影响用户同意的充分性。        │
+│    categories: privacy, user_information, data protection, information       │
+│  security, trust                                                             │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['user consent', 'identity disclosure', 'request purpose']        │
+│  - (score=0.82) 日志记录和审计记录必须遵循最小化原则，避免隐私泄露风险。     │
+│    categories: privacy, data protection, information security                │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['日志记录', '审计记录', '最小化原则', '隐私泄露风险']            │
+│  - (score=0.82) 预览卡固定显示高敏字段可能超出必要范围，存在合规风险。       │
+│    categories: compliance, data protection, privacy, verification            │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['compliance risk', 'high sensitivity fields', 'data privacy']    │
+│  - (score=0.82) The design includes an explicit user confirmation step       │
+│  before presenting credentials to ensure compliance.                         │
+│    categories: design principles, user experience, credential verification,  │
+│  data privacy                                                                │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['user confirmation', 'credentials', 'compliance']                │
+│  - (score=0.82) The system must display a 'Credential Request' with a        │
+│  'Ready to Present' status after scanning.                                   │
+│    categories: system upgrade, verification, user experience, UI Design      │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['Credential Request', 'Ready to Present status', 'scanning',     │
+│  'system display']                                                           │
+│  - (score=0.82) The review identifies critical gaps, including significant   │
+│  compliance gaps that need addressing, which prevent unconditional           │
+│  compliance approval for the VerifyScreen design.                            │
+│    categories: user experience, design principles, verification, UI Design,  │
+│  data protection                                                             │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['compliance', 'design gaps', 'VerifyScreen']                     │
+│  - (score=0.82) User confirmation, specifically through clicking 'Present    │
+│  Credential', is necessary before any credential is presented to ensure      │
+│  compliance with user consent requirements.                                  │
+│    categories: privacy, data protection, verification, credentials           │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['user consent', 'credential presentation', 'compliance']         │
+│  - (score=0.82) 点击前不得发送任何个人身份数据，且不得默认提交完整凭证。     │
+│    categories: privacy, data protection, data privacy, verification,         │
+│  selective disclosure                                                        │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['data protection', 'privacy', 'user information',                │
+│  'verification']                                                             │
+│  - (score=0.81) The current design allows users to review credentials        │
+│  before deciding to share.                                                   │
+│    categories: user experience, design principles, credentials, privacy,     │
+│  verification                                                                │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['user review', 'credential sharing', 'design', 'user             │
+│  experience']                                                                │
+│  - (score=0.81) The new architecture separates the VerifyScreen into three   │
+│  layers: Screen Container, Flow/State, and Presentation.                     │
+│    categories: design principles, UI Design, user experience, technology     │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['architecture', 'VerifyScreen', 'layer separation', 'user        │
+│  interface']                                                                 │
+│  - (score=0.81) High sensitivity fields like 'Holder Name' should either be  │
+│  displayed only on demand or masked to minimize exposure risks.              │
+│    categories: data protection, privacy, information security                │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['sensitivity fields', 'data exposure', 'masking sensitive        │
+│  data', 'user privacy']                                                      │
+│  - (score=0.82) The user must actively click 'Present Credential' to share   │
+│  any identity data, ensuring an explicit consent action occurs before        │
+│  sharing, thus ensuring compliance with privacy regulations. This adds       │
+│  specificity to the requirement.                                             │
+│    categories: data privacy, identity, verification, data protection         │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['identity data', 'privacy regulations', 'user confirmation']     │
+│  - (score=0.82) The failure states must include 'Invalid Code', 'Request     │
+│  Unreadable', 'Credential Unavailable', 'Credential Expired', 'Verification  │
+│  Failed', and 'Connection Required'.                                         │
+│    categories: system upgrade, verification, error messages                  │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['error handling', 'failure states', 'system responses']          │
+│  - (score=0.82) Users must be able to safely return to the verification      │
+│  entry point, rescan, and not have any misleading submitted states leftover  │
+│  after a failure.                                                            │
+│    categories: verification, user experience, error messages                 │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['verification', 'user experience', 'error handling']             │
+│  - (score=0.81) Log and monitoring processes must minimize sensitive data    │
+│  logging, such as full Holder Name and Credential ID.                        │
+│    categories: privacy, data protection, information security                │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['sensitive data logging', 'data privacy', 'credential            │
+│  management']                                                                │
+│  - (score=0.81) VerifyScreen should handle the page lifecycle, navigation,   │
+│  and state switching but not directly parse QR codes or construct            │
+│  credential models.                                                          │
+│    categories: verification, user experience, implementation, design         │
+│  principles                                                                  │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['page lifecycle', 'navigation', 'state switching', 'QR code      │
+│  parsing', 'credential models']                                              │
+│  - (score=0.81) The specification must allow for minimal local display of    │
+│  Holder Name and Residency ID/Credential ID instead of mandatory full        │
+│  visibility.                                                                 │
+│    categories: privacy, verification, selective disclosure, user             │
+│  information                                                                 │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['Holder Name', 'Residency ID', 'Credential ID', 'minimal         │
+│  display', 'data privacy', 'verification']                                   │
+│  - (score=0.81) The page must show a credential preview card and the fields  │
+│  to be shared before user confirmation.                                      │
+│    categories: UI Design, User Experience                                    │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['credential preview', 'user confirmation', 'UI fields']          │
+│  - (score=0.83) New utility functions will normalize scanned QR data, map    │
+│  requests to previews, and construct fields for sharing.                     │
+│    categories: technology, QR codes, system upgrade, upgrades                │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['utility functions', 'QR data normalization', 'request           │
+│  mapping', 'data sharing']                                                   │
+│  - (score=0.82) The requirement to preview the credential after scanning     │
+│  the QR code prevents automatic data sharing.                                │
+│    categories: privacy, data protection, QR codes, credentials, credential   │
+│  verification                                                                │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['QR code scanning', 'data sharing', 'credential preview']        │
+│  - (score=0.81) The existing VerifyScreen will no longer handle QR parsing,  │
+│  building shared fields, and other responsibilities once the refactor is     │
+│  complete, as the business logic will be separated from the screen.          │
+│    categories: system upgrade, upgrades, technology, QR codes,               │
+│  verification, user_information, credential verification, identity, trust,   │
+│  understandability                                                           │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['VerifyScreen', 'QR parsing', 'refactor', 'shared fields']       │
+│  - (score=0.81) The system must follow the principle of minimum necessary    │
+│  disclosure, only sharing the fields required for the verification process.  │
+│    categories: data privacy, information security                            │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['minimum necessary disclosure', 'verification process']          │
+│  - (score=0.81) The upgrade aims to clearly outline the actions and          │
+│  statuses for scanning and processing valid `fcid://` QR codes.              │
+│    categories: upgrades, technology, QR codes                                │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['scanning', 'processing', 'QR codes', 'upgrade']                 │
+│  - (score=0.81) The design has a section that requires disclosure of the     │
+│  fields that will be shared if the user continues.                           │
+│    categories: data privacy, selective disclosure, user information          │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['user information sharing', 'disclosure requirements']           │
+│  - (score=0.81) The upgrade specifies that no raw personal identifiable      │
+│  information (PII) should be shared during the verification process.         │
+│    categories: privacy, data protection                                      │
+│    entities: ['personal identifiable information', 'PII']                    │
+│    dates: []                                                                 │
+│    topics: ['verification process', 'data sharing']                          │
+│  - (score=0.81) The default shared fields must be adjusted to dynamically    │
+│  minimize based on the verification purpose, particularly concerning the     │
+│  sharing of 'Holder name'.                                                   │
+│    categories: data privacy, privacy, credential verification,               │
+│  verification, user information                                              │
+│    entities: []                                                              │
+│    dates: []                                                                 │
+│    topics: ['shared fields', 'dynamic adjustment', 'Holder name',            │
+│  'verification purpose']                                                     │
+│                                                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─────────────────────── 🔧 Tool Execution Started (#1) ───────────────────────╮
+│                                                                              │
+│  Tool: list_files_in_directory                                               │
+│                                                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+[32mTool list_files_in_directory executed with result: File paths: 
+-../mid-wallet-app/src/context/IdentityContext.tsx
+- ../mid-wallet-app/src/contracts/FCDIDRegistry.json
+- ../mid-wallet-app/src/screens/ReceiveScreen.tsx
+- ../mid-wallet-app/src/screens/M...[0m
+╭────────────────────── ✅ Tool Execution Completed (#1) ──────────────────────╮
+│                                                                              │
+│  Tool Completed                                                              │
+│  Tool: list_files_in_directory                                               │
+│  Output: File paths:                                                         │
+│  -../mid-wallet-app/src/context/IdentityContext.tsx                          │
+│  - ../mid-wallet-app/src/contracts/FCDIDRegistry.json                        │
+│  - ../mid-wallet-app/src/screens/ReceiveScreen.tsx                           │
+│  - ../mid-wallet-app/src/screens/ManageAssetsScreen.tsx                      │
+│  - ../mid-wallet-app/src/screens/LockScreen.tsx                              │
+│  - ../mid-wallet-app/src/screens/SwapScreen.tsx                              │
+│  - ../mid-wallet-app/src/screens/BuyScreen.tsx                               │
+│  - ../mid-wallet-app/src/screens/WalletScreen.tsx                            │
+│  - ../mid-wallet-app/src/screens/TransferScreen.tsx                          │
+│  - ../mid-wallet-app/src/screens/SettingsScreen.tsx                          │
+│  - ../mid-wallet-app/src/screens/VerifyScreen.tsx                            │
+│  - ../mid-wallet-app/src/screens/TransactionHistoryScreen.tsx                │
+│  - ../mid-wallet-app/src/components/VerificationResult.tsx                   │
+│  - ../mid-wallet-app/src/components/ActionRow.tsx                            │
+│  - ../mid-wallet-app/src/components/WalletCard.tsx                           │
+│  - ../mid-wallet-app/src/components/ZKPAuthorizationModal.tsx                │
+│  - ../mid-wallet-app/src/components/FCDIDCard.tsx                            │
+│  - ../mid-wallet-app/src/components/AssetList.tsx                            │
+│  - ../mid-wallet-app/src/components/ZKPVerificationOverlay.tsx               │
+│  - ../mid-wallet-app/src/__tests__/VerifyScreen.test.tsx                     │
+│  - ../mid-wallet-app/src/services/secureStorage.ts                           │
+│  - ../mid-wallet-app/src/services/fcChainService.ts                          │
+│  - ../mid-wallet-app/src/store/walletStore.ts                                │
+│                                                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─────────────────────────── ✅ Agent Final Answer ────────────────────────────╮
+│                                                                              │
+│  Agent: 首席产品官 (CPO)                                                     │
+│                                                                              │
+│  Final Answer:                                                               │
+│  # VerifyScreen 升级规格说明（V1）                                           │
+│                                                                              │
+│  ## 1. 目标与范围                                                            │
+│                                                                              │
+│  VerifyScreen 是凭证验证页。此次升级的目标不是增加炫技式流程，而是把“扫描 →  │
+│  解析 → 校验 → 凭证预览 → 选择性披露 → 用户确认 → 结果反馈 →                 │
+│  失败处理”重构为可维护、可审计、可合规复核的模块化系统。                     │
+│                                                                              │
+│  本页规格聚焦四件事：                                                        │
+│                                                                              │
+│  1. 扫描有效 `fcid://` 二维码后，用户应看到什么                              │
+│  2. 哪些凭证字段必须展示                                                     │
+│  3. 失败状态如何设计，包括文案与交互                                         │
+│  4. 选择性披露的硬性合规原则                                                 │
+│                                                                              │
+│  ---                                                                         │
+│                                                                              │
+│  ## 2. 核心产品原则                                                          │
+│                                                                              │
+│  ### 2.1 身份优先                                                            │
+│  - VerifyScreen 的主对象是 **Credential / Identity                           │
+│  Request**，不是链上资产。                                                   │
+│  - 界面优先帮助用户理解“谁在请求什么身份信息、为什么请求、将共享什么”。      │
+│                                                                              │
+│  ### 2.2 信任优先                                                            │
+│  - 扫码成功后进入 **预览态**，不得自动发送任何身份数据。                     │
+│  - 所有身份共享必须由用户明确确认触发。                                      │
+│  -                                                                           │
+│  在任何确认动作之前，必须明确展示请求方、请求目的、请求字段、最小披露范围。  │
+│                                                                              │
+│  ### 2.3 可理解优先                                                          │
+│  - 文案应稳重、可核验，避免模糊或营销化表达。                                │
+│  - 优先使用：`Verified`、`Active`、`Credential`、`Requested                  │
+│  fields`、`Confirm sharing`                                                  │
+│  - 避免使用：夸张、泛化、难解释的 crypto 话术。                              │
+│                                                                              │
+│  ---                                                                         │
+│                                                                              │
+│  ## 3. 扫描有效 `fcid://` 二维码后的界面信息层次                             │
+│                                                                              │
+│  扫码并成功解析一个有效 `fcid://` 后，用户应进入 **Preview / Review          │
+│  状态**。该状态下只做本地展示与校验反馈，不做身份数据提交。                  │
+│                                                                              │
+│  ## 3.1 页面状态定义                                                         │
+│  有效二维码后的第一页必须是：                                                │
+│                                                                              │
+│  ### 状态名                                                                  │
+│  **Verification Preview**                                                    │
+│                                                                              │
+│  ### 目的                                                                    │
+│  让用户在共享前完成理解与确认。                                              │
+│                                                                              │
+│  ### 禁止行为                                                                │
+│  - 不得自动提交任何身份数据                                                  │
+│  - 不得自动签名                                                              │
+│  - 不得自动调用披露接口                                                      │
+│  - 不得默认勾选额外字段                                                      │
+│  - 不得把“继续”设计成弱提示或隐性同意                                        │
+│                                                                              │
+│  ---                                                                         │
+│                                                                              │
+│  ## 4. 扫码成功后的信息结构                                                  │
+│                                                                              │
+│  页面应按以下信息层级展示，顺序不可颠倒：                                    │
+│                                                                              │
+│  ## 4.1 一级信息：请求方可信信息                                             │
+│  用户首先要知道“是谁在请求”。                                                │
+│                                                                              │
+│  必须展示：                                                                  │
+│  - **Requester name**：请求方名称                                            │
+│  - **Requester status**：是否已验证 / 是否可信来源                           │
+│    - 如可验证，显示 `Verified requester`                                     │
+│    - 如仅解析成功但未验证身份，显示 `Unverified requester`                   │
+│  - **Requester identifier**：可读标识（域名、机构 ID、                       │
+│  DID、注册编号等，按实现能力）                                               │
+│  - **Connection/security context**：本次请求是否通过有效验证流程建立         │
+│                                                                              │
+│  设计要求：                                                                  │
+│  - 请求方名称必须大于字段列表的视觉权重                                      │
+│  - 若请求方未验证，页面必须显著提示风险，且不能伪装成正常可信状态            │
+│  -                                                                           │
+│  若请求方身份信息缺失，不得只展示“Unknown”然后继续走标准确认；必须视为风险   │
+│  态处理                                                                      │
+│                                                                              │
+│  ## 4.2 二级信息：请求目的与动作说明                                         │
+│  用户其次要知道“为什么要这些信息”。                                          │
+│                                                                              │
+│  必须展示：                                                                  │
+│  - **Purpose / Reason for request**：请求目的                                │
+│  - **Requested action**：例如“Verify age eligibility” / “Verify residence    │
+│  credential” / “Confirm identity attributes”                                 │
+│  - **One-sentence consequence**：确认后会发生什么                            │
+│    例如：`You will share the selected credential fields with this            │
+│  requester.`                                                                 │
+│                                                                              │
+│  设计要求：                                                                  │
+│  - 目的不能为空；若缺失，视为请求信息不完整                                  │
+│  - 目的说明需与请求字段匹配；若请求字段明显超出目的，应进入风险提示态        │
+│                                                                              │
+│  ## 4.3 三级信息：将要共享的凭证与字段                                       │
+│  用户第三步要知道“具体会共享什么”。                                          │
+│                                                                              │
+│  必须展示：                                                                  │
+│  - **Credential type**：凭证类型                                             │
+│    例如：Identity Credential / Residency Credential / Age Credential         │
+│  - **Credential status**：`Active` / `Expired` / `Revoked` / `Unavailable`   │
+│  - **Issuing authority**：签发机构                                           │
+│  - **Fields requested**：被请求的字段列表                                    │
+│  - **Fields available**：钱包内可提供的字段                                  │
+│  - **Fields selected for disclosure**：实际将共享的字段                      │
+│                                                                              │
+│  设计要求：                                                                  │
+│  - “请求字段”与“实际共享字段”要分开展示，不能混成一个列表                    │
+│  - 对不可共享字段要显示原因，如：                                            │
+│    - Not available                                                           │
+│    - Not permitted                                                           │
+│    - Credential expired                                                      │
+│    - Credential not active                                                   │
+│  - 若请求支持选择性披露，默认只勾选满足请求最小集的字段，不得默认多给        │
+│                                                                              │
+│  ## 4.4 四级信息：用户决策区                                                 │
+│  底部固定区域必须包含：                                                      │
+│                                                                              │
+│  - **Primary CTA**：`Confirm sharing`                                        │
+│  - **Secondary CTA**：`Cancel`                                               │
+│  - 如支持字段编辑：`Review selected fields` 或 `Edit selection`              │
+│                                                                              │
+│  设计要求：                                                                  │
+│  - 主按钮只有在：                                                            │
+│    - 请求解析成功                                                            │
+│    - 凭证有效                                                                │
+│    - 必填字段可满足                                                          │
+│    - 风险未达到阻断级                                                        │
+│    时才可点击                                                                │
+│  - 确认按钮文案必须体现共享动作，不能仅写 `Continue` 或 `Next`               │
+│  - 取消应始终可达                                                            │
+│                                                                              │
+│  ---                                                                         │
+│                                                                              │
+│  ## 5. 必须展示的凭证字段                                                    │
+│                                                                              │
+│  以下为工程上应视为 **必须展示**                                             │
+│  的字段集合。若上游数据缺失，需明确降级展示，不可静默省略。                  │
+│                                                                              │
+│  ## 5.1 请求级字段（Request Metadata）                                       │
+│  必须展示：                                                                  │
+│  - Requester name                                                            │
+│  - Requester identifier                                                      │
+│  - Requester verification status                                             │
+│  - Request purpose                                                           │
+│  - Requested credential type                                                 │
+│  - Requested fields                                                          │
+│  - Request timestamp 或 request validity window（如协议可提供）              │
+│  - Request status（Parsed / Valid / Invalid / Expired 等）                   │
+│                                                                              │
+│  ## 5.2 凭证级字段（Credential Metadata）                                    │
+│  必须展示：                                                                  │
+│  - Credential type                                                           │
+│  - Credential status                                                         │
+│  - Issuing authority                                                         │
+│  - Credential validity status                                                │
+│    - Active                                                                  │
+│    - Expired                                                                 │
+│    - Revoked                                                                 │
+│    - Invalid signature                                                       │
+│  - Expiry date（如有）                                                       │
+│  - Holder match / wallet match 状态（如支持）                                │
+│                                                                              │
+│  ## 5.3 披露级字段（Disclosure Details）                                     │
+│  必须展示：                                                                  │
+│  - Fields that will be shared                                                │
+│  - Fields requested but unavailable                                          │
+│  - Optional fields not selected                                              │
+│  - Whether selective disclosure is supported                                 │
+│  - Explicit share scope statement                                            │
+│    例如：`Only the selected fields will be shared.`                          │
+│                                                                              │
+│  ## 5.4 建议字段标签规范                                                     │
+│  字段标签要用户可理解，避免内部命名直接暴露。示例：                          │
+│  - Full name                                                                 │
+│  - Date of birth                                                             │
+│  - Age over threshold                                                        │
+│  - Nationality                                                               │
+│  - Residency status                                                          │
+│  - Credential number                                                         │
+│  - Expiry date                                                               │
+│  - Issuer                                                                    │
+│                                                                              │
+│  如果底层是技术字段名，UI 层必须做可读映射。                                 │
+│                                                                              │
+│  ---                                                                         │
+│                                                                              │
+│  ## 6. 失败状态设计要点                                                      │
+│                                                                              │
+│  失败状态必须被视为产品主流程的一部分，不是异常角落。每个失败态都要满足：    │
+│                                                                              │
+│  - 用户知道发生了什么                                                        │
+│  - 用户知道数据是否已共享                                                    │
+│  - 用户知道下一步能做什么                                                    │
+│  - 文案不制造误导性“成功感”                                                  │
+│                                                                              │
+│  ## 6.1 失败分类                                                             │
+│                                                                              │
+│  ### A. 扫码失败                                                             │
+│  场景：                                                                      │
+│  - 摄像头无法识别                                                            │
+│  - 不是二维码                                                                │
+│  - 内容为空                                                                  │
+│                                                                              │
+│  要求：                                                                      │
+│  - 标题：`QR code not recognized`                                            │
+│  - 说明：`Try scanning again in better lighting or use a supported fcid://   │
+│  code.`                                                                      │
+│  - 动作：                                                                    │
+│    - `Scan again`                                                            │
+│    - `Cancel`                                                                │
+│                                                                              │
+│  ### B. 格式无效                                                             │
+│  场景：                                                                      │
+│  - 不是 `fcid://`                                                            │
+│  - 协议结构错误                                                              │
+│  - 参数缺失                                                                  │
+│                                                                              │
+│  要求：                                                                      │
+│  - 标题：`Invalid verification request`                                      │
+│  - 说明：`This code is not a supported credential verification request.`     │
+│  - 必须明确：`No identity data has been shared.`                             │
+│  - 动作：                                                                    │
+│    - `Scan another code`                                                     │
+│    - `Close`                                                                 │
+│                                                                              │
+│  ### C. 解析成功但请求不完整                                                 │
+│  场景：                                                                      │
+│  - 缺少 requester                                                            │
+│  - 缺少 purpose                                                              │
+│  - 缺少 requested fields                                                     │
+│  - 缺少必要签名/校验信息                                                     │
+│                                                                              │
+│  要求：                                                                      │
+│  - 标题：`Request information is incomplete`                                 │
+│  - 说明：`This request cannot be reviewed safely because required request    │
+│  details are missing.`                                                       │
+│  - 必须阻断确认                                                              │
+│  - 必须明确：`No identity data has been shared.`                             │
+│                                                                              │
+│  ### D. 请求方未验证 / 信任不足                                              │
+│  场景：                                                                      │
+│  - 请求方身份无法验证                                                        │
+│  - 来源未注册                                                                │
+│  - 校验链路不足                                                              │
+│                                                                              │
+│  要求：                                                                      │
+│  - 标题：`Requester could not be verified`                                   │
+│  - 说明需分两层：                                                            │
+│    - 事实层：`We could not verify the identity of this requester.`           │
+│    - 风险层：`Only share credential data if you trust this source.`          │
+│  - 产品建议：                                                                │
+│    - 默认不阻断查看                                                          │
+│    - 若策略要求，可阻断分享                                                  │
+│  - 主按钮若允许继续，必须改成强风险文案，如：`Share anyway`                  │
+│  - 更稳妥的 V1 建议：高风险时默认阻断分享，仅允许取消                        │
+│                                                                              │
+│  ### E. 凭证不可用                                                           │
+│  场景：                                                                      │
+│  - 本地无匹配凭证                                                            │
+│  - 凭证未签发至当前钱包                                                      │
+│  - 凭证状态不可读                                                            │
+│                                                                              │
+│  要求：                                                                      │
+│  - 标题：`Credential not available`                                          │
+│  - 说明：`This wallet does not have an active credential that matches the    │
+│  request.`                                                                   │
+│  - 动作：                                                                    │
+│    - `Done`                                                                  │
+│    - `Try another request`（可选）                                           │
+│                                                                              │
+│  ### F. 凭证失效                                                             │
+│  场景：                                                                      │
+│  - Expired                                                                   │
+│  - Revoked                                                                   │
+│  - Invalid signature                                                         │
+│  - Holder mismatch                                                           │
+│                                                                              │
+│  要求：                                                                      │
+│  - 标题按原因细分，避免笼统                                                  │
+│    - `Credential expired`                                                    │
+│    - `Credential revoked`                                                    │
+│    - `Credential could not be verified`                                      │
+│  - 说明必须指出该凭证不能用于本次共享                                        │
+│  - 禁止进入确认分享                                                          │
+│                                                                              │
+│  ### G. 选择性披露无法满足请求                                               │
+│  场景：                                                                      │
+│  - 请求方要求字段超出最小必要                                                │
+│  - 必填字段无法由现有凭证生成                                                │
+│  - 协议不支持所请求的披露方式                                                │
+│                                                                              │
+│  要求：                                                                      │
+│  - 标题：`Request cannot be completed`                                       │
+│  - 说明：`The requested credential fields cannot be shared from this wallet  │
+│  in the required format.`                                                    │
+│  - 若有超范围请求，应额外提示：`Requested fields exceed the available        │
+│  disclosure scope.`                                                          │
+│                                                                              │
+│  ### H. 用户取消                                                             │
+│  场景：                                                                      │
+│  - 用户在预览态取消                                                          │
+│  - 用户在字段选择页返回                                                      │
+│                                                                              │
+│  要求：                                                                      │
+│  - 不视为错误，但要有清晰结果页或 toast：                                    │
+│    - `Verification request cancelled`                                        │
+│    - `No identity data was shared.`                                          │
+│                                                                              │
+│  ### I. 提交/共享阶段失败                                                    │
+│  场景：                                                                      │
+│  - 用户已确认，但提交失败                                                    │
+│  - 网络中断                                                                  │
+│  - 对端接收失败                                                              │
+│                                                                              │
+│  要求：                                                                      │
+│  - 区分“未发送成功”与“发送状态未知”                                          │
+│  - 文案示例：                                                                │
+│    - `Sharing failed. Your selected credential data was not delivered.`      │
+│    - 若无法确认状态：`We could not confirm whether the selected data was     │
+│  received.`                                                                  │
+│  - 这是高敏感状态，必须谨慎，不能默认说“未共享”除非系统能确认                │
+│                                                                              │
+│  ---                                                                         │
+│                                                                              │
+│  ## 7. 失败态文案与交互硬要求                                                │
+│                                                                              │
+│  ### 7.1 每个失败页必须明确三件事                                            │
+│  1. 当前失败原因                                                             │
+│  2. 身份数据是否已共享                                                       │
+│  3. 用户可执行的下一步                                                       │
+│                                                                              │
+│  ### 7.2 禁止文案                                                            │
+│  - `Something went wrong`                                                    │
+│  - `Oops`                                                                    │
+│  - `Unexpected error` 作为唯一说明                                           │
+│  - 含糊其辞的成功/失败混合文案                                               │
+│                                                                              │
+│  ### 7.3 交互要求                                                            │
+│  - 失败页必须有明确退出路径                                                  │
+│  - 阻断型失败不得出现可继续分享的主按钮                                      │
+│  - 可重试型失败要给明确重试动作                                              │
+│  - 风险型失败要以风控优先，不以转化优先                                      │
+│                                                                              │
+│  ---                                                                         │
+│                                                                              │
+│  ## 8. 选择性披露的硬性合规原则                                              │
+│                                                                              │
+│  这是本次升级最关键的合规约束。                                              │
+│                                                                              │
+│  ## 8.1 明示同意                                                             │
+│  - 在任何身份数据共享前，必须获得用户明确确认                                │
+│  - 扫码、解析、预览都不等于同意                                              │
+│  - 同意动作必须是主动点击，不可由滑动、停留、默认选择代替                    │
+│                                                                              │
+│  ## 8.2 先展示、后共享                                                       │
+│  - 必须先向用户展示将共享的具体字段                                          │
+│  - 未展示的字段不得共享                                                      │
+│  - 不得在后台附带发送额外元数据，除非其属于协议必需且已在合规定义中批准      │
+│                                                                              │
+│  ## 8.3 最小必要披露                                                         │
+│  - 仅共享完成当前验证目的所必需的最小字段集合                                │
+│  - 若能共享“年龄大于 18”证明，就不应强制共享完整出生日期                     │
+│  - 若能共享布尔/派生断言，就不应共享原始字段                                 │
+│                                                                              │
+│  ## 8.4 字段级控制                                                           │
+│  - 用户必须看到字段级别的共享范围                                            │
+│  - 若协议支持，用户应能在可选字段层面做选择                                  │
+│  - 必填字段与可选字段必须区分                                                │
+│  - 不得把非必要字段伪装成必要字段                                            │
+│                                                                              │
+│  ## 8.5 默认最小化                                                           │
+│  - 默认状态下，仅选中满足请求所需的最小字段                                  │
+│  - 所有额外可选字段默认关闭                                                  │
+│  - 不得预先勾选 marketing、profiling、analytics 类附加字段                   │
+│                                                                              │
+│  ## 8.6 目的绑定                                                             │
+│  - 共享内容必须与展示的请求目的一致                                          │
+│  - 若请求目的含糊、缺失或与字段范围不匹配，应阻断或至少强警示                │
+│  - 同一确认动作不得覆盖多个不相关目的                                        │
+│                                                                              │
+│  ## 8.7 可撤销误操作风险控制                                                 │
+│  - 在最终确认前，用户必须有机会返回并修改字段选择                            │
+│  - 最终确认页应再次总结：                                                    │
+│    - 请求方                                                                  │
+│    - 请求目的                                                                │
+│    - 将共享字段                                                              │
+│    - 不会共享的字段（可选）                                                  │
+│                                                                              │
+│  ## 8.8 禁止静默升级披露范围                                                 │
+│  - 重新解析请求、网络刷新、状态恢复后，不得自动扩大已选字段范围              │
+│  - 若字段集合发生变化，必须重新征得用户确认                                  │
+│                                                                              │
+│  ## 8.9 审计可追踪性                                                         │
+│  工程实现应可记录以下事件用于审计，不含不必要明文身份值：                    │
+│  - QR scanned                                                                │
+│  - Request parsed                                                            │
+│  - Request validation result                                                 │
+│  - Preview shown                                                             │
+│  - Field selection changed                                                   │
+│  - User confirmed sharing                                                    │
+│  - User cancelled                                                            │
+│  - Share success / failure                                                   │
+│                                                                              │
+│  注意：                                                                      │
+│  -                                                                           │
+│  审计日志应优先记录事件与字段类别，不应记录完整敏感字段值，除非有明确合规依  │
+│  据                                                                          │
+│                                                                              │
+│  ---                                                                         │
+│                                                                              │
+│  ## 9. 页面级交互建议流程                                                    │
+│                                                                              │
+│  ## 9.1 推荐流程                                                             │
+│  1. 扫码                                                                     │
+│  2. 解析并校验请求                                                           │
+│  3. 进入 Preview                                                             │
+│  4. 展示请求方、目的、凭证状态、请求字段                                     │
+│  5. 用户审查字段选择                                                         │
+│  6. 用户点击 `Confirm sharing`                                               │
+│  7. 执行共享                                                                 │
+│  8. 返回成功或失败结果                                                       │
+│                                                                              │
+│  ## 9.2 关键门槛                                                             │
+│  只有满足以下条件，才允许进入“可确认”状态：                                  │
+│  - `fcid://` 解析成功                                                        │
+│  - 请求结构完整                                                              │
+│  - 请求方状态已知                                                            │
+│  - 请求目的存在                                                              │
+│  - 匹配凭证存在                                                              │
+│  - 凭证为 Active                                                             │
+│  - 将共享字段已明确展示                                                      │
+│  - 用户完成主动确认                                                          │
+│                                                                              │
+│  ---                                                                         │
+│                                                                              │
+│  ## 10. 工程落地规格要点                                                     │
+│                                                                              │
+│  ## 10.1 模块拆分建议                                                        │
+│  此次升级应从单文件重构为模块化，建议最少拆分为以下职责层：                  │
+│                                                                              │
+│  ### A. QR Scanner Module                                                    │
+│  职责：                                                                      │
+│  - 摄像头权限                                                                │
+│  - 二维码扫描                                                                │
+│  - 原始字符串提取                                                            │
+│                                                                              │
+│  输出：                                                                      │
+│  - raw payload                                                               │
+│                                                                              │
+│  ### B. FCID Parser Module                                                   │
+│  职责：                                                                      │
+│  - 校验是否为 `fcid://`                                                      │
+│  - 解析协议字段                                                              │
+│  - 输出标准 request model                                                    │
+│                                                                              │
+│  输出建议：                                                                  │
+│  - requester                                                                 │
+│  - purpose                                                                   │
+│  - credentialType                                                            │
+│  - requestedFields                                                           │
+│  - validity window                                                           │
+│  - protocol metadata                                                         │
+│                                                                              │
+│  ### C. Validation Module                                                    │
+│  职责：                                                                      │
+│  - 请求结构完整性校验                                                        │
+│  - 请求方可信状态校验                                                        │
+│  - 凭证可匹配性校验                                                          │
+│  - 凭证状态校验                                                              │
+│  - 选择性披露可行性校验                                                      │
+│                                                                              │
+│  输出：                                                                      │
+│  - validation status                                                         │
+│  - blocking reasons                                                          │
+│  - warning reasons                                                           │
+│                                                                              │
+│  ### D. Credential Presentation Module                                       │
+│  职责：                                                                      │
+│  - 将底层凭证数据映射为 UI 可读字段                                          │
+│  - 区分 requested / available / selected                                     │
+│  - 生成共享摘要                                                              │
+│                                                                              │
+│  ### E. Selective Disclosure Module                                          │
+│  职责：                                                                      │
+│  - 字段最小集计算                                                            │
+│  - 可选字段控制                                                              │
+│  - 最终 disclosure payload 生成                                              │
+│                                                                              │
+│  要求：                                                                      │
+│  - 业务逻辑与 UI 分离                                                        │
+│  - 所有字段选择变更有明确状态源                                              │
+│                                                                              │
+│  ### F. Submission Module                                                    │
+│  职责：                                                                      │
+│  - 用户确认后的共享提交                                                      │
+│  - 成功/失败状态返回                                                         │
+│  - 状态不确定时返回明确 uncertainty 标记                                     │
+│                                                                              │
+│  ### G. Failure State Module                                                 │
+│  职责：                                                                      │
+│  - 标准化错误类型                                                            │
+│  - 映射统一文案                                                              │
+│  - 提供统一 CTA 配置                                                         │
+│                                                                              │
+│  ---                                                                         │
+│                                                                              │
+│  ## 10.2 状态模型建议                                                        │
+│  工程上建议显式定义以下状态，避免布尔散落：                                  │
+│                                                                              │
+│  - `idle`                                                                    │
+│  - `scanning`                                                                │
+│  - `parse_success`                                                           │
+│  - `parse_failed`                                                            │
+│  - `validation_warning`                                                      │
+│  - `validation_blocked`                                                      │
+│  - `preview_ready`                                                           │
+│  - `selecting_fields`                                                        │
+│  - `confirm_ready`                                                           │
+│  - `submitting`                                                              │
+│  - `share_success`                                                           │
+│  - `share_failed`                                                            │
+│  - `cancelled`                                                               │
+│                                                                              │
+│  每个状态必须对应：                                                          │
+│  - 页面标题                                                                  │
+│  - 数据共享状态文案                                                          │
+│  - 主/次操作                                                                 │
+│  - 是否可返回                                                                │
+│  - 是否可重试                                                                │
+│                                                                              │
+│  ---                                                                         │
+│                                                                              │
+│  ## 10.3 数据展示规范                                                        │
+│  - 所有展示字段都应来自标准化 view model，而不是直接读底层原始对象           │
+│  - UI 只读展示，不在展示层做协议判断                                         │
+│  - 技术错误码与用户文案分离                                                  │
+│  - 对敏感字段显示遵循最小化原则，未被请求的字段不应在预览页完整展开          │
+│                                                                              │
+│  ---                                                                         │
+│                                                                              │
+│  ## 10.4 按钮规范                                                            │
+│  ### 主按钮                                                                  │
+│  - 仅在可合法共享时显示 `Confirm sharing`                                    │
+│  - 风险态不得继续沿用同一主按钮样式而无警示                                  │
+│                                                                              │
+│  ### 次按钮                                                                  │
+│  - 一律提供 `Cancel` / `Close` / `Back`                                      │
+│  - 取消后必须明确：`No identity data was shared.`                            │
+│                                                                              │
+│  ---                                                                         │
+│                                                                              │
+│  ## 11. 验收标准（工程/QA 可直接使用）                                       │
+│                                                                              │
+│  以下条件全部满足，才视为本次升级达标：                                      │
+│                                                                              │
+│  ### 扫码成功后                                                              │
+│  - 扫描有效 `fcid://` 后，进入预览态，而不是直接共享                         │
+│  - 预览态中可见请求方、目的、凭证类型、凭证状态、请求字段、实际共享字段      │
+│  - 页面明确说明共享前不会发送身份数据                                        │
+│                                                                              │
+│  ### 凭证展示                                                                │
+│  - 必须显示 credential type、issuer、status、requested fields、selected      │
+│  fields                                                                      │
+│  - 字段名为用户可理解标签，不暴露内部技术命名                                │
+│  - 请求字段与实际共享字段分开展示                                            │
+│                                                                              │
+│  ### 失败处理                                                                │
+│  - 每类主要失败都有独立文案与操作                                            │
+│  - 每个失败态明确说明是否已共享身份数据                                      │
+│  - 阻断型失败不能继续进入共享确认                                            │
+│                                                                              │
+│  ### 选择性披露                                                              │
+│  - 共享前必须用户主动确认                                                    │
+│  - 默认仅选中最小必要字段                                                    │
+│  - 未展示字段不得共享                                                        │
+│  - 字段范围变化后必须重新确认                                                │
+│  - 用户可在最终确认前返回检查或修改选择                                      │
+│                                                                              │
+│  ---                                                                         │
+│                                                                              │
+│  ## 12. V1 决策建议                                                          │
+│                                                                              │
+│  为保证政府级可信感，V1 建议采取偏保守策略：                                 │
+│                                                                              │
+│  - **未验证请求方：默认不允许分享**                                          │
+│  - **请求目的缺失：直接阻断**                                                │
+│  - **字段范围超出最小必要：直接阻断或强警示后不默认继续**                    │
+│  - **任何共享前：必须给出清晰字段摘要**                                      │
+│  - **任何失败后：必须说明是否已共享**                                        │
+│                                                                              │
+│  这能确保 VerifyScreen 体现的是 **Verified identity                          │
+│  interaction**，而不是“扫一下就发数据”的黑箱流程。                           │
+│                                                                              │
+│  如果工程团队需要，我下一步可以继续把这页规格整理成：                        │
+│  1. React Native 组件结构清单                                                │
+│  2. 状态机定义                                                               │
+│  3. QA 测试用例列表                                                          │
+│  4. 中英文 UI 文案表                                                         │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─────────────────────────────── 🧠 Memory Save ───────────────────────────────╮
+│                                                                              │
+│  Memory Save Started                                                         │
+│  Status: Saving...                                                           │
+│                                                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭────────────────────── ✅ Tool Execution Completed (#1) ──────────────────────╮
+│                                                                              │
+│  Tool Completed                                                              │
+│  Tool: delegate_work_to_coworker                                             │
+│  Output: # VerifyScreen 升级规格说明（V1）                                   │
+│                                                                              │
+│  ## 1. 目标与范围                                                            │
+│                                                                              │
+│  VerifyScreen 是凭证验证页。此次升级的目标不是增加炫技式流程，而是把“扫描 →  │
+│  解析 → 校验 → 凭证预览 → 选择性披露 → 用户确认 → 结果反馈 →                 │
+│  失败处理”重构为可维护、可审计、可合规复核的模块化系统。                     │
+│                                                                              │
+│  本页规格聚焦四件事：                                                        │
+│                                                                              │
+│  1. 扫描有效 `fcid://` 二维码后，用户应看到什么                              │
+│  2. 哪些凭证字段必须展示                                                     │
+│  3. 失败状态如何设计，包括文案与交互                                         │
+│  4. 选择性披露的硬性合规原则                                                 │
+│                                                                              │
+│  ---                                                                         │
+│                                                                              │
+│  ## 2. 核心产品原则                                                          │
+│                                                                              │
+│  ### 2.1 身份优先                                                            │
+│  - VerifyScreen 的主对象是 **Credential / Identity                           │
+│  Request**，不是链上资产。                                                   │
+│  - 界面优先帮助用户理解“谁在请求什么身份信息、为什么请求、将共享什么”。      │
+│                                                                              │
+│  ### 2.2 信任优先                                                            │
+│  - 扫码成功后进入 **预览态**，不得自动发送任何身份数据。                     │
+│  - 所有身份共享必须由用户明确确认触发。                                      │
+│  -                                                                           │
+│  在任何确认动作之前，必须明确展示请求方、请求目的、请求字段、最小披露范围。  │
+│                                                                              │
+│  ### 2.3 可理解优先                                                          │
+│  - 文案应稳重、可核验，避免模糊或营销化表达。                                │
+│  - 优先使用：`Verified`、`Active`、`Credential`、`Requested                  │
+│  fields`、`Confirm sharing`                                                  │
+│  - 避免使用：夸张、泛化、难解释的 crypto 话术。                              │
+│                                                                              │
+│  ---                                                                         │
+│                                                                              │
+│  ## 3. 扫描有效 `fcid://` 二维码后的界面信息层次                             │
+│                                                                              │
+│  扫码并成功解析一个有效 `fcid://` 后，用户应进入 **Preview / Review          │
+│  状态**。该状态下只做本地展示与校验反馈，不做身份数据提交。                  │
+│                                                                              │
+│  ## 3.1 页面状态定义                                                         │
+│  有效二维码后的第一页必须是：                                                │
+│                                                                              │
+│  ### 状态名                                                                  │
+│  **Verification Preview**                                                    │
+│                                                                              │
+│  ### 目的                                                                    │
+│  让用户在共享前完成理解与确认。                                              │
+│                                                                              │
+│  ### 禁止行为                                                                │
+│  - 不得自动提交任何身份数据                                                  │
+│  - 不得自动签名                                                              │
+│  - 不得自动调用披露接口                                                      │
+│  - 不得默认勾选额外字段                                                      │
+│  - 不得把“继续”设计成弱提示或隐性同意                                        │
+│                                                                              │
+│  ---                                                                         │
+│                                                                              │
+│  ## 4. 扫码成功后的信息结构                                                  │
+│                                                                              │
+│  页面应按以下信息层级展示，顺序不可颠倒：                                    │
+│                                                                              │
+│  ## 4.1 一级信息：请求方可信信息                                             │
+│  用户首先要知道“是谁在请求”。                                                │
+│                                                                              │
+│  必须展示：                                                                  │
+│  - **Requester name**：请求方名称                                            │
+│  - **Requester status**：是否已验证 / 是否可信来源                           │
+│    - 如可验证，显示 `Verified requester`                                     │
+│    - 如仅解析成功但未验证身份，显示 `Unverified requester`                   │
+│  - **Requester identifier**：可读标识（域名、机构 ID、                       │
+│  DID、注册编号等，按实现能力）                                               │
+│  - **Connection/security context**：本次请求是否通过有效验证流程建立         │
+│                                                                              │
+│  设计要求：                                                                  │
+│  - 请求方名称必须大于字段列表的视觉权重                                      │
+│  - 若请求方未验证，页面必须显著提示风险，且不能伪装成正常可信状态            │
+│  -                                                                           │
+│  若请求方身份信息缺失，不得只展示“Unknown”然后继续走标准确认；必须视为风险   │
+│  态处理                                                                      │
+│                                                                              │
+│  ## 4.2 二级信息：请求目的与动作说明                                         │
+│  用户其次要知道“为什么要这些信息”。                                          │
+│                                                                              │
+│  必须展示：                                                                  │
+│  - **Purpose / Reason for request**：请求目的                                │
+│  - **Requested action**：例如“Verify age eligibility” / “Verify residence    │
+│  credential” / “Confirm identity attributes”                                 │
+│  - **One-sentence consequence**：确认后会发生什么                            │
+│    例如：`You will share the selected credential fields with this            │
+│  requester.`                                                                 │
+│                                                                              │
+│  设计要求：                                                                  │
+│  - 目的不能为空；若缺失，视为请求信息不完整                                  │
+│  - 目的说明需与请求字段匹配；若请求字段明显超出目的，应进入风险提示态        │
+│                                                                              │
+│  ## 4.3 三级信息：将要共享的凭证与字段                                       │
+│  用户第三步要知道“具体会共享什么”。                                          │
+│                                                                              │
+│  必须展示：                                                                  │
+│  - **Credential type**：凭证类型                                             │
+│    例如：Identity Credential / Residency Credential / Age Credential         │
+│  - **Credential status**：`Active` / `Expired` / `Revoked` / `Unavailable`   │
+│  - **Issuing authority**：签发机构                                           │
+│  - **Fields requested**：被请求的字段列表                                    │
+│  - **Fields available**：钱包内可提供的字段                                  │
+│  - **Fields selected for disclosure**：实际将共享的字段                      │
+│                                                                              │
+│  设计要求：                                                                  │
+│  - “请求字段”与“实际共享字段”要分开展示，不能混成一个列表                    │
+│  - 对不可共享字段要显示原因，如：                                            │
+│    - Not available                                                           │
+│    - Not permitted                                                           │
+│    - Credential expired                                                      │
+│    - Credential not active                                                   │
+│  - 若请求支持选择性披露，默认只勾选满足请求最小集的字段，不得默认多给        │
+│                                                                              │
+│  ## 4.4 四级信息：用户决策区                                                 │
+│  底部固定区域必须包含：                                                      │
+│                                                                              │
+│  - **Primary CTA**：`Confirm sharing`                                        │
+│  - **Secondary CTA**：`Cancel`                                               │
+│  - 如支持字段编辑：`Review selected fields` 或 `Edit selection`              │
+│                                                                              │
+│  设计要求：                                                                  │
+│  - 主按钮只有在：                                                            │
+│    - 请求解析成功                                                            │
+│    - 凭证有效                                                                │
+│    - 必填字段可满足                                                          │
+│    - 风险未达到阻断级                                                        │
+│    时才可点击                                                                │
+│  - 确认按钮文案必须体现共享动作，不能仅写 `Continue` 或 `Next`               │
+│  - 取消应始终可达                                                            │
+│                                                                              │
+│  ---                                                                         │
+│                                                                              │
+│  ## 5. 必须展示的凭证字段                                                    │
+│                                                                              │
+│  以下为工程上应视为 **必须展示**                                             │
+│  的字段集合。若上游数据缺失，需明确降级展示，不可静默省略。                  │
+│                                                                              │
+│  ## 5.1 请求级字段（Request Metadata）                                       │
+│  必须展示：                                                                  │
+│  - Requester name                                                            │
+│  - Requester identifier                                                      │
+│  - Requester verification status                                             │
+│  - Request purpose                                                           │
+│  - Requested credential type                                                 │
+│  - Requested fields                                                          │
+│  - Request timestamp 或 request validity window（如协议可提供）              │
+│  - Request status（Parsed / Valid / Invalid / Expired 等）                   │
+│                                                                              │
+│  ## 5.2 凭证级字段（Credential Metadata）                                    │
+│  必须展示：                                                                  │
+│  - Credential type                                                           │
+│  - Credential status                                                         │
+│  - Issuing authority                                                         │
+│  - Credential validity status                                                │
+│    - Active                                                                  │
+│    - Expired                                                                 │
+│    - Revoked                                                                 │
+│    - Invalid signature                                                       │
+│  - Expiry date（如有）                                                       │
+│  - Holder match / wallet match 状态（如支持）                                │
+│                                                                              │
+│  ## 5.3 披露级字段（Disclosure Details）                                     │
+│  必须展示：                                                                  │
+│  - Fields that will be shared                                                │
+│  - Fields requested but unavailable                                          │
+│  - Optional fields not selected                                              │
+│  - Whether selective disclosure is supported                                 │
+│  - Explicit share scope statement                                            │
+│    例如：`Only the selected fields will be shared.`                          │
+│                                                                              │
+│  ## 5.4 建议字段标签规范                                                     │
+│  字段标签要用户可理解，避免内部命名直接暴露。示例：                          │
+│  - Full name                                                                 │
+│  - Date of birth                                                             │
+│  - Age over threshold                                                        │
+│  - Nationality                                                               │
+│  - Residency status                                                          │
+│  - Credential number                                                         │
+│  - Expiry date                                                               │
+│  - Issuer                                                                    │
+│                                                                              │
+│  如果底层是技术字段名，UI 层必须做可读映射。                                 │
+│                                                                              │
+│  ---                                                                         │
+│                                                                              │
+│  ## 6. 失败状态设计要点                                                      │
+│                                                                              │
+│  失败状态必须被视为产品主流程的一部分，不是异常角落。每个失败态都要满足：    │
+│                                                                              │
+│  - 用户知道发生了什么                                                        │
+│  - 用户知道数据是否已共享                                                    │
+│  - 用户知道下一步能做什么                                                    │
+│  - 文案不制造误导性“成功感”                                                  │
+│                                                                              │
+│  ## 6.1 失败分类                                                             │
+│                                                                              │
+│  ### A. 扫码失败                                                             │
+│  场景：                                                                      │
+│  - 摄像头无法识别                                                            │
+│  - 不是二维码                                                                │
+│  - 内容为空                                                                  │
+│                                                                              │
+│  要求：                                                                      │
+│  - 标题：`QR code not recognized`                                            │
+│  - 说明：`Try scanning again in better lighting or use a supported fcid://   │
+│  code.`                                                                      │
+│  - 动作：                                                                    │
+│    - `Scan again`                                                            │
+│    - `Cancel`                                                                │
+│                                                                              │
+│  ### B. 格式无效                                                             │
+│  场景：                                                                      │
+│  - 不是 `fcid://`                                                            │
+│  - 协议结构错误                                                              │
+│  - 参数缺失                                                                  │
+│                                                                              │
+│  要求：                                                                      │
+│  - 标题：`Invalid verification request`                                      │
+│  - 说明：`This code is not a supported credential verification request.`     │
+│  - 必须明确：`No identity data has been shared.`                             │
+│  - 动作：                                                                    │
+│    - `Scan another code`                                                     │
+│    - `Close`                                                                 │
+│                                                                              │
+│  ### C. 解析成功但请求不完整                                                 │
+│  场景：                                                                      │
+│  - 缺少 requester                                                            │
+│  - 缺少 purpose                                                              │
+│  - 缺少 requested fields                                                     │
+│  - 缺少必要签名/校验信息                                                     │
+│                                                                              │
+│  要求：                                                                      │
+│  - 标题：`Request information is incomplete`                                 │
+│  - 说明：`This request cannot be reviewed safely because required request    │
+│  details are missing.`                                                       │
+│  - 必须阻断确认                                                              │
+│  - 必须明确：`No identity data has been shared.`                             │
+│                                                                              │
+│  ### D. 请求方未验证 / 信任不足                                              │
+│  场景：                                                                      │
+│  - 请求方身份无法验证                                                        │
+│  - 来源未注册                                                                │
+│  - 校验链路不足                                                              │
+│                                                                              │
+│  要求：                                                                      │
+│  - 标题：`Requester could not be verified`                                   │
+│  - 说明需分两层：                                                            │
+│    - 事实层：`We could not verify the identity of this requester.`           │
+│    - 风险层：`Only share credential data if you trust this source.`          │
+│  - 产品建议：                                                                │
+│    - 默认不阻断查看                                                          │
+│    - 若策略要求，可阻断分享                                                  │
+│  - 主按钮若允许继续，必须改成强风险文案，如：`Share anyway`                  │
+│  - 更稳妥的 V1 建议：高风险时默认阻断分享，仅允许取消                        │
+│                                                                              │
+│  ### E. 凭证不可用                                                           │
+│  场景：                                                                      │
+│  - 本地无匹配凭证                                                            │
+│  - 凭证未签发至当前钱包                                                      │
+│  - 凭证状态不可读                                                            │
+│                                                                              │
+│  要求：                                                                      │
+│  - 标题：`Credential not available`                                          │
+│  - 说明：`This wallet does not have an active credential that matches the    │
+│  request.`                                                                   │
+│  - 动作：                                                                    │
+│    - `Done`                                                                  │
+│    - `Try another request`（可选）                                           │
+│                                                                              │
+│  ### F. 凭证失效                                                             │
+│  场景：                                                                      │
+│  - Expired                                                                   │
+│  - Revoked                                                                   │
+│  - Invalid signature                                                         │
+│  - Holder mismatch                                                           │
+│                                                                              │
+│  要求：                                                                      │
+│  - 标题按原因细分，避免笼统                                                  │
+│    - `Credential expired`                                                    │
+│    - `Credential revoked`                                                    │
+│    - `Credential could not be verified`                                      │
+│  - 说明必须指出该凭证不能用于本次共享                                        │
+│  - 禁止进入确认分享                                                          │
+│                                                                              │
+│  ### G. 选择性披露无法满足请求                                               │
+│  场景：                                                                      │
+│  - 请求方要求字段超出最小必要                                                │
+│  - 必填字段无法由现有凭证生成                                                │
+│  - 协议不支持所请求的披露方式                                                │
+│                                                                              │
+│  要求：                                                                      │
+│  - 标题：`Request cannot be completed`                                       │
+│  - 说明：`The requested credential fields cannot be shared from this wallet  │
+│  in the required format.`                                                    │
+│  - 若有超范围请求，应额外提示：`Requested fields exceed the available        │
+│  disclosure scope.`                                                          │
+│                                                                              │
+│  ### H. 用户取消                                                             │
+│  场景：                                                                      │
+│  - 用户在预览态取消                                                          │
+│  - 用户在字段选择页返回                                                      │
+│                                                                              │
+│  要求：                                                                      │
+│  - 不视为错误，但要有清晰结果页或 toast：                                    │
+│    - `Verification request cancelled`                                        │
+│    - `No identity data was shared.`                                          │
+│                                                                              │
+│  ### I. 提交/共享阶段失败                                                    │
+│  场景：                                                                      │
+│  - 用户已确认，但提交失败                                                    │
+│  - 网络中断                                                                  │
+│  - 对端接收失败                                                              │
+│                                                                              │
+│  要求：                                                                      │
+│  - 区分“未发送成功”与“发送状态未知”                                          │
+│  - 文案示例：                                                                │
+│    - `Sharing failed. Your selected credential data was not delivered.`      │
+│    - 若无法确认状态：`We could not confirm whether the selected data was     │
+│  received.`                                                                  │
+│  - 这是高敏感状态，必须谨慎，不能默认说“未共享”除非系统能确认                │
+│                                                                              │
+│  ---                                                                         │
+│                                                                              │
+│  ## 7. 失败态文案与交互硬要求                                                │
+│                                                                              │
+│  ### 7.1 每个失败页必须明确三件事                                            │
+│  1. 当前失败原因                                                             │
+│  2. 身份数据是否已共享                                                       │
+│  3. 用户可执行的下一步                                                       │
+│                                                                              │
+│  ### 7.2 禁止文案                                                            │
+│  - `Something went wrong`                                                    │
+│  - `Oops`                                                                    │
+│  - `Unexpected error` 作为唯一说明                                           │
+│  - 含糊其辞的成功/失败混合文案                                               │
+│                                                                              │
+│  ### 7.3 交互要求                                                            │
+│  - 失败页必须有明确退出路径                                                  │
+│  - 阻断型失败不得出现可继续分享的主按钮                                      │
+│  - 可重试型失败要给明确重试动作                                              │
+│  - 风险型失败要以风控优先，不以转化优先                                      │
+│                                                                              │
+│  ---                                                                         │
+│                                                                              │
+│  ## 8. 选择性披露的硬性合规原则                                              │
+│                                                                              │
+│  这是本次升级最关键的合规约束。                                              │
+│                                                                              │
+│  ## 8.1 明示同意                                                             │
+│  - 在任何身份数据共享前，必须获得用户明确确认                                │
+│  - 扫码、解析、预览都不等于同意                                              │
+│  - 同意动作必须是主动点击，不可由滑动、停留、默认选择代替                    │
+│                                                                              │
+│  ## 8.2 先展示、后共享                                                       │
+│  - 必须先向用户展示将共享的具体字段                                          │
+│  - 未展示的字段不得共享                                                      │
+│  - 不得在后台附带发送额外元数据，除非其属于协议必需且已在合规定义中批准      │
+│                                                                              │
+│  ## 8.3 最小必要披露                                                         │
+│  - 仅共享完成当前验证目的所必需的最小字段集合                                │
+│  - 若能共享“年龄大于 18”证明，就不应强制共享完整出生日期                     │
+│  - 若能共享布尔/派生断言，就不应共享原始字段                                 │
+│                                                                              │
+│  ## 8.4 字段级控制                                                           │
+│  - 用户必须看到字段级别的共享范围                                            │
+│  - 若协议支持，用户应能在可选字段层面做选择                                  │
+│  - 必填字段与可选字段必须区分                                                │
+│  - 不得把非必要字段伪装成必要字段                                            │
+│                                                                              │
+│  ## 8.5 默认最小化                                                           │
+│  - 默认状态下，仅选中满足请求所需的最小字段                                  │
+│  - 所有额外可选字段默认关闭                                                  │
+│  - 不得预先勾选 marketing、profiling、analytics 类附加字段                   │
+│                                                                              │
+│  ## 8.6 目的绑定                                                             │
+│  - 共享内容必须与展示的请求目的一致                                          │
+│  - 若请求目的含糊、缺失或与字段范围不匹配，应阻断或至少强警示                │
+│  - 同一确认动作不得覆盖多个不相关目的                                        │
+│                                                                              │
+│  ## 8.7 可撤销误操作风险控制                                                 │
+│  - 在最终确认前，用户必须有机会返回并修改字段选择                            │
+│  - 最终确认页应再次总结：                                                    │
+│    - 请求方                                                                  │
+│    - 请求目的                                                                │
+│    - 将共享字段                                                              │
+│    - 不会共享的字段（可选）                                                  │
+│                                                                              │
+│  ## 8.8 禁止静默升级披露范围                                                 │
+│  - 重新解析请求、网络刷新、状态恢复后，不得自动扩大已选字段范围              │
+│  - 若字段集合发生变化，必须重新征得用户确认                                  │
+│                                                                              │
+│  ## 8.9 审计可追踪性                                                         │
+│  工程实现应可记录以下事件用于审计，不含不必要明文身份值：                    │
+│  - QR scanned                                                                │
+│  - Request parsed                                                            │
+│  - Request validation result                                                 │
+│  - Preview shown                                                             │
+│  - Field selection changed                                                   │
+│  - User confirmed sharing                                                    │
+│  - User cancelled                                                            │
+│  - Share success / failure                                                   │
+│                                                                              │
+│  注意：                                                                      │
+│  -                                                                           │
+│  审计日志应优先记录事件与字段类别，不应记录完整敏感字段值，除非有明确合规依  │
+│  据                                                                          │
+│                                                                              │
+│  ---                                                                         │
+│                                                                              │
+│  ## 9. 页面级交互建议流程                                                    │
+│                                                                              │
+│  ## 9.1 推荐流程                                                             │
+│  1. 扫码                                                                     │
+│  2. 解析并校验请求                                                           │
+│  3. 进入 Preview                                                             │
+│  4. 展示请求方、目的、凭证状态、请求字段                                     │
+│  5. 用户审查字段选择                                                         │
+│  6. 用户点击 `Confirm sharing`                                               │
+│  7. 执行共享                                                                 │
+│  8. 返回成功或失败结果                                                       │
+│                                                                              │
+│  ## 9.2 关键门槛                                                             │
+│  只有满足以下条件，才允许进入“可确认”状态：                                  │
+│  - `fcid://` 解析成功                                                        │
+│  - 请求结构完整                                                              │
+│  - 请求方状态已知                                                            │
+│  - 请求目的存在                                                              │
+│  - 匹配凭证存在                                                              │
+│  - 凭证为 Active                                                             │
+│  - 将共享字段已明确展示                                                      │
+│  - 用户完成主动确认                                                          │
+│                                                                              │
+│  ---                                                                         │
+│                                                                              │
+│  ## 10. 工程落地规格要点                                                     │
+│                                                                              │
+│  ## 10.1 模块拆分建议                                                        │
+│  此次升级应从单文件重构为模块化，建议最少拆分为以下职责层：                  │
+│                                                                              │
+│  ### A. QR Scanner Module                                                    │
+│  职责：                                                                      │
+│  - 摄像头权限                                                                │
+│  - 二维码扫描                                                                │
+│  - 原始字符串提取                                                            │
+│                                                                              │
+│  输出：                                                                      │
+│  - raw payload                                                               │
+│                                                                              │
+│  ### B. FCID Parser Module                                                   │
+│  职责：                                                                      │
+│  - 校验是否为 `fcid://`                                                      │
+│  - 解析协议字段                                                              │
+│  - 输出标准 request model                                                    │
+│                                                                              │
+│  输出建议：                                                                  │
+│  - requester                                                                 │
+│  - purpose                                                                   │
+│  - credentialType                                                            │
+│  - requestedFields                                                           │
+│  - validity window                                                           │
+│  - protocol metadata                                                         │
+│                                                                              │
+│  ### C. Validation Module                                                    │
+│  职责：                                                                      │
+│  - 请求结构完整性校验                                                        │
+│  - 请求方可信状态校验                                                        │
+│  - 凭证可匹配性校验                                                          │
+│  - 凭证状态校验                                                              │
+│  - 选择性披露可行性校验                                                      │
+│                                                                              │
+│  输出：                                                                      │
+│  - validation status                                                         │
+│  - blocking reasons                                                          │
+│  - warning reasons                                                           │
+│                                                                              │
+│  ### D. Credential Presentation Module                                       │
+│  职责：                                                                      │
+│  - 将底层凭证数据映射为 UI 可读字段                                          │
+│  - 区分 requested / available / selected                                     │
+│  - 生成共享摘要                                                              │
+│                                                                              │
+│  ### E. Selective Disclosure Module                                          │
+│  职责：                                                                      │
+│  - 字段最小集计算                                                            │
+│  - 可选字段控制                                                              │
+│  - 最终 disclosure payload 生成                                              │
+│                                                                              │
+│  要求：                                                                      │
+│  - 业务逻辑与 UI 分离                                                        │
+│  - 所有字段选择变更有明确状态源                                              │
+│                                                                              │
+│  ### F. Submission Module                                                    │
+│  职责：                                                                      │
+│  - 用户确认后的共享提交                                                      │
+│  - 成功/失败状态返回                                                         │
+│  - 状态不确定时返回明确 uncertainty 标记                                     │
+│                                                                              │
+│  ### G. Failure State Module                                                 │
+│  职责：                                                                      │
+│  - 标准化错误类型                                                            │
+│  - 映射统一文案                                                              │
+│  - 提供统一 CTA 配置                                                         │
+│                                                                              │
+│  ---                                                                         │
+│                                                                              │
+│  ## 10.2 状态模型建议                                                        │
+│  工程上建议显式定义以下状态，避免布尔散落：                                  │
+│                                                                              │
+│  - `idle`                                                                    │
+│  - `scanning`                                                                │
+│  - `parse_success`                                                           │
+│  - `parse_failed`                                                            │
+│  - `validation_warning`                                                      │
+│  - `validation_blocked`                                                      │
+│  - `preview_ready`                                                           │
+│  - `selecting_fields`                                                        │
+│  - `confirm_ready`                                                           │
+│  - `submitting`                                                              │
+│  - `share_success`                                                           │
+│  - `share_failed`                                                            │
+│  - `cancelled`                                                               │
+│                                                                              │
+│  每个状态必须对应：                                                          │
+│  - 页面标题                                                                  │
+│  - 数据共享状态文案                                                          │
+│  - 主/次操作                                                                 │
+│  - 是否可返回                                                                │
+│  - 是否可重试                                                                │
+│                                                                              │
+│  ---                                                                         │
+│                                                                              │
+│  ## 10.3 数据展示规范                                                        │
+│  - 所有展示字段都应来自标准化 view model，而不是直接读底层原始对象           │
+│  - UI 只读展示，不在展示层做协议判断                                         │
+│  - 技术错误码与用户文案分离                                                  │
+│  - 对敏感字段显示遵循最小化原则，未被请求的字段不应在预览页完整展开          │
+│                                                                              │
+│  ---                                                                         │
+│                                                                              │
+│  ## 10.4 按钮规范                                                            │
+│  ### 主按钮                                                                  │
+│  - 仅在可合法共享时显示 `Confirm sharing`                                    │
+│  - 风险态不得继续沿用同一主按钮样式而无警示                                  │
+│                                                                              │
+│  ### 次按钮                                                                  │
+│  - 一律提供 `Cancel` / `Close` / `Back`                                      │
+│  - 取消后必须明确：`No identity data was shared.`                            │
+│                                                                              │
+│  ---                                                                         │
+│                                                                              │
+│  ## 11. 验收标准（工程/QA 可直接使用）                                       │
+│                                                                              │
+│  以下条件全部满足，才视为本次升级达标：                                      │
+│                                                                              │
+│  ### 扫码成功后                                                              │
+│  - 扫描有效 `fcid://` 后，进入预览态，而不是直接共享                         │
+│  - 预览态中可见请求方、目的、凭证类型、凭证状态、请求字段、实际共享字段      │
+│  - 页面明确说明共享前不会发送身份数据                                        │
+│                                                                              │
+│  ### 凭证展示                                                                │
+│  - 必须显示 credential type、issuer、status、requested fields、selected      │
+│  fields                                                                      │
+│  - 字段名为用户可理解标签，不暴露内部技术命名                                │
+│  - 请求字段与实际共享字段分开展示                                            │
+│                                                                              │
+│  ### 失败处理                                                                │
+│  - 每类主要失败都有独立文案与操作                                            │
+│  - 每个失败态明确说明是否已共享身份数据                                      │
+│  - 阻断型失败不能继续进入共享确认                                            │
+│                                                                              │
+│  ### 选择性披露                                                              │
+│  - 共享前必须用户主动确认                                                    │
+│  - 默认仅选中最小必要字段                                                    │
+│  - 未展示字段不得共享                                                        │
+│  - 字段范围变化后必须重新确认                                                │
+│  - 用户可在最终确认前返回检查或修改选择                                      │
+│                                                                              │
+│  ---                                                                         │
+│                                                                              │
+│  ## 12. V1 决策建议                                                          │
+│                                                                              │
+│  为保证政府级可信感，V1 建议采取偏保守策略：                                 │
+│                                                                              │
+│  - **未验证请求方：默认不允许分享**                                          │
+│  - **请求目的缺失：直接阻断**                                                │
+│  - **字段范围超出最小必要：直接阻断或强警示后不默认继续**                    │
+│  - **任何共享前：必须给出清晰字段摘要**                                      │
+│  - **任何失败后：必须说明是否已共享**                                        │
+│                                                                              │
+│  这能确保 VerifyScreen 体现的是 **Verified identity                          │
+│  interaction**，而不是“扫一下就发数据”的黑箱流程。                           │
+│                                                                              │
+│  如果工程团队需要，我下一步可以继续把这页规格整理成：                        │
+│  1. React Native 组件结构清单                                                │
+│  2. 状态机定义                                                               │
+│  3. QA 测试用例列表                                                          │
+│  4. 中英文 UI 文案表                                                         │
+│                                                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+

@@ -1,0 +1,10 @@
+# CrewAI 框架
+crewai>=0.28.0
+crewai-tools>=0.1.0
+
+# LLM 提供商（OpenAI + Google，无需 Claude）
+langchain-openai>=0.1.0
+langchain-google-genai>=1.0.0
+
+# 其他依赖
+python-dotenv>=1.0.0
